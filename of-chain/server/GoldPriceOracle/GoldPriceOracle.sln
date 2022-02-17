@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Node", "GoldPriceOracle.Node\GoldPriceOracle.Node.csproj", "{6A762849-6707-43DA-AB69-58FF0DDA8C79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Services", "GoldPriceOracle.Services\GoldPriceOracle.Services.csproj", "{E3CAC8B5-E174-4F2E-B0BD-3C3EA2811AC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Connections", "GoldPriceOracle.Connections\GoldPriceOracle.Connections.csproj", "{1D0AC5B5-5D25-4C1B-9303-19CA6F4BAC24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Configuration", "GoldPriceOracle.Configuration\GoldPriceOracle.Configuration.csproj", "{C30C4281-3877-4957-B2C3-0784C46F24AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{6A762849-6707-43DA-AB69-58FF0DDA8C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A762849-6707-43DA-AB69-58FF0DDA8C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A762849-6707-43DA-AB69-58FF0DDA8C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3CAC8B5-E174-4F2E-B0BD-3C3EA2811AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CAC8B5-E174-4F2E-B0BD-3C3EA2811AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3CAC8B5-E174-4F2E-B0BD-3C3EA2811AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CAC8B5-E174-4F2E-B0BD-3C3EA2811AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0AC5B5-5D25-4C1B-9303-19CA6F4BAC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0AC5B5-5D25-4C1B-9303-19CA6F4BAC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0AC5B5-5D25-4C1B-9303-19CA6F4BAC24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0AC5B5-5D25-4C1B-9303-19CA6F4BAC24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30C4281-3877-4957-B2C3-0784C46F24AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30C4281-3877-4957-B2C3-0784C46F24AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30C4281-3877-4957-B2C3-0784C46F24AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30C4281-3877-4957-B2C3-0784C46F24AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
