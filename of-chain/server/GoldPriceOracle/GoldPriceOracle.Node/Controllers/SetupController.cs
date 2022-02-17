@@ -22,17 +22,17 @@ namespace GoldPriceOracle.Node.Controllers
         }
 
         [HttpPost("new")]
-        public IActionResult SetUpNode([FromBody]SetupNodeContract setupNodeContract)
+        public IActionResult SetUpNode([FromBody] SetupNodeContract setupNodeContract)
         {
             var result = _setupService.SetupNode(setupNodeContract.Password);
 
             return Ok(new BooleanResponse(result));
         }
 
-        [HttpPost["restore/seed"]]
-        public IActionResult RestoreNode()
+        [HttpPost("seed-restore")]
+        public IActionResult RestoreNode([FromBody]RestoreWithMnemonicContract restoreWithMnemonicContract)
         {
-
+            return Ok();
         }
     }
 }

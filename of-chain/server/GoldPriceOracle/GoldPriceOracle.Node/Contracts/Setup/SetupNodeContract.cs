@@ -1,11 +1,10 @@
-﻿namespace GoldPriceOracle.Node.Contracts.Setup
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GoldPriceOracle.Node.Contracts.Setup
 {
     public class SetupNodeContract
     {
-        public SetupNodeContract(string password)
-        {
-            Password = password;
-        }
-        public string Password { get;  }
+        [Required]
+        public string Password { get; set; }
     }
 }
