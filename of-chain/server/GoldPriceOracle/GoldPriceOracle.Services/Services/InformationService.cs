@@ -36,5 +36,19 @@ namespace GoldPriceOracle.Services.Services
                 return TryResult<MnemonicPhraseModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }
         }
+
+        public TryResult<AddressInformation> GetNodeActiveAddress(string password)
+        {
+            var autorizeResult = Authorize(password);
+            if (!autorizeResult.Item1)
+            {
+                return TryResult<AddressInformation>.Fail(autorizeResult.Item2);
+            }
+
+            var nodeData = autorizeResult.Item3;
+
+            return TryResult<AddressInformation>.Success(new AddressInformation(nodeData.ActiveAddress));
+
+        }
     }
 }

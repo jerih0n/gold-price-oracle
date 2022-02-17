@@ -16,6 +16,10 @@ namespace GoldPriceOracle.Node.Controllers
 
         [HttpPost("mnemonic")]
         public IActionResult GetMnemonicPhrase([FromBody] PasswordContract passwordContract)
-         => HandleResponse(_informationService.GetMnemonicPhrase(passwordContract.Password));
+            => HandleResponse(_informationService.GetMnemonicPhrase(passwordContract.Password));
+
+        [HttpPost("active-address")]
+        public IActionResult GetActiveAddress([FromBody] PasswordContract passwordContract)
+            => HandleResponse(_informationService.GetNodeActiveAddress(passwordContract.Password));
     }
 }
