@@ -1,4 +1,7 @@
 using GoldPriceOracle.Connection.Database;
+using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
+using GoldPriceOracle.Services.Interfaces;
+using GoldPriceOracle.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +32,11 @@ namespace GoldPriceOracle.Node
             });
 
             services.AddDbContext<OracleDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("OracleDb")));
+
+            services.AddScoped<OracleDbContext>();
+            services.AddScoped<INodeDataDataAccessService, NodeDataAccessService>();
+            services.AddScoped<ISetupService, SetupService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

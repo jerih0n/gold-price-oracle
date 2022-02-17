@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Configurati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Connection.Database", "GoldPriceOracle.Connection.Database\GoldPriceOracle.Connection.Database.csproj", "{55E9A255-66A3-4F17-A10E-82D78663175C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Infrastructure", "GoldPriceOracle.Infrastructure\GoldPriceOracle.Infrastructure.csproj", "{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{55E9A255-66A3-4F17-A10E-82D78663175C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55E9A255-66A3-4F17-A10E-82D78663175C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55E9A255-66A3-4F17-A10E-82D78663175C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
