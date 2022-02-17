@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GoldPriceOracle.Node.Controllers
 {
     [Route("api/setup")]
-    public class SetupController : ControllerBase
+    public class SetupController : BaseController
     {
         private readonly ISetupService _setupService;
 
@@ -18,32 +18,23 @@ namespace GoldPriceOracle.Node.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
         public IActionResult CheckNodeSetup()
-        {
-            var result = _setupService.IsNodeSetup();
+            => HandleResponse(_setupService.IsNodeSetup());
 
-            return result.IsSuccessfull ? Ok(result.Item) : StatusCode((int)result.Error.Code, result.Error);
-        }
 
         [HttpPost("new")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
         [ProducesResponseType(400)]
-        public IActionResult SetUpNode([FromBody] SetupNodeContract setupNodeContract)
-        {
-            var result = _setupService.SetupNode(setupNodeContract.Password);
+        public IActionResult SetUpNode([FromBody] PasswordContract setupNodeContract)
+            => HandleResponse(_setupService.SetupNode(setupNodeContract.Password));
 
-            return result.IsSuccessfull ? Ok(result.Item) : StatusCode((int)result.Error.Code, result.Error);
-        }
 
         [HttpPost("seed-restore")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
         [ProducesResponseType(400)]
-        public IActionResult RestoreNode([FromBody]RestoreWithMnemonicContract restoreWithMnemonicContract)
-        {
-            var result = _setupService.RestoreFromMnemonic(restoreWithMnemonicContract.Mnemonic, restoreWithMnemonicContract.Password);
-
-            return result.IsSuccessfull ? Ok(result.Item) : StatusCode((int)result.Error.Code, result.Error);
-        }
+        public IActionResult RestoreNode([FromBody] RestoreWithMnemonicContract restoreWithMnemonicContract)
+            => HandleResponse(_setupService.RestoreFromMnemonic(restoreWithMnemonicContract.Mnemonic, restoreWithMnemonicContract.Password));
+        
     }
 }

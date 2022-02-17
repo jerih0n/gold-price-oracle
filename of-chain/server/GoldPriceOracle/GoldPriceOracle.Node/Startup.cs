@@ -38,8 +38,7 @@ namespace GoldPriceOracle.Node
             services.AddScoped<IHDWalletManagingService, HDWalletManagingService>();
             services.AddScoped<INodeDataDataAccessService, NodeDataAccessService>();
             services.AddScoped<ISetupService, SetupService>();
-            
-            
+            services.AddScoped<IInformationService, InformationService>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

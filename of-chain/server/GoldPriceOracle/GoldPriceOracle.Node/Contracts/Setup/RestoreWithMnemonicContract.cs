@@ -2,7 +2,7 @@
 
 namespace GoldPriceOracle.Node.Contracts.Setup
 {
-    public class RestoreWithMnemonicContract : SetupNodeContract
+    public class RestoreWithMnemonicContract : PasswordContract
     {
         [Required]
         public string Mnemonic { get; set; }

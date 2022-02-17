@@ -2,7 +2,7 @@
 
 namespace GoldPriceOracle.Node.Contracts.Setup
 {
-    public class SetupNodeContract
+    public class PasswordContract
     {
         [Required]
         public string Password { get; set; }
