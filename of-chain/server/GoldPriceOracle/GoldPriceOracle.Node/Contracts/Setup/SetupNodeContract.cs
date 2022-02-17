@@ -2,8 +2,10 @@
 {
     public class SetupNodeContract
     {
-        public string Password { get; set; }
-        public string PrivateKey { get; set; }
-        public bool IsInMnemonicFormat { get; set; }
+        public SetupNodeContract(string password)
+        {
+            Password = password;
+        }
+        public string Password { get;  }
     }
 }

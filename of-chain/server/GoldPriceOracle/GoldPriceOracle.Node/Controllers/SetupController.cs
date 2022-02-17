@@ -21,14 +21,18 @@ namespace GoldPriceOracle.Node.Controllers
             return Ok(new BooleanResponse(result));
         }
 
-        [HttpPost("")]
+        [HttpPost("new")]
         public IActionResult SetUpNode([FromBody]SetupNodeContract setupNodeContract)
         {
-            var result = _setupService.SetupNode(setupNodeContract.Password, 
-                setupNodeContract.PrivateKey, 
-                setupNodeContract.IsInMnemonicFormat);
+            var result = _setupService.SetupNode(setupNodeContract.Password);
 
             return Ok(new BooleanResponse(result));
+        }
+
+        [HttpPost["restore/seed"]]
+        public IActionResult RestoreNode()
+        {
+
         }
     }
 }

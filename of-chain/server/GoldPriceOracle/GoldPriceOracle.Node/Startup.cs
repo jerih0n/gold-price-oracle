@@ -1,4 +1,5 @@
 using GoldPriceOracle.Connection.Database;
+using GoldPriceOracle.Infrastructure.Blockchain.Accounts;
 using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
 using GoldPriceOracle.Services.Interfaces;
 using GoldPriceOracle.Services.Services;
@@ -34,8 +35,10 @@ namespace GoldPriceOracle.Node
             services.AddDbContext<OracleDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("OracleDb")));
 
             services.AddScoped<OracleDbContext>();
+            services.AddScoped<IHDWalletManagingService, HDWalletManagingService>();
             services.AddScoped<INodeDataDataAccessService, NodeDataAccessService>();
             services.AddScoped<ISetupService, SetupService>();
+            
             
         }
 

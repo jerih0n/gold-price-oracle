@@ -3,6 +3,6 @@
     public interface ISetupService
     {
         bool IsNodeSetup();
-        bool SetupNode(string password, string privateKey, bool isInMnemonicFormat);
+        bool SetupNode(string password);
     }
 }

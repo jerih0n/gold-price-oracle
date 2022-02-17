@@ -1,4 +1,5 @@
 ﻿using GoldPriceOracle.Connection.Database;
+using System;
 using System.Linq;
 
 namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
@@ -9,6 +10,27 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
         public NodeDataAccessService(OracleDbContext oracleDbContext)
         {
             _dbContext = oracleDbContext;
+        }
+
+        public bool CreateNewNode(string password, string privateKey, string activeAddress)
+        {
+            try
+            {
+                _dbContext.NodeData.Add(new NodeData
+                {
+                    Password = password,
+                    PrivateKeyEncrypted = privateKey,
+                    ActiveAddress = activeAddress
+                });
+
+                _dbContext.SaveChanges();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public NodeData GetNodeData()

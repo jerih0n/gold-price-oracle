@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Nethereum.HdWallet" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GoldPriceOracle.Infrastructure\GoldPriceOracle.Infrastructure.csproj" />
   </ItemGroup>
 
