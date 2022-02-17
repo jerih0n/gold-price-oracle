@@ -1,5 +1,4 @@
 ﻿namespace GoldPriceOracle.Node.Contracts.Setup
 {
-    public record BooleanResponse(bool IsOk);
-    
+    public record BooleanResponse(bool IsSet);   
 }

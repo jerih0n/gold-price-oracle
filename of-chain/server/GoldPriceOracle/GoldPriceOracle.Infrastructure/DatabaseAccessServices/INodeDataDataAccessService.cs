@@ -6,6 +6,6 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
     {
         NodeData GetNodeData();
 
-        bool CreateNewNode(string password, string privateKey, string activeAddress);
+        bool CreateNewNode(string password, string privateKey, string activeAddress, string mnemonic);
     }
 }

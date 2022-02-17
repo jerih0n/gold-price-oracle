@@ -4,7 +4,7 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Accounts
 {
     public interface IHDWalletManagingService
     {
-        Account CreateNewWallet();
+        (Account, string) CreateNewWallet();
 
         Account RestoreWalletFromMnemonic(string mnemonicPhrase);
     }

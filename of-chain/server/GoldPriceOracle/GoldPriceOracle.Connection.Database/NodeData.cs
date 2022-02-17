@@ -15,5 +15,8 @@ namespace GoldPriceOracle.Connection.Database
 
         [Required]
         public string ActiveAddress { get; set; }
+
+        [Required]
+        public string MnemonicPhraseEncrypted { get; set; }
     }
 }

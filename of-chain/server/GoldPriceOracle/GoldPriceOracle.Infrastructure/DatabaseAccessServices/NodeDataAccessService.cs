@@ -12,7 +12,7 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
             _dbContext = oracleDbContext;
         }
 
-        public bool CreateNewNode(string password, string privateKey, string activeAddress)
+        public bool CreateNewNode(string password, string privateKey, string activeAddress, string mnemonic)
         {
             try
             {
@@ -20,7 +20,8 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
                 {
                     Password = password,
                     PrivateKeyEncrypted = privateKey,
-                    ActiveAddress = activeAddress
+                    ActiveAddress = activeAddress,
+                    MnemonicPhraseEncrypted = mnemonic
                 });
 
                 _dbContext.SaveChanges();

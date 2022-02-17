@@ -15,24 +15,35 @@ namespace GoldPriceOracle.Node.Controllers
         }
 
         [HttpGet("check")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
         public IActionResult CheckNodeSetup()
         {
             var result = _setupService.IsNodeSetup();
-            return Ok(new BooleanResponse(result));
+
+            return result.IsSuccessfull ? Ok(result.Item) : StatusCode((int)result.Error.Code, result.Error);
         }
 
         [HttpPost("new")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(400)]
         public IActionResult SetUpNode([FromBody] SetupNodeContract setupNodeContract)
         {
             var result = _setupService.SetupNode(setupNodeContract.Password);
 
-            return Ok(new BooleanResponse(result));
+            return result.IsSuccessfull ? Ok(result.Item) : StatusCode((int)result.Error.Code, result.Error);
         }
 
         [HttpPost("seed-restore")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(400)]
         public IActionResult RestoreNode([FromBody]RestoreWithMnemonicContract restoreWithMnemonicContract)
         {
-            return Ok();
+            var result = _setupService.RestoreFromMnemonic(restoreWithMnemonicContract.Mnemonic, restoreWithMnemonicContract.Password);
+
+            return result.IsSuccessfull ? Ok(result.Item) : StatusCode((int)result.Error.Code, result.Error);
         }
     }
 }
