@@ -4,8 +4,6 @@ using Nethereum.Contracts;
 
 namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
 {
-
-
     public partial class GoldOracleTokenDeployment : GoldOracleTokenDeploymentBase
     {
         public GoldOracleTokenDeployment() : base(BYTECODE) { }

@@ -6,13 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="NBitcoin" Version="7.0.1" />
-    <PackageReference Include="Nethereum.Accounts" Version="4.1.1" />
-    <PackageReference Include="Nethereum.HdWallet" Version="4.1.1" />
-    <PackageReference Include="Nethereum.Web3" Version="4.1.1" />
+    <PackageReference Include="Nethereum.HdWallet" Version="4.2.0" />
+    <PackageReference Include="Nethereum.Web3" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GoldPriceOracle.Configuration\GoldPriceOracle.Configuration.csproj" />
+    <ProjectReference Include="..\GoldPriceOracle.Connection.Blockchain\GoldPriceOracle.Connection.Blockchain.csproj" />
     <ProjectReference Include="..\GoldPriceOracle.Connection.Database\GoldPriceOracle.Connection.Database.csproj" />
   </ItemGroup>
 

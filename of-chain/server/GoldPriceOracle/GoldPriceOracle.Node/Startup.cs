@@ -2,9 +2,7 @@ using GoldPriceOracle.Configuration;
 using GoldPriceOracle.Connection.Database;
 using GoldPriceOracle.Infrastructure.Blockchain.Accounts;
 using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
-using GoldPriceOracle.Infrastructure.Integration.ExternalAPI;
-using GoldPriceOracle.Services.Interfaces;
-using GoldPriceOracle.Services.Services;
+using GoldPriceOracle.Node.RegistrationModules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -35,19 +33,11 @@ namespace GoldPriceOracle.Node
             });
 
             services.AddDbContext<OracleDbContext>(item => item.UseSqlServer(_cofiguration.GetConnectionString("OracleDb")));
-
-            services.Configure<GoldAPIServiceOptions>(_cofiguration.GetSection("GoldAPIService"));
-
             services.AddScoped<OracleDbContext>();
-            services.AddScoped<GoldAPIServiceOptions>();
-            services.AddScoped<IHDWalletManagingService, HDWalletManagingService>();
-            services.AddScoped<INodeDataDataAccessService, NodeDataAccessService>();
-            services.AddScoped<IExternalGoldApiIntegrationService, ExternalGoldApiIntegrationService>();
-            services.AddScoped<IAssetPriceHistoricalDataAccessService, AssetPriceHistoricalDataAccessService>();
 
-            services.AddScoped<ISetupService, SetupService>();
-            services.AddScoped<IInformationService, InformationService>();
-            services.AddScoped<IIntegrationService, IntegrationService>();
+            OptionsRegistrationModule.Register(services, _cofiguration);
+            InfrastructureRegistrationModule.Register(services);
+            ServicesRegistrationModule.Register(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
