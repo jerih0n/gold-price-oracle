@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Node", "GoldPriceOracle.Node\GoldPriceOracle.Node.csproj", "{6A762849-6707-43DA-AB69-58FF0DDA8C79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldPriceOracle.Node", "GoldPriceOracle.Node\GoldPriceOracle.Node.csproj", "{6A762849-6707-43DA-AB69-58FF0DDA8C79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Services", "GoldPriceOracle.Services\GoldPriceOracle.Services.csproj", "{E3CAC8B5-E174-4F2E-B0BD-3C3EA2811AC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldPriceOracle.Services", "GoldPriceOracle.Services\GoldPriceOracle.Services.csproj", "{E3CAC8B5-E174-4F2E-B0BD-3C3EA2811AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Configuration", "GoldPriceOracle.Configuration\GoldPriceOracle.Configuration.csproj", "{C30C4281-3877-4957-B2C3-0784C46F24AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldPriceOracle.Configuration", "GoldPriceOracle.Configuration\GoldPriceOracle.Configuration.csproj", "{C30C4281-3877-4957-B2C3-0784C46F24AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Connection.Database", "GoldPriceOracle.Connection.Database\GoldPriceOracle.Connection.Database.csproj", "{55E9A255-66A3-4F17-A10E-82D78663175C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldPriceOracle.Connection.Database", "GoldPriceOracle.Connection.Database\GoldPriceOracle.Connection.Database.csproj", "{55E9A255-66A3-4F17-A10E-82D78663175C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Infrastructure", "GoldPriceOracle.Infrastructure\GoldPriceOracle.Infrastructure.csproj", "{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoldPriceOracle.Infrastructure", "GoldPriceOracle.Infrastructure\GoldPriceOracle.Infrastructure.csproj", "{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldPriceOracle.Connection.Blockchain", "GoldPriceOracle.Connection.Blockchain\GoldPriceOracle.Connection.Blockchain.csproj", "{7606B383-926B-4865-BC45-E4B5031F705E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A55BB4BB-2777-4E1D-B1C7-43DC6CB70F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7606B383-926B-4865-BC45-E4B5031F705E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7606B383-926B-4865-BC45-E4B5031F705E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7606B383-926B-4865-BC45-E4B5031F705E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7606B383-926B-4865-BC45-E4B5031F705E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
