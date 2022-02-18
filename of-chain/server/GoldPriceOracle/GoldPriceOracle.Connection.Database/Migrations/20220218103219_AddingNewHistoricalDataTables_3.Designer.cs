@@ -4,14 +4,16 @@ using GoldPriceOracle.Connection.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoldPriceOracle.Connection.Database.Migrations
 {
     [DbContext(typeof(OracleDbContext))]
-    partial class OracleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220218103219_AddingNewHistoricalDataTables_3")]
+    partial class AddingNewHistoricalDataTables_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace GoldPriceOracle.Connection.Database.Migrations
 
             modelBuilder.Entity("GoldPriceOracle.Connection.Database.Asset", b =>
                 {
-                    b.Property<short>("Id")
+                    b.Property<short>("Key")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
                         .UseIdentityColumn();
@@ -31,7 +33,7 @@ namespace GoldPriceOracle.Connection.Database.Migrations
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Key");
 
                     b.ToTable("Assets");
                 });
@@ -66,7 +68,7 @@ namespace GoldPriceOracle.Connection.Database.Migrations
 
             modelBuilder.Entity("GoldPriceOracle.Connection.Database.FiatCurrency", b =>
                 {
-                    b.Property<short>("Id")
+                    b.Property<short>("Key")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
                         .UseIdentityColumn();
@@ -76,7 +78,7 @@ namespace GoldPriceOracle.Connection.Database.Migrations
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Key");
 
                     b.ToTable("FiatCurrencies");
                 });

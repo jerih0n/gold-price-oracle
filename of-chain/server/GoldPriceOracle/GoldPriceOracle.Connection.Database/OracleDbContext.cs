@@ -8,7 +8,10 @@ namespace GoldPriceOracle.Connection.Database
         {
 
         }
-
+        
         public DbSet<NodeData> NodeData { get; set; }
+        public DbSet<Asset> Assets { get; set; }
+        public DbSet<FiatCurrency> FiatCurrencies { get; set; }
+        public DbSet<AssetHistoricData> AssetHistoricDatas { get; set; }
     }
 }
