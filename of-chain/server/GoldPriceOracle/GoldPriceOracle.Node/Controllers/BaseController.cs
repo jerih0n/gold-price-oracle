@@ -9,5 +9,6 @@ namespace GoldPriceOracle.Node.Controllers
         {
             return response.IsSuccessfull ? Ok(response.Item) : StatusCode((int)response.Error.Code, response.Error);
         }
+
     }
 }

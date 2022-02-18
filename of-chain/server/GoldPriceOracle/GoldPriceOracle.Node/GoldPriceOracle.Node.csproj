@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GoldPriceOracle.Configuration\GoldPriceOracle.Configuration.csproj" />
     <ProjectReference Include="..\GoldPriceOracle.Connection.Database\GoldPriceOracle.Connection.Database.csproj" />
     <ProjectReference Include="..\GoldPriceOracle.Services\GoldPriceOracle.Services.csproj" />
   </ItemGroup>
