@@ -43,7 +43,7 @@ namespace GoldPriceOracle.Node
             services.AddScoped<IHDWalletManagingService, HDWalletManagingService>();
             services.AddScoped<INodeDataDataAccessService, NodeDataAccessService>();
             services.AddScoped<IExternalGoldApiIntegrationService, ExternalGoldApiIntegrationService>();
-
+            services.AddScoped<IAssetPriceHistoricalDataAccessService, AssetPriceHistoricalDataAccessService>();
 
             services.AddScoped<ISetupService, SetupService>();
             services.AddScoped<IInformationService, InformationService>();

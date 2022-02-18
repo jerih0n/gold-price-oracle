@@ -1,5 +1,4 @@
 ﻿using GoldPriceOracle.Connection.Database;
-using System;
 using System.Linq;
 
 namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
@@ -13,25 +12,18 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
         }
 
         public bool CreateNewNode(string password, string privateKey, string activeAddress, string mnemonic)
-        {
-            try
+        {           
+            _dbContext.NodeData.Add(new NodeData
             {
-                _dbContext.NodeData.Add(new NodeData
-                {
-                    Password = password,
-                    PrivateKeyEncrypted = privateKey,
-                    ActiveAddress = activeAddress,
-                    MnemonicPhraseEncrypted = mnemonic
-                });
+                Password = password,
+                PrivateKeyEncrypted = privateKey,
+                ActiveAddress = activeAddress,
+                MnemonicPhraseEncrypted = mnemonic
+            });
 
-                _dbContext.SaveChanges();
+            _dbContext.SaveChanges();
 
-                return true;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+            return true;           
         }
 
         public NodeData GetNodeData()
