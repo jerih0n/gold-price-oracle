@@ -1,6 +1,7 @@
 ﻿using GoldPriceOracle.Node.Contracts.Setup;
 using GoldPriceOracle.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Node.Controllers
 {
@@ -21,5 +22,9 @@ namespace GoldPriceOracle.Node.Controllers
         [HttpPost("active-address")]
         public IActionResult GetActiveAddress([FromBody] PasswordContract passwordContract)
             => HandleResponse(_informationService.GetNodeActiveAddress(passwordContract.Password));
+
+        [HttpPost("get-token-balance")]
+        public async Task<IActionResult> GetOracleTokenBalance([FromBody] PasswordContract passwordContract)
+            => HandleResponse(await _informationService.GetTokenBalanceAsync(passwordContract.Password));
     }
 }

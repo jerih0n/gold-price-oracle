@@ -1,5 +1,6 @@
 ﻿using GoldPriceOracle.Infrastructure.API.Response;
 using GoldPriceOracle.Services.Models.Information;
+using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Services.Interfaces
 {
@@ -8,5 +9,7 @@ namespace GoldPriceOracle.Services.Interfaces
         TryResult<MnemonicPhraseModel> GetMnemonicPhrase(string password);
 
         TryResult<AddressInformation> GetNodeActiveAddress(string password);
+
+        Task<TryResult<OracleTokenBalance>> GetTokenBalanceAsync(string password);
     }
 }
