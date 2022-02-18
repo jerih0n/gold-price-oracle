@@ -21,7 +21,7 @@ namespace GoldPriceOracle.Infrastructure.Integration.ExternalAPI
         {
             HttpClient httpClient = new HttpClient();
 
-            var fullUrl = $"{_options.BaseUrl}/{assetCode}/{currencyCode}";
+            var fullUrl = $"{_options.BaseUrl}{assetCode}/{currencyCode}";
 
             var httpMessage = new HttpRequestMessage(HttpMethod.Get, fullUrl);
             httpMessage.Headers.Add("x-access-token", _options.ApiKey);

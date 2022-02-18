@@ -2,6 +2,8 @@
 using GoldPriceOracle.Infrastructure.Integration.ExternalAPI;
 using GoldPriceOracle.Services.Interfaces;
 using GoldPriceOracle.Services.Models.Setup.Integration;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Services.Services
@@ -17,16 +19,23 @@ namespace GoldPriceOracle.Services.Services
 
         public async Task<TryResult<AssetPriceModel>> GetAssetPriceModelAsync(string assetCode, string currencyCode)
         {
-            var result = await _externalGoldApiIntegrationService.GetAssetPriceAsync(assetCode, currencyCode);
+            try
+            {
+                var result = await _externalGoldApiIntegrationService.GetAssetPriceAsync(assetCode, currencyCode);
 
-            if (!result.IsSuccessfull) return TryResult<AssetPriceModel>.Fail(result.Error);
+                if (!result.IsSuccessfull) return TryResult<AssetPriceModel>.Fail(result.Error);
 
-            var assetPriceModel = new AssetPriceModel(result.Item.Timestamp, 
-                result.Item.MetalCode, 
-                result.Item.Currency, 
-                result.Item.Price);
+                var assetPriceModel = new AssetPriceModel(result.Item.TimeStamp,
+                    result.Item.MetalCode,
+                    result.Item.Currency,
+                    result.Item.Price);
 
-            return TryResult<AssetPriceModel>.Success(assetPriceModel);
+                return TryResult<AssetPriceModel>.Success(assetPriceModel);
+            }
+            catch(Exception ex)
+            {
+                return TryResult<AssetPriceModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 
 namespace GoldPriceOracle.Infrastructure.Integration.ExternalAPI.Models
@@ -6,7 +7,8 @@ namespace GoldPriceOracle.Infrastructure.Integration.ExternalAPI.Models
     public class ExterlApiCallResponse
     {
         [JsonProperty("timestamp")]
-        public DateTimeOffset Timestamp { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime TimeStamp { get; set; }
 
         [JsonProperty("metal")]
         public string MetalCode { get; set; }

@@ -39,15 +39,22 @@ namespace GoldPriceOracle.Services.Services
 
         public TryResult<AddressInformation> GetNodeActiveAddress(string password)
         {
-            var autorizeResult = Authorize(password);
-            if (!autorizeResult.Item1)
+            try
             {
-                return TryResult<AddressInformation>.Fail(autorizeResult.Item2);
+                var autorizeResult = Authorize(password);
+                if (!autorizeResult.Item1)
+                {
+                    return TryResult<AddressInformation>.Fail(autorizeResult.Item2);
+                }
+
+                var nodeData = autorizeResult.Item3;
+
+                return TryResult<AddressInformation>.Success(new AddressInformation(nodeData.ActiveAddress));
             }
-
-            var nodeData = autorizeResult.Item3;
-
-            return TryResult<AddressInformation>.Success(new AddressInformation(nodeData.ActiveAddress));
+            catch(Exception ex)
+            {
+                return TryResult<AddressInformation>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
+            }
 
         }
     }

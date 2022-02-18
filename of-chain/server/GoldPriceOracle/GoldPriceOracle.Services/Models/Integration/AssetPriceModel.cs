@@ -4,18 +4,18 @@ namespace GoldPriceOracle.Services.Models.Setup.Integration
 {
     public class AssetPriceModel
     {
-        public AssetPriceModel(DateTimeOffset timestamp, 
+        public AssetPriceModel(DateTime timeStamp, 
             string metalCode,
             string currencyCode, 
             decimal price)
         {
-            Timestamp = timestamp;
+            Timestamp = timeStamp;
             MetalCode = metalCode;
             CurrencyCode = currencyCode;
             Price = price;
         }
 
-        public DateTimeOffset Timestamp { get; }
+        public DateTime Timestamp { get; }
 
         public string MetalCode { get;  }
 
