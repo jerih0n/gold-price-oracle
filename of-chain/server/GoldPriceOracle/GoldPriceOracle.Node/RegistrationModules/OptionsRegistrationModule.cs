@@ -9,8 +9,8 @@ namespace GoldPriceOracle.Node.RegistrationModules
         public static void Register(IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<GoldAPIServiceOptions>(configuration.GetSection("GoldAPIService"));
-            services.Configure<BlockchainNetworkOptions>(configuration.GetSection("Blockchain.BlockchainNetwork"));
-            services.Configure<GoldPriceOracleERC20TokenOptions>(configuration.GetSection("Blockchain.SmartContractAddresses.GoldPriceOracleERC20Token"));
+            services.Configure<BlockchainNetworkOptions>(configuration.GetSection("Blockchain:BlockchainNetwork"));
+            services.Configure<GoldPriceOracleERC20TokenOptions>(configuration.GetSection("Blockchain:SmartContracts:GoldPriceOracleERC20Token"));
 
         }
     }
