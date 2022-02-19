@@ -17,12 +17,12 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
         {
             _goldPriceOracleERC20TokenOptions = goldPriceOracleErc20TokenOptionsManager.CurrentValue;
             _goldOracleTokenService = new GoldOracleTokenService(Web3, _goldPriceOracleERC20TokenOptions.Address);
+            TokenSymbol = "GOT";
         }
 
         public async Task<BigInteger> GetBalance(string address)
-        {
-            var result = await _goldOracleTokenService.BalanceOfQueryAsync(address);
-            return result;
-        }
+            => await _goldOracleTokenService.BalanceOfQueryAsync(address);
+
+        public string TokenSymbol { get; }
     }
 }

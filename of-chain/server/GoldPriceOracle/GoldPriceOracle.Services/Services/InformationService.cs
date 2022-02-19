@@ -2,6 +2,7 @@
 using GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token;
 using GoldPriceOracle.Infrastructure.Cryptography.AES;
 using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
+using GoldPriceOracle.Infrastructure.Utils;
 using GoldPriceOracle.Services.Interfaces;
 using GoldPriceOracle.Services.Models.Information;
 using System;
@@ -76,9 +77,12 @@ namespace GoldPriceOracle.Services.Services
                 var nodeData = autorizeResult.Item3;
 
                 var result = await _goldPriceOracleERC20TokenService.GetBalance(nodeData.ActiveAddress);
-                var balanceAsString = result.ToString();
 
-                return  TryResult<OracleTokenBalance>.Success(new OracleTokenBalance(balanceAsString, null));
+                var resultAsDecimal = result.NormalizeToDefaultDecimal();
+
+                var balanceAsString = resultAsDecimal.ToString();
+
+                return  TryResult<OracleTokenBalance>.Success(new OracleTokenBalance(balanceAsString, _goldPriceOracleERC20TokenService.TokenSymbol));
             }
             catch(Exception ex)
             {
