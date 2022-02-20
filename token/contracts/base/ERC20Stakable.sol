@@ -96,8 +96,6 @@ contract ERC20Stakable is IStakable, ERC20 {
             );
         }
 
-        newStakeholderIndex += 1;
-
         _stakeholders.push(
             Stakeholders.Stakeholder({
                 user: address_,
