@@ -11,5 +11,7 @@ namespace GoldPriceOracle.Services.Interfaces
         TryResult<AddressInformation> GetNodeActiveAddress(string password);
 
         Task<TryResult<OracleTokenBalance>> GetTokenBalanceAsync(string password);
+
+        Task<TryResult<OracleTokenBalance>> GetStakedAmountAsync(string password);
     }
 }

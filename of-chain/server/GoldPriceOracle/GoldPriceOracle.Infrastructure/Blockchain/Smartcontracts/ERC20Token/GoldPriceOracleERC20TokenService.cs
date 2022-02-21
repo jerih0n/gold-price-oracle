@@ -20,8 +20,11 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
             TokenSymbol = "GOT";
         }
 
-        public async Task<BigInteger> GetBalance(string address)
+        public async Task<BigInteger> GetBalanceAsync(string address)
             => await _goldOracleTokenService.BalanceOfQueryAsync(address);
+
+        public async Task<BigInteger> GetStakedBalanceAsync(string address)
+            => await _goldOracleTokenService.GetStakedAmountQueryAsync(address);
 
         public string TokenSymbol { get; }
     }

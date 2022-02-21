@@ -7,6 +7,7 @@ using GoldPriceOracle.Services.Interfaces;
 using GoldPriceOracle.Services.Models.Information;
 using System;
 using System.Net;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Services.Services
@@ -64,7 +65,14 @@ namespace GoldPriceOracle.Services.Services
 
         }
 
+
+        public async Task<TryResult<OracleTokenBalance>> GetStakedAmountAsync(string password)
+             =>  await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetStakedBalanceAsync, password);
+
         public async Task<TryResult<OracleTokenBalance>> GetTokenBalanceAsync(string password)
+            => await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetBalanceAsync, password);
+
+        private async Task<TryResult<OracleTokenBalance>> GetBalanceAsync(Func<string, Task<BigInteger>> expression, string password)
         {
             try
             {
@@ -76,20 +84,18 @@ namespace GoldPriceOracle.Services.Services
 
                 var nodeData = autorizeResult.Item3;
 
-                var result = await _goldPriceOracleERC20TokenService.GetBalance(nodeData.ActiveAddress);
+                var result = await expression(nodeData.ActiveAddress);
 
                 var resultAsDecimal = result.NormalizeToDefaultDecimal();
 
                 var balanceAsString = resultAsDecimal.ToString();
 
-                return  TryResult<OracleTokenBalance>.Success(new OracleTokenBalance(balanceAsString, _goldPriceOracleERC20TokenService.TokenSymbol));
+                return TryResult<OracleTokenBalance>.Success(new OracleTokenBalance(balanceAsString, _goldPriceOracleERC20TokenService.TokenSymbol));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return TryResult<OracleTokenBalance>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }
-
-            throw new NotImplementedException();
         }
     }
 }

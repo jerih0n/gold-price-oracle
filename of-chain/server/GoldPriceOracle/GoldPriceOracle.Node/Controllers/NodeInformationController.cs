@@ -23,8 +23,12 @@ namespace GoldPriceOracle.Node.Controllers
         public IActionResult GetActiveAddress([FromBody] PasswordContract passwordContract)
             => HandleResponse(_informationService.GetNodeActiveAddress(passwordContract.Password));
 
-        [HttpPost("get-token-balance")]
-        public async Task<IActionResult> GetOracleTokenBalance([FromBody] PasswordContract passwordContract)
+        [HttpPost("token-balance")]
+        public async Task<IActionResult> GetOracleTokenBalanceAsync([FromBody] PasswordContract passwordContract)
             => HandleResponse(await _informationService.GetTokenBalanceAsync(passwordContract.Password));
+
+        [HttpPost("staked-amount")]
+        public async Task<IActionResult> GetOracleStakedAmountAsync([FromBody] PasswordContract passwordContract)
+            => HandleResponse(await _informationService.GetStakedAmountAsync(passwordContract.Password));
     }
 }
