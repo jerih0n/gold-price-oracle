@@ -31,10 +31,43 @@ contract ERC20Stakable is IStakable, ERC20 {
         returns (uint256)
     {
         uint256 stakeholderIndex = _getStakeholderIndex(address_);
+        if (stakeholderIndex == 0) {
+            //no stakeholder registered
+            return 0;
+        }
         Stakeholders.Stakeholder storage stakeholder = _stakeholders[
             stakeholderIndex
         ];
         return stakeholder.totalAmount;
+    }
+
+    function getStakeholderInformation(address address_)
+        external
+        view
+        override
+        returns (
+            uint256,
+            uint256,
+            uint256,
+            uint256,
+            bool
+        )
+    {
+        uint256 stakeholderIndex = _getStakeholderIndex(address_);
+
+        require(stakeholderIndex > 0, "Address not linked to any stakeholder");
+
+        Stakeholders.Stakeholder storage stakeholder = _stakeholders[
+            stakeholderIndex
+        ];
+
+        return (
+            stakeholder.totalAmount,
+            stakeholder.ownedAmount,
+            stakeholder.nominatedAmount,
+            stakeholder.nominatorsCount,
+            stakeholder.canValidate
+        );
     }
 
     function stake(uint256 amount_) external override {
@@ -113,6 +146,7 @@ contract ERC20Stakable is IStakable, ERC20 {
         uint256 newStakeholderIndex = _stakeholders.length;
 
         if (newStakeholderIndex == 0) {
+            newStakeholderIndex++;
             // this is very first stakeholder. Create a fake one at index 0.
             _stakeholders.push(
                 Stakeholders.Stakeholder({

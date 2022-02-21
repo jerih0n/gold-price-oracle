@@ -156,6 +156,19 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<GetStakedAmountFunction, BigInteger>(getStakedAmountFunction, blockParameter);
         }
 
+        public Task<GetStakeholderInformationOutputDTO> GetStakeholderInformationQueryAsync(GetStakeholderInformationFunction getStakeholderInformationFunction, BlockParameter blockParameter = null)
+        {
+            return ContractHandler.QueryDeserializingToObjectAsync<GetStakeholderInformationFunction, GetStakeholderInformationOutputDTO>(getStakeholderInformationFunction, blockParameter);
+        }
+
+        public Task<GetStakeholderInformationOutputDTO> GetStakeholderInformationQueryAsync(string address_, BlockParameter blockParameter = null)
+        {
+            var getStakeholderInformationFunction = new GetStakeholderInformationFunction();
+            getStakeholderInformationFunction.Address_ = address_;
+
+            return ContractHandler.QueryDeserializingToObjectAsync<GetStakeholderInformationFunction, GetStakeholderInformationOutputDTO>(getStakeholderInformationFunction, blockParameter);
+        }
+
         public Task<string> IncreaseAllowanceRequestAsync(IncreaseAllowanceFunction increaseAllowanceFunction)
         {
             return ContractHandler.SendRequestAsync(increaseAllowanceFunction);
