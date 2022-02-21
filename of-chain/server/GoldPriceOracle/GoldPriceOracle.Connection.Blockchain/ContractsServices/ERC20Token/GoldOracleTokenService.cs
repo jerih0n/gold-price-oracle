@@ -25,7 +25,7 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return new GoldOracleTokenService(web3, receipt.ContractAddress);
         }
 
-        protected Nethereum.Web3.Web3 Web3{ get; }
+        protected Nethereum.Web3.Web3 Web3 { get; }
 
         public ContractHandler ContractHandler { get; }
 
@@ -40,42 +40,42 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<AllowanceFunction, BigInteger>(allowanceFunction, blockParameter);
         }
 
-        
+
         public Task<BigInteger> AllowanceQueryAsync(string owner, string spender, BlockParameter blockParameter = null)
         {
             var allowanceFunction = new AllowanceFunction();
-                allowanceFunction.Owner = owner;
-                allowanceFunction.Spender = spender;
-            
+            allowanceFunction.Owner = owner;
+            allowanceFunction.Spender = spender;
+
             return ContractHandler.QueryAsync<AllowanceFunction, BigInteger>(allowanceFunction, blockParameter);
         }
 
         public Task<string> ApproveRequestAsync(ApproveFunction approveFunction)
         {
-             return ContractHandler.SendRequestAsync(approveFunction);
+            return ContractHandler.SendRequestAsync(approveFunction);
         }
 
         public Task<TransactionReceipt> ApproveRequestAndWaitForReceiptAsync(ApproveFunction approveFunction, CancellationTokenSource cancellationToken = null)
         {
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(approveFunction, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(approveFunction, cancellationToken);
         }
 
         public Task<string> ApproveRequestAsync(string spender, BigInteger amount)
         {
             var approveFunction = new ApproveFunction();
-                approveFunction.Spender = spender;
-                approveFunction.Amount = amount;
-            
-             return ContractHandler.SendRequestAsync(approveFunction);
+            approveFunction.Spender = spender;
+            approveFunction.Amount = amount;
+
+            return ContractHandler.SendRequestAsync(approveFunction);
         }
 
         public Task<TransactionReceipt> ApproveRequestAndWaitForReceiptAsync(string spender, BigInteger amount, CancellationTokenSource cancellationToken = null)
         {
             var approveFunction = new ApproveFunction();
-                approveFunction.Spender = spender;
-                approveFunction.Amount = amount;
-            
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(approveFunction, cancellationToken);
+            approveFunction.Spender = spender;
+            approveFunction.Amount = amount;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(approveFunction, cancellationToken);
         }
 
         public Task<BigInteger> BalanceOfQueryAsync(BalanceOfFunction balanceOfFunction, BlockParameter blockParameter = null)
@@ -83,12 +83,12 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<BalanceOfFunction, BigInteger>(balanceOfFunction, blockParameter);
         }
 
-        
+
         public Task<BigInteger> BalanceOfQueryAsync(string account, BlockParameter blockParameter = null)
         {
             var balanceOfFunction = new BalanceOfFunction();
-                balanceOfFunction.Account = account;
-            
+            balanceOfFunction.Account = account;
+
             return ContractHandler.QueryAsync<BalanceOfFunction, BigInteger>(balanceOfFunction, blockParameter);
         }
 
@@ -97,7 +97,7 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<DecimalsFunction, byte>(decimalsFunction, blockParameter);
         }
 
-        
+
         public Task<byte> DecimalsQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<DecimalsFunction, byte>(null, blockParameter);
@@ -105,30 +105,30 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
 
         public Task<string> DecreaseAllowanceRequestAsync(DecreaseAllowanceFunction decreaseAllowanceFunction)
         {
-             return ContractHandler.SendRequestAsync(decreaseAllowanceFunction);
+            return ContractHandler.SendRequestAsync(decreaseAllowanceFunction);
         }
 
         public Task<TransactionReceipt> DecreaseAllowanceRequestAndWaitForReceiptAsync(DecreaseAllowanceFunction decreaseAllowanceFunction, CancellationTokenSource cancellationToken = null)
         {
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(decreaseAllowanceFunction, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(decreaseAllowanceFunction, cancellationToken);
         }
 
         public Task<string> DecreaseAllowanceRequestAsync(string spender, BigInteger subtractedValue)
         {
             var decreaseAllowanceFunction = new DecreaseAllowanceFunction();
-                decreaseAllowanceFunction.Spender = spender;
-                decreaseAllowanceFunction.SubtractedValue = subtractedValue;
-            
-             return ContractHandler.SendRequestAsync(decreaseAllowanceFunction);
+            decreaseAllowanceFunction.Spender = spender;
+            decreaseAllowanceFunction.SubtractedValue = subtractedValue;
+
+            return ContractHandler.SendRequestAsync(decreaseAllowanceFunction);
         }
 
         public Task<TransactionReceipt> DecreaseAllowanceRequestAndWaitForReceiptAsync(string spender, BigInteger subtractedValue, CancellationTokenSource cancellationToken = null)
         {
             var decreaseAllowanceFunction = new DecreaseAllowanceFunction();
-                decreaseAllowanceFunction.Spender = spender;
-                decreaseAllowanceFunction.SubtractedValue = subtractedValue;
-            
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(decreaseAllowanceFunction, cancellationToken);
+            decreaseAllowanceFunction.Spender = spender;
+            decreaseAllowanceFunction.SubtractedValue = subtractedValue;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(decreaseAllowanceFunction, cancellationToken);
         }
 
         public Task<string> GetOwnerAddressQueryAsync(GetOwnerAddressFunction getOwnerAddressFunction, BlockParameter blockParameter = null)
@@ -136,38 +136,52 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<GetOwnerAddressFunction, string>(getOwnerAddressFunction, blockParameter);
         }
 
-        
+
         public Task<string> GetOwnerAddressQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<GetOwnerAddressFunction, string>(null, blockParameter);
         }
 
+        public Task<BigInteger> GetStakedAmountQueryAsync(GetStakedAmountFunction getStakedAmountFunction, BlockParameter blockParameter = null)
+        {
+            return ContractHandler.QueryAsync<GetStakedAmountFunction, BigInteger>(getStakedAmountFunction, blockParameter);
+        }
+
+
+        public Task<BigInteger> GetStakedAmountQueryAsync(string address_, BlockParameter blockParameter = null)
+        {
+            var getStakedAmountFunction = new GetStakedAmountFunction();
+            getStakedAmountFunction.Address_ = address_;
+
+            return ContractHandler.QueryAsync<GetStakedAmountFunction, BigInteger>(getStakedAmountFunction, blockParameter);
+        }
+
         public Task<string> IncreaseAllowanceRequestAsync(IncreaseAllowanceFunction increaseAllowanceFunction)
         {
-             return ContractHandler.SendRequestAsync(increaseAllowanceFunction);
+            return ContractHandler.SendRequestAsync(increaseAllowanceFunction);
         }
 
         public Task<TransactionReceipt> IncreaseAllowanceRequestAndWaitForReceiptAsync(IncreaseAllowanceFunction increaseAllowanceFunction, CancellationTokenSource cancellationToken = null)
         {
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(increaseAllowanceFunction, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(increaseAllowanceFunction, cancellationToken);
         }
 
         public Task<string> IncreaseAllowanceRequestAsync(string spender, BigInteger addedValue)
         {
             var increaseAllowanceFunction = new IncreaseAllowanceFunction();
-                increaseAllowanceFunction.Spender = spender;
-                increaseAllowanceFunction.AddedValue = addedValue;
-            
-             return ContractHandler.SendRequestAsync(increaseAllowanceFunction);
+            increaseAllowanceFunction.Spender = spender;
+            increaseAllowanceFunction.AddedValue = addedValue;
+
+            return ContractHandler.SendRequestAsync(increaseAllowanceFunction);
         }
 
         public Task<TransactionReceipt> IncreaseAllowanceRequestAndWaitForReceiptAsync(string spender, BigInteger addedValue, CancellationTokenSource cancellationToken = null)
         {
             var increaseAllowanceFunction = new IncreaseAllowanceFunction();
-                increaseAllowanceFunction.Spender = spender;
-                increaseAllowanceFunction.AddedValue = addedValue;
-            
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(increaseAllowanceFunction, cancellationToken);
+            increaseAllowanceFunction.Spender = spender;
+            increaseAllowanceFunction.AddedValue = addedValue;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(increaseAllowanceFunction, cancellationToken);
         }
 
         public Task<string> NameQueryAsync(NameFunction nameFunction, BlockParameter blockParameter = null)
@@ -175,10 +189,36 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<NameFunction, string>(nameFunction, blockParameter);
         }
 
-        
+
         public Task<string> NameQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<NameFunction, string>(null, blockParameter);
+        }
+
+        public Task<string> StakeRequestAsync(StakeFunction stakeFunction)
+        {
+            return ContractHandler.SendRequestAsync(stakeFunction);
+        }
+
+        public Task<TransactionReceipt> StakeRequestAndWaitForReceiptAsync(StakeFunction stakeFunction, CancellationTokenSource cancellationToken = null)
+        {
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(stakeFunction, cancellationToken);
+        }
+
+        public Task<string> StakeRequestAsync(BigInteger amount_)
+        {
+            var stakeFunction = new StakeFunction();
+            stakeFunction.Amount_ = amount_;
+
+            return ContractHandler.SendRequestAsync(stakeFunction);
+        }
+
+        public Task<TransactionReceipt> StakeRequestAndWaitForReceiptAsync(BigInteger amount_, CancellationTokenSource cancellationToken = null)
+        {
+            var stakeFunction = new StakeFunction();
+            stakeFunction.Amount_ = amount_;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(stakeFunction, cancellationToken);
         }
 
         public Task<string> SymbolQueryAsync(SymbolFunction symbolFunction, BlockParameter blockParameter = null)
@@ -186,7 +226,7 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<SymbolFunction, string>(symbolFunction, blockParameter);
         }
 
-        
+
         public Task<string> SymbolQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<SymbolFunction, string>(null, blockParameter);
@@ -197,7 +237,7 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<TotalSupplyFunction, BigInteger>(totalSupplyFunction, blockParameter);
         }
 
-        
+
         public Task<BigInteger> TotalSupplyQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<TotalSupplyFunction, BigInteger>(null, blockParameter);
@@ -205,60 +245,86 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
 
         public Task<string> TransferRequestAsync(TransferFunction transferFunction)
         {
-             return ContractHandler.SendRequestAsync(transferFunction);
+            return ContractHandler.SendRequestAsync(transferFunction);
         }
 
         public Task<TransactionReceipt> TransferRequestAndWaitForReceiptAsync(TransferFunction transferFunction, CancellationTokenSource cancellationToken = null)
         {
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFunction, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFunction, cancellationToken);
         }
 
         public Task<string> TransferRequestAsync(string to, BigInteger amount)
         {
             var transferFunction = new TransferFunction();
-                transferFunction.To = to;
-                transferFunction.Amount = amount;
-            
-             return ContractHandler.SendRequestAsync(transferFunction);
+            transferFunction.To = to;
+            transferFunction.Amount = amount;
+
+            return ContractHandler.SendRequestAsync(transferFunction);
         }
 
         public Task<TransactionReceipt> TransferRequestAndWaitForReceiptAsync(string to, BigInteger amount, CancellationTokenSource cancellationToken = null)
         {
             var transferFunction = new TransferFunction();
-                transferFunction.To = to;
-                transferFunction.Amount = amount;
-            
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFunction, cancellationToken);
+            transferFunction.To = to;
+            transferFunction.Amount = amount;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFunction, cancellationToken);
         }
 
         public Task<string> TransferFromRequestAsync(TransferFromFunction transferFromFunction)
         {
-             return ContractHandler.SendRequestAsync(transferFromFunction);
+            return ContractHandler.SendRequestAsync(transferFromFunction);
         }
 
         public Task<TransactionReceipt> TransferFromRequestAndWaitForReceiptAsync(TransferFromFunction transferFromFunction, CancellationTokenSource cancellationToken = null)
         {
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFromFunction, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFromFunction, cancellationToken);
         }
 
         public Task<string> TransferFromRequestAsync(string from, string to, BigInteger amount)
         {
             var transferFromFunction = new TransferFromFunction();
-                transferFromFunction.From = from;
-                transferFromFunction.To = to;
-                transferFromFunction.Amount = amount;
-            
-             return ContractHandler.SendRequestAsync(transferFromFunction);
+            transferFromFunction.From = from;
+            transferFromFunction.To = to;
+            transferFromFunction.Amount = amount;
+
+            return ContractHandler.SendRequestAsync(transferFromFunction);
         }
 
         public Task<TransactionReceipt> TransferFromRequestAndWaitForReceiptAsync(string from, string to, BigInteger amount, CancellationTokenSource cancellationToken = null)
         {
             var transferFromFunction = new TransferFromFunction();
-                transferFromFunction.From = from;
-                transferFromFunction.To = to;
-                transferFromFunction.Amount = amount;
-            
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFromFunction, cancellationToken);
+            transferFromFunction.From = from;
+            transferFromFunction.To = to;
+            transferFromFunction.Amount = amount;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(transferFromFunction, cancellationToken);
+        }
+
+        public Task<string> UnstakeRequestAsync(UnstakeFunction unstakeFunction)
+        {
+            return ContractHandler.SendRequestAsync(unstakeFunction);
+        }
+
+        public Task<TransactionReceipt> UnstakeRequestAndWaitForReceiptAsync(UnstakeFunction unstakeFunction, CancellationTokenSource cancellationToken = null)
+        {
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(unstakeFunction, cancellationToken);
+        }
+
+        public Task<string> UnstakeRequestAsync(BigInteger amount_)
+        {
+            var unstakeFunction = new UnstakeFunction();
+            unstakeFunction.Amount_ = amount_;
+
+            return ContractHandler.SendRequestAsync(unstakeFunction);
+        }
+
+        public Task<TransactionReceipt> UnstakeRequestAndWaitForReceiptAsync(BigInteger amount_, CancellationTokenSource cancellationToken = null)
+        {
+            var unstakeFunction = new UnstakeFunction();
+            unstakeFunction.Amount_ = amount_;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(unstakeFunction, cancellationToken);
         }
     }
 }

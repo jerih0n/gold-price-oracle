@@ -10,6 +10,7 @@ contract GoldOracleToken is ERC20Stakable {
         ERC20Stakable("GoldOracleToken", "GOT", _minAmountStakedForValidation)
     {
         _owner = msg.sender;
+        _mint(msg.sender, _minAmountStakedForValidation * 10); // for testing
     }
 
     function getOwnerAddress() public view returns (address) {

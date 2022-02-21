@@ -7,6 +7,7 @@ import "../utils/NominatingStakeholders.sol";
 contract ERC20Stakable is IStakable, ERC20 {
     uint256 immutable _minStakedAmountForValidation;
     Stakeholders.Stakeholder[] private _stakeholders;
+    mapping(address => uint256) private _validatorsStakeholderIndexes;
     mapping(address => uint256) private _stakeholdersIndexes;
 
     constructor(
@@ -56,7 +57,36 @@ contract ERC20Stakable is IStakable, ERC20 {
         _burn(stakeholderAddress, amount_);
     }
 
-    function unstake(uint256 amount_) external override {}
+    function unstake(uint256 amount_) external override {
+        address stakeholderAddress = msg.sender;
+        uint256 stakeholderIndex = _stakeholdersIndexes[stakeholderAddress];
+        if (stakeholderIndex == 0) {
+            // this user no longer have any staked ammount
+            return;
+        }
+
+        Stakeholders.Stakeholder storage stakeholder = _stakeholders[
+            stakeholderIndex
+        ];
+        require(
+            stakeholder.totalAmount >= amount_,
+            "Insufficient balance for unstaking"
+        );
+
+        uint256 newAmount = stakeholder.totalAmount -= amount_;
+
+        stakeholder.totalAmount = newAmount;
+        stakeholder.ownedAmount = newAmount;
+
+        if (newAmount >= _minStakedAmountForValidation) {
+            stakeholder.canValidate = true;
+        } else {
+            stakeholder.canValidate = false;
+        }
+
+        //mint amount_ tokes to address
+        _mint(stakeholderAddress, amount_);
+    }
 
     function _getStakeholderIndex(address address_)
         internal
@@ -108,6 +138,11 @@ contract ERC20Stakable is IStakable, ERC20 {
         );
 
         _stakeholdersIndexes[address_] = newStakeholderIndex;
+        _tryRecordStakeholderAsNewValidator(
+            canValidate,
+            address_,
+            newStakeholderIndex
+        );
     }
 
     function _stakeholderUpdateOwnStakedAmount(
@@ -128,7 +163,30 @@ contract ERC20Stakable is IStakable, ERC20 {
 
             if (canValidate) {
                 stakeHolder.canValidate = true;
+
+                _tryRecordStakeholderAsNewValidator(
+                    canValidate,
+                    stakeHolder.user,
+                    stakeholderIndex_
+                );
             }
         }
+    }
+
+    function _tryRecordStakeholderAsNewValidator(
+        bool canValidate_,
+        address address_,
+        uint256 validatorIndex_
+    ) internal returns (bool) {
+        if (!canValidate_) {
+            return false;
+        }
+        uint256 validatorIndex = _validatorsStakeholderIndexes[address_];
+        if (validatorIndex == 0) {
+            //we don't have any valid validator
+            _validatorsStakeholderIndexes[address_] = validatorIndex_;
+        }
+        //else validator already exist in records
+        return true;
     }
 }
