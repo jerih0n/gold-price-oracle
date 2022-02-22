@@ -21,9 +21,16 @@ namespace GoldPriceOracle.Infrastructure.Utils
 
         public static BigInteger ToBigIntegerWithDefaultDecimals(this decimal value)
         {
-            int fractionalPart = new System.Version(value.ToString()).Minor;
-            var toString = fractionalPart.ToString();
-            var truncatedNumbersCount = toString.Length;
+            var nonIntegerPart = Math.Truncate(value);
+            string franctionalPartAsString = "";
+            if(nonIntegerPart < value)
+            {
+                // we have a decimal part!
+                int fractionalPart = new Version(value.ToString()).Minor; //SUPPER HACK !
+                franctionalPartAsString = fractionalPart.ToString();
+            }
+            
+            var truncatedNumbersCount = franctionalPartAsString.Length;
             for(int i = 0; i< truncatedNumbersCount; i++)
             {
                 value = value * 10;

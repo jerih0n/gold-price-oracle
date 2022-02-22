@@ -34,5 +34,9 @@ namespace GoldPriceOracle.Node.Controllers
         [HttpPost("stakeholder")]
         public async Task<IActionResult> GetStakeholderInfomationAsync([FromBody] PasswordContract passwordContract)
             => HandleResponse(await _informationService.GetStakeholderInformationAsync(passwordContract.Password));
+
+        [HttpPost("ethereum-balance")]
+        public async Task<IActionResult> GetEthereumBalanceAsync([FromBody] PasswordContract passwordContract)
+            => HandleResponse(await _informationService.GetEthereumBalanceAsync(passwordContract.Password));
     }
 }

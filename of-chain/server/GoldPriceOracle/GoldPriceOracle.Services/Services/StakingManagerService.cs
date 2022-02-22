@@ -5,6 +5,7 @@ using GoldPriceOracle.Infrastructure.Utils;
 using GoldPriceOracle.Services.Interfaces;
 using System;
 using System.Net;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Services.Services
@@ -35,6 +36,30 @@ namespace GoldPriceOracle.Services.Services
                 var dataAsBigIntager = amount.ToBigIntegerWithDefaultDecimals();
 
                 await _goldPriceOracleERC20TokenService.StakeAmountAsync(dataAsBigIntager);
+
+                return TryResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return TryResult<bool>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
+            }
+        }
+
+        public async Task<TryResult<bool>> UnstakeAmountAsync(string password, decimal amount)
+        {
+            try
+            {
+                var autorizeResult = Authorize(password);
+                if (!autorizeResult.Item1)
+                {
+                    return TryResult<bool>.Fail(autorizeResult.Item2);
+                }
+
+                var nodeData = autorizeResult.Item3;
+
+                var dataAsBigIntager = amount.ToBigIntegerWithDefaultDecimals();
+
+                await _goldPriceOracleERC20TokenService.UnstakeAmountAsync(dataAsBigIntager);
 
                 return TryResult<bool>.Success(true);
             }

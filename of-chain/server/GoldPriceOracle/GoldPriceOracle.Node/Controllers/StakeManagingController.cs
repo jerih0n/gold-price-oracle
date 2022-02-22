@@ -16,8 +16,12 @@ namespace GoldPriceOracle.Node.Controllers
         }
 
         [HttpPost("/stake")]
-        public async Task<IActionResult> SetStakeAmountAsync([FromBody] StakeOrUnstakeContract stakeOrUnstakeContract)
+        public async Task<IActionResult> StakeAmountAsync([FromBody] StakeOrUnstakeContract stakeOrUnstakeContract)
             => HandleResponse(await _stakingManagerService.StakeAmountAsync(stakeOrUnstakeContract.Password, stakeOrUnstakeContract.Amount));
-            
+
+        [HttpPost("/unstake")]
+        public async Task<IActionResult> UnstakeAmountAsync([FromBody] StakeOrUnstakeContract stakeOrUnstakeContract)
+            => HandleResponse(await _stakingManagerService.UnstakeAmountAsync(stakeOrUnstakeContract.Password, stakeOrUnstakeContract.Amount));
+
     }
 }

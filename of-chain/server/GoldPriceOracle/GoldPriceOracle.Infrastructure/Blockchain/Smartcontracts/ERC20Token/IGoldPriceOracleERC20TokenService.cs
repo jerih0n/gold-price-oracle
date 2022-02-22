@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
 {
-    public interface IGoldPriceOracleERC20TokenService
+    public interface IGoldPriceOracleERC20TokenService : IBaseSmartContractCallerService
     {
         Task<BigInteger> GetBalanceAsync(string address);
 

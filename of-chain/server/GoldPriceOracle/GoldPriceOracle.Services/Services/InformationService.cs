@@ -65,9 +65,11 @@ namespace GoldPriceOracle.Services.Services
 
         }
 
+        public async Task<TryResult<OracleTokenBalance>> GetEthereumBalanceAsync(string password)
+            => await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetEthAmountAsync, password, "ETH");
 
         public async Task<TryResult<OracleTokenBalance>> GetStakedAmountAsync(string password)
-             =>  await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetStakedBalanceAsync, password);
+             =>  await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetStakedBalanceAsync, password, _goldPriceOracleERC20TokenService.TokenSymbol);
 
         public async Task<TryResult<StakeholderInformationModel>> GetStakeholderInformationAsync(string password)
         {
@@ -100,9 +102,9 @@ namespace GoldPriceOracle.Services.Services
         }
 
         public async Task<TryResult<OracleTokenBalance>> GetTokenBalanceAsync(string password)
-            => await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetBalanceAsync, password);
+            => await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetBalanceAsync, password, _goldPriceOracleERC20TokenService.TokenSymbol);
 
-        private async Task<TryResult<OracleTokenBalance>> GetBalanceAsync(Func<string, Task<BigInteger>> expression, string password)
+        private async Task<TryResult<OracleTokenBalance>> GetBalanceAsync(Func<string, Task<BigInteger>> expression, string password, string symbol)
         {
             try
             {
@@ -120,7 +122,7 @@ namespace GoldPriceOracle.Services.Services
 
                 var balanceAsString = resultAsDecimal.ToString();
 
-                return TryResult<OracleTokenBalance>.Success(new OracleTokenBalance(balanceAsString, _goldPriceOracleERC20TokenService.TokenSymbol));
+                return TryResult<OracleTokenBalance>.Success(new OracleTokenBalance(balanceAsString, symbol));
             }
             catch (Exception ex)
             {

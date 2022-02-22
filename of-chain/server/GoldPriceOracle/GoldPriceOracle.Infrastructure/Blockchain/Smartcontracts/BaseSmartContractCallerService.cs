@@ -6,10 +6,11 @@ using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
 {
-    public abstract class BaseSmartContractCallerService
+    public abstract class BaseSmartContractCallerService : IBaseSmartContractCallerService
     {
         private readonly BlockchainNetworkOptions _blockchainNetworkOptions;
         private readonly OracleDbContext _oracleDbContext;
@@ -36,7 +37,10 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
 
         protected Web3 Web3 { get; }
 
+        public async Task<BigInteger> GetEthAmountAsync(string address)
+            => await Web3.Eth.GetBalance.SendRequestAsync(address);
+
         protected NodeData GetNodeData() => _oracleDbContext.NodeData.FirstOrDefault();
-       
+
     }
 }
