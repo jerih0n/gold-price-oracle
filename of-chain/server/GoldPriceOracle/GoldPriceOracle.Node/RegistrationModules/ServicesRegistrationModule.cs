@@ -11,6 +11,7 @@ namespace GoldPriceOracle.Node.RegistrationModules
             services.AddScoped<ISetupService, SetupService>();
             services.AddScoped<IInformationService, InformationService>();
             services.AddScoped<IIntegrationService, IntegrationService>();
+            services.AddScoped<IStakingManagerService, StakingManagerService>();
         }
     }
 }

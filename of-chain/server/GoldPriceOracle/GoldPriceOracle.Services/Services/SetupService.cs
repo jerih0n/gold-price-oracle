@@ -76,7 +76,7 @@ namespace GoldPriceOracle.Services.Services
                 var privateKey = account.PrivateKey;
 
                 var encryptedPassoword = PasswordCryptoProvider.EncryptPassword(password);
-                var encryptedPrivateKey = AESCryptoProvider.Encrypt(privateKey, password);
+                var encryptedPrivateKey = AESCryptoProvider.Encrypt(privateKey, encryptedPassoword);
                 var encryptedMnemonic = AESCryptoProvider.Encrypt(mnemonic, password);
 
                 var isSet = _nodeDataAccessService.CreateNewNode(encryptedPassoword, encryptedPrivateKey, address, encryptedMnemonic);

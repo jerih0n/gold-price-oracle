@@ -69,6 +69,36 @@ namespace GoldPriceOracle.Services.Services
         public async Task<TryResult<OracleTokenBalance>> GetStakedAmountAsync(string password)
              =>  await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetStakedBalanceAsync, password);
 
+        public async Task<TryResult<StakeholderInformationModel>> GetStakeholderInformationAsync(string password)
+        {
+            try
+            {
+                var autorizeResult = Authorize(password);
+                if (!autorizeResult.Item1)
+                {
+                    return TryResult<StakeholderInformationModel>.Fail(autorizeResult.Item2);
+                }
+
+                var nodeData = autorizeResult.Item3;
+
+                var result = await _goldPriceOracleERC20TokenService.GetStakeholderInfomationAsync(nodeData.ActiveAddress);
+
+                var modelResult = TryResult<StakeholderInformationModel>.Success(
+                    new StakeholderInformationModel(
+                    result.ReturnValue1.NormalizeToDefaultDecimal().ToString(),
+                    result.ReturnValue2.NormalizeToDefaultDecimal().ToString(),
+                    result.ReturnValue3.NormalizeToDefaultDecimal().ToString(),
+                    result.ReturnValue4.ToString(),
+                    result.ReturnValue5));
+
+                return modelResult;
+            }
+            catch (Exception ex)
+            {
+                return TryResult<StakeholderInformationModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
+            }
+        }
+
         public async Task<TryResult<OracleTokenBalance>> GetTokenBalanceAsync(string password)
             => await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetBalanceAsync, password);
 

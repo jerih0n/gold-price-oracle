@@ -13,5 +13,7 @@ namespace GoldPriceOracle.Services.Interfaces
         Task<TryResult<OracleTokenBalance>> GetTokenBalanceAsync(string password);
 
         Task<TryResult<OracleTokenBalance>> GetStakedAmountAsync(string password);
+
+        Task<TryResult<StakeholderInformationModel>> GetStakeholderInformationAsync(string password);
     }
 }

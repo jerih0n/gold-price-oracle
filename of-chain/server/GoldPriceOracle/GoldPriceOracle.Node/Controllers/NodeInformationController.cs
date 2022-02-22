@@ -30,5 +30,9 @@ namespace GoldPriceOracle.Node.Controllers
         [HttpPost("staked-amount")]
         public async Task<IActionResult> GetOracleStakedAmountAsync([FromBody] PasswordContract passwordContract)
             => HandleResponse(await _informationService.GetStakedAmountAsync(passwordContract.Password));
+
+        [HttpPost("stakeholder")]
+        public async Task<IActionResult> GetStakeholderInfomationAsync([FromBody] PasswordContract passwordContract)
+            => HandleResponse(await _informationService.GetStakeholderInformationAsync(passwordContract.Password));
     }
 }
