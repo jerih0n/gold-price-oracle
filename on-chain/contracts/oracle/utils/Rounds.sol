@@ -10,5 +10,7 @@ library Rounds {
         string currencyCode;
         uint256 requiredQuorum;
         bool isQuorumReached;
+        uint256 acceptVotes;
+        uint256 refuceVotes;
     }
 }

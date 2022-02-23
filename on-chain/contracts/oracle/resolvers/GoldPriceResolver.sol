@@ -62,7 +62,9 @@ contract GoldPriceResolver {
             assetCode: GOLD_SYMBOL,
             currencyCode: USDT_SYMBOL,
             requiredQuorum: calculateMinimumNodesCountForReachingQuorum(),
-            isQuorumReached: false
+            isQuorumReached: false,
+            acceptVotes: 0,
+            refuceVotes: 0
         });
 
         //the elected node kick off the new round
@@ -90,6 +92,7 @@ contract GoldPriceResolver {
             roundId_
         );
 
+        require(!round.isQuorumReached, "Quorum reached for that round");
         //validate the presented data
         uint256 percentageDiffBetweenPrices = calculatePriceDeviation(
             round.price,
@@ -101,8 +104,23 @@ contract GoldPriceResolver {
         if (
             percentageDiffBetweenPrices >
             MAXIMUM_ALLOWED_PRICE_DEVIATION_IN_PERCENTS
-        ) {} else {
+        ) {
+            round.refuceVotes++;
+        } else {
             //validation is passed
+            round.acceptVotes++;
+        }
+
+        if (round.acceptVotes >= round.requiredQuorum) {
+            round.isQuorumReached = true;
+            //finaly consensus is reached!
+            //this round becames the latest valid round
+        }
+        if (round.refuceVotes >= round.requiredQuorum) {
+            //TODO: the proposition is refuced byt 51%.
+            //new round should be created with new proposal node!
+            //the proposal node that proposed refuced by 51% value should be punished
+            //
         }
     }
 
@@ -128,7 +146,9 @@ contract GoldPriceResolver {
         returns (Rounds.Round memory round)
     {
         uint256 roundsLenght = _rounds.length;
-        if (roundsLenght != 0) return _rounds[roundsLenght - 1];
+        if (roundsLenght != 0) {
+            return _rounds[roundsLenght - 1];
+        }
     }
 
     //valid round is considered every round with reached Quorum
@@ -155,7 +175,7 @@ contract GoldPriceResolver {
 
     //performing calculation to find the absolute difference between sugested node and the other validators nodes prices
     //if deviation bigger than 3% is found the proposition is declined by caller validator
-    //if deviation is less than 1% the proposition is accepted
+    //if deviation is less than 3% the proposition is accepted
     function calculatePriceDeviation(
         uint256 suggestedPrice_,
         uint256 referentPrice_
