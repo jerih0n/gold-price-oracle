@@ -1,6 +1,7 @@
 pragma solidity ^0.8.0;
 
 import "../utils/Rounds.sol";
+import "../utils/Votes.sol";
 
 //PoC. Big Refactoring will happened!
 contract GoldPriceResolver {
@@ -10,6 +11,7 @@ contract GoldPriceResolver {
     string constant USDT_SYMBOL = "USDT";
     Rounds.Round[] private _rounds;
     mapping(bytes32 => uint256) private _roundIndexs;
+    mapping(bytes32 => Votes.Vote) _votes;
 
     constructor() {}
 
@@ -91,25 +93,42 @@ contract GoldPriceResolver {
         Rounds.Round storage round = tryGetRoundForValidationByRequestedRoundId(
             roundId_
         );
+        //unique identifier of the vode - cobination of round id and voter address
+        bytes32 voteIdentity = keccak256(
+            abi.encodePacked(roundId_, callerAddress)
+        );
 
         require(!round.isQuorumReached, "Quorum reached for that round");
+        //if voter address != 0 then this voter already voted
+        require(
+            _votes[voteIdentity].voter == address(0),
+            "Caller already voted!"
+        );
+
         //validate the presented data
         uint256 percentageDiffBetweenPrices = calculatePriceDeviation(
             round.price,
             price_
         );
 
+        bool isApproved = percentageDiffBetweenPrices >
+            MAXIMUM_ALLOWED_PRICE_DEVIATION_IN_PERCENTS;
         //if the difference between proposed price and the validator price is more than 3%
         //the validation is not passed
-        if (
-            percentageDiffBetweenPrices >
-            MAXIMUM_ALLOWED_PRICE_DEVIATION_IN_PERCENTS
-        ) {
-            round.refuceVotes++;
+        if (isApproved) {
+            round.acceptVotes++;
         } else {
             //validation is passed
-            round.acceptVotes++;
+            round.refuceVotes++;
         }
+
+        //add new unique vote record
+        _votes[voteIdentity] = Votes.Vote({
+            voter: callerAddress,
+            price: price_,
+            approves: isApproved,
+            percentageDiff: percentageDiffBetweenPrices
+        });
 
         if (round.acceptVotes >= round.requiredQuorum) {
             round.isQuorumReached = true;
@@ -218,7 +237,6 @@ contract GoldPriceResolver {
             lastRound.nonce > 0,
             "Cannot validate round. No rounds are presented"
         );
-
         //return pointer to the last round
         return roundByIndex;
     }
