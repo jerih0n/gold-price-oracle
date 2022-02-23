@@ -15,14 +15,14 @@
     "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
     "exportedSymbols": {
       "Rounds": [
-        1072
+        1259
       ]
     },
-    "id": 1073,
+    "id": 1260,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1054,
+        "id": 1241,
         "literals": [
           "solidity",
           "^",
@@ -38,24 +38,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1072,
+        "id": 1259,
         "linearizedBaseContracts": [
-          1072
+          1259
         ],
         "name": "Rounds",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Rounds.Round",
-            "id": 1071,
+            "id": 1258,
             "members": [
               {
                 "constant": false,
-                "id": 1056,
+                "id": 1243,
                 "mutability": "mutable",
                 "name": "roundId",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "73:15:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -64,7 +64,7 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 1055,
+                  "id": 1242,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
                   "src": "73:7:9",
@@ -77,11 +77,11 @@
               },
               {
                 "constant": false,
-                "id": 1058,
+                "id": 1245,
                 "mutability": "mutable",
                 "name": "nonce",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "99:13:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -90,7 +90,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1057,
+                  "id": 1244,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "99:7:9",
@@ -103,11 +103,11 @@
               },
               {
                 "constant": false,
-                "id": 1060,
+                "id": 1247,
                 "mutability": "mutable",
                 "name": "node",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "123:12:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -116,7 +116,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1059,
+                  "id": 1246,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "123:7:9",
@@ -130,11 +130,11 @@
               },
               {
                 "constant": false,
-                "id": 1062,
+                "id": 1249,
                 "mutability": "mutable",
                 "name": "price",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "146:13:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -143,7 +143,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1061,
+                  "id": 1248,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "146:7:9",
@@ -156,11 +156,11 @@
               },
               {
                 "constant": false,
-                "id": 1064,
+                "id": 1251,
                 "mutability": "mutable",
                 "name": "assetCode",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "170:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -169,7 +169,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1063,
+                  "id": 1250,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "170:6:9",
@@ -182,11 +182,11 @@
               },
               {
                 "constant": false,
-                "id": 1066,
+                "id": 1253,
                 "mutability": "mutable",
                 "name": "currencyCode",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "197:19:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -195,7 +195,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1065,
+                  "id": 1252,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "197:6:9",
@@ -208,11 +208,11 @@
               },
               {
                 "constant": false,
-                "id": 1068,
+                "id": 1255,
                 "mutability": "mutable",
                 "name": "requiredQuorum",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "227:22:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -221,7 +221,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1067,
+                  "id": 1254,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "227:7:9",
@@ -234,11 +234,11 @@
               },
               {
                 "constant": false,
-                "id": 1070,
+                "id": 1257,
                 "mutability": "mutable",
                 "name": "isQuorumReached",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "260:20:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -247,7 +247,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1069,
+                  "id": 1256,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "260:4:9",
@@ -261,12 +261,12 @@
             ],
             "name": "Round",
             "nodeType": "StructDefinition",
-            "scope": 1072,
+            "scope": 1259,
             "src": "49:239:9",
             "visibility": "public"
           }
         ],
-        "scope": 1073,
+        "scope": 1260,
         "src": "27:264:9"
       }
     ],
@@ -276,14 +276,14 @@
     "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
     "exportedSymbols": {
       "Rounds": [
-        1072
+        1259
       ]
     },
-    "id": 1073,
+    "id": 1260,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1054,
+        "id": 1241,
         "literals": [
           "solidity",
           "^",
@@ -299,24 +299,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1072,
+        "id": 1259,
         "linearizedBaseContracts": [
-          1072
+          1259
         ],
         "name": "Rounds",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Rounds.Round",
-            "id": 1071,
+            "id": 1258,
             "members": [
               {
                 "constant": false,
-                "id": 1056,
+                "id": 1243,
                 "mutability": "mutable",
                 "name": "roundId",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "73:15:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -325,7 +325,7 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 1055,
+                  "id": 1242,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
                   "src": "73:7:9",
@@ -338,11 +338,11 @@
               },
               {
                 "constant": false,
-                "id": 1058,
+                "id": 1245,
                 "mutability": "mutable",
                 "name": "nonce",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "99:13:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -351,7 +351,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1057,
+                  "id": 1244,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "99:7:9",
@@ -364,11 +364,11 @@
               },
               {
                 "constant": false,
-                "id": 1060,
+                "id": 1247,
                 "mutability": "mutable",
                 "name": "node",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "123:12:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -377,7 +377,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1059,
+                  "id": 1246,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "123:7:9",
@@ -391,11 +391,11 @@
               },
               {
                 "constant": false,
-                "id": 1062,
+                "id": 1249,
                 "mutability": "mutable",
                 "name": "price",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "146:13:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -404,7 +404,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1061,
+                  "id": 1248,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "146:7:9",
@@ -417,11 +417,11 @@
               },
               {
                 "constant": false,
-                "id": 1064,
+                "id": 1251,
                 "mutability": "mutable",
                 "name": "assetCode",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "170:16:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -430,7 +430,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1063,
+                  "id": 1250,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "170:6:9",
@@ -443,11 +443,11 @@
               },
               {
                 "constant": false,
-                "id": 1066,
+                "id": 1253,
                 "mutability": "mutable",
                 "name": "currencyCode",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "197:19:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -456,7 +456,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 1065,
+                  "id": 1252,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "197:6:9",
@@ -469,11 +469,11 @@
               },
               {
                 "constant": false,
-                "id": 1068,
+                "id": 1255,
                 "mutability": "mutable",
                 "name": "requiredQuorum",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "227:22:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -482,7 +482,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1067,
+                  "id": 1254,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "227:7:9",
@@ -495,11 +495,11 @@
               },
               {
                 "constant": false,
-                "id": 1070,
+                "id": 1257,
                 "mutability": "mutable",
                 "name": "isQuorumReached",
                 "nodeType": "VariableDeclaration",
-                "scope": 1071,
+                "scope": 1258,
                 "src": "260:20:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -508,7 +508,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1069,
+                  "id": 1256,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "260:4:9",
@@ -522,12 +522,12 @@
             ],
             "name": "Round",
             "nodeType": "StructDefinition",
-            "scope": 1072,
+            "scope": 1259,
             "src": "49:239:9",
             "visibility": "public"
           }
         ],
-        "scope": 1073,
+        "scope": 1260,
         "src": "27:264:9"
       }
     ],
@@ -539,7 +539,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-02-23T11:35:43.990Z",
+  "updatedAt": "2022-02-23T19:58:59.415Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

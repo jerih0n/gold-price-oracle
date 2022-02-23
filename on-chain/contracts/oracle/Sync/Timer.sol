@@ -4,12 +4,12 @@ import "../resolvers/GoldPriceResolver.sol";
 import "../utils/Rounds.sol";
 
 contract Timer {
-    uint256 constant _utcTimestampOneMinute = 60;
+    uint256 constant UTC_TIMESTAMP_ONE_MINUTE = 60;
     GoldPriceResolver _resolver;
     uint256 immutable _initialTimeStamp;
 
-    constructor(uint256 initialTimeStamp_, address resolverAddress_) {
-        _initialTimeStamp = initialTimeStamp_;
+    constructor(address resolverAddress_) {
+        _initialTimeStamp = block.timestamp;
         _resolver = GoldPriceResolver(resolverAddress_);
     }
 
@@ -22,8 +22,6 @@ contract Timer {
     }
 
     function tryStartNewRound(uint256 price_) public {
-
-        Rounds.Round memory = _resolver.getLatestRoundData();
         //check if round should be created!
         _resolver.startNewPriceRound(msg.sender, price_);
     }

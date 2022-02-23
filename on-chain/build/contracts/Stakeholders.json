@@ -15,14 +15,14 @@
     "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
     "exportedSymbols": {
       "Stakeholders": [
-        1648
+        1835
       ]
     },
-    "id": 1649,
+    "id": 1836,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1634,
+        "id": 1821,
         "literals": [
           "solidity",
           "^",
@@ -38,24 +38,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1648,
+        "id": 1835,
         "linearizedBaseContracts": [
-          1648
+          1835
         ],
         "name": "Stakeholders",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Stakeholders.Stakeholder",
-            "id": 1647,
+            "id": 1834,
             "members": [
               {
                 "constant": false,
-                "id": 1636,
+                "id": 1823,
                 "mutability": "mutable",
                 "name": "user",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "85:12:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -64,7 +64,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1635,
+                  "id": 1822,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "85:7:13",
@@ -78,11 +78,11 @@
               },
               {
                 "constant": false,
-                "id": 1638,
+                "id": 1825,
                 "mutability": "mutable",
                 "name": "totalAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "108:19:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -91,7 +91,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1637,
+                  "id": 1824,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "108:7:13",
@@ -104,11 +104,11 @@
               },
               {
                 "constant": false,
-                "id": 1640,
+                "id": 1827,
                 "mutability": "mutable",
                 "name": "ownedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "138:19:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -117,7 +117,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1639,
+                  "id": 1826,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "138:7:13",
@@ -130,11 +130,11 @@
               },
               {
                 "constant": false,
-                "id": 1642,
+                "id": 1829,
                 "mutability": "mutable",
                 "name": "nominatedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "168:23:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -143,7 +143,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1641,
+                  "id": 1828,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "168:7:13",
@@ -156,11 +156,11 @@
               },
               {
                 "constant": false,
-                "id": 1644,
+                "id": 1831,
                 "mutability": "mutable",
                 "name": "nominatorsCount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "202:23:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -169,7 +169,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1643,
+                  "id": 1830,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "202:7:13",
@@ -182,11 +182,11 @@
               },
               {
                 "constant": false,
-                "id": 1646,
+                "id": 1833,
                 "mutability": "mutable",
                 "name": "canValidate",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "236:16:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -195,7 +195,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1645,
+                  "id": 1832,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "236:4:13",
@@ -209,12 +209,12 @@
             ],
             "name": "Stakeholder",
             "nodeType": "StructDefinition",
-            "scope": 1648,
+            "scope": 1835,
             "src": "55:205:13",
             "visibility": "public"
           }
         ],
-        "scope": 1649,
+        "scope": 1836,
         "src": "27:236:13"
       }
     ],
@@ -224,14 +224,14 @@
     "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
     "exportedSymbols": {
       "Stakeholders": [
-        1648
+        1835
       ]
     },
-    "id": 1649,
+    "id": 1836,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1634,
+        "id": 1821,
         "literals": [
           "solidity",
           "^",
@@ -247,24 +247,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1648,
+        "id": 1835,
         "linearizedBaseContracts": [
-          1648
+          1835
         ],
         "name": "Stakeholders",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Stakeholders.Stakeholder",
-            "id": 1647,
+            "id": 1834,
             "members": [
               {
                 "constant": false,
-                "id": 1636,
+                "id": 1823,
                 "mutability": "mutable",
                 "name": "user",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "85:12:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -273,7 +273,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1635,
+                  "id": 1822,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "85:7:13",
@@ -287,11 +287,11 @@
               },
               {
                 "constant": false,
-                "id": 1638,
+                "id": 1825,
                 "mutability": "mutable",
                 "name": "totalAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "108:19:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -300,7 +300,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1637,
+                  "id": 1824,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "108:7:13",
@@ -313,11 +313,11 @@
               },
               {
                 "constant": false,
-                "id": 1640,
+                "id": 1827,
                 "mutability": "mutable",
                 "name": "ownedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "138:19:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -326,7 +326,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1639,
+                  "id": 1826,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "138:7:13",
@@ -339,11 +339,11 @@
               },
               {
                 "constant": false,
-                "id": 1642,
+                "id": 1829,
                 "mutability": "mutable",
                 "name": "nominatedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "168:23:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -352,7 +352,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1641,
+                  "id": 1828,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "168:7:13",
@@ -365,11 +365,11 @@
               },
               {
                 "constant": false,
-                "id": 1644,
+                "id": 1831,
                 "mutability": "mutable",
                 "name": "nominatorsCount",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "202:23:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -378,7 +378,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1643,
+                  "id": 1830,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "202:7:13",
@@ -391,11 +391,11 @@
               },
               {
                 "constant": false,
-                "id": 1646,
+                "id": 1833,
                 "mutability": "mutable",
                 "name": "canValidate",
                 "nodeType": "VariableDeclaration",
-                "scope": 1647,
+                "scope": 1834,
                 "src": "236:16:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -404,7 +404,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1645,
+                  "id": 1832,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "236:4:13",
@@ -418,12 +418,12 @@
             ],
             "name": "Stakeholder",
             "nodeType": "StructDefinition",
-            "scope": 1648,
+            "scope": 1835,
             "src": "55:205:13",
             "visibility": "public"
           }
         ],
-        "scope": 1649,
+        "scope": 1836,
         "src": "27:236:13"
       }
     ],
@@ -442,7 +442,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-02-23T11:35:44.024Z",
+  "updatedAt": "2022-02-23T19:58:59.460Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
