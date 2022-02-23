@@ -1,0 +1,553 @@
+{
+  "contractName": "Rounds",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/oracle/utils/Rounds.sol\":\"Rounds\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/oracle/utils/Rounds.sol\":{\"keccak256\":\"0x190949de99bbc50ab96d0a082aef06d78bc06a7e3c7e536d797465566ba5cfe8\",\"urls\":[\"bzz-raw://6f184cc2e4afe938888b9e02e598ea54a36837531d76210bd39843360576fe8d\",\"dweb:/ipfs/QmYr1z9finn9vaqsjZq5UmmVqs9xRJtoY6yarESgAd3nRB\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220340665c9c07e08ad21e62c57376a9141191d2ecc7c1add7bcaae8a66808293e164736f6c63430008000033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220340665c9c07e08ad21e62c57376a9141191d2ecc7c1add7bcaae8a66808293e164736f6c63430008000033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "27:264:9:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:264:9:-:0;;;;;;;;",
+  "source": "pragma solidity ^0.8.0;\r\n\r\nlibrary Rounds {\r\n    struct Round {\r\n        bytes32 roundId;\r\n        uint256 nonce;\r\n        address node;\r\n        uint256 price;\r\n        string assetCode;\r\n        string currencyCode;\r\n        uint256 requiredQuorum;\r\n        bool isQuorumReached;\r\n    }\r\n}\r\n",
+  "sourcePath": "D:\\Documents\\Dev\\Repositories\\gold-price-oracle\\gold-price-oracle\\on-chain\\contracts\\oracle\\utils\\Rounds.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
+    "exportedSymbols": {
+      "Rounds": [
+        1072
+      ]
+    },
+    "id": 1073,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1054,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:9"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 1072,
+        "linearizedBaseContracts": [
+          1072
+        ],
+        "name": "Rounds",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Rounds.Round",
+            "id": 1071,
+            "members": [
+              {
+                "constant": false,
+                "id": 1056,
+                "mutability": "mutable",
+                "name": "roundId",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "73:15:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 1055,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "73:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1058,
+                "mutability": "mutable",
+                "name": "nonce",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "99:13:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1057,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "99:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1060,
+                "mutability": "mutable",
+                "name": "node",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "123:12:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1059,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "123:7:9",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1062,
+                "mutability": "mutable",
+                "name": "price",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "146:13:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1061,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "146:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1064,
+                "mutability": "mutable",
+                "name": "assetCode",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "170:16:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1063,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "170:6:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1066,
+                "mutability": "mutable",
+                "name": "currencyCode",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "197:19:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1065,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "197:6:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1068,
+                "mutability": "mutable",
+                "name": "requiredQuorum",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "227:22:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1067,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "227:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1070,
+                "mutability": "mutable",
+                "name": "isQuorumReached",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "260:20:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1069,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "260:4:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Round",
+            "nodeType": "StructDefinition",
+            "scope": 1072,
+            "src": "49:239:9",
+            "visibility": "public"
+          }
+        ],
+        "scope": 1073,
+        "src": "27:264:9"
+      }
+    ],
+    "src": "0:293:9"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
+    "exportedSymbols": {
+      "Rounds": [
+        1072
+      ]
+    },
+    "id": 1073,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1054,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:9"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 1072,
+        "linearizedBaseContracts": [
+          1072
+        ],
+        "name": "Rounds",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Rounds.Round",
+            "id": 1071,
+            "members": [
+              {
+                "constant": false,
+                "id": 1056,
+                "mutability": "mutable",
+                "name": "roundId",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "73:15:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 1055,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "73:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1058,
+                "mutability": "mutable",
+                "name": "nonce",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "99:13:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1057,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "99:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1060,
+                "mutability": "mutable",
+                "name": "node",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "123:12:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1059,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "123:7:9",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1062,
+                "mutability": "mutable",
+                "name": "price",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "146:13:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1061,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "146:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1064,
+                "mutability": "mutable",
+                "name": "assetCode",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "170:16:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1063,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "170:6:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1066,
+                "mutability": "mutable",
+                "name": "currencyCode",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "197:19:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 1065,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "197:6:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1068,
+                "mutability": "mutable",
+                "name": "requiredQuorum",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "227:22:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1067,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "227:7:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1070,
+                "mutability": "mutable",
+                "name": "isQuorumReached",
+                "nodeType": "VariableDeclaration",
+                "scope": 1071,
+                "src": "260:20:9",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 1069,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "260:4:9",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Round",
+            "nodeType": "StructDefinition",
+            "scope": 1072,
+            "src": "49:239:9",
+            "visibility": "public"
+          }
+        ],
+        "scope": 1073,
+        "src": "27:264:9"
+      }
+    ],
+    "src": "0:293:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-23T11:35:43.990Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
