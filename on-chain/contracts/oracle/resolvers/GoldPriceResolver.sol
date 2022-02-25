@@ -13,10 +13,29 @@ contract GoldPriceResolver {
     mapping(bytes32 => uint256) private _roundIndexs;
     mapping(bytes32 => Votes.Vote) _votes;
 
-    constructor() {}
+    constructor() {
+        //iniatial round to take 0 index;
+        bytes32 defaultNullAddressRoundId = keccak256(
+            abi.encodePacked(address(0), "0", "0")
+        );
+        _rounds.push(
+            Rounds.Round({
+                roundId: defaultNullAddressRoundId,
+                nonce: 0,
+                node: address(0),
+                price: 0,
+                assetCode: GOLD_SYMBOL,
+                currencyCode: USDT_SYMBOL,
+                requiredQuorum: 0,
+                isQuorumReached: false,
+                acceptVotes: 0,
+                refuseVotes: 0
+            })
+        );
+    }
 
     //TODO: this all will come form PoS. For now they are hardcoded
-    uint256 validatorNodesCount = 1;
+    uint256 validatorNodesCount = 4;
     address electedNodeAddress =
         address(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4); //TODO: this will come as a result of PoS. Hardcoded for now
 
@@ -47,7 +66,7 @@ contract GoldPriceResolver {
 
         //get last valid round;
 
-        Rounds.Round memory lastRound = getLatestRoundData();
+        Rounds.Round memory lastRound = _getLatestRoundData();
 
         //if there is already las
         if (lastRound.nonce != 0) {
@@ -56,6 +75,7 @@ contract GoldPriceResolver {
 
         nonce++;
 
+        uint256 requiredMinimumQuorum = _calculateMinimumNodesCountForReachingQuorum();
         Rounds.Round memory round = Rounds.Round({
             roundId: keccak256(abi.encodePacked(nodeAddress_, nonce, price_)),
             nonce: nonce,
@@ -63,17 +83,17 @@ contract GoldPriceResolver {
             price: price_,
             assetCode: GOLD_SYMBOL,
             currencyCode: USDT_SYMBOL,
-            requiredQuorum: calculateMinimumNodesCountForReachingQuorum(),
-            isQuorumReached: false,
-            acceptVotes: 0,
-            refuceVotes: 0
+            requiredQuorum: requiredMinimumQuorum,
+            isQuorumReached: 1 >= requiredMinimumQuorum, //only in case that there is only one node!
+            acceptVotes: 1,
+            refuseVotes: 0
         });
 
         //the elected node kick off the new round
         _rounds.push(round);
 
         //add mapping for roundId and nonce for easy search on callback
-        _roundIndexs[round.roundId] = nonce - 1;
+        _roundIndexs[round.roundId] = _rounds.length - 1;
 
         emit NewPriceVote(
             GOLD_SYMBOL,
@@ -82,6 +102,15 @@ contract GoldPriceResolver {
             round.node,
             round.price
         );
+
+        bytes32 voterIdentity = _createVoterId(round.roundId, nodeAddress_);
+
+        _votes[voterIdentity] = Votes.Vote({
+            voter: nodeAddress_,
+            price: price_,
+            approves: true,
+            percentageDiff: 0
+        });
     }
 
     function votePriceForRound(bytes32 roundId_, uint256 price_) public {
@@ -90,13 +119,12 @@ contract GoldPriceResolver {
         //TODO:
         //required check
         //find correct round record by roundId
-        Rounds.Round storage round = tryGetRoundForValidationByRequestedRoundId(
+        uint256 validRoundIndex = _tryGetValidRoundIndexByRequestedRoundId(
             roundId_
         );
-        //unique identifier of the vode - cobination of round id and voter address
-        bytes32 voteIdentity = keccak256(
-            abi.encodePacked(roundId_, callerAddress)
-        );
+        Rounds.Round storage round = _rounds[validRoundIndex];
+        //unique identifier of the vode - composition key of round id and voter address
+        bytes32 voteIdentity = _createVoterId(roundId_, callerAddress);
 
         require(!round.isQuorumReached, "Quorum reached for that round");
         //if voter address != 0 then this voter already voted
@@ -106,12 +134,12 @@ contract GoldPriceResolver {
         );
 
         //validate the presented data
-        uint256 percentageDiffBetweenPrices = calculatePriceDeviation(
+        uint256 percentageDiffBetweenPrices = _calculatePriceDeviation(
             round.price,
             price_
         );
 
-        bool isApproved = percentageDiffBetweenPrices >
+        bool isApproved = percentageDiffBetweenPrices <
             MAXIMUM_ALLOWED_PRICE_DEVIATION_IN_PERCENTS;
         //if the difference between proposed price and the validator price is more than 3%
         //the validation is not passed
@@ -119,7 +147,7 @@ contract GoldPriceResolver {
             round.acceptVotes++;
         } else {
             //validation is passed
-            round.refuceVotes++;
+            round.refuseVotes++;
         }
 
         //add new unique vote record
@@ -135,38 +163,11 @@ contract GoldPriceResolver {
             //finaly consensus is reached!
             //this round becames the latest valid round
         }
-        if (round.refuceVotes >= round.requiredQuorum) {
+        if (round.refuseVotes >= round.requiredQuorum) {
             //TODO: the proposition is refuced byt 51%.
             //new round should be created with new proposal node!
             //the proposal node that proposed refuced by 51% value should be punished
             //
-        }
-    }
-
-    function calculateMinimumNodesCountForReachingQuorum()
-        internal
-        view
-        returns (uint256)
-    {
-        if (validatorNodesCount == 1) {
-            return 1;
-        }
-
-        uint256 nodesRequiredForQuorum = (validatorNodesCount *
-            MINIMUM_QUORUM_REQUURED_FOR_VALIDATION_IN_PERCENTS) / 100;
-
-        return nodesRequiredForQuorum;
-    }
-
-    //valid round is considered every round
-    function getLatestRoundData()
-        public
-        view
-        returns (Rounds.Round memory round)
-    {
-        uint256 roundsLenght = _rounds.length;
-        if (roundsLenght != 0) {
-            return _rounds[roundsLenght - 1];
         }
     }
 
@@ -176,11 +177,11 @@ contract GoldPriceResolver {
         view
         returns (Rounds.Round memory round)
     {
-        uint256 roundsCount = _rounds.length;
-        if (roundsCount != 0) {
-            uint256 lastRoundIndex = roundsCount - 1;
+        uint256 roundsLenght = _rounds.length;
+        if (roundsLenght > 1) {
+            uint256 lastRoundIndex = roundsLenght - 1;
             Rounds.Round memory lastRound = _rounds[lastRoundIndex];
-            if (round.isQuorumReached) {
+            if (lastRound.isQuorumReached) {
                 return lastRound;
             }
 
@@ -192,13 +193,31 @@ contract GoldPriceResolver {
         }
     }
 
+    function _calculateMinimumNodesCountForReachingQuorum()
+        private
+        view
+        returns (uint256)
+    {
+        //TODO get from PoSS
+        if (validatorNodesCount == 1) {
+            return 1;
+        }
+
+        uint256 nodesRequiredForQuorum = (validatorNodesCount *
+            MINIMUM_QUORUM_REQUURED_FOR_VALIDATION_IN_PERCENTS) / 100;
+
+        return nodesRequiredForQuorum;
+    }
+
+    //valid round is considered every round
+
     //performing calculation to find the absolute difference between sugested node and the other validators nodes prices
     //if deviation bigger than 3% is found the proposition is declined by caller validator
     //if deviation is less than 3% the proposition is accepted
-    function calculatePriceDeviation(
+    function _calculatePriceDeviation(
         uint256 suggestedPrice_,
         uint256 referentPrice_
-    ) public pure returns (uint256) {
+    ) internal pure returns (uint256) {
         uint256 priceDifferenceAbs = 0;
 
         if (suggestedPrice_ > referentPrice_) {
@@ -215,19 +234,19 @@ contract GoldPriceResolver {
         return percentageDiff;
     }
 
-    function tryGetRoundForValidationByRequestedRoundId(bytes32 roundId_)
+    function _tryGetValidRoundIndexByRequestedRoundId(bytes32 roundId_)
         internal
         view
-        returns (Rounds.Round storage roundToValidate)
+        returns (uint256 index)
     {
         //get round index by roundId
         uint256 roundIndex = _roundIndexs[roundId_];
         //if no roundId exist revert
-        require(roundIndex > 0, "Invalid round id ");
+        require(roundIndex != 0, "Invalid round id ");
         //get round to validate by round Index
-        Rounds.Round storage roundByIndex = _rounds[roundIndex];
+        Rounds.Round memory roundByIndex = _rounds[roundIndex];
         //get last round that should be the current that needs to be validated
-        Rounds.Round memory lastRound = getLatestRoundData();
+        Rounds.Round memory lastRound = _getLatestRoundData();
         //check if requested round is actially the last one that needs to be validated
         require(
             roundByIndex.roundId == lastRound.roundId,
@@ -238,6 +257,28 @@ contract GoldPriceResolver {
             "Cannot validate round. No rounds are presented"
         );
         //return pointer to the last round
-        return roundByIndex;
+        return roundIndex;
+    }
+
+    function _getLatestRoundData()
+        internal
+        view
+        returns (Rounds.Round memory round)
+    {
+        uint256 roundsLenght = _rounds.length;
+        if (roundsLenght > 1) {
+            return _rounds[roundsLenght - 1];
+        }
+    }
+
+    function _createVoterId(bytes32 roundId_, address callerAddress)
+        private
+        pure
+        returns (bytes32)
+    {
+        bytes32 voteIdentity = keccak256(
+            abi.encodePacked(roundId_, callerAddress)
+        );
+        return voteIdentity;
     }
 }

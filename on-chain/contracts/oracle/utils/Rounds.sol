@@ -11,6 +11,6 @@ library Rounds {
         uint256 requiredQuorum;
         bool isQuorumReached;
         uint256 acceptVotes;
-        uint256 refuceVotes;
+        uint256 refuseVotes;
     }
 }
