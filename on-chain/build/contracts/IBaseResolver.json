@@ -1,0 +1,327 @@
+{
+  "contractName": "IBaseResolver",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getLatestValidData",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "roundId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nonce",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "node",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "assetCode",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "currencyCode",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "requiredQuorum",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isQuorumReached",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "acceptVotes",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "refuseVotes",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct Rounds.Round",
+          "name": "round",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getLatestValidData\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"roundId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"node\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"assetCode\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"currencyCode\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"requiredQuorum\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isQuorumReached\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"acceptVotes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"refuseVotes\",\"type\":\"uint256\"}],\"internalType\":\"struct Rounds.Round\",\"name\":\"round\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol\":\"IBaseResolver\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol\":{\"keccak256\":\"0xe9876fe7c5a82901d753905b2e9bebbc642b39d2030e49e6ecaf375be0ad1a81\",\"urls\":[\"bzz-raw://64d39757e73ac6fe48d10f54bda6d9482aca92eb68c24da247a0112b23670b13\",\"dweb:/ipfs/Qme9CiB9aW3JPh42FFWZa1nDUJafHGoUFd7Tu3Pwrqyg64\"]},\"project:/contracts/oracle/utils/Rounds.sol\":{\"keccak256\":\"0x82441f1c55f4cb3c341c565d1e4212385d86fb2896176ece1594104e2b7ff330\",\"urls\":[\"bzz-raw://2226569240957fc7e2e219bd0d22ac30b447f1b504c5b30d87e4e686164b6e41\",\"dweb:/ipfs/QmPrrNetTV5S49npNHCadihHbb2dFbmDjM34bqcKwsExNS\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.8.0;\r\n\r\nimport \"../../utils/Rounds.sol\";\r\n\r\ninterface IBaseResolver {\r\n    function getLatestValidData()\r\n        external\r\n        view\r\n        returns (Rounds.Round memory round);\r\n}\r\n",
+  "sourcePath": "D:\\Documents\\Dev\\Repositories\\gold-price-oracle\\gold-price-oracle\\on-chain\\contracts\\oracle\\resolvers\\interfaces\\IBaseResolver.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol",
+    "exportedSymbols": {
+      "IBaseResolver": [
+        1489
+      ],
+      "Rounds": [
+        1513
+      ]
+    },
+    "id": 1490,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1481,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:10"
+      },
+      {
+        "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
+        "file": "../../utils/Rounds.sol",
+        "id": 1482,
+        "nodeType": "ImportDirective",
+        "scope": 1490,
+        "sourceUnit": 1514,
+        "src": "27:32:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1489,
+        "linearizedBaseContracts": [
+          1489
+        ],
+        "name": "IBaseResolver",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "888a9fba",
+            "id": 1488,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getLatestValidData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1483,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:2:10"
+            },
+            "returnParameters": {
+              "id": 1487,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1486,
+                  "mutability": "mutable",
+                  "name": "round",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1488,
+                  "src": "174:25:10",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Round_$1512_memory_ptr",
+                    "typeString": "struct Rounds.Round"
+                  },
+                  "typeName": {
+                    "id": 1485,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1484,
+                      "name": "Rounds.Round",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1512,
+                      "src": "174:12:10"
+                    },
+                    "referencedDeclaration": 1512,
+                    "src": "174:12:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1512_storage_ptr",
+                      "typeString": "struct Rounds.Round"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "173:27:10"
+            },
+            "scope": 1489,
+            "src": "94:107:10",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1490,
+        "src": "63:141:10"
+      }
+    ],
+    "src": "0:206:10"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol",
+    "exportedSymbols": {
+      "IBaseResolver": [
+        1489
+      ],
+      "Rounds": [
+        1513
+      ]
+    },
+    "id": 1490,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1481,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:10"
+      },
+      {
+        "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
+        "file": "../../utils/Rounds.sol",
+        "id": 1482,
+        "nodeType": "ImportDirective",
+        "scope": 1490,
+        "sourceUnit": 1514,
+        "src": "27:32:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1489,
+        "linearizedBaseContracts": [
+          1489
+        ],
+        "name": "IBaseResolver",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "888a9fba",
+            "id": 1488,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getLatestValidData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1483,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:2:10"
+            },
+            "returnParameters": {
+              "id": 1487,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1486,
+                  "mutability": "mutable",
+                  "name": "round",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1488,
+                  "src": "174:25:10",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Round_$1512_memory_ptr",
+                    "typeString": "struct Rounds.Round"
+                  },
+                  "typeName": {
+                    "id": 1485,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1484,
+                      "name": "Rounds.Round",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1512,
+                      "src": "174:12:10"
+                    },
+                    "referencedDeclaration": 1512,
+                    "src": "174:12:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Round_$1512_storage_ptr",
+                      "typeString": "struct Rounds.Round"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "173:27:10"
+            },
+            "scope": 1489,
+            "src": "94:107:10",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1490,
+        "src": "63:141:10"
+      }
+    ],
+    "src": "0:206:10"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2022-02-25T14:27:01.259Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

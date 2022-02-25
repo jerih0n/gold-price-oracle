@@ -1,20 +1,29 @@
 pragma solidity ^0.8.0;
 
 import "../Interfaces/IAggregator.sol";
+import "../resolvers/interfaces/IBaseResolver.sol";
+import "../utils/Rounds.sol";
 
 contract GoldPriceAggregator is IAggregator {
-    constructor(string memory assetCode, string memory currencyCode) {}
+    IBaseResolver _baseResolver;
+
+    //address must be the address of GoldPriceResolver
+
+    constructor(address baseResolverAddress) {
+        _baseResolver = IBaseResolver(baseResolverAddress);
+    }
 
     function getPrice()
         external
+        view
         override
         returns (
             uint256 price,
-            bytes memory assetCode,
-            bytes memory currencyCode
+            string memory assetCode,
+            string memory currencyCode
         )
     {
-        //TODO:
-        return (1800 * 10**18, "XAU", "USDT");
+        Rounds.Round memory lastRound = _baseResolver.getLatestValidData();
+        return (lastRound.price, lastRound.assetCode, lastRound.currencyCode);
     }
 }

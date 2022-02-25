@@ -7,22 +7,22 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "27:149:10:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "27:149:10:-:0;;;;;;;;",
+  "sourceMap": "27:149:12:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:149:12:-:0;;;;;;;;",
   "source": "pragma solidity ^0.8.0;\r\n\r\nlibrary Votes {\r\n    struct Vote {\r\n        address voter;\r\n        uint256 price;\r\n        bool approves;\r\n        uint256 percentageDiff;\r\n    }\r\n}\r\n",
   "sourcePath": "D:\\Documents\\Dev\\Repositories\\gold-price-oracle\\gold-price-oracle\\on-chain\\contracts\\oracle\\utils\\Votes.sol",
   "ast": {
     "absolutePath": "project:/contracts/oracle/utils/Votes.sol",
     "exportedSymbols": {
       "Votes": [
-        1446
+        1525
       ]
     },
-    "id": 1447,
+    "id": 1526,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1436,
+        "id": 1515,
         "literals": [
           "solidity",
           "^",
@@ -30,7 +30,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:10"
+        "src": "0:23:12"
       },
       {
         "abstract": false,
@@ -38,25 +38,25 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1446,
+        "id": 1525,
         "linearizedBaseContracts": [
-          1446
+          1525
         ],
         "name": "Votes",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Votes.Vote",
-            "id": 1445,
+            "id": 1524,
             "members": [
               {
                 "constant": false,
-                "id": 1438,
+                "id": 1517,
                 "mutability": "mutable",
                 "name": "voter",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "71:13:10",
+                "scope": 1524,
+                "src": "71:13:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -64,10 +64,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1437,
+                  "id": 1516,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "71:7:10",
+                  "src": "71:7:12",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -78,12 +78,12 @@
               },
               {
                 "constant": false,
-                "id": 1440,
+                "id": 1519,
                 "mutability": "mutable",
                 "name": "price",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "95:13:10",
+                "scope": 1524,
+                "src": "95:13:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -91,10 +91,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1439,
+                  "id": 1518,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "95:7:10",
+                  "src": "95:7:12",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -104,12 +104,12 @@
               },
               {
                 "constant": false,
-                "id": 1442,
+                "id": 1521,
                 "mutability": "mutable",
                 "name": "approves",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "119:13:10",
+                "scope": 1524,
+                "src": "119:13:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -117,10 +117,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1441,
+                  "id": 1520,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "119:4:10",
+                  "src": "119:4:12",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -130,12 +130,12 @@
               },
               {
                 "constant": false,
-                "id": 1444,
+                "id": 1523,
                 "mutability": "mutable",
                 "name": "percentageDiff",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "143:22:10",
+                "scope": 1524,
+                "src": "143:22:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -143,10 +143,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1443,
+                  "id": 1522,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "143:7:10",
+                  "src": "143:7:12",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -157,29 +157,29 @@
             ],
             "name": "Vote",
             "nodeType": "StructDefinition",
-            "scope": 1446,
-            "src": "48:125:10",
+            "scope": 1525,
+            "src": "48:125:12",
             "visibility": "public"
           }
         ],
-        "scope": 1447,
-        "src": "27:149:10"
+        "scope": 1526,
+        "src": "27:149:12"
       }
     ],
-    "src": "0:178:10"
+    "src": "0:178:12"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/oracle/utils/Votes.sol",
     "exportedSymbols": {
       "Votes": [
-        1446
+        1525
       ]
     },
-    "id": 1447,
+    "id": 1526,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1436,
+        "id": 1515,
         "literals": [
           "solidity",
           "^",
@@ -187,7 +187,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:10"
+        "src": "0:23:12"
       },
       {
         "abstract": false,
@@ -195,25 +195,25 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1446,
+        "id": 1525,
         "linearizedBaseContracts": [
-          1446
+          1525
         ],
         "name": "Votes",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Votes.Vote",
-            "id": 1445,
+            "id": 1524,
             "members": [
               {
                 "constant": false,
-                "id": 1438,
+                "id": 1517,
                 "mutability": "mutable",
                 "name": "voter",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "71:13:10",
+                "scope": 1524,
+                "src": "71:13:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -221,10 +221,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1437,
+                  "id": 1516,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "71:7:10",
+                  "src": "71:7:12",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -235,12 +235,12 @@
               },
               {
                 "constant": false,
-                "id": 1440,
+                "id": 1519,
                 "mutability": "mutable",
                 "name": "price",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "95:13:10",
+                "scope": 1524,
+                "src": "95:13:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -248,10 +248,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1439,
+                  "id": 1518,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "95:7:10",
+                  "src": "95:7:12",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -261,12 +261,12 @@
               },
               {
                 "constant": false,
-                "id": 1442,
+                "id": 1521,
                 "mutability": "mutable",
                 "name": "approves",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "119:13:10",
+                "scope": 1524,
+                "src": "119:13:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -274,10 +274,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 1441,
+                  "id": 1520,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "119:4:10",
+                  "src": "119:4:12",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -287,12 +287,12 @@
               },
               {
                 "constant": false,
-                "id": 1444,
+                "id": 1523,
                 "mutability": "mutable",
                 "name": "percentageDiff",
                 "nodeType": "VariableDeclaration",
-                "scope": 1445,
-                "src": "143:22:10",
+                "scope": 1524,
+                "src": "143:22:12",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -300,10 +300,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1443,
+                  "id": 1522,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "143:7:10",
+                  "src": "143:7:12",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -314,16 +314,16 @@
             ],
             "name": "Vote",
             "nodeType": "StructDefinition",
-            "scope": 1446,
-            "src": "48:125:10",
+            "scope": 1525,
+            "src": "48:125:12",
             "visibility": "public"
           }
         ],
-        "scope": 1447,
-        "src": "27:149:10"
+        "scope": 1526,
+        "src": "27:149:12"
       }
     ],
-    "src": "0:178:10"
+    "src": "0:178:12"
   },
   "compiler": {
     "name": "solc",
@@ -331,7 +331,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-02-25T13:47:18.015Z",
+  "updatedAt": "2022-02-25T14:27:01.262Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

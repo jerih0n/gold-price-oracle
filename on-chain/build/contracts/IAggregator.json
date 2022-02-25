@@ -11,21 +11,21 @@
           "type": "uint256"
         },
         {
-          "internalType": "bytes",
+          "internalType": "string",
           "name": "assetCode",
-          "type": "bytes"
+          "type": "string"
         },
         {
-          "internalType": "bytes",
+          "internalType": "string",
           "name": "currencyCode",
-          "type": "bytes"
+          "type": "string"
         }
       ],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"assetCode\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"currencyCode\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/oracle/interfaces/IAggregator.sol\":\"IAggregator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/oracle/interfaces/IAggregator.sol\":{\"keccak256\":\"0xfe04f78e09789fadc8dd067ac62ee5e231b45c4425e1cfb31f9214bb1f743a1d\",\"urls\":[\"bzz-raw://1a1665c572c20f9382ae2c1f3b3098ce26ea0572a33f9a01c311b26226fd99dc\",\"dweb:/ipfs/QmdHgVujYMhvEmBuGo9rgZwnfowEJXYzrCqryN9iQzGgPC\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"assetCode\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"currencyCode\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/oracle/interfaces/IAggregator.sol\":\"IAggregator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/oracle/interfaces/IAggregator.sol\":{\"keccak256\":\"0x129f9de61e146e29e262023e6a55cb580f6b4c14cd478d724adb6c37e841a889\",\"urls\":[\"bzz-raw://f89b981e6b898bd1348aa460dfd44171d4786266bb34797b07ef387182f6220c\",\"dweb:/ipfs/QmQappdJsA5z8PPkmVc18wZvg68mmGpojv2TfZqS1XgVmY\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -33,20 +33,20 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.8.0;\r\n\r\ninterface IAggregator {\r\n    function getPrice()\r\n        external\r\n        returns (\r\n            uint256 price,\r\n            bytes memory assetCode,\r\n            bytes memory currencyCode\r\n        );\r\n}\r\n",
+  "source": "pragma solidity ^0.8.0;\r\n\r\n//this is the interface that's gonna be implemented in the 3d party smartcontracts that are gonna get data from oracle\r\ninterface IAggregator {\r\n    function getPrice()\r\n        external\r\n        view\r\n        returns (\r\n            uint256 price,\r\n            string memory assetCode,\r\n            string memory currencyCode\r\n        );\r\n}\r\n",
   "sourcePath": "D:\\Documents\\Dev\\Repositories\\gold-price-oracle\\gold-price-oracle\\on-chain\\contracts\\oracle\\interfaces\\IAggregator.sol",
   "ast": {
     "absolutePath": "project:/contracts/oracle/interfaces/IAggregator.sol",
     "exportedSymbols": {
       "IAggregator": [
-        836
+        853
       ]
     },
-    "id": 837,
+    "id": 854,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 826,
+        "id": 843,
         "literals": [
           "solidity",
           "^",
@@ -62,39 +62,39 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 836,
+        "id": 853,
         "linearizedBaseContracts": [
-          836
+          853
         ],
         "name": "IAggregator",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "98d5fdca",
-            "id": 835,
+            "id": 852,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 827,
+              "id": 844,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "73:2:7"
+              "src": "193:2:7"
             },
             "returnParameters": {
-              "id": 834,
+              "id": 851,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 829,
+                  "id": 846,
                   "mutability": "mutable",
                   "name": "price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 835,
-                  "src": "126:13:7",
+                  "scope": 852,
+                  "src": "260:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -102,10 +102,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 828,
+                    "id": 845,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "126:7:7",
+                    "src": "260:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -115,84 +115,84 @@
                 },
                 {
                   "constant": false,
-                  "id": 831,
+                  "id": 848,
                   "mutability": "mutable",
                   "name": "assetCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 835,
-                  "src": "154:22:7",
+                  "scope": 852,
+                  "src": "288:23:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_memory_ptr",
-                    "typeString": "bytes"
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
                   },
                   "typeName": {
-                    "id": 830,
-                    "name": "bytes",
+                    "id": 847,
+                    "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "154:5:7",
+                    "src": "288:6:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
                     }
                   },
                   "visibility": "internal"
                 },
                 {
                   "constant": false,
-                  "id": 833,
+                  "id": 850,
                   "mutability": "mutable",
                   "name": "currencyCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 835,
-                  "src": "191:25:7",
+                  "scope": 852,
+                  "src": "326:26:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_memory_ptr",
-                    "typeString": "bytes"
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
                   },
                   "typeName": {
-                    "id": 832,
-                    "name": "bytes",
+                    "id": 849,
+                    "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "191:5:7",
+                    "src": "326:6:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "111:116:7"
+              "src": "245:118:7"
             },
-            "scope": 836,
-            "src": "56:172:7",
-            "stateMutability": "nonpayable",
+            "scope": 853,
+            "src": "176:188:7",
+            "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 837,
-        "src": "27:204:7"
+        "scope": 854,
+        "src": "147:220:7"
       }
     ],
-    "src": "0:233:7"
+    "src": "0:369:7"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/oracle/interfaces/IAggregator.sol",
     "exportedSymbols": {
       "IAggregator": [
-        836
+        853
       ]
     },
-    "id": 837,
+    "id": 854,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 826,
+        "id": 843,
         "literals": [
           "solidity",
           "^",
@@ -208,39 +208,39 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 836,
+        "id": 853,
         "linearizedBaseContracts": [
-          836
+          853
         ],
         "name": "IAggregator",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "98d5fdca",
-            "id": 835,
+            "id": 852,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 827,
+              "id": 844,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "73:2:7"
+              "src": "193:2:7"
             },
             "returnParameters": {
-              "id": 834,
+              "id": 851,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 829,
+                  "id": 846,
                   "mutability": "mutable",
                   "name": "price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 835,
-                  "src": "126:13:7",
+                  "scope": 852,
+                  "src": "260:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -248,10 +248,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 828,
+                    "id": 845,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "126:7:7",
+                    "src": "260:7:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -261,71 +261,71 @@
                 },
                 {
                   "constant": false,
-                  "id": 831,
+                  "id": 848,
                   "mutability": "mutable",
                   "name": "assetCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 835,
-                  "src": "154:22:7",
+                  "scope": 852,
+                  "src": "288:23:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_memory_ptr",
-                    "typeString": "bytes"
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
                   },
                   "typeName": {
-                    "id": 830,
-                    "name": "bytes",
+                    "id": 847,
+                    "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "154:5:7",
+                    "src": "288:6:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
                     }
                   },
                   "visibility": "internal"
                 },
                 {
                   "constant": false,
-                  "id": 833,
+                  "id": 850,
                   "mutability": "mutable",
                   "name": "currencyCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 835,
-                  "src": "191:25:7",
+                  "scope": 852,
+                  "src": "326:26:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_memory_ptr",
-                    "typeString": "bytes"
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
                   },
                   "typeName": {
-                    "id": 832,
-                    "name": "bytes",
+                    "id": 849,
+                    "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "191:5:7",
+                    "src": "326:6:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "111:116:7"
+              "src": "245:118:7"
             },
-            "scope": 836,
-            "src": "56:172:7",
-            "stateMutability": "nonpayable",
+            "scope": 853,
+            "src": "176:188:7",
+            "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 837,
-        "src": "27:204:7"
+        "scope": 854,
+        "src": "147:220:7"
       }
     ],
-    "src": "0:233:7"
+    "src": "0:369:7"
   },
   "compiler": {
     "name": "solc",
@@ -333,7 +333,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-02-25T13:47:17.968Z",
+  "updatedAt": "2022-02-25T14:27:01.231Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
