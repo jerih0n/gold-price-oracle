@@ -33,7 +33,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"baseResolverAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"getPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"assetCode\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"currencyCode\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/oracle/aggregators/GoldPriceAggregator.sol\":\"GoldPriceAggregator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/oracle/Interfaces/IAggregator.sol\":{\"keccak256\":\"0x129f9de61e146e29e262023e6a55cb580f6b4c14cd478d724adb6c37e841a889\",\"urls\":[\"bzz-raw://f89b981e6b898bd1348aa460dfd44171d4786266bb34797b07ef387182f6220c\",\"dweb:/ipfs/QmQappdJsA5z8PPkmVc18wZvg68mmGpojv2TfZqS1XgVmY\"]},\"project:/contracts/oracle/aggregators/GoldPriceAggregator.sol\":{\"keccak256\":\"0x7e630ea6d2e8feb7bfc171ec7546e9dc85e99b26ec6bc93c62e81e0bae155500\",\"urls\":[\"bzz-raw://c21519e959f4af996c537f2df0249a2b9d5e5d1c0763acf49c57b9d715ec608a\",\"dweb:/ipfs/QmamEVepfiVGvkeiy5266LmR8pPyJsfYKWbT3JTnbz3xyF\"]},\"project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol\":{\"keccak256\":\"0xe9876fe7c5a82901d753905b2e9bebbc642b39d2030e49e6ecaf375be0ad1a81\",\"urls\":[\"bzz-raw://64d39757e73ac6fe48d10f54bda6d9482aca92eb68c24da247a0112b23670b13\",\"dweb:/ipfs/Qme9CiB9aW3JPh42FFWZa1nDUJafHGoUFd7Tu3Pwrqyg64\"]},\"project:/contracts/oracle/utils/Rounds.sol\":{\"keccak256\":\"0x82441f1c55f4cb3c341c565d1e4212385d86fb2896176ece1594104e2b7ff330\",\"urls\":[\"bzz-raw://2226569240957fc7e2e219bd0d22ac30b447f1b504c5b30d87e4e686164b6e41\",\"dweb:/ipfs/QmPrrNetTV5S49npNHCadihHbb2dFbmDjM34bqcKwsExNS\"]}},\"version\":1}",
@@ -6268,9 +6269,17 @@
     "name": "solc",
     "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1337": {
+      "events": {},
+      "links": {},
+      "address": "0xc56131A914303B22B68bdF5796b0CBAa09209aF5",
+      "transactionHash": "0x3c29787178065f02f7016ace751e92693d18a31b31051edbee8195a42778fed4"
+    }
+  },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-02-26T16:22:19.799Z",
+  "updatedAt": "2022-02-26T16:29:47.929Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
