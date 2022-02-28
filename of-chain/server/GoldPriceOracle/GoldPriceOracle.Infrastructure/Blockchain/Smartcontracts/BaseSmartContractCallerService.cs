@@ -14,11 +14,16 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
     {
         private readonly BlockchainNetworkOptions _blockchainNetworkOptions;
         private readonly OracleDbContext _oracleDbContext;
-        public BaseSmartContractCallerService(IOptionsMonitor<BlockchainNetworkOptions> optionsMonitor, OracleDbContext oracleDbContext)
-        {
-            _oracleDbContext = oracleDbContext;
-            _blockchainNetworkOptions = optionsMonitor.CurrentValue;
+        private readonly BaseSmartContractOptions _smartContractOptionsMonitor;
 
+        public BaseSmartContractCallerService(
+            IOptionsMonitor<BaseSmartContractOptions> smartContractOptionsMonitor,
+            IOptionsMonitor<BlockchainNetworkOptions> blockchainNetworkOptionsMonitor, 
+            OracleDbContext oracleDbContext)
+        {
+            _smartContractOptionsMonitor = smartContractOptionsMonitor.CurrentValue;
+            _blockchainNetworkOptions = blockchainNetworkOptionsMonitor.CurrentValue;
+            _oracleDbContext = oracleDbContext;
             var nodeData = GetNodeData();
 
             if (nodeData == null)
@@ -33,7 +38,10 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
                 Web3 = new Web3(account, $"{_blockchainNetworkOptions.RPCUrl}:{_blockchainNetworkOptions.Port}");
                 Web3.TransactionManager.UseLegacyAsDefault = true;
             }
+
+            Address = _smartContractOptionsMonitor.Address;
         }
+        protected string Address { get; }
         protected Web3 Web3 { get; }
 
         public async Task<BigInteger> GetEthAmountAsync(string address)
