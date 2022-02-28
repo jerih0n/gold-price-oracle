@@ -34,7 +34,6 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
                 Web3.TransactionManager.UseLegacyAsDefault = true;
             }
         }
-
         protected Web3 Web3 { get; }
 
         public async Task<BigInteger> GetEthAmountAsync(string address)
