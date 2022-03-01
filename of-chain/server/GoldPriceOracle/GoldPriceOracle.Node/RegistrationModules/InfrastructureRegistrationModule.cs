@@ -16,7 +16,7 @@ namespace GoldPriceOracle.Node.RegistrationModules
             services.AddScoped<IExternalGoldApiIntegrationService, ExternalGoldApiIntegrationService>();
             services.AddScoped<IAssetPriceHistoricalDataAccessService, AssetPriceHistoricalDataAccessService>();
             services.AddScoped<IGoldPriceOracleERC20TokenService, GoldPriceOracleERC20TokenService>();
-            services.AddScoped<IGoldPriceResolverService, GoldPriceResolverService>();
+            services.AddScoped<IGoldPriceResolverSmartcontractService, GoldPriceResolverSmartcontractService>();
         }
     }
 }

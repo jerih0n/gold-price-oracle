@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace GoldPriceOracle.Node.Contracts.InternalCalls
+﻿namespace GoldPriceOracle.Node.Contracts.InternalCalls
 {
     public class NewPriceRoundEventContract
     {
