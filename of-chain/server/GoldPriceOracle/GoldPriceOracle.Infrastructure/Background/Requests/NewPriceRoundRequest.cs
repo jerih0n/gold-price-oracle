@@ -1,8 +1,6 @@
-﻿using System.Numerics;
-
-namespace GoldPriceOracle.Node.Contracts.InternalCalls
+﻿namespace GoldPriceOracle.Infrastructure.Background.Requests
 {
-    public class NewPriceRoundEventContract
+    public class NewPriceRoundRequest
     {
         public string AssetSymbol { get; set; }
         public string CurrencySymbol { get; set; }

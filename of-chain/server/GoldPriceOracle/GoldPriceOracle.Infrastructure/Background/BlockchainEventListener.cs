@@ -1,6 +1,7 @@
 ﻿using GoldPriceOracle.Configuration;
 using GoldPriceOracle.Connection.Blockchain.Contracts.GoldPriceResolver;
-using Microsoft.Extensions.Configuration;
+using GoldPriceOracle.Infrastructure.Background.Requests;
+using GoldPriceOracle.Infrastructure.Utils;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 using Nethereum.JsonRpc.WebSocketStreamingClient;
@@ -9,6 +10,7 @@ using Nethereum.Web3;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -79,10 +81,19 @@ namespace GoldPriceOracle.Infrastructure.Background
 
         private async Task HandleNewPriceRoundEvent(NewPriceVoteEventDTO newPriceVoteEventDTO)
         {
-            var requestJson = JsonConvert.SerializeObject(newPriceVoteEventDTO);
-            var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
+            var requst = new NewPriceRoundRequest()
+            {
+                AssetSymbol = newPriceVoteEventDTO.AssetSymbol,
+                ProposalEmiterAddress = newPriceVoteEventDTO.ProposalEmiterAddress,
+                Price = newPriceVoteEventDTO.Price.ToString(),
+                CurrencySymbol = newPriceVoteEventDTO.CurrencySymbol,
+                RoundId = newPriceVoteEventDTO.RoundId.ToHex()
+            };
+        
+            var requestJson = JsonConvert.SerializeObject(requst);
+            var stringContent = new StringContent(requestJson,Encoding.UTF8,"application/json");
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "/internal/new-price-round")
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:5001/internal/new-price-round")
             {
                 Content = stringContent
             };
