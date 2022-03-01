@@ -1,5 +1,6 @@
 using GoldPriceOracle.Configuration;
 using GoldPriceOracle.Connection.Database;
+using GoldPriceOracle.Infrastructure.Background;
 using GoldPriceOracle.Infrastructure.Blockchain.Accounts;
 using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
 using GoldPriceOracle.Node.RegistrationModules;
@@ -34,10 +35,11 @@ namespace GoldPriceOracle.Node
 
             services.AddDbContext<OracleDbContext>(item => item.UseSqlServer(_cofiguration.GetConnectionString("OracleDb")));
             services.AddScoped<OracleDbContext>();
-
+            
             OptionsRegistrationModule.Register(services, _cofiguration);
             InfrastructureRegistrationModule.Register(services);
             ServicesRegistrationModule.Register(services);
+            //services.AddSingleton<BlockchainEventListener>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

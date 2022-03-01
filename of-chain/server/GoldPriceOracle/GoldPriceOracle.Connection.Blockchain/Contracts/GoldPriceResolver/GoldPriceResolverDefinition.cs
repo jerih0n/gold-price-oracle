@@ -76,7 +76,4 @@ namespace GoldPriceOracle.Connection.Blockchain.Contracts.GoldPriceResolver
         public virtual Round Round { get; set; }
     }
 
-
-
-
 }

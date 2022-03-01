@@ -40,9 +40,11 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
             }
 
             Address = _smartContractOptionsMonitor.Address;
+            WebSocketUrl = $"{_blockchainNetworkOptions.WebsocketUrl}:{_blockchainNetworkOptions.Port}";
         }
         protected string Address { get; }
         protected Web3 Web3 { get; }
+        protected string WebSocketUrl { get; }
 
         public async Task<BigInteger> GetEthAmountAsync(string address)
             => await Web3.Eth.GetBalance.SendRequestAsync(address);
