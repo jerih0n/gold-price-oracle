@@ -3,12 +3,19 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "../Interfaces/IStakable.sol";
 import "../utils/NominatingStakeholders.sol";
+import "../utils/Eras.sol";
+import "../Interfaces/IProofOfStake.sol";
+import "../Interfaces/IErasMonitor.sol";
 
-contract ERC20Stakable is IStakable, ERC20 {
+contract ERC20Stakable is IErasMonitor, IProofOfStake, IStakable, ERC20 {
     uint256 immutable _minStakedAmountForValidation;
+    uint256 private _validatorsCount;
+    uint256 private _erasCount;
     Stakeholders.Stakeholder[] private _stakeholders;
     mapping(address => uint256) private _validatorsStakeholderIndexes;
     mapping(address => uint256) private _stakeholdersIndexes;
+    mapping(bytes32 => Eras.Era) private _eras;
+    Eras.Era private _currentErra;
 
     constructor(
         string memory name_,
@@ -16,6 +23,8 @@ contract ERC20Stakable is IStakable, ERC20 {
         uint256 minStakedAmountForValidation_
     ) ERC20(name_, symbol_) {
         _minStakedAmountForValidation = minStakedAmountForValidation_;
+        _validatorsCount = 0;
+        _erasCount = 0;
     }
 
     modifier notNullAddress(address address_) {
@@ -115,6 +124,7 @@ contract ERC20Stakable is IStakable, ERC20 {
             stakeholder.canValidate = true;
         } else {
             stakeholder.canValidate = false;
+            _validatorsCount--;
         }
 
         //mint amount_ tokes to address
@@ -219,8 +229,31 @@ contract ERC20Stakable is IStakable, ERC20 {
         if (validatorIndex == 0) {
             //we don't have any valid validator
             _validatorsStakeholderIndexes[address_] = validatorIndex_;
+            _validatorsCount++;
         }
         //else validator already exist in records
         return true;
     }
+
+    //** for INTERFACE !!! */
+    function getValidatorsCount() external view override returns (uint256) {
+        return _validatorsCount;
+    }
+
+    function getCurrentEra()
+        external
+        view
+        override
+        returns (Eras.Era memory currentEra)
+    {
+        return _currentErra;
+    }
+
+    function getErasCount() external view override returns (uint256) {
+        return _erasCount;
+    }
+
+    function electNewChairman() external returns (address) {}
+
+    function startNewEra() external returns (bytes32) {}
 }

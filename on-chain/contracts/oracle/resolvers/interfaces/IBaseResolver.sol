@@ -7,4 +7,10 @@ interface IBaseResolver {
         external
         view
         returns (Rounds.Round memory round);
+
+    function votePriceForRound(bytes32 roundId_, uint256 price_) external;
+
+    function startNewPriceRound(address nodeAddress_, uint256 price_) external;
+
+    function getRoundCount() external view returns (uint256);
 }

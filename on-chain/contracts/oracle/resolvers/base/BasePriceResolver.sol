@@ -42,6 +42,10 @@ abstract contract BasePriceResolver is IBaseResolver {
         uint256 price
     );
 
+    function getRoundCount() external view override returns (uint256) {
+        return _rounds.length;
+    }
+
     //valid round is considered every round with reached Quorum
     function getLatestValidData()
         external
@@ -65,7 +69,10 @@ abstract contract BasePriceResolver is IBaseResolver {
         }
     }
 
-    function startNewPriceRound(address nodeAddress_, uint256 price_) public {
+    function startNewPriceRound(address nodeAddress_, uint256 price_)
+        external
+        override
+    {
         //call from elected node. If not revert.
         //Only elected node should be able to start new round of price change
         //after the price is set need to be validated - at least 51% of active nodes must approve the value
@@ -132,7 +139,10 @@ abstract contract BasePriceResolver is IBaseResolver {
         });
     }
 
-    function votePriceForRound(bytes32 roundId_, uint256 price_) public {
+    function votePriceForRound(bytes32 roundId_, uint256 price_)
+        external
+        override
+    {
         address callerAddress = msg.sender;
         //check if caller is an elected member for current era
         //TODO:
