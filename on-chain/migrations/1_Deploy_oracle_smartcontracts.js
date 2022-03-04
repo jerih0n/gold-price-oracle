@@ -4,6 +4,7 @@ const Voters = artifacts.require("Votes");
 const GoldOracleToken = artifacts.require("GoldOracleToken");
 const Stakeholders = artifacts.require("Stakeholders");
 const GoldPriceAggregator = artifacts.require("GoldPriceAggregator");
+const TimerContract = artifacts.require("Timer");
 
 module.exports = async function (deployer) {
     deployer.then(async () => {
@@ -17,5 +18,7 @@ module.exports = async function (deployer) {
         await deployer.deploy(GoldPriceResolver);
 
         await deployer.deploy(GoldPriceAggregator, GoldPriceResolver.address);
+        //do not depoloy for now
+        //await deployer.deploy(TimerContract, GoldPriceResolver.address, GoldOracleToken.address, 213123123);
     });
 };

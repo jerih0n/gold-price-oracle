@@ -134,6 +134,15 @@ contract ERC20Stakable is IErasMonitor, IProofOfStake, IStakable, ERC20 {
         _mint(stakeholderAddress, amount_);
     }
 
+    function getStakeholders()
+        external
+        view
+        override
+        returns (Stakeholders.Stakeholder[] memory stakeholders)
+    {
+        return _stakeholders;
+    }
+
     function _getStakeholderIndex(address address_)
         internal
         view
