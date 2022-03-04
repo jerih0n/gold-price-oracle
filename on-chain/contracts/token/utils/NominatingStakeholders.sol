@@ -8,5 +8,6 @@ library Stakeholders {
         uint256 nominatedAmount;
         uint256 nominatorsCount;
         bool canValidate;
+        uint256 notCollectedTokenRewards;
     }
 }

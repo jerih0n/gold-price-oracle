@@ -8,6 +8,7 @@ import "../Interfaces/IProofOfStake.sol";
 import "../Interfaces/IErasMonitor.sol";
 
 contract ERC20Stakable is IErasMonitor, IProofOfStake, IStakable, ERC20 {
+    uint256 immutable _rewardForValidatorsAfterEachEra;
     uint256 immutable _minStakedAmountForValidation;
     uint256 private _validatorsCount;
     uint256 private _erasCount;
@@ -20,11 +21,13 @@ contract ERC20Stakable is IErasMonitor, IProofOfStake, IStakable, ERC20 {
     constructor(
         string memory name_,
         string memory symbol_,
-        uint256 minStakedAmountForValidation_
+        uint256 minStakedAmountForValidation_,
+        uint256 rewardForValidatorsAfterEachEra_
     ) ERC20(name_, symbol_) {
         _minStakedAmountForValidation = minStakedAmountForValidation_;
         _validatorsCount = 0;
         _erasCount = 0;
+        _rewardForValidatorsAfterEachEra = rewardForValidatorsAfterEachEra_;
     }
 
     modifier notNullAddress(address address_) {
@@ -165,7 +168,8 @@ contract ERC20Stakable is IErasMonitor, IProofOfStake, IStakable, ERC20 {
                     ownedAmount: 0,
                     nominatedAmount: 0,
                     nominatorsCount: 0,
-                    canValidate: false
+                    canValidate: false,
+                    notCollectedTokenRewards: 0
                 })
             );
         }
@@ -177,7 +181,8 @@ contract ERC20Stakable is IErasMonitor, IProofOfStake, IStakable, ERC20 {
                 ownedAmount: amount_,
                 nominatedAmount: 0,
                 nominatorsCount: 0,
-                canValidate: canValidate
+                canValidate: canValidate,
+                notCollectedTokenRewards: 0
             })
         );
 
@@ -253,7 +258,53 @@ contract ERC20Stakable is IErasMonitor, IProofOfStake, IStakable, ERC20 {
         return _erasCount;
     }
 
+    function endCurrentEra() external {
+        address caller = msg.sender;
+        Eras.Era memory lastEra = _getCurrentEraInternal();
+        //TODO: validation for time elapsed
+        require(
+            caller == lastEra.chairman,
+            "Only chairman can end current era"
+        );
+        _payReward(
+            lastEra.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
+            caller
+        );
+    }
+
     function electNewChairman() external returns (address) {}
 
     function startNewEra() external returns (bytes32) {}
+
+    function _getCurrentEraInternal()
+        internal
+        view
+        returns (Eras.Era memory era)
+    {
+        return _currentErra;
+    }
+
+    function _payReward(uint256 tokenAmountForDistribution_, address chainman_)
+        internal
+        virtual
+    {
+        //simple scheme withoud nominators
+        //this reward scheme can be ovveriden for much complex one
+        //for simple reward distribution
+        //chainrman gets 50% of all fees
+        uint256 chairmainsReward = tokenAmountForDistribution_ / 2;
+        uint256 stakeholderIndex = _stakeholdersIndexes[chainman_];
+        Stakeholders.Stakeholder storage chairman = _stakeholders[
+            stakeholderIndex
+        ];
+
+        require(chairman.user != address(0), "Chairman address does not exist");
+
+        chairman.notCollectedTokenRewards += chairmainsReward;
+
+        uint256 remainingAmountForDistribution = tokenAmountForDistribution_ -
+            chairmainsReward;
+
+        //TODO: calculate remaining rewards for the rest of the voting council for this era
+    }
 }

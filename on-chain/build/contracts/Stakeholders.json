@@ -1,28 +1,28 @@
 {
   "contractName": "Stakeholders",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/utils/NominatingStakeholders.sol\":\"Stakeholders\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/utils/NominatingStakeholders.sol\":{\"keccak256\":\"0xdbc05adea4cbfafb538df1acebe3e55a9334bca10ad3b64970efcd5607b03a01\",\"urls\":[\"bzz-raw://6c9c53857d13e8aae3ee81883ef77c911e71cc66e98220f4e2a0266c4ed4e325\",\"dweb:/ipfs/QmWYEKfaBrp35yAk7C2Q2Jt8QgEX3WGu59dESrgxqwLouq\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f7898298d82bb0d38f3f3310de2f9028ad4cd26be3c02720144460622f87ef8264736f6c63430008000033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220f7898298d82bb0d38f3f3310de2f9028ad4cd26be3c02720144460622f87ef8264736f6c63430008000033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/utils/NominatingStakeholders.sol\":\"Stakeholders\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/utils/NominatingStakeholders.sol\":{\"keccak256\":\"0x51d99ed8e690cba64ba3b2e24b2756af37cfe49f6e7c43f7e55b5d0c0566dd1b\",\"urls\":[\"bzz-raw://f468645fdeac18566a1303269481f7abc00ffd056b6b2f210bc90850cc318320\",\"dweb:/ipfs/QmPzRL7hgXouTeLXvh5b363zxnoGMpyeZq4zc3SnE4gYxo\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201375e3e2aa0eb3de52c1ea0d334878873bd9e606f33905139b1b0cea6fbad25864736f6c63430008000033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201375e3e2aa0eb3de52c1ea0d334878873bd9e606f33905139b1b0cea6fbad25864736f6c63430008000033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "27:236:18:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "27:236:18:-:0;;;;;;;;",
-  "source": "pragma solidity ^0.8.0;\r\n\r\nlibrary Stakeholders {\r\n    struct Stakeholder {\r\n        address user;\r\n        uint256 totalAmount;\r\n        uint256 ownedAmount;\r\n        uint256 nominatedAmount;\r\n        uint256 nominatorsCount;\r\n        bool canValidate;\r\n    }\r\n}\r\n",
+  "sourceMap": "27:279:19:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:279:19:-:0;;;;;;;;",
+  "source": "pragma solidity ^0.8.0;\r\n\r\nlibrary Stakeholders {\r\n    struct Stakeholder {\r\n        address user;\r\n        uint256 totalAmount;\r\n        uint256 ownedAmount;\r\n        uint256 nominatedAmount;\r\n        uint256 nominatorsCount;\r\n        bool canValidate;\r\n        uint256 notCollectedTokenRewards;\r\n    }\r\n}\r\n",
   "sourcePath": "D:\\Documents\\Dev\\Repositories\\gold-price-oracle\\gold-price-oracle\\on-chain\\contracts\\token\\utils\\NominatingStakeholders.sol",
   "ast": {
     "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
     "exportedSymbols": {
       "Stakeholders": [
-        2313
+        2433
       ]
     },
-    "id": 2314,
+    "id": 2434,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2299,
+        "id": 2417,
         "literals": [
           "solidity",
           "^",
@@ -30,7 +30,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:18"
+        "src": "0:23:19"
       },
       {
         "abstract": false,
@@ -38,25 +38,25 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2313,
+        "id": 2433,
         "linearizedBaseContracts": [
-          2313
+          2433
         ],
         "name": "Stakeholders",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Stakeholders.Stakeholder",
-            "id": 2312,
+            "id": 2432,
             "members": [
               {
                 "constant": false,
-                "id": 2301,
+                "id": 2419,
                 "mutability": "mutable",
                 "name": "user",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "85:12:18",
+                "scope": 2432,
+                "src": "85:12:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -64,10 +64,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2300,
+                  "id": 2418,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "85:7:18",
+                  "src": "85:7:19",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -78,12 +78,12 @@
               },
               {
                 "constant": false,
-                "id": 2303,
+                "id": 2421,
                 "mutability": "mutable",
                 "name": "totalAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "108:19:18",
+                "scope": 2432,
+                "src": "108:19:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -91,10 +91,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2302,
+                  "id": 2420,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "108:7:18",
+                  "src": "108:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -104,12 +104,12 @@
               },
               {
                 "constant": false,
-                "id": 2305,
+                "id": 2423,
                 "mutability": "mutable",
                 "name": "ownedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "138:19:18",
+                "scope": 2432,
+                "src": "138:19:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -117,10 +117,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2304,
+                  "id": 2422,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "138:7:18",
+                  "src": "138:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -130,12 +130,12 @@
               },
               {
                 "constant": false,
-                "id": 2307,
+                "id": 2425,
                 "mutability": "mutable",
                 "name": "nominatedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "168:23:18",
+                "scope": 2432,
+                "src": "168:23:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -143,10 +143,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2306,
+                  "id": 2424,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "168:7:18",
+                  "src": "168:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -156,12 +156,12 @@
               },
               {
                 "constant": false,
-                "id": 2309,
+                "id": 2427,
                 "mutability": "mutable",
                 "name": "nominatorsCount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "202:23:18",
+                "scope": 2432,
+                "src": "202:23:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -169,10 +169,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2308,
+                  "id": 2426,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "202:7:18",
+                  "src": "202:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -182,12 +182,12 @@
               },
               {
                 "constant": false,
-                "id": 2311,
+                "id": 2429,
                 "mutability": "mutable",
                 "name": "canValidate",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "236:16:18",
+                "scope": 2432,
+                "src": "236:16:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -195,13 +195,39 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2310,
+                  "id": 2428,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "236:4:18",
+                  "src": "236:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2431,
+                "mutability": "mutable",
+                "name": "notCollectedTokenRewards",
+                "nodeType": "VariableDeclaration",
+                "scope": 2432,
+                "src": "263:32:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2430,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "263:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   }
                 },
                 "visibility": "internal"
@@ -209,29 +235,29 @@
             ],
             "name": "Stakeholder",
             "nodeType": "StructDefinition",
-            "scope": 2313,
-            "src": "55:205:18",
+            "scope": 2433,
+            "src": "55:248:19",
             "visibility": "public"
           }
         ],
-        "scope": 2314,
-        "src": "27:236:18"
+        "scope": 2434,
+        "src": "27:279:19"
       }
     ],
-    "src": "0:265:18"
+    "src": "0:308:19"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
     "exportedSymbols": {
       "Stakeholders": [
-        2313
+        2433
       ]
     },
-    "id": 2314,
+    "id": 2434,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2299,
+        "id": 2417,
         "literals": [
           "solidity",
           "^",
@@ -239,7 +265,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:18"
+        "src": "0:23:19"
       },
       {
         "abstract": false,
@@ -247,25 +273,25 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2313,
+        "id": 2433,
         "linearizedBaseContracts": [
-          2313
+          2433
         ],
         "name": "Stakeholders",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Stakeholders.Stakeholder",
-            "id": 2312,
+            "id": 2432,
             "members": [
               {
                 "constant": false,
-                "id": 2301,
+                "id": 2419,
                 "mutability": "mutable",
                 "name": "user",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "85:12:18",
+                "scope": 2432,
+                "src": "85:12:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -273,10 +299,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2300,
+                  "id": 2418,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "85:7:18",
+                  "src": "85:7:19",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -287,12 +313,12 @@
               },
               {
                 "constant": false,
-                "id": 2303,
+                "id": 2421,
                 "mutability": "mutable",
                 "name": "totalAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "108:19:18",
+                "scope": 2432,
+                "src": "108:19:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -300,10 +326,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2302,
+                  "id": 2420,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "108:7:18",
+                  "src": "108:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -313,12 +339,12 @@
               },
               {
                 "constant": false,
-                "id": 2305,
+                "id": 2423,
                 "mutability": "mutable",
                 "name": "ownedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "138:19:18",
+                "scope": 2432,
+                "src": "138:19:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -326,10 +352,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2304,
+                  "id": 2422,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "138:7:18",
+                  "src": "138:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -339,12 +365,12 @@
               },
               {
                 "constant": false,
-                "id": 2307,
+                "id": 2425,
                 "mutability": "mutable",
                 "name": "nominatedAmount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "168:23:18",
+                "scope": 2432,
+                "src": "168:23:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -352,10 +378,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2306,
+                  "id": 2424,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "168:7:18",
+                  "src": "168:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -365,12 +391,12 @@
               },
               {
                 "constant": false,
-                "id": 2309,
+                "id": 2427,
                 "mutability": "mutable",
                 "name": "nominatorsCount",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "202:23:18",
+                "scope": 2432,
+                "src": "202:23:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -378,10 +404,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2308,
+                  "id": 2426,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "202:7:18",
+                  "src": "202:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -391,12 +417,12 @@
               },
               {
                 "constant": false,
-                "id": 2311,
+                "id": 2429,
                 "mutability": "mutable",
                 "name": "canValidate",
                 "nodeType": "VariableDeclaration",
-                "scope": 2312,
-                "src": "236:16:18",
+                "scope": 2432,
+                "src": "236:16:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -404,13 +430,39 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2310,
+                  "id": 2428,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "236:4:18",
+                  "src": "236:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 2431,
+                "mutability": "mutable",
+                "name": "notCollectedTokenRewards",
+                "nodeType": "VariableDeclaration",
+                "scope": 2432,
+                "src": "263:32:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2430,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "263:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   }
                 },
                 "visibility": "internal"
@@ -418,16 +470,16 @@
             ],
             "name": "Stakeholder",
             "nodeType": "StructDefinition",
-            "scope": 2313,
-            "src": "55:205:18",
+            "scope": 2433,
+            "src": "55:248:19",
             "visibility": "public"
           }
         ],
-        "scope": 2314,
-        "src": "27:236:18"
+        "scope": 2434,
+        "src": "27:279:19"
       }
     ],
-    "src": "0:265:18"
+    "src": "0:308:19"
   },
   "compiler": {
     "name": "solc",
@@ -442,7 +494,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-04T09:26:19.036Z",
+  "updatedAt": "2022-03-04T10:24:27.980Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
