@@ -17,5 +17,7 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
         Task UnstakeAmountAsync(BigInteger amount);
 
         Task<GetStakeholderInformationOutputDTO> GetStakeholderInfomationAsync(string address);
+
+        Task<GetStakeholdersOutputDTO> GetStakeholdersAsync();
     }
 }

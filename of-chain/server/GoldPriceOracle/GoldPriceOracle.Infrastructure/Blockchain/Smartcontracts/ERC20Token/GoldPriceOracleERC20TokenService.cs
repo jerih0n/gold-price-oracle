@@ -38,6 +38,9 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
         public async Task<GetStakeholderInformationOutputDTO> GetStakeholderInfomationAsync(string address)
             => await _goldOracleTokenService.GetStakeholderInformationQueryAsync(address);
 
+        public async Task<GetStakeholdersOutputDTO> GetStakeholdersAsync()
+            => await _goldOracleTokenService.GetStakeholdersQueryAsync();
+
         public string TokenSymbol { get; }
     }
 }
