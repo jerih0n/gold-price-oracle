@@ -39,14 +39,14 @@
     "absolutePath": "project:/contracts/oracle/interfaces/IAggregator.sol",
     "exportedSymbols": {
       "IAggregator": [
-        930
+        1009
       ]
     },
-    "id": 931,
+    "id": 1010,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 920,
+        "id": 999,
         "literals": [
           "solidity",
           "^",
@@ -62,38 +62,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 930,
+        "id": 1009,
         "linearizedBaseContracts": [
-          930
+          1009
         ],
         "name": "IAggregator",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "98d5fdca",
-            "id": 929,
+            "id": 1008,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 921,
+              "id": 1000,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "193:2:7"
             },
             "returnParameters": {
-              "id": 928,
+              "id": 1007,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 923,
+                  "id": 1002,
                   "mutability": "mutable",
                   "name": "price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 929,
+                  "scope": 1008,
                   "src": "260:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -102,7 +102,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 922,
+                    "id": 1001,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "260:7:7",
@@ -115,11 +115,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 925,
+                  "id": 1004,
                   "mutability": "mutable",
                   "name": "assetCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 929,
+                  "scope": 1008,
                   "src": "288:23:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -128,7 +128,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 924,
+                    "id": 1003,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "288:6:7",
@@ -141,11 +141,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 927,
+                  "id": 1006,
                   "mutability": "mutable",
                   "name": "currencyCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 929,
+                  "scope": 1008,
                   "src": "326:26:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -154,7 +154,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 926,
+                    "id": 1005,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "326:6:7",
@@ -168,14 +168,14 @@
               ],
               "src": "245:118:7"
             },
-            "scope": 930,
+            "scope": 1009,
             "src": "176:188:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 931,
+        "scope": 1010,
         "src": "147:220:7"
       }
     ],
@@ -185,14 +185,14 @@
     "absolutePath": "project:/contracts/oracle/interfaces/IAggregator.sol",
     "exportedSymbols": {
       "IAggregator": [
-        930
+        1009
       ]
     },
-    "id": 931,
+    "id": 1010,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 920,
+        "id": 999,
         "literals": [
           "solidity",
           "^",
@@ -208,38 +208,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 930,
+        "id": 1009,
         "linearizedBaseContracts": [
-          930
+          1009
         ],
         "name": "IAggregator",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "98d5fdca",
-            "id": 929,
+            "id": 1008,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 921,
+              "id": 1000,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "193:2:7"
             },
             "returnParameters": {
-              "id": 928,
+              "id": 1007,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 923,
+                  "id": 1002,
                   "mutability": "mutable",
                   "name": "price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 929,
+                  "scope": 1008,
                   "src": "260:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -248,7 +248,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 922,
+                    "id": 1001,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "260:7:7",
@@ -261,11 +261,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 925,
+                  "id": 1004,
                   "mutability": "mutable",
                   "name": "assetCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 929,
+                  "scope": 1008,
                   "src": "288:23:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -274,7 +274,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 924,
+                    "id": 1003,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "288:6:7",
@@ -287,11 +287,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 927,
+                  "id": 1006,
                   "mutability": "mutable",
                   "name": "currencyCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 929,
+                  "scope": 1008,
                   "src": "326:26:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -300,7 +300,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 926,
+                    "id": 1005,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "326:6:7",
@@ -314,14 +314,14 @@
               ],
               "src": "245:118:7"
             },
-            "scope": 930,
+            "scope": 1009,
             "src": "176:188:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 931,
+        "scope": 1010,
         "src": "147:220:7"
       }
     ],
@@ -333,7 +333,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-04T13:10:00.984Z",
+  "updatedAt": "2022-03-04T14:10:37.758Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
