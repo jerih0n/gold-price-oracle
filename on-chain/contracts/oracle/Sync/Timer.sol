@@ -51,24 +51,19 @@ contract Timer {
 
     function newEraTimeElapsed(uint256 utcTimeStamp_) public onlyOwner {
         uint256 erasCount = _erasMonitor.getErasCount();
+        if (erasCount == 0) {
+            bytes32 initialEraId = keccak256(
+                abi.encodePacked(msg.sender, utcTimeStamp_, msg.sender)
+            );
+            emit StartNewEra(utcTimeStamp_, initialEraId);
+            return;
+        }
         if (
             erasCount * _timeStepForNewEra > utcTimeStamp_ &&
             lastEraCount != erasCount
         ) {
             //emit event
             Eras.Era memory currentEra = _erasMonitor.getCurrentEra();
-            if (currentEra.chairman == address(0)) {
-                // this is very first era. Init default one
-                bytes32 initialEraId = keccak256(
-                    abi.encodePacked(
-                        msg.sender,
-                        currentEra.startDate,
-                        currentEra.chairman
-                    )
-                );
-                emit StartNewEra(utcTimeStamp_, initialEraId);
-                return;
-            }
 
             bytes32 newEraId = keccak256(
                 abi.encodePacked(

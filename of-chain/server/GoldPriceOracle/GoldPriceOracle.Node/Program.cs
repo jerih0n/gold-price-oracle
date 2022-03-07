@@ -17,9 +17,12 @@ namespace GoldPriceOracle.Node
                 .Build();
 
             var blockchainData = GetBlockchainNetworkOptions(config);
-            var blockchainEventListener = (BlockchainEventListener)Activator.CreateInstance(typeof(BlockchainEventListener), blockchainData);
+            var applicationUrl = GetApplicationUrl(config);
+            var blockchainEventListener = (BlockchainEventListener)Activator.CreateInstance(typeof(BlockchainEventListener), blockchainData, applicationUrl);
 
-            Task.Factory.StartNew(() => blockchainEventListener.SubscriteForNewPriceRoundEvent(GetGoldPriceResolverAddress(config)));
+            Task.Factory.StartNew(() => blockchainEventListener.SubscriteForNewPriceRoundVoteEvent(GetGoldPriceResolverAddress(config)));
+            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraEvent(GetTimerAddress(config)));
+            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewPriceRoundEvent(GetTimerAddress(config)));
 
             await CreateHostBuilder(null).Build().RunAsync();
         }
@@ -48,5 +51,11 @@ namespace GoldPriceOracle.Node
 
         private static string GetGoldPriceResolverAddress(IConfigurationRoot config)
              => config.GetSection("Blockchain:SmartContracts:GoldPriceResolver").GetValue<string>("Address");
+
+        private static string GetTimerAddress(IConfigurationRoot config)
+            => config.GetSection("Blockchain:SmartContracts:Timer").GetValue<string>("Address");
+
+        private static object GetApplicationUrl(IConfigurationRoot config)
+            => config.GetValue<string>("ApplicationUrl");
     }
 }

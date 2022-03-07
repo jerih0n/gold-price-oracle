@@ -1,5 +1,6 @@
 ﻿using GoldPriceOracle.Configuration;
 using GoldPriceOracle.Connection.Blockchain.Contracts.GoldPriceResolver;
+using GoldPriceOracle.Connection.Blockchain.Contracts.Timer;
 using GoldPriceOracle.Infrastructure.Background.Requests;
 using GoldPriceOracle.Infrastructure.Utils;
 using Nethereum.ABI.FunctionEncoding.Attributes;
@@ -10,7 +11,6 @@ using Nethereum.Web3;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
-using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,8 +24,9 @@ namespace GoldPriceOracle.Infrastructure.Background
         private readonly string _httpUrl;
         private readonly string _webSocketUrl;
         private readonly Web3 _web3;
+        private readonly string _applicationUrl;
 
-        public BlockchainEventListener(BlockchainNetworkOptions options)
+        public BlockchainEventListener(BlockchainNetworkOptions options, string applicationUrl)
         {
             _options = options;
 
@@ -33,10 +34,17 @@ namespace GoldPriceOracle.Infrastructure.Background
             _webSocketUrl = $"{_options.WebsocketUrl}:{_options.Port}";
             _web3 = new Web3(_httpUrl);
             _httpClinet = new HttpClient();
+            _applicationUrl = applicationUrl;
         }
 
-        public async Task SubscriteForNewPriceRoundEvent(string contractAddress)
+        public async Task SubscriteForNewPriceRoundVoteEvent(string contractAddress)
            => await SybscribeForEvent<NewPriceVoteEventDTO>(contractAddress, HandleNewPriceRoundEvent);
+
+        public async Task SubscribeForNewEraEvent(string contractAddress)
+          => await SybscribeForEvent<StartNewEraEventDTO>(contractAddress, HandleStartNewEraEvent);
+
+        public async Task SubscribeForNewPriceRoundEvent(string contractAddress)
+          => await SybscribeForEvent<StarNewPriceRoundEventDTO>(contractAddress, HandleStartNewPriceRoundEvent);
 
         private async Task SybscribeForEvent<TEvent>(string contractAddress, Func<TEvent, Task> action) where TEvent : IEventDTO, new()
         {
@@ -80,19 +88,31 @@ namespace GoldPriceOracle.Infrastructure.Background
 
         private async Task HandleNewPriceRoundEvent(NewPriceVoteEventDTO newPriceVoteEventDTO)
         {
-            var requst = new NewPriceRoundRequest()
-            {
-                AssetSymbol = newPriceVoteEventDTO.AssetSymbol,
-                ProposalEmiterAddress = newPriceVoteEventDTO.ProposalEmiterAddress,
-                Price = newPriceVoteEventDTO.Price.ToString(),
-                CurrencySymbol = newPriceVoteEventDTO.CurrencySymbol,
-                RoundId = newPriceVoteEventDTO.RoundId.ToHex()
-            };
+            var requst = new NewPriceRoundVoteRequest(newPriceVoteEventDTO.AssetSymbol,
+                newPriceVoteEventDTO.CurrencySymbol,
+                newPriceVoteEventDTO.RoundId.ToHex(),
+                newPriceVoteEventDTO.ProposalEmiterAddress,
+                newPriceVoteEventDTO.Price.ToString()
+                );
 
+            await SendInternalHttpPostRequestAsync(requst, "price-round-vote");
+        }
+
+        private async Task HandleStartNewEraEvent(StartNewEraEventDTO startNewEraEventDTO)
+        {
+            var request = new StarNewEraEventRequest(startNewEraEventDTO.NewEraId_.ToString(), startNewEraEventDTO.NewEraId_.ToHex());
+            await SendInternalHttpPostRequestAsync(request, "new-era-start");
+        }
+
+        private async Task HandleStartNewPriceRoundEvent(StarNewPriceRoundEventDTO starNewPriceRoundEventDTO)
+            => await SendInternalHttpPostRequestAsync(new StartNewPriceRoundRequest(starNewPriceRoundEventDTO.UtcTimeStamp.ToString()), "start-new-price-round");
+
+        private async Task SendInternalHttpPostRequestAsync(object requst, string endpoint)
+        {
             var requestJson = JsonConvert.SerializeObject(requst);
             var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:5001/internal/new-price-round")
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{_applicationUrl}/internal/{endpoint}")
             {
                 Content = stringContent
             };

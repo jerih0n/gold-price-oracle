@@ -1,8 +1,4 @@
-using GoldPriceOracle.Configuration;
 using GoldPriceOracle.Connection.Database;
-using GoldPriceOracle.Infrastructure.Background;
-using GoldPriceOracle.Infrastructure.Blockchain.Accounts;
-using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
 using GoldPriceOracle.Node.RegistrationModules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
