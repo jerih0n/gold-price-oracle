@@ -8,13 +8,12 @@ namespace GoldPriceOracle.Services.Services
 {
     public class BaseAuthorizedService
     {
-
         public BaseAuthorizedService(INodeDataDataAccessService nodeDataDataAccessService)
         {
             NodeDataAccessService = nodeDataDataAccessService;
         }
 
-        protected (bool,ApiError, NodeData) Authorize(string password)
+        protected (bool, ApiError, NodeData) Authorize(string password)
         {
             var nodeData = NodeDataAccessService.GetNodeData();
 

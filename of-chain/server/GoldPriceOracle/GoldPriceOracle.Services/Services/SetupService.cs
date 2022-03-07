@@ -29,7 +29,7 @@ namespace GoldPriceOracle.Services.Services
                 var isAlreadySet = IsAlreadySet();
                 return TryResult<IsNodeSetUpModel>.Success(new IsNodeSetUpModel(isAlreadySet));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return TryResult<IsNodeSetUpModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }
@@ -39,7 +39,7 @@ namespace GoldPriceOracle.Services.Services
         {
             try
             {
-                if(IsAlreadySet())
+                if (IsAlreadySet())
                 {
                     return TryResult<IsNodeSetUpModel>.Fail(new ApiError(HttpStatusCode.BadRequest, "Node is already set"));
                 }
@@ -56,7 +56,7 @@ namespace GoldPriceOracle.Services.Services
 
                 return TryResult<IsNodeSetUpModel>.Success(new IsNodeSetUpModel(isSet));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return TryResult<IsNodeSetUpModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }
@@ -83,16 +83,15 @@ namespace GoldPriceOracle.Services.Services
 
                 return TryResult<IsNodeSetUpModel>.Success(new IsNodeSetUpModel(isSet));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return TryResult<IsNodeSetUpModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }
-            
         }
 
         private bool IsAlreadySet()
         {
-            var nodeData =_nodeDataAccessService.GetNodeData();
+            var nodeData = _nodeDataAccessService.GetNodeData();
             return nodeData != null;
         }
     }

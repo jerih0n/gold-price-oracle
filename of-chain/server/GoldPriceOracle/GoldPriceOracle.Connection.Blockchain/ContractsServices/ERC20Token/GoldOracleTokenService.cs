@@ -40,7 +40,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<AllowanceFunction, BigInteger>(allowanceFunction, blockParameter);
         }
 
-
         public Task<BigInteger> AllowanceQueryAsync(string owner, string spender, BlockParameter blockParameter = null)
         {
             var allowanceFunction = new AllowanceFunction();
@@ -83,7 +82,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<BalanceOfFunction, BigInteger>(balanceOfFunction, blockParameter);
         }
 
-
         public Task<BigInteger> BalanceOfQueryAsync(string account, BlockParameter blockParameter = null)
         {
             var balanceOfFunction = new BalanceOfFunction();
@@ -96,7 +94,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
         {
             return ContractHandler.QueryAsync<DecimalsFunction, byte>(decimalsFunction, blockParameter);
         }
-
 
         public Task<byte> DecimalsQueryAsync(BlockParameter blockParameter = null)
         {
@@ -186,7 +183,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<GetErasCountFunction, BigInteger>(getErasCountFunction, blockParameter);
         }
 
-
         public Task<BigInteger> GetErasCountQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<GetErasCountFunction, BigInteger>(null, blockParameter);
@@ -197,7 +193,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<GetOwnerAddressFunction, string>(getOwnerAddressFunction, blockParameter);
         }
 
-
         public Task<string> GetOwnerAddressQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<GetOwnerAddressFunction, string>(null, blockParameter);
@@ -207,7 +202,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
         {
             return ContractHandler.QueryAsync<GetStakedAmountFunction, BigInteger>(getStakedAmountFunction, blockParameter);
         }
-
 
         public Task<BigInteger> GetStakedAmountQueryAsync(string address_, BlockParameter blockParameter = null)
         {
@@ -244,7 +238,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
         {
             return ContractHandler.QueryAsync<GetValidatorsCountFunction, BigInteger>(getValidatorsCountFunction, blockParameter);
         }
-
 
         public Task<BigInteger> GetValidatorsCountQueryAsync(BlockParameter blockParameter = null)
         {
@@ -283,7 +276,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
         {
             return ContractHandler.QueryAsync<NameFunction, string>(nameFunction, blockParameter);
         }
-
 
         public Task<string> NameQueryAsync(BlockParameter blockParameter = null)
         {
@@ -341,7 +333,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<SymbolFunction, string>(symbolFunction, blockParameter);
         }
 
-
         public Task<string> SymbolQueryAsync(BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<SymbolFunction, string>(null, blockParameter);
@@ -351,7 +342,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
         {
             return ContractHandler.QueryAsync<TotalSupplyFunction, BigInteger>(totalSupplyFunction, blockParameter);
         }
-
 
         public Task<BigInteger> TotalSupplyQueryAsync(BlockParameter blockParameter = null)
         {

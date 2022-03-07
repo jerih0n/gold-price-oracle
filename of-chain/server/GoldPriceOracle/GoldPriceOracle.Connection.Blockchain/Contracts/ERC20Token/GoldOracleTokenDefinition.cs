@@ -7,41 +7,56 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
 {
     public partial class GoldOracleTokenDeployment : GoldOracleTokenDeploymentBase
     {
-        public GoldOracleTokenDeployment() : base(BYTECODE) { }
-        public GoldOracleTokenDeployment(string byteCode) : base(byteCode) { }
+        public GoldOracleTokenDeployment() : base(BYTECODE)
+        {
+        }
+
+        public GoldOracleTokenDeployment(string byteCode) : base(byteCode)
+        {
+        }
     }
 
     public class GoldOracleTokenDeploymentBase : ContractDeploymentMessage
     {
         public static string BYTECODE = "60c06040523480156200001157600080fd5b506040518060400160405280600f81526020016e23b7b63227b930b1b632aa37b5b2b760891b8152506040518060400160405280600381526020016211d3d560ea1b81525069043c33c1937564800000683635c9adc5dea000008383816003908051906020019062000085929190620001d8565b5080516200009b906004906020840190620001d8565b50505060a091909152600060058190556006556080525050601080546001600160a01b03191633908117909155620000ea90620000e469043c33c1937564800000600a62000294565b620000f0565b6200030e565b6001600160a01b0382166200014b5760405162461bcd60e51b815260206004820152601f60248201527f45524332303a206d696e7420746f20746865207a65726f206164647265737300604482015260640160405180910390fd5b80600260008282546200015f9190620002b6565b90915550506001600160a01b038216600090815260208190526040812080548392906200018e908490620002b6565b90915550506040518181526001600160a01b038316906000907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9060200160405180910390a35050565b828054620001e690620002d1565b90600052602060002090601f0160209004810192826200020a576000855562000255565b82601f106200022557805160ff191683800117855562000255565b8280016001018555821562000255579182015b828111156200025557825182559160200191906001019062000238565b506200026392915062000267565b5090565b5b8082111562000263576000815560010162000268565b634e487b7160e01b600052601160045260246000fd5b6000816000190483118215151615620002b157620002b16200027e565b500290565b60008219821115620002cc57620002cc6200027e565b500190565b600181811c90821680620002e657607f821691505b602082108114156200030857634e487b7160e01b600052602260045260246000fd5b50919050565b60805160a05161192d62000342600039600081816105f801528181610f94015261135101526000610936015261192d6000f3fe608060405234801561001057600080fd5b506004361061014d5760003560e01c80634da6a556116100c3578063a694fc3a1161007c578063a694fc3a146102c6578063a9059cbb146102d9578063b64cd8ca146102ec578063b6992247146102f4578063d250b6cb14610309578063dd62ed3e1461035757600080fd5b80634da6a55614610260578063533aa7b81461027357806370a082311461027b57806395d89b41146102a4578063a2709eb4146102ac578063a457c2d7146102b357600080fd5b806323b872dd1161011557806323b872dd146101d157806327498240146101e45780632bf9262c146101ec5780632e17de7814610229578063313ce5671461023e578063395093511461024d57600080fd5b806306fdde0314610152578063095ea7b3146101705780630c4f65bd1461019357806318160ddd146101b85780631e70953e146101ca575b600080fd5b61015a610390565b604051610167919061162f565b60405180910390f35b61018361017e3660046116a0565b610422565b6040519015158152602001610167565b6010546001600160a01b03165b6040516001600160a01b039091168152602001610167565b6002545b604051908152602001610167565b60006101bc565b6101836101df3660046116ca565b61043a565b6005546101bc565b6101ff6101fa366004611706565b610460565b6040805195865260208601949094529284019190915260608301521515608082015260a001610167565b61023c610237366004611721565b61052c565b005b60405160128152602001610167565b61018361025b3660046116a0565b610663565b6101bc61026e366004611706565b6106a2565b6006546101bc565b6101bc610289366004611706565b6001600160a01b031660009081526020819052604090205490565b61015a610709565b60006101a0565b6101836102c13660046116a0565b610718565b61023c6102d4366004611721565b6107b5565b6101836102e73660046116a0565b6108a7565b61023c6108b5565b6102fc61096e565b604051610167919061173a565b610311610a1b565b6040516101679190815181526020808301519082015260408083015190820152606080830151908201526080918201516001600160a01b03169181019190915260a00190565b6101bc6103653660046117c7565b6001600160a01b03918216600090815260016020908152604080832093909416825291909152205490565b60606003805461039f906117fa565b80601f01602080910402602001604051908101604052809291908181526020018280546103cb906117fa565b80156104185780601f106103ed57610100808354040283529160200191610418565b820191906000526020600020905b8154815290600101906020018083116103fb57829003601f168201915b5050505050905090565b600033610430818585610a84565b5060019392505050565b600033610448858285610ba8565b610453858585610c34565b60019150505b9392505050565b60008060008060008061047287610e02565b9050600081116104d75760405162461bcd60e51b815260206004820152602560248201527f41646472657373206e6f74206c696e6b656420746f20616e79207374616b656860448201526437b63232b960d91b60648201526084015b60405180910390fd5b6000600782815481106104ec576104ec61182f565b600091825260209091206007909102016001810154600282015460038301546004840154600590940154929c919b50995091975060ff1695509350505050565b336000818152600960205260409020548061054657505050565b60006007828154811061055b5761055b61182f565b9060005260206000209060070201905083816001015410156105ca5760405162461bcd60e51b815260206004820152602260248201527f496e73756666696369656e742062616c616e636520666f7220756e7374616b696044820152616e6760f01b60648201526084016104ce565b6000848260010160008282546105e0919061185b565b918290555060018401819055600284018190559150507f000000000000000000000000000000000000000000000000000000000000000081106106315760058201805460ff19166001179055610652565b6005808301805460ff19169055805490600061064c83611872565b91905055505b61065c8486610eb0565b5050505050565b3360008181526001602090815260408083206001600160a01b0387168452909152812054909190610430908290869061069d908790611889565b610a84565b6000816001600160a01b0381166106b857600080fd5b60006106c384610e02565b9050806106d4576000925050610703565b6000600782815481106106e9576106e961182f565b906000526020600020906007020190508060010154935050505b50919050565b60606004805461039f906117fa565b3360008181526001602090815260408083206001600160a01b03871684529091528120549091908381101561079d5760405162461bcd60e51b815260206004820152602560248201527f45524332303a2064656372656173656420616c6c6f77616e63652062656c6f77604482015264207a65726f60d81b60648201526084016104ce565b6107aa8286868403610a84565b506001949350505050565b6040516370a0823160e01b815233600482018190529060009030906370a0823190602401602060405180830381865afa1580156107f6573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061081a91906118a1565b90508281101561086c5760405162461bcd60e51b815260206004820181905260248201527f496e73756666696369656e742062616c616e636520666f72207374616b696e6760448201526064016104ce565b600061087783610e02565b90508061088d576108888385610f8f565b610897565b61089781856112e5565b6108a183856113a3565b50505050565b600033610430818585610c34565b3360006108c0610a1b565b905080608001516001600160a01b0316826001600160a01b0316146109315760405162461bcd60e51b815260206004820152602160248201527f4f6e6c792063686169726d616e2063616e20656e642063757272656e742065726044820152606160f81b60648201526084016104ce565b61096a7f000000000000000000000000000000000000000000000000000000000000000082602001516109649190611889565b836114f1565b5050565b60606007805480602002602001604051908101604052809291908181526020016000905b82821015610a125760008481526020908190206040805160e0810182526007860290920180546001600160a01b03168352600180820154848601526002820154928401929092526003810154606084015260048101546080840152600581015460ff16151560a08401526006015460c08301529083529092019101610992565b50505050905090565b6040805160a081018252600080825260208201819052918101829052606081018290526080810191909152506040805160a081018252600b548152600c546020820152600d5491810191909152600e546060820152600f546001600160a01b0316608082015290565b6001600160a01b038316610ae65760405162461bcd60e51b8152602060048201526024808201527f45524332303a20617070726f76652066726f6d20746865207a65726f206164646044820152637265737360e01b60648201526084016104ce565b6001600160a01b038216610b475760405162461bcd60e51b815260206004820152602260248201527f45524332303a20617070726f766520746f20746865207a65726f206164647265604482015261737360f01b60648201526084016104ce565b6001600160a01b0383811660008181526001602090815260408083209487168084529482529182902085905590518481527f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925910160405180910390a3505050565b6001600160a01b0383811660009081526001602090815260408083209386168352929052205460001981146108a15781811015610c275760405162461bcd60e51b815260206004820152601d60248201527f45524332303a20696e73756666696369656e7420616c6c6f77616e636500000060448201526064016104ce565b6108a18484848403610a84565b6001600160a01b038316610c985760405162461bcd60e51b815260206004820152602560248201527f45524332303a207472616e736665722066726f6d20746865207a65726f206164604482015264647265737360d81b60648201526084016104ce565b6001600160a01b038216610cfa5760405162461bcd60e51b815260206004820152602360248201527f45524332303a207472616e7366657220746f20746865207a65726f206164647260448201526265737360e81b60648201526084016104ce565b6001600160a01b03831660009081526020819052604090205481811015610d725760405162461bcd60e51b815260206004820152602660248201527f45524332303a207472616e7366657220616d6f756e7420657863656564732062604482015265616c616e636560d01b60648201526084016104ce565b6001600160a01b03808516600090815260208190526040808220858503905591851681529081208054849290610da9908490611889565b92505081905550826001600160a01b0316846001600160a01b03167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef84604051610df591815260200190565b60405180910390a36108a1565b6000816001600160a01b038116610e1857600080fd5b6001600160a01b03831660009081526009602052604090205480610e40576000925050610703565b600754610e4f9060019061185b565b8111156104595760405162461bcd60e51b815260206004820152602960248201527f496e76616c696420696e64657820666f72207374616b65686f6c64657273206360448201526837b63632b1ba34b7b760b91b60648201526084016104ce565b6001600160a01b038216610f065760405162461bcd60e51b815260206004820152601f60248201527f45524332303a206d696e7420746f20746865207a65726f20616464726573730060448201526064016104ce565b8060026000828254610f189190611889565b90915550506001600160a01b03821660009081526020819052604081208054839290610f45908490611889565b90915550506040518181526001600160a01b038316906000907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9060200160405180910390a35050565b6007547f000000000000000000000000000000000000000000000000000000000000000082101590806111485780610fc6816118ba565b6040805160e081018252600080825260208201818152928201818152606083018281526080840183815260a0850184815260c08601858152600780546001810182559681905296517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c6889690970295860180546001600160a01b0319166001600160a01b039098169790971790965595517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68985015591517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68a840155517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68b830155517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68c82015591517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68d8301805460ff1916911515919091179055517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68e909101559150505b6040805160e0810182526001600160a01b038681168083526020808401888152848601898152600060608701818152608088018281528b151560a08a0190815260c08a01848152600780546001810182558187529b517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c6889c9091029b8c0180546001600160a01b03191691909b161790995594517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c6898a015592517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68a890155517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68b88015590517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68c87015590517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68d8601805460ff191691151591909117905592517fa66cc928b5edb82af9bd49922954155ab7b0942694bea4ce44661d9a8736c68e90940193909355815260099091522081905561065c8285836115c9565b6000600783815481106112fa576112fa61182f565b906000526020600020906007020190508181600101600082825461131e9190611889565b92505081905550818160020160008282546113399190611889565b9091555050600581015460ff1661139e5760018101547f0000000000000000000000000000000000000000000000000000000000000000118015906108a15760058201805460ff19166001179055815461065c9082906001600160a01b0316866115c9565b505050565b6001600160a01b0382166114035760405162461bcd60e51b815260206004820152602160248201527f45524332303a206275726e2066726f6d20746865207a65726f206164647265736044820152607360f81b60648201526084016104ce565b6001600160a01b038216600090815260208190526040902054818110156114775760405162461bcd60e51b815260206004820152602260248201527f45524332303a206275726e20616d6f756e7420657863656564732062616c616e604482015261636560f01b60648201526084016104ce565b6001600160a01b03831660009081526020819052604081208383039055600280548492906114a690849061185b565b90915550506040518281526000906001600160a01b038516907fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9060200160405180910390a3505050565b60006114fe6002846118d5565b6001600160a01b038316600090815260096020526040812054600780549394509092839081106115305761153061182f565b6000918252602090912060079091020180549091506001600160a01b031661159a5760405162461bcd60e51b815260206004820152601f60248201527f43686169726d616e206164647265737320646f6573206e6f742065786973740060448201526064016104ce565b828160060160008282546115ae9190611889565b90915550600090506115c0848761185b565b50505050505050565b6000836115d857506000610459565b6001600160a01b03831660009081526008602052604090205480610453576001600160a01b0384166000908152600860205260408120849055600580549161161f836118ba565b9091555060019695505050505050565b600060208083528351808285015260005b8181101561165c57858101830151858201604001528201611640565b8181111561166e576000604083870101525b50601f01601f1916929092016040019392505050565b80356001600160a01b038116811461169b57600080fd5b919050565b600080604083850312156116b357600080fd5b6116bc83611684565b946020939093013593505050565b6000806000606084860312156116df57600080fd5b6116e884611684565b92506116f660208501611684565b9150604084013590509250925092565b60006020828403121561171857600080fd5b61045982611684565b60006020828403121561173357600080fd5b5035919050565b602080825282518282018190526000919060409081850190868401855b828110156117ba57815180516001600160a01b0316855286810151878601528581015186860152606080820151908601526080808201519086015260a08082015115159086015260c0908101519085015260e09093019290850190600101611757565b5091979650505050505050565b600080604083850312156117da57600080fd5b6117e383611684565b91506117f160208401611684565b90509250929050565b600181811c9082168061180e57607f821691505b6020821081141561070357634e487b7160e01b600052602260045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b60008282101561186d5761186d611845565b500390565b60008161188157611881611845565b506000190190565b6000821982111561189c5761189c611845565b500190565b6000602082840312156118b357600080fd5b5051919050565b60006000198214156118ce576118ce611845565b5060010190565b6000826118f257634e487b7160e01b600052601260045260246000fd5b50049056fea26469706673582212204d76fbef992eb7f11ca8814b335da51c6d155a9f538e70fa027aca4e5b2ae21464736f6c634300080c0033";
-        public GoldOracleTokenDeploymentBase() : base(BYTECODE) { }
-        public GoldOracleTokenDeploymentBase(string byteCode) : base(byteCode) { }
 
+        public GoldOracleTokenDeploymentBase() : base(BYTECODE)
+        {
+        }
+
+        public GoldOracleTokenDeploymentBase(string byteCode) : base(byteCode)
+        {
+        }
     }
 
-    public partial class AllowanceFunction : AllowanceFunctionBase { }
+    public partial class AllowanceFunction : AllowanceFunctionBase
+    { }
 
     [Function("allowance", "uint256")]
     public class AllowanceFunctionBase : FunctionMessage
     {
         [Parameter("address", "owner", 1)]
         public virtual string Owner { get; set; }
+
         [Parameter("address", "spender", 2)]
         public virtual string Spender { get; set; }
     }
 
-    public partial class ApproveFunction : ApproveFunctionBase { }
+    public partial class ApproveFunction : ApproveFunctionBase
+    { }
 
     [Function("approve", "bool")]
     public class ApproveFunctionBase : FunctionMessage
     {
         [Parameter("address", "spender", 1)]
         public virtual string Spender { get; set; }
+
         [Parameter("uint256", "amount", 2)]
         public virtual BigInteger Amount { get; set; }
     }
 
-    public partial class BalanceOfFunction : BalanceOfFunctionBase { }
+    public partial class BalanceOfFunction : BalanceOfFunctionBase
+    { }
 
     [Function("balanceOf", "uint256")]
     public class BalanceOfFunctionBase : FunctionMessage
@@ -50,66 +65,69 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual string Account { get; set; }
     }
 
-    public partial class DecimalsFunction : DecimalsFunctionBase { }
+    public partial class DecimalsFunction : DecimalsFunctionBase
+    { }
 
     [Function("decimals", "uint8")]
     public class DecimalsFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class DecreaseAllowanceFunction : DecreaseAllowanceFunctionBase { }
+    public partial class DecreaseAllowanceFunction : DecreaseAllowanceFunctionBase
+    { }
 
     [Function("decreaseAllowance", "bool")]
     public class DecreaseAllowanceFunctionBase : FunctionMessage
     {
         [Parameter("address", "spender", 1)]
         public virtual string Spender { get; set; }
+
         [Parameter("uint256", "subtractedValue", 2)]
         public virtual BigInteger SubtractedValue { get; set; }
     }
 
-    public partial class ElectNewChairmanFunction : ElectNewChairmanFunctionBase { }
+    public partial class ElectNewChairmanFunction : ElectNewChairmanFunctionBase
+    { }
 
     [Function("electNewChairman", "address")]
     public class ElectNewChairmanFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class EndCurrentEraFunction : EndCurrentEraFunctionBase { }
+    public partial class EndCurrentEraFunction : EndCurrentEraFunctionBase
+    { }
 
     [Function("endCurrentEra")]
     public class EndCurrentEraFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class GetCurrentEraFunction : GetCurrentEraFunctionBase { }
+    public partial class GetCurrentEraFunction : GetCurrentEraFunctionBase
+    { }
 
     [Function("getCurrentEra", typeof(GetCurrentEraOutputDTO))]
     public class GetCurrentEraFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class GetErasCountFunction : GetErasCountFunctionBase { }
+    public partial class GetErasCountFunction : GetErasCountFunctionBase
+    { }
 
     [Function("getErasCount", "uint256")]
     public class GetErasCountFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class GetOwnerAddressFunction : GetOwnerAddressFunctionBase { }
+    public partial class GetOwnerAddressFunction : GetOwnerAddressFunctionBase
+    { }
 
     [Function("getOwnerAddress", "address")]
     public class GetOwnerAddressFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class GetStakedAmountFunction : GetStakedAmountFunctionBase { }
+    public partial class GetStakedAmountFunction : GetStakedAmountFunctionBase
+    { }
 
     [Function("getStakedAmount", "uint256")]
     public class GetStakedAmountFunctionBase : FunctionMessage
@@ -118,7 +136,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual string Address_ { get; set; }
     }
 
-    public partial class GetStakeholderInformationFunction : GetStakeholderInformationFunctionBase { }
+    public partial class GetStakeholderInformationFunction : GetStakeholderInformationFunctionBase
+    { }
 
     [Function("getStakeholderInformation", typeof(GetStakeholderInformationOutputDTO))]
     public class GetStakeholderInformationFunctionBase : FunctionMessage
@@ -127,42 +146,45 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual string Address_ { get; set; }
     }
 
-    public partial class GetStakeholdersFunction : GetStakeholdersFunctionBase { }
+    public partial class GetStakeholdersFunction : GetStakeholdersFunctionBase
+    { }
 
     [Function("getStakeholders", typeof(GetStakeholdersOutputDTO))]
     public class GetStakeholdersFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class GetValidatorsCountFunction : GetValidatorsCountFunctionBase { }
+    public partial class GetValidatorsCountFunction : GetValidatorsCountFunctionBase
+    { }
 
     [Function("getValidatorsCount", "uint256")]
     public class GetValidatorsCountFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class IncreaseAllowanceFunction : IncreaseAllowanceFunctionBase { }
+    public partial class IncreaseAllowanceFunction : IncreaseAllowanceFunctionBase
+    { }
 
     [Function("increaseAllowance", "bool")]
     public class IncreaseAllowanceFunctionBase : FunctionMessage
     {
         [Parameter("address", "spender", 1)]
         public virtual string Spender { get; set; }
+
         [Parameter("uint256", "addedValue", 2)]
         public virtual BigInteger AddedValue { get; set; }
     }
 
-    public partial class NameFunction : NameFunctionBase { }
+    public partial class NameFunction : NameFunctionBase
+    { }
 
     [Function("name", "string")]
     public class NameFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class StakeFunction : StakeFunctionBase { }
+    public partial class StakeFunction : StakeFunctionBase
+    { }
 
     [Function("stake")]
     public class StakeFunctionBase : FunctionMessage
@@ -171,55 +193,61 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual BigInteger Amount_ { get; set; }
     }
 
-    public partial class StartNewEraFunction : StartNewEraFunctionBase { }
+    public partial class StartNewEraFunction : StartNewEraFunctionBase
+    { }
 
     [Function("startNewEra", "bytes32")]
     public class StartNewEraFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class SymbolFunction : SymbolFunctionBase { }
+    public partial class SymbolFunction : SymbolFunctionBase
+    { }
 
     [Function("symbol", "string")]
     public class SymbolFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class TotalSupplyFunction : TotalSupplyFunctionBase { }
+    public partial class TotalSupplyFunction : TotalSupplyFunctionBase
+    { }
 
     [Function("totalSupply", "uint256")]
     public class TotalSupplyFunctionBase : FunctionMessage
     {
-
     }
 
-    public partial class TransferFunction : TransferFunctionBase { }
+    public partial class TransferFunction : TransferFunctionBase
+    { }
 
     [Function("transfer", "bool")]
     public class TransferFunctionBase : FunctionMessage
     {
         [Parameter("address", "to", 1)]
         public virtual string To { get; set; }
+
         [Parameter("uint256", "amount", 2)]
         public virtual BigInteger Amount { get; set; }
     }
 
-    public partial class TransferFromFunction : TransferFromFunctionBase { }
+    public partial class TransferFromFunction : TransferFromFunctionBase
+    { }
 
     [Function("transferFrom", "bool")]
     public class TransferFromFunctionBase : FunctionMessage
     {
         [Parameter("address", "from", 1)]
         public virtual string From { get; set; }
+
         [Parameter("address", "to", 2)]
         public virtual string To { get; set; }
+
         [Parameter("uint256", "amount", 3)]
         public virtual BigInteger Amount { get; set; }
     }
 
-    public partial class UnstakeFunction : UnstakeFunctionBase { }
+    public partial class UnstakeFunction : UnstakeFunctionBase
+    { }
 
     [Function("unstake")]
     public class UnstakeFunctionBase : FunctionMessage
@@ -228,33 +256,40 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual BigInteger Amount_ { get; set; }
     }
 
-    public partial class ApprovalEventDTO : ApprovalEventDTOBase { }
+    public partial class ApprovalEventDTO : ApprovalEventDTOBase
+    { }
 
     [Event("Approval")]
     public class ApprovalEventDTOBase : IEventDTO
     {
         [Parameter("address", "owner", 1, true)]
         public virtual string Owner { get; set; }
+
         [Parameter("address", "spender", 2, true)]
         public virtual string Spender { get; set; }
+
         [Parameter("uint256", "value", 3, false)]
         public virtual BigInteger Value { get; set; }
     }
 
-    public partial class TransferEventDTO : TransferEventDTOBase { }
+    public partial class TransferEventDTO : TransferEventDTOBase
+    { }
 
     [Event("Transfer")]
     public class TransferEventDTOBase : IEventDTO
     {
         [Parameter("address", "from", 1, true)]
         public virtual string From { get; set; }
+
         [Parameter("address", "to", 2, true)]
         public virtual string To { get; set; }
+
         [Parameter("uint256", "value", 3, false)]
         public virtual BigInteger Value { get; set; }
     }
 
-    public partial class AllowanceOutputDTO : AllowanceOutputDTOBase { }
+    public partial class AllowanceOutputDTO : AllowanceOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class AllowanceOutputDTOBase : IFunctionOutputDTO
@@ -263,9 +298,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual BigInteger ReturnValue1 { get; set; }
     }
 
-
-
-    public partial class BalanceOfOutputDTO : BalanceOfOutputDTOBase { }
+    public partial class BalanceOfOutputDTO : BalanceOfOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class BalanceOfOutputDTOBase : IFunctionOutputDTO
@@ -274,7 +308,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual BigInteger ReturnValue1 { get; set; }
     }
 
-    public partial class DecimalsOutputDTO : DecimalsOutputDTOBase { }
+    public partial class DecimalsOutputDTO : DecimalsOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class DecimalsOutputDTOBase : IFunctionOutputDTO
@@ -283,13 +318,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual byte ReturnValue1 { get; set; }
     }
 
-
-
-
-
-
-
-    public partial class GetCurrentEraOutputDTO : GetCurrentEraOutputDTOBase { }
+    public partial class GetCurrentEraOutputDTO : GetCurrentEraOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class GetCurrentEraOutputDTOBase : IFunctionOutputDTO
@@ -298,7 +328,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual Era CurrentEra { get; set; }
     }
 
-    public partial class GetErasCountOutputDTO : GetErasCountOutputDTOBase { }
+    public partial class GetErasCountOutputDTO : GetErasCountOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class GetErasCountOutputDTOBase : IFunctionOutputDTO
@@ -307,7 +338,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual BigInteger ReturnValue1 { get; set; }
     }
 
-    public partial class GetOwnerAddressOutputDTO : GetOwnerAddressOutputDTOBase { }
+    public partial class GetOwnerAddressOutputDTO : GetOwnerAddressOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class GetOwnerAddressOutputDTOBase : IFunctionOutputDTO
@@ -316,7 +348,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual string ReturnValue1 { get; set; }
     }
 
-    public partial class GetStakedAmountOutputDTO : GetStakedAmountOutputDTOBase { }
+    public partial class GetStakedAmountOutputDTO : GetStakedAmountOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class GetStakedAmountOutputDTOBase : IFunctionOutputDTO
@@ -325,24 +358,30 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual BigInteger ReturnValue1 { get; set; }
     }
 
-    public partial class GetStakeholderInformationOutputDTO : GetStakeholderInformationOutputDTOBase { }
+    public partial class GetStakeholderInformationOutputDTO : GetStakeholderInformationOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class GetStakeholderInformationOutputDTOBase : IFunctionOutputDTO
     {
         [Parameter("uint256", "", 1)]
         public virtual BigInteger ReturnValue1 { get; set; }
+
         [Parameter("uint256", "", 2)]
         public virtual BigInteger ReturnValue2 { get; set; }
+
         [Parameter("uint256", "", 3)]
         public virtual BigInteger ReturnValue3 { get; set; }
+
         [Parameter("uint256", "", 4)]
         public virtual BigInteger ReturnValue4 { get; set; }
+
         [Parameter("bool", "", 5)]
         public virtual bool ReturnValue5 { get; set; }
     }
 
-    public partial class GetStakeholdersOutputDTO : GetStakeholdersOutputDTOBase { }
+    public partial class GetStakeholdersOutputDTO : GetStakeholdersOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class GetStakeholdersOutputDTOBase : IFunctionOutputDTO
@@ -351,7 +390,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual List<Stakeholder> Stakeholders { get; set; }
     }
 
-    public partial class GetValidatorsCountOutputDTO : GetValidatorsCountOutputDTOBase { }
+    public partial class GetValidatorsCountOutputDTO : GetValidatorsCountOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class GetValidatorsCountOutputDTOBase : IFunctionOutputDTO
@@ -360,9 +400,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual BigInteger ReturnValue1 { get; set; }
     }
 
-
-
-    public partial class NameOutputDTO : NameOutputDTOBase { }
+    public partial class NameOutputDTO : NameOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class NameOutputDTOBase : IFunctionOutputDTO
@@ -371,11 +410,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual string ReturnValue1 { get; set; }
     }
 
-
-
-
-
-    public partial class SymbolOutputDTO : SymbolOutputDTOBase { }
+    public partial class SymbolOutputDTO : SymbolOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class SymbolOutputDTOBase : IFunctionOutputDTO
@@ -384,7 +420,8 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         public virtual string ReturnValue1 { get; set; }
     }
 
-    public partial class TotalSupplyOutputDTO : TotalSupplyOutputDTOBase { }
+    public partial class TotalSupplyOutputDTO : TotalSupplyOutputDTOBase
+    { }
 
     [FunctionOutput]
     public class TotalSupplyOutputDTOBase : IFunctionOutputDTO
@@ -392,5 +429,4 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
         [Parameter("uint256", "", 1)]
         public virtual BigInteger ReturnValue1 { get; set; }
     }
-
 }

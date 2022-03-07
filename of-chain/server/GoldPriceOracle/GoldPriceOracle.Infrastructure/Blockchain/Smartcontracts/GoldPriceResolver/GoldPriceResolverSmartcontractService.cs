@@ -16,11 +16,12 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.GoldPriceReso
     public class GoldPriceResolverSmartcontractService : BaseSmartContractCallerService, IGoldPriceResolverSmartcontractService
     {
         private readonly GoldPriceResolverService _goldPriceResolverService;
+
         public GoldPriceResolverSmartcontractService(IOptionsMonitor<GoldPriceResolverOptions> goldPriceResolverOptionsMonitor,
-           IOptionsMonitor<BlockchainNetworkOptions> blockchainNetworkOptionsMonitor, 
-           OracleDbContext oracleDbContext) : 
+           IOptionsMonitor<BlockchainNetworkOptions> blockchainNetworkOptionsMonitor,
+           OracleDbContext oracleDbContext) :
             base(goldPriceResolverOptionsMonitor,
-                blockchainNetworkOptionsMonitor, 
+                blockchainNetworkOptionsMonitor,
                 oracleDbContext)
         {
             _goldPriceResolverService = new GoldPriceResolverService(Web3, Address);
@@ -28,6 +29,5 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.GoldPriceReso
 
         public async Task TryVoteForPriceRoundAsync(byte[] roundId, BigInteger price)
             => await _goldPriceResolverService.VotePriceForRoundRequestAsync(roundId, price);
-        
     }
 }

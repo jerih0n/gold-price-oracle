@@ -15,8 +15,9 @@ namespace GoldPriceOracle.Services.Services
     public class InformationService : BaseAuthorizedService, IInformationService
     {
         private readonly IGoldPriceOracleERC20TokenService _goldPriceOracleERC20TokenService;
-        public InformationService(INodeDataDataAccessService nodeDataDataAccessService, 
-            IGoldPriceOracleERC20TokenService goldPriceOracleERC20TokenService) : 
+
+        public InformationService(INodeDataDataAccessService nodeDataDataAccessService,
+            IGoldPriceOracleERC20TokenService goldPriceOracleERC20TokenService) :
             base(nodeDataDataAccessService)
         {
             _goldPriceOracleERC20TokenService = goldPriceOracleERC20TokenService;
@@ -27,7 +28,7 @@ namespace GoldPriceOracle.Services.Services
             try
             {
                 var autorizeResult = Authorize(password);
-                if(!autorizeResult.Item1)
+                if (!autorizeResult.Item1)
                 {
                     return TryResult<MnemonicPhraseModel>.Fail(autorizeResult.Item2);
                 }
@@ -38,7 +39,7 @@ namespace GoldPriceOracle.Services.Services
 
                 return TryResult<MnemonicPhraseModel>.Success(new MnemonicPhraseModel(decryptedMnemonic));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return TryResult<MnemonicPhraseModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }
@@ -58,18 +59,17 @@ namespace GoldPriceOracle.Services.Services
 
                 return TryResult<AddressInformation>.Success(new AddressInformation(nodeData.ActiveAddress));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return TryResult<AddressInformation>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }
-
         }
 
         public async Task<TryResult<OracleTokenBalance>> GetEthereumBalanceAsync(string password)
             => await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetEthAmountAsync, password, "ETH");
 
         public async Task<TryResult<OracleTokenBalance>> GetStakedAmountAsync(string password)
-             =>  await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetStakedBalanceAsync, password, _goldPriceOracleERC20TokenService.TokenSymbol);
+             => await GetBalanceAsync(_goldPriceOracleERC20TokenService.GetStakedBalanceAsync, password, _goldPriceOracleERC20TokenService.TokenSymbol);
 
         public async Task<TryResult<StakeholderInformationModel>> GetStakeholderInformationAsync(string password)
         {

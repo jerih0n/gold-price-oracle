@@ -7,7 +7,7 @@ namespace GoldPriceOracle.Connection.Database
         [Key]
         public long Id { get; set; }
 
-        [Required]      
+        [Required]
         public string Password { get; set; }
 
         [Required]

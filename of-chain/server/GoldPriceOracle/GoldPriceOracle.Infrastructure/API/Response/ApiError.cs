@@ -1,6 +1,4 @@
-﻿
-
-using System.Net;
+﻿using System.Net;
 
 namespace GoldPriceOracle.Infrastructure.API.Response
 {
@@ -11,6 +9,7 @@ namespace GoldPriceOracle.Infrastructure.API.Response
             Code = code;
             Description = description;
         }
+
         public HttpStatusCode Code { get; }
         public string Description { get; }
     }

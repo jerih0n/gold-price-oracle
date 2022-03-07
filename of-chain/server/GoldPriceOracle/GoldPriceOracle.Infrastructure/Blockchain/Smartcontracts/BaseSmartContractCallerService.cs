@@ -18,7 +18,7 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
 
         public BaseSmartContractCallerService(
             IOptionsMonitor<BaseSmartContractOptions> smartContractOptionsMonitor,
-            IOptionsMonitor<BlockchainNetworkOptions> blockchainNetworkOptionsMonitor, 
+            IOptionsMonitor<BlockchainNetworkOptions> blockchainNetworkOptionsMonitor,
             OracleDbContext oracleDbContext)
         {
             _smartContractOptionsMonitor = smartContractOptionsMonitor.CurrentValue;
@@ -42,6 +42,7 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
             Address = _smartContractOptionsMonitor.Address;
             WebSocketUrl = $"{_blockchainNetworkOptions.WebsocketUrl}:{_blockchainNetworkOptions.Port}";
         }
+
         protected string Address { get; }
         protected Web3 Web3 { get; }
         protected string WebSocketUrl { get; }
@@ -50,6 +51,5 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts
             => await Web3.Eth.GetBalance.SendRequestAsync(address);
 
         protected NodeData GetNodeData() => _oracleDbContext.NodeData.FirstOrDefault();
-
     }
 }

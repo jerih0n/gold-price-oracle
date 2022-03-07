@@ -32,7 +32,7 @@ namespace GoldPriceOracle.Services.Services
 
                 return TryResult<AssetPriceModel>.Success(assetPriceModel);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return TryResult<AssetPriceModel>.Fail(new ApiError(HttpStatusCode.InternalServerError, ex.Message));
             }

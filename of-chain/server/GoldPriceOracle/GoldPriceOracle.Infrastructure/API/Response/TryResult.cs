@@ -1,6 +1,4 @@
-﻿
-
-namespace GoldPriceOracle.Infrastructure.API.Response
+﻿namespace GoldPriceOracle.Infrastructure.API.Response
 {
     public class TryResult<TResult>
     {

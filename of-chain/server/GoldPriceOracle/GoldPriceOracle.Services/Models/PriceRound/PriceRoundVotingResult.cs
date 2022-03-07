@@ -7,6 +7,7 @@
             SuccessfullVote = successfullVote;
             Message = message;
         }
+
         private bool SuccessfullVote { get; }
         private string Message { get; }
     }

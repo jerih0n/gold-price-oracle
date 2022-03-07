@@ -27,6 +27,7 @@ namespace GoldPriceOracle.Infrastructure.Cryptography.AES
             }
             return clearText;
         }
+
         public static string Decrypt(string cipherText, string password)
         {
             cipherText = cipherText.Replace(" ", "+");

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Infrastructure.Background
 {
-    public sealed class BlockchainEventListener 
+    public sealed class BlockchainEventListener
     {
         private readonly HttpClient _httpClinet;
         private readonly BlockchainNetworkOptions _options;
@@ -38,7 +38,7 @@ namespace GoldPriceOracle.Infrastructure.Background
         public async Task SubscriteForNewPriceRoundEvent(string contractAddress)
            => await SybscribeForEvent<NewPriceVoteEventDTO>(contractAddress, HandleNewPriceRoundEvent);
 
-        private async Task SybscribeForEvent<TEvent>(string contractAddress,  Func<TEvent,Task> action) where TEvent : IEventDTO, new()
+        private async Task SybscribeForEvent<TEvent>(string contractAddress, Func<TEvent, Task> action) where TEvent : IEventDTO, new()
         {
             using (var client = new StreamingWebSocketClient(_webSocketUrl))
             {
@@ -75,7 +75,6 @@ namespace GoldPriceOracle.Infrastructure.Background
                 {
                     Thread.Sleep(1000);
                 }
-
             }
         }
 
@@ -89,9 +88,9 @@ namespace GoldPriceOracle.Infrastructure.Background
                 CurrencySymbol = newPriceVoteEventDTO.CurrencySymbol,
                 RoundId = newPriceVoteEventDTO.RoundId.ToHex()
             };
-        
+
             var requestJson = JsonConvert.SerializeObject(requst);
-            var stringContent = new StringContent(requestJson,Encoding.UTF8,"application/json");
+            var stringContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
 
             var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:5001/internal/new-price-round")
             {

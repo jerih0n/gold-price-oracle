@@ -12,7 +12,6 @@ namespace GoldPriceOracle.Node.RegistrationModules
             services.Configure<BlockchainNetworkOptions>(configuration.GetSection("Blockchain:BlockchainNetwork"));
             services.Configure<GoldPriceOracleERC20TokenOptions>(configuration.GetSection("Blockchain:SmartContracts:GoldPriceOracleERC20Token"));
             services.Configure<GoldPriceResolverOptions>(configuration.GetSection("Blockchain:SmartContracts:GoldPriceResolver"));
-
         }
     }
 }

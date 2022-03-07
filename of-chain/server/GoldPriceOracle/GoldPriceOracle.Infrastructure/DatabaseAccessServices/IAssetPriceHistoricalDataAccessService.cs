@@ -6,6 +6,7 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
     public interface IAssetPriceHistoricalDataAccessService
     {
         AssetHistoricData GetLatestAssetDataForCurrency(AssetsEnum assetsEnum, CurrenciesEnum currenciesEnum);
+
         bool AddNewHistoricData(AssetHistoricData assetHistoricData);
     }
 }

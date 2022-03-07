@@ -10,7 +10,7 @@ namespace GoldPriceOracle.Connection.Database
         public short Id { get; set; }
 
         [Required]
-        [MaxLength(3)]        
+        [MaxLength(3)]
         public string Code { get; set; }
     }
 }

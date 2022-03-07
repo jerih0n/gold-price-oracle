@@ -1,5 +1,4 @@
-﻿
-namespace GoldPriceOracle.Connection.Database.Enums
+﻿namespace GoldPriceOracle.Connection.Database.Enums
 {
     public enum CurrenciesEnum
     {

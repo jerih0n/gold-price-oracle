@@ -6,13 +6,14 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
     public class NodeDataAccessService : INodeDataDataAccessService
     {
         private readonly OracleDbContext _dbContext;
+
         public NodeDataAccessService(OracleDbContext oracleDbContext)
         {
             _dbContext = oracleDbContext;
         }
 
         public bool CreateNewNode(string password, string privateKey, string activeAddress, string mnemonic)
-        {           
+        {
             _dbContext.NodeData.Add(new NodeData
             {
                 Password = password,
@@ -23,7 +24,7 @@ namespace GoldPriceOracle.Infrastructure.DatabaseAccessServices
 
             _dbContext.SaveChanges();
 
-            return true;           
+            return true;
         }
 
         public NodeData GetNodeData()

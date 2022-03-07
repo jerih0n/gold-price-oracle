@@ -4,6 +4,7 @@ using Nethereum.RPC.Eth.DTOs;
 using Nethereum.Contracts.ContractHandlers;
 using System.Threading;
 using GoldPriceOracle.Connection.Blockchain.Contracts.GoldPriceResolver;
+using Nethereum.Web3;
 
 namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.GoldPriceResolver
 {
@@ -25,11 +26,11 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.GoldPriceResol
             return new GoldPriceResolverService(web3, receipt.ContractAddress);
         }
 
-        protected Nethereum.Web3.Web3 Web3{ get; }
+        protected Nethereum.Web3.Web3 Web3 { get; }
 
         public ContractHandler ContractHandler { get; }
 
-        public GoldPriceResolverService(Nethereum.Web3.Web3 web3, string contractAddress)
+        public GoldPriceResolverService(Web3 web3, string contractAddress)
         {
             Web3 = web3;
             ContractHandler = web3.Eth.GetContractHandler(contractAddress);
@@ -47,58 +48,58 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.GoldPriceResol
 
         public Task<string> StartNewPriceRoundRequestAsync(StartNewPriceRoundFunction startNewPriceRoundFunction)
         {
-             return ContractHandler.SendRequestAsync(startNewPriceRoundFunction);
+            return ContractHandler.SendRequestAsync(startNewPriceRoundFunction);
         }
 
         public Task<TransactionReceipt> StartNewPriceRoundRequestAndWaitForReceiptAsync(StartNewPriceRoundFunction startNewPriceRoundFunction, CancellationTokenSource cancellationToken = null)
         {
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(startNewPriceRoundFunction, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(startNewPriceRoundFunction, cancellationToken);
         }
 
         public Task<string> StartNewPriceRoundRequestAsync(string nodeAddress_, BigInteger price_)
         {
             var startNewPriceRoundFunction = new StartNewPriceRoundFunction();
-                startNewPriceRoundFunction.NodeAddress_ = nodeAddress_;
-                startNewPriceRoundFunction.Price_ = price_;
-            
-             return ContractHandler.SendRequestAsync(startNewPriceRoundFunction);
+            startNewPriceRoundFunction.NodeAddress_ = nodeAddress_;
+            startNewPriceRoundFunction.Price_ = price_;
+
+            return ContractHandler.SendRequestAsync(startNewPriceRoundFunction);
         }
 
         public Task<TransactionReceipt> StartNewPriceRoundRequestAndWaitForReceiptAsync(string nodeAddress_, BigInteger price_, CancellationTokenSource cancellationToken = null)
         {
             var startNewPriceRoundFunction = new StartNewPriceRoundFunction();
-                startNewPriceRoundFunction.NodeAddress_ = nodeAddress_;
-                startNewPriceRoundFunction.Price_ = price_;
-            
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(startNewPriceRoundFunction, cancellationToken);
+            startNewPriceRoundFunction.NodeAddress_ = nodeAddress_;
+            startNewPriceRoundFunction.Price_ = price_;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(startNewPriceRoundFunction, cancellationToken);
         }
 
         public Task<string> VotePriceForRoundRequestAsync(VotePriceForRoundFunction votePriceForRoundFunction)
         {
-             return ContractHandler.SendRequestAsync(votePriceForRoundFunction);
+            return ContractHandler.SendRequestAsync(votePriceForRoundFunction);
         }
 
         public Task<TransactionReceipt> VotePriceForRoundRequestAndWaitForReceiptAsync(VotePriceForRoundFunction votePriceForRoundFunction, CancellationTokenSource cancellationToken = null)
         {
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(votePriceForRoundFunction, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(votePriceForRoundFunction, cancellationToken);
         }
 
         public Task<string> VotePriceForRoundRequestAsync(byte[] roundId_, BigInteger price_)
         {
             var votePriceForRoundFunction = new VotePriceForRoundFunction();
-                votePriceForRoundFunction.RoundId_ = roundId_;
-                votePriceForRoundFunction.Price_ = price_;
-            
-             return ContractHandler.SendRequestAsync(votePriceForRoundFunction);
+            votePriceForRoundFunction.RoundId_ = roundId_;
+            votePriceForRoundFunction.Price_ = price_;
+
+            return ContractHandler.SendRequestAsync(votePriceForRoundFunction);
         }
 
         public Task<TransactionReceipt> VotePriceForRoundRequestAndWaitForReceiptAsync(byte[] roundId_, BigInteger price_, CancellationTokenSource cancellationToken = null)
         {
             var votePriceForRoundFunction = new VotePriceForRoundFunction();
-                votePriceForRoundFunction.RoundId_ = roundId_;
-                votePriceForRoundFunction.Price_ = price_;
-            
-             return ContractHandler.SendRequestAndWaitForReceiptAsync(votePriceForRoundFunction, cancellationToken);
+            votePriceForRoundFunction.RoundId_ = roundId_;
+            votePriceForRoundFunction.Price_ = price_;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(votePriceForRoundFunction, cancellationToken);
         }
     }
 }

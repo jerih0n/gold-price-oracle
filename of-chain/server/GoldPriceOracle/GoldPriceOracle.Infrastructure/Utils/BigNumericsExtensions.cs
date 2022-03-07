@@ -23,15 +23,15 @@ namespace GoldPriceOracle.Infrastructure.Utils
         {
             var nonIntegerPart = Math.Truncate(value);
             string franctionalPartAsString = "";
-            if(nonIntegerPart < value)
+            if (nonIntegerPart < value)
             {
                 // we have a decimal part!
                 int fractionalPart = new Version(value.ToString()).Minor; //SUPPER HACK !
                 franctionalPartAsString = fractionalPart.ToString();
             }
-            
+
             var truncatedNumbersCount = franctionalPartAsString.Length;
-            for(int i = 0; i< truncatedNumbersCount; i++)
+            for (int i = 0; i < truncatedNumbersCount; i++)
             {
                 value = value * 10;
             }
@@ -40,7 +40,6 @@ namespace GoldPriceOracle.Infrastructure.Utils
             var result = new BigInteger(value) * BigInteger.Pow(10, remainingZeroes);
 
             return result;
-
         }
     }
 }

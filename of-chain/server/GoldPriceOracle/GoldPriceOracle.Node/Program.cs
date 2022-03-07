@@ -22,13 +22,12 @@ namespace GoldPriceOracle.Node
             Task.Factory.StartNew(() => blockchainEventListener.SubscriteForNewPriceRoundEvent(GetGoldPriceResolverAddress(config)));
 
             await CreateHostBuilder(null).Build().RunAsync();
-           
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
-                {   
+                {
                     webBuilder.UseStartup<Startup>();
                 });
 
@@ -49,6 +48,5 @@ namespace GoldPriceOracle.Node
 
         private static string GetGoldPriceResolverAddress(IConfigurationRoot config)
              => config.GetSection("Blockchain:SmartContracts:GoldPriceResolver").GetValue<string>("Address");
-        
     }
 }

@@ -26,9 +26,9 @@ namespace GoldPriceOracle.Infrastructure.Integration.ExternalAPI
             var httpMessage = new HttpRequestMessage(HttpMethod.Get, fullUrl);
             httpMessage.Headers.Add("x-access-token", _options.ApiKey);
 
-            var result =  await httpClient.SendAsync(httpMessage);
+            var result = await httpClient.SendAsync(httpMessage);
 
-            if(!result.IsSuccessStatusCode)
+            if (!result.IsSuccessStatusCode)
             {
                 return TryResult<ExterlApiCallResponse>.Fail(new ApiError(result.StatusCode, result.ReasonPhrase));
             }

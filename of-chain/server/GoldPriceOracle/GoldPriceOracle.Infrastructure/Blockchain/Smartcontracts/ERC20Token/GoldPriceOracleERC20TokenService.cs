@@ -12,10 +12,10 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
     {
         private readonly GoldOracleTokenService _goldOracleTokenService;
 
-        public GoldPriceOracleERC20TokenService(IOptionsMonitor<GoldPriceOracleERC20TokenOptions> goldPriceOracleErc20TokenOptionsManager, 
-            IOptionsMonitor<BlockchainNetworkOptions> blockchainNetworOptionskMonitor, 
-            OracleDbContext oracleDbContext) 
-            : base(goldPriceOracleErc20TokenOptionsManager, 
+        public GoldPriceOracleERC20TokenService(IOptionsMonitor<GoldPriceOracleERC20TokenOptions> goldPriceOracleErc20TokenOptionsManager,
+            IOptionsMonitor<BlockchainNetworkOptions> blockchainNetworOptionskMonitor,
+            OracleDbContext oracleDbContext)
+            : base(goldPriceOracleErc20TokenOptionsManager,
                   blockchainNetworOptionskMonitor,
                   oracleDbContext)
         {

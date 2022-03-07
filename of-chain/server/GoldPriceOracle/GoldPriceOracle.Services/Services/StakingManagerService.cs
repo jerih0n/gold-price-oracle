@@ -14,7 +14,7 @@ namespace GoldPriceOracle.Services.Services
     {
         private readonly IGoldPriceOracleERC20TokenService _goldPriceOracleERC20TokenService;
 
-        public StakingManagerService(IGoldPriceOracleERC20TokenService goldPriceOracleERC20TokenService, 
+        public StakingManagerService(IGoldPriceOracleERC20TokenService goldPriceOracleERC20TokenService,
             INodeDataDataAccessService nodeDataDataAccessService) :
             base(nodeDataDataAccessService)
         {

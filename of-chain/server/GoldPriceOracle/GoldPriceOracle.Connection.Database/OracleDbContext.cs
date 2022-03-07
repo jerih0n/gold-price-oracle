@@ -6,9 +6,8 @@ namespace GoldPriceOracle.Connection.Database
     {
         public OracleDbContext(DbContextOptions options) : base(options)
         {
-
         }
-        
+
         public DbSet<NodeData> NodeData { get; set; }
         public DbSet<Asset> Assets { get; set; }
         public DbSet<FiatCurrency> FiatCurrencies { get; set; }
