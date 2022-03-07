@@ -38,7 +38,7 @@ namespace GoldPriceOracle.Infrastructure.Background
         }
 
         public async Task SubscriteForNewPriceRoundVoteEvent(string contractAddress)
-           => await SybscribeForEvent<NewPriceVoteEventDTO>(contractAddress, HandleNewPriceRoundEvent);
+           => await SybscribeForEvent<NewPriceVoteEventDTO>(contractAddress, HandleNewPriceRoundVoteEvent);
 
         public async Task SubscribeForNewEraEvent(string contractAddress)
           => await SybscribeForEvent<StartNewEraEventDTO>(contractAddress, HandleStartNewEraEvent);
@@ -52,7 +52,7 @@ namespace GoldPriceOracle.Infrastructure.Background
             {
                 // create a log filter specific to Transfers
                 // this filter will match any Transfer (matching the signature) regardless of address
-                var filterTransfers = _web3.Eth.GetEvent<NewPriceVoteEventDTO>(contractAddress).CreateFilterInput();
+                var filterTransfers = _web3.Eth.GetEvent<TEvent>(contractAddress).CreateFilterInput();
 
                 // create the subscription
                 // it won't do anything yet
@@ -86,7 +86,7 @@ namespace GoldPriceOracle.Infrastructure.Background
             }
         }
 
-        private async Task HandleNewPriceRoundEvent(NewPriceVoteEventDTO newPriceVoteEventDTO)
+        private async Task HandleNewPriceRoundVoteEvent(NewPriceVoteEventDTO newPriceVoteEventDTO)
         {
             var requst = new NewPriceRoundVoteRequest(newPriceVoteEventDTO.AssetSymbol,
                 newPriceVoteEventDTO.CurrencySymbol,
@@ -100,7 +100,7 @@ namespace GoldPriceOracle.Infrastructure.Background
 
         private async Task HandleStartNewEraEvent(StartNewEraEventDTO startNewEraEventDTO)
         {
-            var request = new StarNewEraEventRequest(startNewEraEventDTO.NewEraId_.ToString(), startNewEraEventDTO.NewEraId_.ToHex());
+            var request = new StarNewEraEventRequest(startNewEraEventDTO.UtcTimeStamp_.ToString(), startNewEraEventDTO.NewEraId_.ToHex());
             await SendInternalHttpPostRequestAsync(request, "new-era-start");
         }
 

@@ -17,13 +17,13 @@ namespace GoldPriceOracle.Node.Controllers
         }
 
         [HttpPost("start-new-price-round")]
-        public async Task<IActionResult> NewPriceRoundAsync()
+        public async Task<IActionResult> NewPriceRoundAsync([FromBody] StartNewPriceRoundContract starNewEraEventContract)
         {
             return Ok();
         }
 
         [HttpPost("new-era-start")]
-        public async Task<IActionResult> StartNewEraAsync()
+        public async Task<IActionResult> StartNewEraAsync([FromBody] StarNewEraEventContract starNewEraEventContract)
         {
             return Ok();
         }

@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-import "../resolvers/GoldPriceResolver.sol";
+import "../resolvers/interfaces/IBaseResolver.sol";
 import "../utils/Rounds.sol";
 import "../../token/Interfaces/IErasMonitor.sol";
 import "../../token/utils/Eras.sol";
@@ -9,7 +9,7 @@ contract Timer {
     uint256 constant UTC_TIMESTAMP_ONE_MINUTE = 60;
     uint256 immutable _timeStepForNewPriceRound = 3 * UTC_TIMESTAMP_ONE_MINUTE;
     uint256 immutable _timeStepForNewEra = 48 * 60 * UTC_TIMESTAMP_ONE_MINUTE; // new era on each 48 hours. should be much lower for testing
-    GoldPriceResolver private immutable _resolver;
+    IBaseResolver private immutable _resolver;
     IErasMonitor private immutable _erasMonitor;
     uint256 immutable _initialTimeStamp;
     uint256 private lastRoundsCount = 0;
@@ -25,7 +25,7 @@ contract Timer {
         uint256 initialTimeStamp_
     ) {
         _initialTimeStamp = initialTimeStamp_;
-        _resolver = GoldPriceResolver(resolverAddress_);
+        _resolver = IBaseResolver(resolverAddress_);
         _erasMonitor = IErasMonitor(erasMonitor_);
         _owner = msg.sender;
     }

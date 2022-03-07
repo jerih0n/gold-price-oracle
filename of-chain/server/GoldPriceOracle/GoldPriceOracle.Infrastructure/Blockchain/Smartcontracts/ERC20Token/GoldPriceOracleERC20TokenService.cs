@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
 {
-    public class GoldPriceOracleERC20TokenService : BaseSmartContractCallerService, IGoldPriceOracleERC20TokenService
+    public class GoldPriceOracleERC20TokenService : BaseSmartContractCallerService, IGoldPriceOracleERC20TokenService, IProofOfStakeTokenService
     {
         private readonly GoldOracleTokenService _goldOracleTokenService;
 
@@ -40,6 +40,15 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
 
         public async Task<GetStakeholdersOutputDTO> GetStakeholdersAsync()
             => await _goldOracleTokenService.GetStakeholdersQueryAsync();
+
+        public async Task<GetCurrentEraOutputDTO> GetCurrentEraAsync()
+            => await _goldOracleTokenService.GetCurrentEraQueryAsync();
+
+        public async Task EndCurrentEraAsync()
+            => await _goldOracleTokenService.EndCurrentEraRequestAsync();
+
+        public async Task StartNewEraAsync()
+            => await _goldOracleTokenService.StartNewEraRequestAsync();
 
         public string TokenSymbol { get; }
     }
