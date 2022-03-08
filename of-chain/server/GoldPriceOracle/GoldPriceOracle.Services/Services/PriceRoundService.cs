@@ -4,7 +4,7 @@ using GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.GoldPriceResolver
 using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
 using GoldPriceOracle.Infrastructure.Utils;
 using GoldPriceOracle.Services.Interfaces;
-using GoldPriceOracle.Services.Models.PriceRound;
+using GoldPriceOracle.Services.Models.Voting;
 using System;
 using System.Threading.Tasks;
 
@@ -29,7 +29,7 @@ namespace GoldPriceOracle.Services.Services
             _integrationService = integrationService;
         }
 
-        public async Task<TryResult<PriceRoundVotingResult>> TryVoteForNewPriceRoundAsync(string roundId,
+        public async Task<TryResult<VotingResult>> TryVoteForNewPriceRoundAsync(string roundId,
             string priceAsBigNumber,
             string proposalAddress,
             string assetCode,
@@ -40,22 +40,22 @@ namespace GoldPriceOracle.Services.Services
                 var nodeData = _nodeDataDataAccessService.GetNodeData();
                 if (nodeData == null)
                 {
-                    return TryResult<PriceRoundVotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, NODE_DATA_NOT_SET_ERROR_MESSAGE));
+                    return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, NODE_DATA_NOT_SET_ERROR_MESSAGE));
                 }
 
                 var address = nodeData.ActiveAddress;
                 if (proposalAddress.ToLower() == address.ToLower())
                 {
-                    var result = new PriceRoundVotingResult(false, NODE_IS_ROUND_PROPOSAL_ERROR_MESSAGE);
+                    var result = new VotingResult(false, NODE_IS_ROUND_PROPOSAL_ERROR_MESSAGE);
 
-                    return TryResult<PriceRoundVotingResult>.Success(result);
+                    return TryResult<VotingResult>.Success(result);
                 }
 
                 var response = await _integrationService.GetAssetPriceModelAsync(assetCode.ToUpper(), CurrenciesEnum.USD.ToString().ToUpper());
 
                 if (!response.IsSuccessfull)
                 {
-                    return TryResult<PriceRoundVotingResult>.Fail(response.Error);
+                    return TryResult<VotingResult>.Fail(response.Error);
                 }
 
                 var priceAsBigInteger = response.Item.Price.ToBigIntegerWithDefaultDecimals();
@@ -63,11 +63,11 @@ namespace GoldPriceOracle.Services.Services
                 await _goldPriceResolverService.TryVoteForPriceRoundAsync(roundId.ToByteArray(), priceAsBigInteger);
 
                 // TODO: record all the activity into the database
-                return TryResult<PriceRoundVotingResult>.Success(new PriceRoundVotingResult(true, NODE_VOTED_SUCCESSFULLY_MESSAGE));
+                return TryResult<VotingResult>.Success(new VotingResult(true, NODE_VOTED_SUCCESSFULLY_MESSAGE));
             }
             catch (Exception ex)
             {
-                return TryResult<PriceRoundVotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, ex.Message));
+                return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, ex.Message));
             }
         }
     }

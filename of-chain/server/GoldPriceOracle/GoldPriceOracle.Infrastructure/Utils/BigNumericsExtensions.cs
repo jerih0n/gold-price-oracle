@@ -19,6 +19,11 @@ namespace GoldPriceOracle.Infrastructure.Utils
             return (bigDecimal / BigDecimal.Pow(10, 18)) / 10;
         }
 
+        public static int NormalizeToIntWithDefaultDecimals(this BigInteger bigInteger)
+        {
+            return (int)(bigInteger / BigInteger.Pow(10, 18)) / 100;
+        }
+
         public static BigInteger ToBigIntegerWithDefaultDecimals(this decimal value)
         {
             var nonIntegerPart = Math.Truncate(value);

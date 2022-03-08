@@ -10,5 +10,7 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
         Task EndCurrentEraAsync();
 
         Task StartNewEraAsync();
+
+        Task<GetStakeholdersOutputDTO> GetStakeholdersAsync();
     }
 }

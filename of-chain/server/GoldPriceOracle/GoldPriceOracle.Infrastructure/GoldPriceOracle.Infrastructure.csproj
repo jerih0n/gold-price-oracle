@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Blockchain\Smartcontracts\ProofOfStake\" />
+    <Folder Include="Cryptography\NewFolder\" />
   </ItemGroup>
 
 </Project>
