@@ -21,6 +21,7 @@ namespace GoldPriceOracle.Services.Services
         private const string NODE_DATA_NOT_FOUND = "Node is not set up. You need to set the node";
         private const string NODE_IS_NOT_PREVIOUS_CHAIRMAN = "Node is not previous chairman. Cannot propose new election";
         private const string NO_STAKEHOLDERS_FOUND = "No validator stakeholders found";
+        private const string NEW_ERA_COUNCIL_PROPOSED = "New era council had been proposed";
 
         private readonly IProofOfStakeTokenService _proofOfStakeTokenService;
         private readonly INodeDataDataAccessService _nodeDataDataAccessService;
@@ -60,7 +61,17 @@ namespace GoldPriceOracle.Services.Services
             {
                 return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, NO_STAKEHOLDERS_FOUND));
             }
-            throw new NotImplementedException();
+            try
+            {
+                var (chairman, coucil) = ElectNewEraCouncil(validators, eraId);
+                //TODO: propose new era to the blockchain
+
+                return TryResult<VotingResult>.Success(new VotingResult(true, NEW_ERA_COUNCIL_PROPOSED));
+            }
+            catch (Exception ex)
+            {
+                return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, ex.Message));
+            }
         }
 
         private async Task<ImmutableList<EraElectableMember>> GetValidators()
@@ -114,8 +125,15 @@ namespace GoldPriceOracle.Services.Services
 
             //we must elect 10 unique validators
             //TODO:
-            HashSet<string> concil = new HashSet<string>();
-            throw new Exception();
+            HashSet<string> council = new HashSet<string>();
+            while (council.Count < maxConcilMembers)
+            {
+                var randomNumber = _deterministicRandomGenerator.Next(totalWeight);
+                var coucilMember = validators.First(x => (randomNumber -= x.TotalAmountAsWeight) < 0);
+                council.Add(coucilMember.Address);
+            }
+
+            return (chairman.Address, council.ToImmutableList());
         }
     }
 }

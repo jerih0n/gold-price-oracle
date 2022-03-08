@@ -6,7 +6,7 @@
 
         public static bool IsNullAddress(this string address)
         {
-            return address.ToUpper() == NULL_ADDRESS;
+            return address == NULL_ADDRESS;
         }
 
         public static bool IsAddressEqualTo(this string address, string compareAddress)

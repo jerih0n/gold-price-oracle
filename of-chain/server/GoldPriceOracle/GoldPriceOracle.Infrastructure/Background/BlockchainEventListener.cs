@@ -101,7 +101,7 @@ namespace GoldPriceOracle.Infrastructure.Background
         private async Task HandleStartNewEraEvent(StartNewEraEventDTO startNewEraEventDTO)
         {
             var request = new StarNewEraEventRequest(startNewEraEventDTO.UtcTimeStamp_.ToString(), startNewEraEventDTO.NewEraId_.ToHex());
-            await SendInternalHttpPostRequestAsync(request, "new-era-start");
+            await SendInternalHttpPostRequestAsync(request, "new-era-election");
         }
 
         private async Task HandleStartNewPriceRoundEvent(StarNewPriceRoundEventDTO starNewPriceRoundEventDTO)
