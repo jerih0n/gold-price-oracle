@@ -12,5 +12,6 @@ library Eras {
         uint256 possitiveVotes;
         uint256 negativeVotes;
         bool accepted;
+        bool ended;
     }
 }

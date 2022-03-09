@@ -69,6 +69,11 @@
               "internalType": "bool",
               "name": "accepted",
               "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "ended",
+              "type": "bool"
             }
           ],
           "internalType": "struct Eras.Era",
@@ -80,7 +85,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getCurrentEra\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"colectedFeesAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"startDate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endDate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"chairman\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"requiredQuorum\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isQuorumReached\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"possitiveVotes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"negativeVotes\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"accepted\",\"type\":\"bool\"}],\"internalType\":\"struct Eras.Era\",\"name\":\"currentEra\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getErasCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":\"IErasMonitor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":{\"keccak256\":\"0xca9fa16bbf649f3ae6308bda9ac649482025177302797f9b47dbf1b5b9dcd787\",\"urls\":[\"bzz-raw://30cf6c708366f099799f7f22357bb415c2c0d3f1c30ff4527a67e54d634ab1f7\",\"dweb:/ipfs/QmRbwtQiL4rrRudNY6rR8A4HnZaySaDXoo7FYUhuWWhJGY\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0xd5f2998653b931a2d5b5505b6e409a4f4bd3c234fc9c870513192adceea661ba\",\"urls\":[\"bzz-raw://09de357483209a58666e54e9fe5013a5b8e50c06eacfc336fe0bb109102a5266\",\"dweb:/ipfs/QmV6C5ggzjC8cyXMH9YuQoURqhFMFcJqkq54ShqpV484WR\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getCurrentEra\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"colectedFeesAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"startDate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endDate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"chairman\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"requiredQuorum\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isQuorumReached\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"possitiveVotes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"negativeVotes\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"accepted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"ended\",\"type\":\"bool\"}],\"internalType\":\"struct Eras.Era\",\"name\":\"currentEra\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getErasCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":\"IErasMonitor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":{\"keccak256\":\"0xca9fa16bbf649f3ae6308bda9ac649482025177302797f9b47dbf1b5b9dcd787\",\"urls\":[\"bzz-raw://30cf6c708366f099799f7f22357bb415c2c0d3f1c30ff4527a67e54d634ab1f7\",\"dweb:/ipfs/QmRbwtQiL4rrRudNY6rR8A4HnZaySaDXoo7FYUhuWWhJGY\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0x7bc2d69ebe93e972aca1cc4b55265230953ce12b9d598ba2375f152c83635184\",\"urls\":[\"bzz-raw://4e06f321f70f96f0dd920489f851ed32e9ebac219806150d84673540fb9c2ab3\",\"dweb:/ipfs/QmQynTSZfpape9BHRxBHz7gNMAbXf9eSxYPA6EkBBzrjK3\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -94,7 +99,7 @@
     "absolutePath": "project:/contracts/token/Interfaces/IErasMonitor.sol",
     "exportedSymbols": {
       "Eras": [
-        2802
+        2917
       ],
       "IErasMonitor": [
         1775
@@ -120,7 +125,7 @@
         "id": 1763,
         "nodeType": "ImportDirective",
         "scope": 1776,
-        "sourceUnit": 2803,
+        "sourceUnit": 2918,
         "src": "27:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -220,7 +225,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$2801_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$2916_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
@@ -230,13 +235,13 @@
                       "id": 1770,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2801,
+                      "referencedDeclaration": 2916,
                       "src": "200:8:14"
                     },
-                    "referencedDeclaration": 2801,
+                    "referencedDeclaration": 2916,
                     "src": "200:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$2801_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$2916_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -262,7 +267,7 @@
     "absolutePath": "project:/contracts/token/Interfaces/IErasMonitor.sol",
     "exportedSymbols": {
       "Eras": [
-        2802
+        2917
       ],
       "IErasMonitor": [
         1775
@@ -288,7 +293,7 @@
         "id": 1763,
         "nodeType": "ImportDirective",
         "scope": 1776,
-        "sourceUnit": 2803,
+        "sourceUnit": 2918,
         "src": "27:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -388,7 +393,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$2801_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$2916_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
@@ -398,13 +403,13 @@
                       "id": 1770,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2801,
+                      "referencedDeclaration": 2916,
                       "src": "200:8:14"
                     },
-                    "referencedDeclaration": 2801,
+                    "referencedDeclaration": 2916,
                     "src": "200:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$2801_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$2916_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -432,7 +437,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-09T10:43:36.361Z",
+  "updatedAt": "2022-03-09T22:14:37.545Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

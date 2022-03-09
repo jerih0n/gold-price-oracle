@@ -8,14 +8,18 @@ import "../Interfaces/IErasMonitor.sol";
 import "../utils/ErasVotes.sol";
 
 contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
-    uint256 constant MAX_COUICIL_MEMBERS_COUNT = 10;
-
+    uint256 private constant MAX_COUICIL_MEMBERS_COUNT = 10;
+    uint256
+        private constant MINIMUM_QUORUM_REQUURED_FOR_VALIDATION_IN_PERCENTS =
+        51;
     uint256 immutable _rewardForValidatorsAfterEachEra;
     mapping(bytes32 => Eras.Era) internal _eras;
     mapping(bytes32 => mapping(address => ErasVotes.ErasVote))
         internal _eraValidatorVotes;
     mapping(bytes32 => address[]) internal _erasCouncil;
-    Eras.Era internal _currentEra;
+    bytes32 internal _activeEraId;
+    bytes32 internal _previousEraId;
+    bytes32 internal _lastApprovedEra;
 
     constructor(
         string memory name_,
@@ -30,10 +34,17 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         bytes32 eraId,
         address chairman,
         address[] council,
-        uint256 validatorsCount
+        uint256 validatorsCount,
+        uint256 calculatedSeed
     );
 
     event NewEraElectionComplited(Eras.Era era);
+
+    event EndEraByNewElectedChairman(
+        bytes32 eraId,
+        address chairman,
+        uint256 timestap
+    );
 
     modifier onlyValidatorAction() {
         uint256 validatorNodeIndex = _validatorsStakeholderIndexes[msg.sender];
@@ -46,53 +57,62 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         return _validatorsCount;
     }
 
-    function getStakeholders()
-        external
-        view
-        override
-        returns (Stakeholders.Stakeholder[] memory stakeholders)
-    {
-        return _stakeholders;
-    }
-
     function getCurrentEra()
         external
         view
         override
         returns (Eras.Era memory currentEra)
     {
-        return _currentEra;
+        return _eras[_activeEraId];
     }
 
     function getErasCount() external view override returns (uint256) {
         return _erasCount;
     }
 
-    function endCurrentEra() external {
+    function endEra(uint256 timestamp) external override {
         address caller = msg.sender;
-        Eras.Era memory lastEra = _getCurrentEraInternal();
+        Eras.Era memory futureEra = _eras[_lastApprovedEra];
+
         //TODO: validation for time elapsed
         require(
-            caller == lastEra.chairman,
+            caller == futureEra.chairman,
             "Only chairman can end current era"
         );
-        _payReward(
-            lastEra.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
-            caller
-        );
+        if (_previousEraId == 0 && _activeEraId == 0) {
+            //corner case . The only time when this will be executed
+            //is on the very firs era
+            //no fees for distribution
+            //and auto set previous era as current era
+            _previousEraId = _lastApprovedEra;
+        } else {
+            _payReward(
+                futureEra.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
+                caller
+            );
+            _previousEraId = _activeEraId;
+        }
+        _activeEraId = _lastApprovedEra;
+
+        emit EndEraByNewElectedChairman(_activeEraId, caller, timestamp);
+        //more complex stuff - add validation for timestamp by nodes, with another vote and
+        //if proposed timestamp is wrong, and consensus is reached - punish the node
+        //that execute this code. For now this will not be implemented
     }
 
     function proposeNewEra(
         bytes32 eraId_,
         address chairman_,
         address[] memory coucil_,
-        uint256 utcTimeStamp_
-    ) external {
+        uint256 utcTimeStamp_,
+        uint256 calculatedSeed_
+    ) external override {
         address caller = msg.sender;
-        if (_currentEra.chairman != address(0)) {
+        Eras.Era memory currentEra = _getCurrentEraInternal();
+        if (currentEra.chairman != address(0)) {
             //this is not the first era. Only previous chairman can propose new election
             require(
-                caller == _currentEra.chairman,
+                caller == currentEra.chairman,
                 "Caller not previous era chairman. Access denied"
             );
         }
@@ -110,23 +130,26 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             startDate: utcTimeStamp_,
             endDate: 0,
             chairman: chairman_,
-            requiredQuorum: 0, //51% of all validators
+            requiredQuorum: _calculateMinimumNodesCountForReachingQuorum(), //51% of all validators
             isQuorumReached: false,
             possitiveVotes: 0,
             negativeVotes: 0,
-            accepted: false
+            accepted: false,
+            ended: false
         });
 
         emit NewEraElecationProposal(
             eraId_,
             chairman_,
             coucil_,
-            _validatorsCount
+            _validatorsCount,
+            calculatedSeed_
         );
     }
 
     function voteForProposedEra(bytes32 eraId, bool approves)
         external
+        override
         onlyValidatorAction
     {
         Eras.Era storage era = _eras[eraId];
@@ -160,6 +183,7 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
                 //era election is approved!
                 era.isQuorumReached = true;
                 era.accepted = true;
+                _lastApprovedEra = eraId;
             }
         } else {
             era.negativeVotes++;
@@ -167,6 +191,8 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
                 //era election is denied!
                 era.isQuorumReached = true;
                 era.accepted = false;
+                //TODO: initialized a revote and new proposal!
+                //TODO: punish the era proposal node (slash)
             }
         }
 
@@ -175,14 +201,12 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         }
     }
 
-    function startNewEra() external returns (bytes32) {}
-
     function _getCurrentEraInternal()
         internal
         view
         returns (Eras.Era memory era)
     {
-        return _currentEra;
+        return _eras[_activeEraId];
     }
 
     function _payReward(uint256 tokenAmountForDistribution_, address chainman_)
@@ -207,5 +231,21 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             chairmainsReward;
 
         //TODO: calculate remaining rewards for the rest of the voting council for this era
+    }
+
+    function _calculateMinimumNodesCountForReachingQuorum()
+        private
+        view
+        returns (uint256)
+    {
+        //TODO get from PoSS
+        if (_validatorsCount == 1) {
+            return 1;
+        }
+
+        uint256 nodesRequiredForQuorum = (_validatorsCount *
+            MINIMUM_QUORUM_REQUURED_FOR_VALIDATION_IN_PERCENTS) / 100;
+
+        return nodesRequiredForQuorum;
     }
 }

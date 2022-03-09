@@ -4,9 +4,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "../Interfaces/IStakable.sol";
 import "../utils/NominatingStakeholders.sol";
 import "../utils/Eras.sol";
-import "../Interfaces/IProofOfStake.sol";
-import "../Interfaces/IErasMonitor.sol";
-import "../utils/ErasVotes.sol";
 
 contract ERC20Stakable is IStakable, ERC20 {
     uint256 immutable _minStakedAmountForValidation;
@@ -75,6 +72,15 @@ contract ERC20Stakable is IStakable, ERC20 {
             stakeholder.nominatorsCount,
             stakeholder.canValidate
         );
+    }
+
+    function getStakeholders()
+        external
+        view
+        override
+        returns (Stakeholders.Stakeholder[] memory stakeholders)
+    {
+        return _stakeholders;
     }
 
     function stake(uint256 amount_) external override {

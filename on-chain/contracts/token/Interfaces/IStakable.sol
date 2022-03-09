@@ -1,5 +1,7 @@
 pragma solidity ^0.8.0;
 
+import "../utils/NominatingStakeholders.sol";
+
 interface IStakable {
     function getStakedAmount(address address_) external view returns (uint256);
 
@@ -17,4 +19,9 @@ interface IStakable {
             uint256,
             bool
         );
+
+    function getStakeholders()
+        external
+        view
+        returns (Stakeholders.Stakeholder[] memory stakeholders);
 }
