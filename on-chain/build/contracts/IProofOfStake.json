@@ -79,13 +79,13 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2780
+        2802
       ],
       "IProofOfStake": [
         1792
       ],
       "Stakeholders": [
-        2806
+        2828
       ]
     },
     "id": 1793,
@@ -108,7 +108,7 @@
         "id": 1778,
         "nodeType": "ImportDirective",
         "scope": 1793,
-        "sourceUnit": 2781,
+        "sourceUnit": 2803,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -119,7 +119,7 @@
         "id": 1779,
         "nodeType": "ImportDirective",
         "scope": 1793,
-        "sourceUnit": 2807,
+        "sourceUnit": 2829,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -219,7 +219,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2827_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct Stakeholders.Stakeholder[]"
                   },
                   "typeName": {
@@ -230,13 +230,13 @@
                         "id": 1786,
                         "name": "Stakeholders.Stakeholder",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 2805,
+                        "referencedDeclaration": 2827,
                         "src": "283:24:15"
                       },
-                      "referencedDeclaration": 2805,
+                      "referencedDeclaration": 2827,
                       "src": "283:24:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Stakeholder_$2805_storage_ptr",
+                        "typeIdentifier": "t_struct$_Stakeholder_$2827_storage_ptr",
                         "typeString": "struct Stakeholders.Stakeholder"
                       }
                     },
@@ -244,7 +244,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "283:26:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2827_storage_$dyn_storage_ptr",
                       "typeString": "struct Stakeholders.Stakeholder[]"
                     }
                   },
@@ -270,13 +270,13 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2780
+        2802
       ],
       "IProofOfStake": [
         1792
       ],
       "Stakeholders": [
-        2806
+        2828
       ]
     },
     "id": 1793,
@@ -299,7 +299,7 @@
         "id": 1778,
         "nodeType": "ImportDirective",
         "scope": 1793,
-        "sourceUnit": 2781,
+        "sourceUnit": 2803,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -310,7 +310,7 @@
         "id": 1779,
         "nodeType": "ImportDirective",
         "scope": 1793,
-        "sourceUnit": 2807,
+        "sourceUnit": 2829,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -410,7 +410,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2827_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct Stakeholders.Stakeholder[]"
                   },
                   "typeName": {
@@ -421,13 +421,13 @@
                         "id": 1786,
                         "name": "Stakeholders.Stakeholder",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 2805,
+                        "referencedDeclaration": 2827,
                         "src": "283:24:15"
                       },
-                      "referencedDeclaration": 2805,
+                      "referencedDeclaration": 2827,
                       "src": "283:24:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Stakeholder_$2805_storage_ptr",
+                        "typeIdentifier": "t_struct$_Stakeholder_$2827_storage_ptr",
                         "typeString": "struct Stakeholders.Stakeholder"
                       }
                     },
@@ -435,7 +435,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "283:26:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2827_storage_$dyn_storage_ptr",
                       "typeString": "struct Stakeholders.Stakeholder[]"
                     }
                   },
@@ -463,7 +463,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-09T10:26:53.527Z",
+  "updatedAt": "2022-03-09T10:43:36.363Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

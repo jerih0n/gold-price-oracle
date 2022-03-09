@@ -1,8 +1,8 @@
 pragma solidity ^0.8.0;
 
-import "./base/ERC20Stakable.sol";
+import "./base/ERC20ProofOfStake.sol";
 
-contract GoldOracleToken is ERC20Stakable {
+contract GoldOracleToken is ERC20ProofOfStake {
     uint256 private constant MIN_STAKED_AMOUNT_REQUIRED_FOR_VALIDATION =
         20000 * 10**18;
     uint256 private constant REWARD_AMOUNT_IN_TOKENS_AFTER_EACH_ERA =
@@ -10,7 +10,7 @@ contract GoldOracleToken is ERC20Stakable {
     address private _owner;
 
     constructor()
-        ERC20Stakable(
+        ERC20ProofOfStake(
             "GoldOracleToken",
             "GOT",
             MIN_STAKED_AMOUNT_REQUIRED_FOR_VALIDATION,

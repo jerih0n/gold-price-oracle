@@ -94,7 +94,7 @@
     "absolutePath": "project:/contracts/token/Interfaces/IErasMonitor.sol",
     "exportedSymbols": {
       "Eras": [
-        2780
+        2802
       ],
       "IErasMonitor": [
         1775
@@ -120,7 +120,7 @@
         "id": 1763,
         "nodeType": "ImportDirective",
         "scope": 1776,
-        "sourceUnit": 2781,
+        "sourceUnit": 2803,
         "src": "27:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -220,7 +220,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$2779_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$2801_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
@@ -230,13 +230,13 @@
                       "id": 1770,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2779,
+                      "referencedDeclaration": 2801,
                       "src": "200:8:14"
                     },
-                    "referencedDeclaration": 2779,
+                    "referencedDeclaration": 2801,
                     "src": "200:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$2779_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$2801_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -262,7 +262,7 @@
     "absolutePath": "project:/contracts/token/Interfaces/IErasMonitor.sol",
     "exportedSymbols": {
       "Eras": [
-        2780
+        2802
       ],
       "IErasMonitor": [
         1775
@@ -288,7 +288,7 @@
         "id": 1763,
         "nodeType": "ImportDirective",
         "scope": 1776,
-        "sourceUnit": 2781,
+        "sourceUnit": 2803,
         "src": "27:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -388,7 +388,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$2779_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$2801_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
@@ -398,13 +398,13 @@
                       "id": 1770,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2779,
+                      "referencedDeclaration": 2801,
                       "src": "200:8:14"
                     },
-                    "referencedDeclaration": 2779,
+                    "referencedDeclaration": 2801,
                     "src": "200:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$2779_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$2801_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -432,7 +432,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-09T10:26:53.526Z",
+  "updatedAt": "2022-03-09T10:43:36.361Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
