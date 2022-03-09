@@ -7,5 +7,10 @@ library Eras {
         uint256 startDate;
         uint256 endDate;
         address chairman;
+        uint256 requiredQuorum;
+        bool isQuorumReached;
+        uint256 possitiveVotes;
+        uint256 negativeVotes;
+        bool accepted;
     }
 }

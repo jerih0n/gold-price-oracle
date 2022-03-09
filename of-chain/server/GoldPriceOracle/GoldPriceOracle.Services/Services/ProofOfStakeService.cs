@@ -41,8 +41,7 @@ namespace GoldPriceOracle.Services.Services
             var currentEra = await _proofOfStakeTokenService.GetCurrentEraAsync();
             if (currentEra == null ||
                 currentEra.CurrentEra == null
-                || currentEra.CurrentEra.Chairman == null
-                || currentEra.CurrentEra.Chairman.IsNullAddress())
+                || currentEra.CurrentEra.Chairman == null)
             {
                 return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, CURRENT_ERA_NOT_FOUND));
             }
@@ -52,7 +51,8 @@ namespace GoldPriceOracle.Services.Services
             {
                 return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, NODE_DATA_NOT_FOUND));
             }
-            if (!nodeData.ActiveAddress.IsAddressEqualTo(currentEra.CurrentEra.Chairman))
+            var isFirstEra = currentEra.CurrentEra.Chairman.IsNullAddress();
+            if (!isFirstEra && !nodeData.ActiveAddress.IsAddressEqualTo(currentEra.CurrentEra.Chairman))
             {
                 return TryResult<VotingResult>.Success(new VotingResult(false, NODE_IS_NOT_PREVIOUS_CHAIRMAN));
             }

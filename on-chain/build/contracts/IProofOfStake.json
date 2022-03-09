@@ -65,7 +65,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getStakeholders\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ownedAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nominatedAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nominatorsCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"canValidate\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"notCollectedTokenRewards\",\"type\":\"uint256\"}],\"internalType\":\"struct Stakeholders.Stakeholder[]\",\"name\":\"stakeholders\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getValidatorsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":\"IProofOfStake\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":{\"keccak256\":\"0x2f7be5534fcd0a75ec376c944b158204138afc36d1196b4e32e7a968924c3bc2\",\"urls\":[\"bzz-raw://a8c992901e6e0dcae141535dfc499d4034152c27b277646abddac3ac094c981b\",\"dweb:/ipfs/QmeBmVh17HcqWKSrYZjTmQ8Qc9jfbGMm4HMVkkraiX1tJC\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0x0a5a60f2b5ddfbd760c852c8630080fb3193d0e541135934de81de043526bea3\",\"urls\":[\"bzz-raw://eb0b0118a96c417c57263eb4ff08a0498b0f09cd5d535d39fd0f74fd40290954\",\"dweb:/ipfs/QmcD1pLzbKV9gCZfE1Jq3fXL2SRLDxhAn45tzSy8keMbWm\"]},\"project:/contracts/token/utils/NominatingStakeholders.sol\":{\"keccak256\":\"0x51d99ed8e690cba64ba3b2e24b2756af37cfe49f6e7c43f7e55b5d0c0566dd1b\",\"urls\":[\"bzz-raw://f468645fdeac18566a1303269481f7abc00ffd056b6b2f210bc90850cc318320\",\"dweb:/ipfs/QmPzRL7hgXouTeLXvh5b363zxnoGMpyeZq4zc3SnE4gYxo\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getStakeholders\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"ownedAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nominatedAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nominatorsCount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"canValidate\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"notCollectedTokenRewards\",\"type\":\"uint256\"}],\"internalType\":\"struct Stakeholders.Stakeholder[]\",\"name\":\"stakeholders\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getValidatorsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":\"IProofOfStake\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":{\"keccak256\":\"0x2f7be5534fcd0a75ec376c944b158204138afc36d1196b4e32e7a968924c3bc2\",\"urls\":[\"bzz-raw://a8c992901e6e0dcae141535dfc499d4034152c27b277646abddac3ac094c981b\",\"dweb:/ipfs/QmeBmVh17HcqWKSrYZjTmQ8Qc9jfbGMm4HMVkkraiX1tJC\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0xd5f2998653b931a2d5b5505b6e409a4f4bd3c234fc9c870513192adceea661ba\",\"urls\":[\"bzz-raw://09de357483209a58666e54e9fe5013a5b8e50c06eacfc336fe0bb109102a5266\",\"dweb:/ipfs/QmV6C5ggzjC8cyXMH9YuQoURqhFMFcJqkq54ShqpV484WR\"]},\"project:/contracts/token/utils/NominatingStakeholders.sol\":{\"keccak256\":\"0x51d99ed8e690cba64ba3b2e24b2756af37cfe49f6e7c43f7e55b5d0c0566dd1b\",\"urls\":[\"bzz-raw://f468645fdeac18566a1303269481f7abc00ffd056b6b2f210bc90850cc318320\",\"dweb:/ipfs/QmPzRL7hgXouTeLXvh5b363zxnoGMpyeZq4zc3SnE4gYxo\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -79,20 +79,20 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2514
+        2780
       ],
       "IProofOfStake": [
-        1797
+        1792
       ],
       "Stakeholders": [
-        2532
+        2806
       ]
     },
-    "id": 1798,
+    "id": 1793,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1782,
+        "id": 1777,
         "literals": [
           "solidity",
           "^",
@@ -105,10 +105,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/Eras.sol",
         "file": "../utils/Eras.sol",
-        "id": 1783,
+        "id": 1778,
         "nodeType": "ImportDirective",
-        "scope": 1798,
-        "sourceUnit": 2515,
+        "scope": 1793,
+        "sourceUnit": 2781,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -116,10 +116,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
         "file": "../utils/NominatingStakeholders.sol",
-        "id": 1784,
+        "id": 1779,
         "nodeType": "ImportDirective",
-        "scope": 1798,
-        "sourceUnit": 2533,
+        "scope": 1793,
+        "sourceUnit": 2807,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -130,38 +130,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1797,
+        "id": 1792,
         "linearizedBaseContracts": [
-          1797
+          1792
         ],
         "name": "IProofOfStake",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "27498240",
-            "id": 1789,
+            "id": 1784,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getValidatorsCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1785,
+              "id": 1780,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "163:2:15"
             },
             "returnParameters": {
-              "id": 1788,
+              "id": 1783,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1787,
+                  "id": 1782,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1789,
+                  "scope": 1784,
                   "src": "189:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -170,7 +170,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1786,
+                    "id": 1781,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:15",
@@ -184,7 +184,7 @@
               ],
               "src": "188:9:15"
             },
-            "scope": 1797,
+            "scope": 1792,
             "src": "136:62:15",
             "stateMutability": "view",
             "virtual": false,
@@ -192,59 +192,59 @@
           },
           {
             "functionSelector": "b6992247",
-            "id": 1796,
+            "id": 1791,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getStakeholders",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1790,
+              "id": 1785,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "230:2:15"
             },
             "returnParameters": {
-              "id": 1795,
+              "id": 1790,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1794,
+                  "id": 1789,
                   "mutability": "mutable",
                   "name": "stakeholders",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1796,
+                  "scope": 1791,
                   "src": "283:46:15",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2531_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct Stakeholders.Stakeholder[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1792,
+                      "id": 1787,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 1791,
+                        "id": 1786,
                         "name": "Stakeholders.Stakeholder",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 2531,
+                        "referencedDeclaration": 2805,
                         "src": "283:24:15"
                       },
-                      "referencedDeclaration": 2531,
+                      "referencedDeclaration": 2805,
                       "src": "283:24:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Stakeholder_$2531_storage_ptr",
+                        "typeIdentifier": "t_struct$_Stakeholder_$2805_storage_ptr",
                         "typeString": "struct Stakeholders.Stakeholder"
                       }
                     },
-                    "id": 1793,
+                    "id": 1788,
                     "nodeType": "ArrayTypeName",
                     "src": "283:26:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2531_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_storage_$dyn_storage_ptr",
                       "typeString": "struct Stakeholders.Stakeholder[]"
                     }
                   },
@@ -253,14 +253,14 @@
               ],
               "src": "282:48:15"
             },
-            "scope": 1797,
+            "scope": 1792,
             "src": "206:125:15",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1798,
+        "scope": 1793,
         "src": "105:229:15"
       }
     ],
@@ -270,20 +270,20 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2514
+        2780
       ],
       "IProofOfStake": [
-        1797
+        1792
       ],
       "Stakeholders": [
-        2532
+        2806
       ]
     },
-    "id": 1798,
+    "id": 1793,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1782,
+        "id": 1777,
         "literals": [
           "solidity",
           "^",
@@ -296,10 +296,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/Eras.sol",
         "file": "../utils/Eras.sol",
-        "id": 1783,
+        "id": 1778,
         "nodeType": "ImportDirective",
-        "scope": 1798,
-        "sourceUnit": 2515,
+        "scope": 1793,
+        "sourceUnit": 2781,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -307,10 +307,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
         "file": "../utils/NominatingStakeholders.sol",
-        "id": 1784,
+        "id": 1779,
         "nodeType": "ImportDirective",
-        "scope": 1798,
-        "sourceUnit": 2533,
+        "scope": 1793,
+        "sourceUnit": 2807,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -321,38 +321,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1797,
+        "id": 1792,
         "linearizedBaseContracts": [
-          1797
+          1792
         ],
         "name": "IProofOfStake",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "27498240",
-            "id": 1789,
+            "id": 1784,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getValidatorsCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1785,
+              "id": 1780,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "163:2:15"
             },
             "returnParameters": {
-              "id": 1788,
+              "id": 1783,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1787,
+                  "id": 1782,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1789,
+                  "scope": 1784,
                   "src": "189:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -361,7 +361,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1786,
+                    "id": 1781,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:15",
@@ -375,7 +375,7 @@
               ],
               "src": "188:9:15"
             },
-            "scope": 1797,
+            "scope": 1792,
             "src": "136:62:15",
             "stateMutability": "view",
             "virtual": false,
@@ -383,59 +383,59 @@
           },
           {
             "functionSelector": "b6992247",
-            "id": 1796,
+            "id": 1791,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getStakeholders",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1790,
+              "id": 1785,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "230:2:15"
             },
             "returnParameters": {
-              "id": 1795,
+              "id": 1790,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1794,
+                  "id": 1789,
                   "mutability": "mutable",
                   "name": "stakeholders",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1796,
+                  "scope": 1791,
                   "src": "283:46:15",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2531_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct Stakeholders.Stakeholder[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1792,
+                      "id": 1787,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 1791,
+                        "id": 1786,
                         "name": "Stakeholders.Stakeholder",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 2531,
+                        "referencedDeclaration": 2805,
                         "src": "283:24:15"
                       },
-                      "referencedDeclaration": 2531,
+                      "referencedDeclaration": 2805,
                       "src": "283:24:15",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Stakeholder_$2531_storage_ptr",
+                        "typeIdentifier": "t_struct$_Stakeholder_$2805_storage_ptr",
                         "typeString": "struct Stakeholders.Stakeholder"
                       }
                     },
-                    "id": 1793,
+                    "id": 1788,
                     "nodeType": "ArrayTypeName",
                     "src": "283:26:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2531_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Stakeholder_$2805_storage_$dyn_storage_ptr",
                       "typeString": "struct Stakeholders.Stakeholder[]"
                     }
                   },
@@ -444,14 +444,14 @@
               ],
               "src": "282:48:15"
             },
-            "scope": 1797,
+            "scope": 1792,
             "src": "206:125:15",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1798,
+        "scope": 1793,
         "src": "105:229:15"
       }
     ],
@@ -463,7 +463,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-04T14:10:37.800Z",
+  "updatedAt": "2022-03-09T10:26:53.527Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

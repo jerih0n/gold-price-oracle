@@ -130,17 +130,17 @@
     "absolutePath": "project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol",
     "exportedSymbols": {
       "IBaseResolver": [
-        1676
+        1671
       ],
       "Rounds": [
-        1700
+        1695
       ]
     },
-    "id": 1677,
+    "id": 1672,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1649,
+        "id": 1644,
         "literals": [
           "solidity",
           "^",
@@ -153,10 +153,10 @@
       {
         "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
         "file": "../../utils/Rounds.sol",
-        "id": 1650,
+        "id": 1645,
         "nodeType": "ImportDirective",
-        "scope": 1677,
-        "sourceUnit": 1701,
+        "scope": 1672,
+        "sourceUnit": 1696,
         "src": "27:32:10",
         "symbolAliases": [],
         "unitAlias": ""
@@ -167,59 +167,59 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1676,
+        "id": 1671,
         "linearizedBaseContracts": [
-          1676
+          1671
         ],
         "name": "IBaseResolver",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "888a9fba",
-            "id": 1656,
+            "id": 1651,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLatestValidData",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1651,
+              "id": 1646,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "121:2:10"
             },
             "returnParameters": {
-              "id": 1655,
+              "id": 1650,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1654,
+                  "id": 1649,
                   "mutability": "mutable",
                   "name": "round",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1656,
+                  "scope": 1651,
                   "src": "174:25:10",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Round_$1699_memory_ptr",
+                    "typeIdentifier": "t_struct$_Round_$1694_memory_ptr",
                     "typeString": "struct Rounds.Round"
                   },
                   "typeName": {
-                    "id": 1653,
+                    "id": 1648,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1652,
+                      "id": 1647,
                       "name": "Rounds.Round",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1699,
+                      "referencedDeclaration": 1694,
                       "src": "174:12:10"
                     },
-                    "referencedDeclaration": 1699,
+                    "referencedDeclaration": 1694,
                     "src": "174:12:10",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Round_$1699_storage_ptr",
+                      "typeIdentifier": "t_struct$_Round_$1694_storage_ptr",
                       "typeString": "struct Rounds.Round"
                     }
                   },
@@ -228,7 +228,7 @@
               ],
               "src": "173:27:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "94:107:10",
             "stateMutability": "view",
             "virtual": false,
@@ -236,23 +236,23 @@
           },
           {
             "functionSelector": "87db480a",
-            "id": 1663,
+            "id": 1658,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "votePriceForRound",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1661,
+              "id": 1656,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1658,
+                  "id": 1653,
                   "mutability": "mutable",
                   "name": "roundId_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1663,
+                  "scope": 1658,
                   "src": "236:16:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -261,7 +261,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1657,
+                    "id": 1652,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "236:7:10",
@@ -274,11 +274,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1660,
+                  "id": 1655,
                   "mutability": "mutable",
                   "name": "price_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1663,
+                  "scope": 1658,
                   "src": "254:14:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -287,7 +287,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1659,
+                    "id": 1654,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "254:7:10",
@@ -302,12 +302,12 @@
               "src": "235:34:10"
             },
             "returnParameters": {
-              "id": 1662,
+              "id": 1657,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "278:0:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "209:70:10",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -315,23 +315,23 @@
           },
           {
             "functionSelector": "edf1aa7b",
-            "id": 1670,
+            "id": 1665,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "startNewPriceRound",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1668,
+              "id": 1663,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1665,
+                  "id": 1660,
                   "mutability": "mutable",
                   "name": "nodeAddress_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1670,
+                  "scope": 1665,
                   "src": "315:20:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -340,7 +340,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1664,
+                    "id": 1659,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "315:7:10",
@@ -354,11 +354,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1667,
+                  "id": 1662,
                   "mutability": "mutable",
                   "name": "price_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1670,
+                  "scope": 1665,
                   "src": "337:14:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -367,7 +367,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1666,
+                    "id": 1661,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "337:7:10",
@@ -382,12 +382,12 @@
               "src": "314:38:10"
             },
             "returnParameters": {
-              "id": 1669,
+              "id": 1664,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "361:0:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "287:75:10",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -395,29 +395,29 @@
           },
           {
             "functionSelector": "6de7da78",
-            "id": 1675,
+            "id": 1670,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getRoundCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1671,
+              "id": 1666,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "392:2:10"
             },
             "returnParameters": {
-              "id": 1674,
+              "id": 1669,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1673,
+                  "id": 1668,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1675,
+                  "scope": 1670,
                   "src": "418:7:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -426,7 +426,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1672,
+                    "id": 1667,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "418:7:10",
@@ -440,14 +440,14 @@
               ],
               "src": "417:9:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "370:57:10",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1677,
+        "scope": 1672,
         "src": "63:367:10"
       }
     ],
@@ -457,17 +457,17 @@
     "absolutePath": "project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol",
     "exportedSymbols": {
       "IBaseResolver": [
-        1676
+        1671
       ],
       "Rounds": [
-        1700
+        1695
       ]
     },
-    "id": 1677,
+    "id": 1672,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1649,
+        "id": 1644,
         "literals": [
           "solidity",
           "^",
@@ -480,10 +480,10 @@
       {
         "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
         "file": "../../utils/Rounds.sol",
-        "id": 1650,
+        "id": 1645,
         "nodeType": "ImportDirective",
-        "scope": 1677,
-        "sourceUnit": 1701,
+        "scope": 1672,
+        "sourceUnit": 1696,
         "src": "27:32:10",
         "symbolAliases": [],
         "unitAlias": ""
@@ -494,59 +494,59 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1676,
+        "id": 1671,
         "linearizedBaseContracts": [
-          1676
+          1671
         ],
         "name": "IBaseResolver",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "888a9fba",
-            "id": 1656,
+            "id": 1651,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLatestValidData",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1651,
+              "id": 1646,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "121:2:10"
             },
             "returnParameters": {
-              "id": 1655,
+              "id": 1650,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1654,
+                  "id": 1649,
                   "mutability": "mutable",
                   "name": "round",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1656,
+                  "scope": 1651,
                   "src": "174:25:10",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Round_$1699_memory_ptr",
+                    "typeIdentifier": "t_struct$_Round_$1694_memory_ptr",
                     "typeString": "struct Rounds.Round"
                   },
                   "typeName": {
-                    "id": 1653,
+                    "id": 1648,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1652,
+                      "id": 1647,
                       "name": "Rounds.Round",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1699,
+                      "referencedDeclaration": 1694,
                       "src": "174:12:10"
                     },
-                    "referencedDeclaration": 1699,
+                    "referencedDeclaration": 1694,
                     "src": "174:12:10",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Round_$1699_storage_ptr",
+                      "typeIdentifier": "t_struct$_Round_$1694_storage_ptr",
                       "typeString": "struct Rounds.Round"
                     }
                   },
@@ -555,7 +555,7 @@
               ],
               "src": "173:27:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "94:107:10",
             "stateMutability": "view",
             "virtual": false,
@@ -563,23 +563,23 @@
           },
           {
             "functionSelector": "87db480a",
-            "id": 1663,
+            "id": 1658,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "votePriceForRound",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1661,
+              "id": 1656,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1658,
+                  "id": 1653,
                   "mutability": "mutable",
                   "name": "roundId_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1663,
+                  "scope": 1658,
                   "src": "236:16:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -588,7 +588,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1657,
+                    "id": 1652,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "236:7:10",
@@ -601,11 +601,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1660,
+                  "id": 1655,
                   "mutability": "mutable",
                   "name": "price_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1663,
+                  "scope": 1658,
                   "src": "254:14:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -614,7 +614,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1659,
+                    "id": 1654,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "254:7:10",
@@ -629,12 +629,12 @@
               "src": "235:34:10"
             },
             "returnParameters": {
-              "id": 1662,
+              "id": 1657,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "278:0:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "209:70:10",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -642,23 +642,23 @@
           },
           {
             "functionSelector": "edf1aa7b",
-            "id": 1670,
+            "id": 1665,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "startNewPriceRound",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1668,
+              "id": 1663,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1665,
+                  "id": 1660,
                   "mutability": "mutable",
                   "name": "nodeAddress_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1670,
+                  "scope": 1665,
                   "src": "315:20:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -667,7 +667,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1664,
+                    "id": 1659,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "315:7:10",
@@ -681,11 +681,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1667,
+                  "id": 1662,
                   "mutability": "mutable",
                   "name": "price_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1670,
+                  "scope": 1665,
                   "src": "337:14:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -694,7 +694,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1666,
+                    "id": 1661,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "337:7:10",
@@ -709,12 +709,12 @@
               "src": "314:38:10"
             },
             "returnParameters": {
-              "id": 1669,
+              "id": 1664,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "361:0:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "287:75:10",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -722,29 +722,29 @@
           },
           {
             "functionSelector": "6de7da78",
-            "id": 1675,
+            "id": 1670,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getRoundCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1671,
+              "id": 1666,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "392:2:10"
             },
             "returnParameters": {
-              "id": 1674,
+              "id": 1669,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1673,
+                  "id": 1668,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1675,
+                  "scope": 1670,
                   "src": "418:7:10",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -753,7 +753,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1672,
+                    "id": 1667,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "418:7:10",
@@ -767,14 +767,14 @@
               ],
               "src": "417:9:10"
             },
-            "scope": 1676,
+            "scope": 1671,
             "src": "370:57:10",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1677,
+        "scope": 1672,
         "src": "63:367:10"
       }
     ],
@@ -786,7 +786,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-04T14:10:37.781Z",
+  "updatedAt": "2022-03-09T10:26:53.511Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
