@@ -54,9 +54,9 @@ namespace GoldPriceOracle.Node.Controllers
         }
 
         [HttpPost("end-era")]
-        public async Task<IActionResult> EndEraByNewElectedChairmanContractAsync([FromBody] EndEraByNewElectedChairmanContract newEraElectionComplitedContract)
-        {
-            return Ok();
-        }
+        public async Task<IActionResult> EndEraByNewElectedChairmanContractAsync([FromBody] EndEraByNewElectedChairmanContract endEraByNewElectedChairmanContract)
+            => HandleResponse(await _proofOfStakeService.TryEndCurrentEraAsync(endEraByNewElectedChairmanContract.EraId,
+                endEraByNewElectedChairmanContract.Chairman,
+                endEraByNewElectedChairmanContract.Timestap));
     }
 }

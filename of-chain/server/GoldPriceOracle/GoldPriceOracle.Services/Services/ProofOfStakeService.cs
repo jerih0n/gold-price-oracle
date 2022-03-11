@@ -124,6 +124,34 @@ namespace GoldPriceOracle.Services.Services
             }
         }
 
+        public async Task<TryResult<bool>> TryEndCurrentEraAsync(string eraId, string chairman, string timestamp)
+        {
+            var nodeData = _nodeDataDataAccessService.GetNodeData();
+            if (nodeData == null)
+            {
+                return TryResult<bool>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, NODE_DATA_NOT_FOUND));
+            }
+
+            //TODO: check in the DB if this era is not ended already
+
+            if (chairman != nodeData.ActiveAddress)
+            {
+                //this node can't end era
+                return TryResult<bool>.Success(false);
+            }
+            try
+            {
+                await _proofOfStakeTokenService.EndCurrentEraAsync(timestamp.ToBitInteger());
+                //record in the database
+
+                return TryResult<bool>.Success(true);
+            }
+            catch (Exception ex)
+            {
+                return TryResult<bool>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, ex.Message));
+            }
+        }
+
         private async Task<ImmutableList<EraElectableMember>> GetValidators()
         {
             //this node is previous chairman and needs to start new election

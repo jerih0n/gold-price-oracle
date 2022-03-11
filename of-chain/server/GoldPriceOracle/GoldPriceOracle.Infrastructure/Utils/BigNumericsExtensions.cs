@@ -24,6 +24,11 @@ namespace GoldPriceOracle.Infrastructure.Utils
             return (int)(bigInteger / BigInteger.Pow(10, 18));
         }
 
+        public static BigInteger ToBitInteger(this string @integer)
+        {
+            return BigInteger.Parse(@integer);
+        }
+
         public static BigInteger ToBigIntegerWithDefaultDecimals(this decimal value)
         {
             var nonIntegerPart = Math.Truncate(value);
