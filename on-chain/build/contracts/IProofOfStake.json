@@ -93,13 +93,13 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2917
+        2922
       ],
       "IProofOfStake": [
         1811
       ],
       "Stakeholders": [
-        2943
+        2948
       ]
     },
     "id": 1812,
@@ -122,7 +122,7 @@
         "id": 1778,
         "nodeType": "ImportDirective",
         "scope": 1812,
-        "sourceUnit": 2918,
+        "sourceUnit": 2923,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -133,7 +133,7 @@
         "id": 1779,
         "nodeType": "ImportDirective",
         "scope": 1812,
-        "sourceUnit": 2944,
+        "sourceUnit": 2949,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -515,13 +515,13 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2917
+        2922
       ],
       "IProofOfStake": [
         1811
       ],
       "Stakeholders": [
-        2943
+        2948
       ]
     },
     "id": 1812,
@@ -544,7 +544,7 @@
         "id": 1778,
         "nodeType": "ImportDirective",
         "scope": 1812,
-        "sourceUnit": 2918,
+        "sourceUnit": 2923,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -555,7 +555,7 @@
         "id": 1779,
         "nodeType": "ImportDirective",
         "scope": 1812,
-        "sourceUnit": 2944,
+        "sourceUnit": 2949,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -939,7 +939,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-09T22:14:37.546Z",
+  "updatedAt": "2022-03-11T08:33:35.903Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

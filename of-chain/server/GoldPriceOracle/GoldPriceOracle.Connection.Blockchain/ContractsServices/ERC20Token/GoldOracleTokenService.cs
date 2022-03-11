@@ -4,6 +4,7 @@ using Nethereum.RPC.Eth.DTOs;
 using Nethereum.Contracts.ContractHandlers;
 using System.Threading;
 using GoldPriceOracle.Connection.Blockchain.ERC20Token;
+using System.Collections.Generic;
 
 namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
 {
@@ -128,44 +129,30 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.SendRequestAndWaitForReceiptAsync(decreaseAllowanceFunction, cancellationToken);
         }
 
-        public Task<string> ElectNewChairmanRequestAsync(ElectNewChairmanFunction electNewChairmanFunction)
+        public Task<string> EndEraRequestAsync(EndEraFunction endEraFunction)
         {
-            return ContractHandler.SendRequestAsync(electNewChairmanFunction);
+            return ContractHandler.SendRequestAsync(endEraFunction);
         }
 
-        public Task<string> ElectNewChairmanRequestAsync()
+        public Task<TransactionReceipt> EndEraRequestAndWaitForReceiptAsync(EndEraFunction endEraFunction, CancellationTokenSource cancellationToken = null)
         {
-            return ContractHandler.SendRequestAsync<ElectNewChairmanFunction>();
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(endEraFunction, cancellationToken);
         }
 
-        public Task<TransactionReceipt> ElectNewChairmanRequestAndWaitForReceiptAsync(ElectNewChairmanFunction electNewChairmanFunction, CancellationTokenSource cancellationToken = null)
+        public Task<string> EndEraRequestAsync(BigInteger timestamp)
         {
-            return ContractHandler.SendRequestAndWaitForReceiptAsync(electNewChairmanFunction, cancellationToken);
+            var endEraFunction = new EndEraFunction();
+            endEraFunction.Timestamp = timestamp;
+
+            return ContractHandler.SendRequestAsync(endEraFunction);
         }
 
-        public Task<TransactionReceipt> ElectNewChairmanRequestAndWaitForReceiptAsync(CancellationTokenSource cancellationToken = null)
+        public Task<TransactionReceipt> EndEraRequestAndWaitForReceiptAsync(BigInteger timestamp, CancellationTokenSource cancellationToken = null)
         {
-            return ContractHandler.SendRequestAndWaitForReceiptAsync<ElectNewChairmanFunction>(null, cancellationToken);
-        }
+            var endEraFunction = new EndEraFunction();
+            endEraFunction.Timestamp = timestamp;
 
-        public Task<string> EndCurrentEraRequestAsync(EndCurrentEraFunction endCurrentEraFunction)
-        {
-            return ContractHandler.SendRequestAsync(endCurrentEraFunction);
-        }
-
-        public Task<string> EndCurrentEraRequestAsync()
-        {
-            return ContractHandler.SendRequestAsync<EndCurrentEraFunction>();
-        }
-
-        public Task<TransactionReceipt> EndCurrentEraRequestAndWaitForReceiptAsync(EndCurrentEraFunction endCurrentEraFunction, CancellationTokenSource cancellationToken = null)
-        {
-            return ContractHandler.SendRequestAndWaitForReceiptAsync(endCurrentEraFunction, cancellationToken);
-        }
-
-        public Task<TransactionReceipt> EndCurrentEraRequestAndWaitForReceiptAsync(CancellationTokenSource cancellationToken = null)
-        {
-            return ContractHandler.SendRequestAndWaitForReceiptAsync<EndCurrentEraFunction>(null, cancellationToken);
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(endEraFunction, cancellationToken);
         }
 
         public Task<GetCurrentEraOutputDTO> GetCurrentEraQueryAsync(GetCurrentEraFunction getCurrentEraFunction, BlockParameter blockParameter = null)
@@ -282,6 +269,40 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryAsync<NameFunction, string>(null, blockParameter);
         }
 
+        public Task<string> ProposeNewEraRequestAsync(ProposeNewEraFunction proposeNewEraFunction)
+        {
+            return ContractHandler.SendRequestAsync(proposeNewEraFunction);
+        }
+
+        public Task<TransactionReceipt> ProposeNewEraRequestAndWaitForReceiptAsync(ProposeNewEraFunction proposeNewEraFunction, CancellationTokenSource cancellationToken = null)
+        {
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(proposeNewEraFunction, cancellationToken);
+        }
+
+        public Task<string> ProposeNewEraRequestAsync(byte[] eraId_, string chairman_, List<string> coucil_, BigInteger utcTimeStamp_, BigInteger calculatedSeed_)
+        {
+            var proposeNewEraFunction = new ProposeNewEraFunction();
+            proposeNewEraFunction.EraId_ = eraId_;
+            proposeNewEraFunction.Chairman_ = chairman_;
+            proposeNewEraFunction.Coucil_ = coucil_;
+            proposeNewEraFunction.UtcTimeStamp_ = utcTimeStamp_;
+            proposeNewEraFunction.CalculatedSeed_ = calculatedSeed_;
+
+            return ContractHandler.SendRequestAsync(proposeNewEraFunction);
+        }
+
+        public Task<TransactionReceipt> ProposeNewEraRequestAndWaitForReceiptAsync(byte[] eraId_, string chairman_, List<string> coucil_, BigInteger utcTimeStamp_, BigInteger calculatedSeed_, CancellationTokenSource cancellationToken = null)
+        {
+            var proposeNewEraFunction = new ProposeNewEraFunction();
+            proposeNewEraFunction.EraId_ = eraId_;
+            proposeNewEraFunction.Chairman_ = chairman_;
+            proposeNewEraFunction.Coucil_ = coucil_;
+            proposeNewEraFunction.UtcTimeStamp_ = utcTimeStamp_;
+            proposeNewEraFunction.CalculatedSeed_ = calculatedSeed_;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(proposeNewEraFunction, cancellationToken);
+        }
+
         public Task<string> StakeRequestAsync(StakeFunction stakeFunction)
         {
             return ContractHandler.SendRequestAsync(stakeFunction);
@@ -306,26 +327,6 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             stakeFunction.Amount_ = amount_;
 
             return ContractHandler.SendRequestAndWaitForReceiptAsync(stakeFunction, cancellationToken);
-        }
-
-        public Task<string> StartNewEraRequestAsync(StartNewEraFunction startNewEraFunction)
-        {
-            return ContractHandler.SendRequestAsync(startNewEraFunction);
-        }
-
-        public Task<string> StartNewEraRequestAsync()
-        {
-            return ContractHandler.SendRequestAsync<StartNewEraFunction>();
-        }
-
-        public Task<TransactionReceipt> StartNewEraRequestAndWaitForReceiptAsync(StartNewEraFunction startNewEraFunction, CancellationTokenSource cancellationToken = null)
-        {
-            return ContractHandler.SendRequestAndWaitForReceiptAsync(startNewEraFunction, cancellationToken);
-        }
-
-        public Task<TransactionReceipt> StartNewEraRequestAndWaitForReceiptAsync(CancellationTokenSource cancellationToken = null)
-        {
-            return ContractHandler.SendRequestAndWaitForReceiptAsync<StartNewEraFunction>(null, cancellationToken);
         }
 
         public Task<string> SymbolQueryAsync(SymbolFunction symbolFunction, BlockParameter blockParameter = null)
@@ -430,6 +431,34 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             unstakeFunction.Amount_ = amount_;
 
             return ContractHandler.SendRequestAndWaitForReceiptAsync(unstakeFunction, cancellationToken);
+        }
+
+        public Task<string> VoteForProposedEraRequestAsync(VoteForProposedEraFunction voteForProposedEraFunction)
+        {
+            return ContractHandler.SendRequestAsync(voteForProposedEraFunction);
+        }
+
+        public Task<TransactionReceipt> VoteForProposedEraRequestAndWaitForReceiptAsync(VoteForProposedEraFunction voteForProposedEraFunction, CancellationTokenSource cancellationToken = null)
+        {
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(voteForProposedEraFunction, cancellationToken);
+        }
+
+        public Task<string> VoteForProposedEraRequestAsync(byte[] eraId, bool approves)
+        {
+            var voteForProposedEraFunction = new VoteForProposedEraFunction();
+            voteForProposedEraFunction.EraId = eraId;
+            voteForProposedEraFunction.Approves = approves;
+
+            return ContractHandler.SendRequestAsync(voteForProposedEraFunction);
+        }
+
+        public Task<TransactionReceipt> VoteForProposedEraRequestAndWaitForReceiptAsync(byte[] eraId, bool approves, CancellationTokenSource cancellationToken = null)
+        {
+            var voteForProposedEraFunction = new VoteForProposedEraFunction();
+            voteForProposedEraFunction.EraId = eraId;
+            voteForProposedEraFunction.Approves = approves;
+
+            return ContractHandler.SendRequestAndWaitForReceiptAsync(voteForProposedEraFunction, cancellationToken);
         }
     }
 }

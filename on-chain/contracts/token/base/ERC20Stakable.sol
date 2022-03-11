@@ -213,7 +213,6 @@ contract ERC20Stakable is IStakable, ERC20 {
 
             if (canValidate) {
                 stakeHolder.canValidate = true;
-
                 _tryRecordStakeholderAsNewValidator(
                     canValidate,
                     stakeHolder.user,
@@ -236,8 +235,10 @@ contract ERC20Stakable is IStakable, ERC20 {
             //we don't have any valid validator
             _validatorsStakeholderIndexes[address_] = validatorIndex_;
             _validatorsCount++;
+            return true;
         }
         //else validator already exist in records
+        _validatorsCount++;
         return true;
     }
 }

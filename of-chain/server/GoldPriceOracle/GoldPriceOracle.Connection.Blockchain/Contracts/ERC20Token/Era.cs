@@ -22,5 +22,23 @@ namespace GoldPriceOracle.Connection.Blockchain.ERC20Token
 
         [Parameter("address", "chairman", 5)]
         public virtual string Chairman { get; set; }
+
+        [Parameter("uint256", "requiredQuorum", 6)]
+        public virtual BigInteger RequiredQuorum { get; set; }
+
+        [Parameter("bool", "isQuorumReached", 7)]
+        public virtual bool IsQuorumReached { get; set; }
+
+        [Parameter("uint256", "possitiveVotes", 8)]
+        public virtual BigInteger PossitiveVotes { get; set; }
+
+        [Parameter("uint256", "negativeVotes", 9)]
+        public virtual BigInteger NegativeVotes { get; set; }
+
+        [Parameter("bool", "accepted", 10)]
+        public virtual bool Accepted { get; set; }
+
+        [Parameter("bool", "ended", 11)]
+        public virtual bool Ended { get; set; }
     }
 }
