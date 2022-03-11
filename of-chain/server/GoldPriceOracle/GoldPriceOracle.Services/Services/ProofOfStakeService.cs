@@ -4,6 +4,7 @@ using GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token;
 using GoldPriceOracle.Infrastructure.Cryptography.RandomGenerator;
 using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
 using GoldPriceOracle.Infrastructure.Utils;
+using GoldPriceOracle.Infrastructure.Utils.Helpers;
 using GoldPriceOracle.Services.Interfaces;
 using GoldPriceOracle.Services.Models.ProofOfStake;
 using GoldPriceOracle.Services.Models.Voting;
@@ -22,6 +23,8 @@ namespace GoldPriceOracle.Services.Services
         private const string NODE_IS_NOT_PREVIOUS_CHAIRMAN = "Node is not previous chairman. Cannot propose new election";
         private const string NO_STAKEHOLDERS_FOUND = "No validator stakeholders found";
         private const string NEW_ERA_COUNCIL_PROPOSED = "New era council had been proposed";
+        private const string ALREADY_VOTED = "Already voted as chairman";
+        private const string NODE_SUCCESSFULLY_VOTE = "Node successfully vote";
 
         private readonly IProofOfStakeTokenService _proofOfStakeTokenService;
         private readonly INodeDataDataAccessService _nodeDataDataAccessService;
@@ -65,8 +68,55 @@ namespace GoldPriceOracle.Services.Services
             {
                 var (chairman, coucil) = ElectNewEraCouncil(validators, eraId);
                 //TODO: propose new era to the blockchain
+                var newEraElectionProposal = new ProposeNewEraFunction()
+                {
+                    EraId_ = eraId.ToByteArray(),
+                    Chairman_ = chairman,
+                    Coucil_ = coucil.ToList(),
+                    UtcTimeStamp_ = TimeStampHelper.GetCurrentUtcTimestamp(),
+                    CalculatedSeed_ = _deterministicRandomGenerator.GetCalculatedSeed()
+                };
 
+                await _proofOfStakeTokenService.ProposeNewEraElectionAsync(newEraElectionProposal);
+                //TODO: Add to db
+                //TODO: log in console
                 return TryResult<VotingResult>.Success(new VotingResult(true, NEW_ERA_COUNCIL_PROPOSED));
+            }
+            catch (Exception ex)
+            {
+                return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, ex.Message));
+            }
+        }
+
+        public async Task<TryResult<VotingResult>> TryVoteForNewEraElectionAsync(NewEraProposal newEraProposal)
+        {
+            var nodeData = _nodeDataDataAccessService.GetNodeData();
+            if (nodeData == null)
+            {
+                return TryResult<VotingResult>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, NODE_DATA_NOT_FOUND));
+            }
+
+            //TODO; check from DB if such record exist
+
+            if (newEraProposal.Chairman.IsAddressEqualTo(nodeData.ActiveAddress))
+            {
+                return TryResult<VotingResult>.Success(new VotingResult(true, ALREADY_VOTED));
+            }
+            //validate!
+            try
+            {
+                var validator = await GetValidators();
+                var isEraApproved = ValidateProposedEraElection(newEraProposal, validator);
+
+                var eraProposalVote = new VoteForProposedEraFunction()
+                {
+                    EraId = newEraProposal.EraId.ToByteArray(),
+                    Approves = isEraApproved
+                };
+                await _proofOfStakeTokenService.VoteForProposedEraRequestAsync(eraProposalVote);
+                //TODO: record vote to the database
+                //TODO: add log
+                return TryResult<VotingResult>.Success(new VotingResult(isEraApproved, NODE_SUCCESSFULLY_VOTE));
             }
             catch (Exception ex)
             {
@@ -91,7 +141,7 @@ namespace GoldPriceOracle.Services.Services
             return validatorsStakeholder;
         }
 
-        private (string, ImmutableList<string>) ElectNewEraCouncil(ImmutableList<EraElectableMember> validators, string eraId)
+        private (string, ImmutableList<string>) ElectNewEraCouncil(ImmutableList<EraElectableMember> validators, string eraId, bool shouldInitGenerator = true)
         {
             if (validators.Count == 1)
             {
@@ -103,7 +153,10 @@ namespace GoldPriceOracle.Services.Services
             var totalWeight = validators.Sum(x => x.TotalAmountAsWeight);
 
             //1. seed the generator
-            _deterministicRandomGenerator.Init(eraId.ToByteArray());
+            if (shouldInitGenerator)
+            {
+                _deterministicRandomGenerator.Init(eraId.ToByteArray());
+            }
 
             //1. elect chairman
             var firstRandomNumber = _deterministicRandomGenerator.Next(totalWeight);
@@ -134,6 +187,39 @@ namespace GoldPriceOracle.Services.Services
             }
 
             return (chairman.Address, council.ToImmutableList());
+        }
+
+        private bool ValidateProposedEraElection(NewEraProposal newEraProposal, ImmutableList<EraElectableMember> validators)
+        {
+            _deterministicRandomGenerator.Init(newEraProposal.EraId.ToByteArray());
+
+            var proposedSeed = int.Parse(newEraProposal.CalculatedSeed);
+
+            if (_deterministicRandomGenerator.GetCalculatedSeed() != proposedSeed)
+            {
+                return false;
+            }
+
+            var (excpectedChairman, expectedCouncil) = ElectNewEraCouncil(validators, newEraProposal.EraId, false);
+
+            if (excpectedChairman != newEraProposal.Chairman)
+            {
+                return false;
+            }
+
+            if (expectedCouncil.Count != newEraProposal.Council.Count)
+            {
+                return false;
+            }
+            var proposedCoucil = newEraProposal.Council;
+            for (int i = 0; i < expectedCouncil.Count; i++)
+            {
+                if (!expectedCouncil[i].IsAddressEqualTo(proposedCoucil[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

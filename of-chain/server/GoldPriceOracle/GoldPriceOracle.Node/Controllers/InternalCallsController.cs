@@ -1,6 +1,7 @@
 ﻿using GoldPriceOracle.Infrastructure.Utils;
 using GoldPriceOracle.Node.Contracts.InternalCalls;
 using GoldPriceOracle.Services.Interfaces;
+using GoldPriceOracle.Services.Models.ProofOfStake;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -37,7 +38,13 @@ namespace GoldPriceOracle.Node.Controllers
         [HttpPost("era-proposal-vote")]
         public async Task<IActionResult> TryVoteForEraElectionProposalAsync([FromBody] NewEraProposalEventContract newEraProposalEventContract)
         {
-            return Ok();
+            var newEraProposal = new NewEraProposal(newEraProposalEventContract.EraId,
+                newEraProposalEventContract.Chairman,
+                newEraProposalEventContract.Council,
+                newEraProposalEventContract.ValidatorsCount,
+                newEraProposalEventContract.CalculatedSeed);
+
+            return HandleResponse(await _proofOfStakeService.TryVoteForNewEraElectionAsync(newEraProposal));
         }
 
         [HttpPost("new-era-complited")]
