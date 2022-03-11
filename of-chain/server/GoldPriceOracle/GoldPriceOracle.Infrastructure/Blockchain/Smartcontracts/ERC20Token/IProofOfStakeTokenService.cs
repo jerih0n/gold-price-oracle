@@ -1,4 +1,5 @@
 ﻿using GoldPriceOracle.Connection.Blockchain.ERC20Token;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
@@ -7,10 +8,12 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
     {
         Task<GetCurrentEraOutputDTO> GetCurrentEraAsync();
 
-        Task EndCurrentEraAsync();
-
-        Task StartNewEraAsync();
+        Task EndCurrentEraAsync(BigInteger timestamp);
 
         Task<GetStakeholdersOutputDTO> GetStakeholdersAsync();
+
+        Task VoteForProposedEraRequestAsync(VoteForProposedEraFunction voteForProposedEraFunction);
+
+        Task ProposeNewEraElectionAsync(ProposeNewEraFunction proposeNewEraFunction);
     }
 }

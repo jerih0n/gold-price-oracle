@@ -20,9 +20,17 @@ namespace GoldPriceOracle.Node
             var applicationUrl = GetApplicationUrl(config);
             var blockchainEventListener = (BlockchainEventListener)Activator.CreateInstance(typeof(BlockchainEventListener), blockchainData, applicationUrl);
 
+            //Price Aggregators Events
             Task.Factory.StartNew(() => blockchainEventListener.SubscriteForNewPriceRoundVoteEvent(GetGoldPriceResolverAddress(config)));
-            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraEvent(GetTimerAddress(config)));
             Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewPriceRoundEvent(GetTimerAddress(config)));
+
+            //Timer
+            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraElectionEvent(GetTimerAddress(config)));
+
+            //PoS events
+            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraProposalEvent(GetGoldPriceOracleTokenAddress(config)));
+            Task.Factory.StartNew(() => blockchainEventListener.SybscribeForNewEraElectionComplitedEvent(GetGoldPriceOracleTokenAddress(config)));
+            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForEndEraByNewElectedChairman(GetGoldPriceOracleTokenAddress(config)));
 
             await CreateHostBuilder(null).Build().RunAsync();
         }
@@ -57,5 +65,8 @@ namespace GoldPriceOracle.Node
 
         private static object GetApplicationUrl(IConfigurationRoot config)
             => config.GetValue<string>("ApplicationUrl");
+
+        private static string GetGoldPriceOracleTokenAddress(IConfiguration config)
+            => config.GetSection("Blockchain:SmartContracts:GoldPriceOracleERC20Token").GetValue<string>("Address");
     }
 }
