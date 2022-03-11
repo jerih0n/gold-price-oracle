@@ -22,10 +22,10 @@ namespace GoldPriceOracle.Node
 
             //Price Aggregators Events
             Task.Factory.StartNew(() => blockchainEventListener.SubscriteForNewPriceRoundVoteEvent(GetGoldPriceResolverAddress(config)));
-            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewPriceRoundEvent(GetTimerAddress(config)));
 
             //Timer
             Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraElectionEvent(GetTimerAddress(config)));
+            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewPriceRoundEvent(GetTimerAddress(config)));
 
             //PoS events
             Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraProposalEvent(GetGoldPriceOracleTokenAddress(config)));

@@ -171,20 +171,20 @@ namespace GoldPriceOracle.Services.Services
 
         private (string, ImmutableList<string>) ElectNewEraCouncil(ImmutableList<EraElectableMember> validators, string eraId, bool shouldInitGenerator = true)
         {
+            //0. seed the generator
+            if (shouldInitGenerator)
+            {
+                _deterministicRandomGenerator.Init(eraId.ToByteArray());
+            }
+
             if (validators.Count == 1)
             {
                 //one validator - chairman and only memeber of the cocil
                 var onlyMember = validators.First();
                 return (onlyMember.Address, new List<string>().ToImmutableList());
             }
-            //0. calculate total weight
+            //1. calculate total weight
             var totalWeight = validators.Sum(x => x.TotalAmountAsWeight);
-
-            //1. seed the generator
-            if (shouldInitGenerator)
-            {
-                _deterministicRandomGenerator.Init(eraId.ToByteArray());
-            }
 
             //1. elect chairman
             var firstRandomNumber = _deterministicRandomGenerator.Next(totalWeight);

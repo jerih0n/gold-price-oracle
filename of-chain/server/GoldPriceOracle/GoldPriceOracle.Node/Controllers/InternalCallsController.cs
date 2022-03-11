@@ -47,8 +47,8 @@ namespace GoldPriceOracle.Node.Controllers
             return HandleResponse(await _proofOfStakeService.TryVoteForNewEraElectionAsync(newEraProposal));
         }
 
-        [HttpPost("new-era-complited")]
-        public async Task<IActionResult> NewEraComplitedNotificationAsync([FromBody] NewEraElectionComplitedContract newEraElectionComplitedContract)
+        [HttpPost("new-era-election-complited")]
+        public async Task<IActionResult> NewEraElectionComplitedNotificationAsync([FromBody] NewEraElectionComplitedContract newEraElectionComplitedContract)
         {
             return Ok();
         }

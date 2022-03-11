@@ -153,7 +153,7 @@ namespace GoldPriceOracle.Infrastructure.Background
                 era.Ended);
 
             var newEraCompliteEventRequest = new NewEraElectionComplitedEventRequest(newEra);
-            await SendInternalHttpPostRequestAsync(newEraCompliteEventRequest, "new-era-complited");
+            await SendInternalHttpPostRequestAsync(newEraCompliteEventRequest, "new-era-election-complited");
             return;
         }
 
