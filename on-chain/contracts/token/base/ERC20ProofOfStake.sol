@@ -123,7 +123,7 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             eraWithGivenId.chairman == address(0),
             "Era with the same ID already proposed"
         );
-
+        //TODO: after testing new proposed era should come with one possitive vote
         _eras[eraId_] = Eras.Era({
             id: eraId_,
             colectedFeesAmount: 0,
