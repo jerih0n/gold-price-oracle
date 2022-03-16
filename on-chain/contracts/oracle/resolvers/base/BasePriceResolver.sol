@@ -173,10 +173,10 @@ abstract contract BasePriceResolver is IBaseResolver {
         //if the difference between proposed price and the validator price is more than 3%
         //the validation is not passed
         if (isApproved) {
-            round.acceptVotes++;
+            round.acceptVotes = round.acceptVotes + 1;
         } else {
             //validation is passed
-            round.refuseVotes++;
+            round.refuseVotes = round.refuseVotes + 1;
         }
 
         //add new unique vote record

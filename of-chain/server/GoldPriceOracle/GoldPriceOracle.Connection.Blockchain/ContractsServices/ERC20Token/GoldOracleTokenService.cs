@@ -165,6 +165,19 @@ namespace GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token
             return ContractHandler.QueryDeserializingToObjectAsync<GetCurrentEraFunction, GetCurrentEraOutputDTO>(null, blockParameter);
         }
 
+        public Task<GetEraByIdOutputDTO> GetEraByIdQueryAsync(GetEraByIdFunction getEraByIdFunction, BlockParameter blockParameter = null)
+        {
+            return ContractHandler.QueryDeserializingToObjectAsync<GetEraByIdFunction, GetEraByIdOutputDTO>(getEraByIdFunction, blockParameter);
+        }
+
+        public Task<GetEraByIdOutputDTO> GetEraByIdQueryAsync(byte[] eraId_, BlockParameter blockParameter = null)
+        {
+            var getEraByIdFunction = new GetEraByIdFunction();
+            getEraByIdFunction.EraId_ = eraId_;
+
+            return ContractHandler.QueryDeserializingToObjectAsync<GetEraByIdFunction, GetEraByIdOutputDTO>(getEraByIdFunction, blockParameter);
+        }
+
         public Task<BigInteger> GetErasCountQueryAsync(GetErasCountFunction getErasCountFunction, BlockParameter blockParameter = null)
         {
             return ContractHandler.QueryAsync<GetErasCountFunction, BigInteger>(getErasCountFunction, blockParameter);

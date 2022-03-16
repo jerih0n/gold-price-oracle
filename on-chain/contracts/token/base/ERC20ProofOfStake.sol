@@ -13,7 +13,8 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         private constant MINIMUM_QUORUM_REQUURED_FOR_VALIDATION_IN_PERCENTS =
         51;
     uint256 immutable _rewardForValidatorsAfterEachEra;
-    mapping(bytes32 => Eras.Era) internal _eras;
+    Eras.Era[] internal _eras;
+    mapping(bytes32 => uint256) internal _erasIndexes;
     mapping(bytes32 => mapping(address => ErasVotes.ErasVote))
         internal _eraValidatorVotes;
     mapping(bytes32 => address[]) internal _erasCouncil;
@@ -63,7 +64,8 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         override
         returns (Eras.Era memory currentEra)
     {
-        return _eras[_activeEraId];
+        uint256 lastEraId = _erasIndexes[_activeEraId];
+        return _eras[lastEraId];
     }
 
     function getErasCount() external view override returns (uint256) {
@@ -72,11 +74,12 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
 
     function endEra(uint256 timestamp) external override {
         address caller = msg.sender;
-        Eras.Era memory futureEra = _eras[_lastApprovedEra];
+        uint256 eraIdex = _erasIndexes[_lastApprovedEra];
+        Eras.Era memory lastEra = _eras[eraIdex];
 
         //TODO: validation for time elapsed
         require(
-            caller == futureEra.chairman,
+            caller == lastEra.chairman,
             "Only chairman can end current era"
         );
         if (_previousEraId == 0 && _activeEraId == 0) {
@@ -87,7 +90,7 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             _previousEraId = _lastApprovedEra;
         } else {
             _payReward(
-                futureEra.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
+                lastEra.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
                 caller
             );
             _previousEraId = _activeEraId;
@@ -117,26 +120,31 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             );
         }
         //check if era with the same eraId already exist!
-        Eras.Era storage eraWithGivenId = _eras[eraId_];
+        uint256 eraId = _erasIndexes[eraId_];
         require(
             //eraId is unique. If era with that Id is found, then the proposal is not valid
-            eraWithGivenId.chairman == address(0),
+            eraId != 0,
             "Era with the same ID already proposed"
         );
         //TODO: after testing new proposed era should come with one possitive vote
-        _eras[eraId_] = Eras.Era({
-            id: eraId_,
-            colectedFeesAmount: 0,
-            startDate: utcTimeStamp_,
-            endDate: 0,
-            chairman: chairman_,
-            requiredQuorum: _calculateMinimumNodesCountForReachingQuorum(), //51% of all validators
-            isQuorumReached: false,
-            possitiveVotes: 0,
-            negativeVotes: 0,
-            accepted: false,
-            ended: false
-        });
+
+        uint256 newEraIndex = _eras.length;
+        _eras.push(
+            Eras.Era({
+                id: eraId_,
+                colectedFeesAmount: 0,
+                startDate: utcTimeStamp_,
+                endDate: 0,
+                chairman: chairman_,
+                requiredQuorum: _calculateMinimumNodesCountForReachingQuorum(), //51% of all validators
+                isQuorumReached: false,
+                possitiveVotes: 0,
+                negativeVotes: 0,
+                accepted: false,
+                ended: false
+            })
+        );
+        _erasIndexes[eraId_] = newEraIndex;
 
         emit NewEraElecationProposal(
             eraId_,
@@ -152,8 +160,13 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         override
         onlyValidatorAction
     {
-        Eras.Era storage era = _eras[eraId];
+        uint256 eraIndex = _erasIndexes[eraId];
+        require(eraIndex != 0, "Invalid era id");
+        require(eraIndex == _eras.length - 1, "EraId is not the last era");
 
+        Eras.Era storage era = _eras[eraIndex];
+
+        require(era.id != 0, "Invalid Era Id");
         require(
             era.chairman != address(0),
             "Era with passed Id does not exist"
@@ -170,24 +183,18 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
 
         require(eraVote.voter == address(0), "Validator already voted");
 
-        //register vote
-        _eraValidatorVotes[eraId][caller] = ErasVotes.ErasVote({
-            voter: caller,
-            approve: approves
-        });
-
         //check required quorum is reached
         if (approves == true) {
-            era.possitiveVotes += 1;
-            if (era.possitiveVotes == era.requiredQuorum) {
+            era.possitiveVotes = era.possitiveVotes + 1;
+            if (era.possitiveVotes >= era.requiredQuorum) {
                 //era election is approved!
                 era.isQuorumReached = true;
                 era.accepted = true;
                 _lastApprovedEra = eraId;
             }
         } else {
-            era.negativeVotes += 1;
-            if (era.negativeVotes == era.requiredQuorum) {
+            era.negativeVotes = era.negativeVotes + 1;
+            if (era.negativeVotes >= era.requiredQuorum) {
                 //era election is denied!
                 era.isQuorumReached = true;
                 era.accepted = false;
@@ -199,6 +206,23 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         if (era.isQuorumReached == true) {
             emit NewEraElectionComplited(era);
         }
+
+        //register vote
+        _eraValidatorVotes[eraId][caller] = ErasVotes.ErasVote({
+            voter: caller,
+            approve: approves
+        });
+    }
+
+    function getEraById(bytes32 eraId_)
+        external
+        view
+        override
+        returns (Eras.Era memory era)
+    {
+        uint256 eraIndex = _erasIndexes[eraId_];
+        require(eraIndex != 0, "Invalid Era Id");
+        return _eras[eraIndex];
     }
 
     function _getCurrentEraInternal()
@@ -206,7 +230,9 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         view
         returns (Eras.Era memory era)
     {
-        return _eras[_activeEraId];
+        uint256 eraIndex = _erasIndexes[_activeEraId];
+        require(eraIndex != 0, "Invalid Era Id");
+        return _eras[eraIndex];
     }
 
     function _payReward(uint256 tokenAmountForDistribution_, address chainman_)
