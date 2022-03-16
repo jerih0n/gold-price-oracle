@@ -53,6 +53,9 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
         public async Task ProposeNewEraElectionAsync(ProposeNewEraFunction proposeNewEraFunction)
             => await _goldOracleTokenService.ProposeNewEraRequestAndWaitForReceiptAsync(proposeNewEraFunction);
 
+        public async Task<GetEraByIdOutputDTO> GetEraByIdAsync(GetEraByIdFunction getEraByIdFunction)
+           => await _goldOracleTokenService.GetEraByIdQueryAsync(getEraByIdFunction);
+
         public string TokenSymbol { get; }
     }
 }

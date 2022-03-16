@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Services.Services
 {
-    public class ProofOfStakeService : IProofOfStakeService
+    public class ProofOfStakeService : IProofOfStakeService, IBlockchainMonitorService
     {
         private const string CURRENT_ERA_NOT_FOUND = "Current era not found";
         private const string NODE_DATA_NOT_FOUND = "Node is not set up. You need to set the node";
@@ -25,6 +25,7 @@ namespace GoldPriceOracle.Services.Services
         private const string NEW_ERA_COUNCIL_PROPOSED = "New era council had been proposed";
         private const string ALREADY_VOTED = "Already voted as chairman";
         private const string NODE_SUCCESSFULLY_VOTE = "Node successfully vote";
+        private const string ERA_NOT_FOUND = "Era not found";
 
         private readonly IProofOfStakeTokenService _proofOfStakeTokenService;
         private readonly INodeDataDataAccessService _nodeDataDataAccessService;
@@ -152,6 +153,51 @@ namespace GoldPriceOracle.Services.Services
             }
         }
 
+        public async Task<TryResult<EraInformation>> GetEraByIdAsync(string eraId)
+        {
+            var getEraByIdRequest = new GetEraByIdFunction
+            {
+                EraId_ = eraId.ToByteArray(),
+            };
+
+            try
+            {
+                var result = await _proofOfStakeTokenService.GetEraByIdAsync(getEraByIdRequest);
+                var era = result.Era;
+                if (era == null || era.Chairman.IsNullAddress())
+                {
+                    return TryResult<EraInformation>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, ERA_NOT_FOUND));
+                }
+                var eraInfo = MapToEraIformation(result.Era);
+
+                return TryResult<EraInformation>.Success(eraInfo);
+            }
+            catch (Exception ex)
+            {
+                return TryResult<EraInformation>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, ex.Message));
+            }
+        }
+
+        public async Task<TryResult<EraInformation>> GetCurrentEraAsync()
+        {
+            try
+            {
+                var response = await _proofOfStakeTokenService.GetCurrentEraAsync();
+                var currentEra = response.CurrentEra;
+                if (currentEra == null || currentEra.Chairman.IsNullAddress())
+                {
+                    return TryResult<EraInformation>.Fail(new ApiError(System.Net.HttpStatusCode.NotFound, ERA_NOT_FOUND));
+                }
+                var eraInfo = MapToEraIformation(currentEra);
+
+                return TryResult<EraInformation>.Success(eraInfo);
+            }
+            catch (Exception ex)
+            {
+                return TryResult<EraInformation>.Fail(new ApiError(System.Net.HttpStatusCode.InternalServerError, ex.Message));
+            }
+        }
+
         private async Task<ImmutableList<EraElectableMember>> GetValidators()
         {
             //this node is previous chairman and needs to start new election
@@ -248,6 +294,21 @@ namespace GoldPriceOracle.Services.Services
                 }
             }
             return true;
+        }
+
+        private EraInformation MapToEraIformation(Era era)
+        {
+            return new EraInformation(era.Id.ToHex(),
+                    era.ColectedFeesAmount.NormalizeToDefaultDecimal().ToString(),
+                    era.StartDate.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.EndDate.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.Chairman,
+                    era.RequiredQuorum.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.IsQuorumReached,
+                    era.PossitiveVotes.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.NegativeVotes.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.Accepted,
+                    era.Ended);
         }
     }
 }

@@ -15,5 +15,7 @@ namespace GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.ERC20Token
         Task VoteForProposedEraRequestAsync(VoteForProposedEraFunction voteForProposedEraFunction);
 
         Task ProposeNewEraElectionAsync(ProposeNewEraFunction proposeNewEraFunction);
+
+        Task<GetEraByIdOutputDTO> GetEraByIdAsync(GetEraByIdFunction getEraByIdFunction);
     }
 }

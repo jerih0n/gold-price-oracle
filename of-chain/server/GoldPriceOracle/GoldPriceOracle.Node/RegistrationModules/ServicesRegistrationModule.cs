@@ -13,6 +13,7 @@ namespace GoldPriceOracle.Node.RegistrationModules
             services.AddScoped<IIntegrationService, IntegrationService>();
             services.AddScoped<IStakingManagerService, StakingManagerService>();
             services.AddScoped<IProofOfStakeService, ProofOfStakeService>();
+            services.AddScoped<IBlockchainMonitorService, ProofOfStakeService>();
         }
     }
 }
