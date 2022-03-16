@@ -4,6 +4,7 @@ using GoldPriceOracle.Infrastructure.Blockchain.Smartcontracts.GoldPriceResolver
 using GoldPriceOracle.Infrastructure.Cryptography.RandomGenerator;
 using GoldPriceOracle.Infrastructure.DatabaseAccessServices;
 using GoldPriceOracle.Infrastructure.Integration.ExternalAPI;
+using GoldPriceOracle.Infrastructure.Integration.Logger;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoldPriceOracle.Node.RegistrationModules
@@ -12,6 +13,8 @@ namespace GoldPriceOracle.Node.RegistrationModules
     {
         public static void Register(IServiceCollection services)
         {
+            services.AddSingleton<INodeLogger, NodeLogger>();
+
             services.AddScoped<IHDWalletManagingService, HDWalletManagingService>();
             services.AddScoped<INodeDataDataAccessService, NodeDataAccessService>();
             services.AddScoped<IExternalGoldApiIntegrationService, ExternalGoldApiIntegrationService>();

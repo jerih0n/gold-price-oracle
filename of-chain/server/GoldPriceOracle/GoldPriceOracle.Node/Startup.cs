@@ -34,7 +34,6 @@ namespace GoldPriceOracle.Node
             OptionsRegistrationModule.Register(services, _cofiguration);
             InfrastructureRegistrationModule.Register(services);
             ServicesRegistrationModule.Register(services);
-            //services.AddSingleton<BlockchainEventListener>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

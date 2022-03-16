@@ -1,9 +1,8 @@
 using GoldPriceOracle.Configuration;
-using GoldPriceOracle.Infrastructure.Background;
+using GoldPriceOracle.Node.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Threading.Tasks;
 
 namespace GoldPriceOracle.Node
@@ -16,23 +15,10 @@ namespace GoldPriceOracle.Node
                 .AddJsonFile("appsettings.json", optional: false)
                 .Build();
 
-            var blockchainData = GetBlockchainNetworkOptions(config);
-            var applicationUrl = GetApplicationUrl(config);
-            var blockchainEventListener = (BlockchainEventListener)Activator.CreateInstance(typeof(BlockchainEventListener), blockchainData, applicationUrl);
-
-            //Price Aggregators Events
-            Task.Factory.StartNew(() => blockchainEventListener.SubscriteForNewPriceRoundVoteEvent(GetGoldPriceResolverAddress(config)));
-
-            //Timer
-            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraElectionEvent(GetTimerAddress(config)));
-            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewPriceRoundEvent(GetTimerAddress(config)));
-
-            //PoS events
-            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForNewEraProposalEvent(GetGoldPriceOracleTokenAddress(config)));
-            Task.Factory.StartNew(() => blockchainEventListener.SybscribeForNewEraElectionComplitedEvent(GetGoldPriceOracleTokenAddress(config)));
-            Task.Factory.StartNew(() => blockchainEventListener.SubscribeForEndEraByNewElectedChairman(GetGoldPriceOracleTokenAddress(config)));
-
-            await CreateHostBuilder(null).Build().RunAsync();
+            await CreateHostBuilder(null)
+                .SubscribeForBlockchainEvents(config)
+                .Build()
+                .RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

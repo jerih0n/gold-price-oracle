@@ -3,6 +3,7 @@ using GoldPriceOracle.Connection.Blockchain.Contracts.GoldPriceResolver;
 using GoldPriceOracle.Connection.Blockchain.Contracts.Timer;
 using GoldPriceOracle.Connection.Blockchain.ERC20Token;
 using GoldPriceOracle.Infrastructure.Background.Requests;
+using GoldPriceOracle.Infrastructure.Integration.Logger;
 using GoldPriceOracle.Infrastructure.Utils;
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
@@ -26,8 +27,9 @@ namespace GoldPriceOracle.Infrastructure.Background
         private readonly string _webSocketUrl;
         private readonly Web3 _web3;
         private readonly string _applicationUrl;
+        private readonly INodeLogger _nodeLogger;
 
-        public BlockchainEventListener(BlockchainNetworkOptions options, string applicationUrl)
+        public BlockchainEventListener(BlockchainNetworkOptions options, string applicationUrl, INodeLogger nodeLogger)
         {
             _options = options;
 
@@ -36,27 +38,28 @@ namespace GoldPriceOracle.Infrastructure.Background
             _web3 = new Web3(_httpUrl);
             _httpClinet = new HttpClient();
             _applicationUrl = applicationUrl;
+            _nodeLogger = nodeLogger;
         }
 
         public async Task SubscriteForNewPriceRoundVoteEvent(string contractAddress)
-            => await SybscribeForEvent<NewPriceVoteEventDTO>(contractAddress, HandleNewPriceRoundVoteEvent);
+            => await SybscribeForEvent<NewPriceVoteEventDTO>(contractAddress, HandleNewPriceRoundVoteEvent, nameof(BlockchainEventListener.SubscriteForNewPriceRoundVoteEvent));
 
         public async Task SubscribeForNewPriceRoundEvent(string contractAddress)
-            => await SybscribeForEvent<StarNewPriceRoundEventDTO>(contractAddress, HandleStartNewPriceRoundEvent);
+            => await SybscribeForEvent<StarNewPriceRoundEventDTO>(contractAddress, HandleStartNewPriceRoundEvent, nameof(BlockchainEventListener.SubscribeForNewPriceRoundEvent));
 
         public async Task SubscribeForNewEraElectionEvent(string contractAddress)
-            => await SybscribeForEvent<StartNewEraEventDTO>(contractAddress, HandleStartNewEraEvent);
+            => await SybscribeForEvent<StartNewEraEventDTO>(contractAddress, HandleStartNewEraEvent, nameof(BlockchainEventListener.SubscribeForNewEraElectionEvent));
 
         public async Task SubscribeForNewEraProposalEvent(string contractAddress)
-            => await SybscribeForEvent<NewEraElecationProposalEventDTO>(contractAddress, HandleNewEraElecationProposalEvent);
+            => await SybscribeForEvent<NewEraElecationProposalEventDTO>(contractAddress, HandleNewEraElecationProposalEvent, nameof(BlockchainEventListener.SubscribeForNewEraProposalEvent));
 
         public async Task SybscribeForNewEraElectionComplitedEvent(string contractAddress)
-            => await SybscribeForEvent<NewEraElectionComplitedEventDTO>(contractAddress, NewEraElectionComplitedEvent);
+            => await SybscribeForEvent<NewEraElectionComplitedEventDTO>(contractAddress, NewEraElectionComplitedEvent, nameof(BlockchainEventListener.SybscribeForNewEraElectionComplitedEvent));
 
         public async Task SubscribeForEndEraByNewElectedChairman(string contractAddress)
-            => await SybscribeForEvent<EndEraByNewElectedChairmanEventDTO>(contractAddress, HandleEndEraByNewElectedChairmanEvent);
+            => await SybscribeForEvent<EndEraByNewElectedChairmanEventDTO>(contractAddress, HandleEndEraByNewElectedChairmanEvent, nameof(BlockchainEventListener.SubscribeForEndEraByNewElectedChairman));
 
-        private async Task SybscribeForEvent<TEvent>(string contractAddress, Func<TEvent, Task> action) where TEvent : IEventDTO, new()
+        private async Task SybscribeForEvent<TEvent>(string contractAddress, Func<TEvent, Task> action, string eventName) where TEvent : IEventDTO, new()
         {
             using (var client = new StreamingWebSocketClient(_webSocketUrl))
             {
@@ -85,6 +88,7 @@ namespace GoldPriceOracle.Infrastructure.Background
                 // open the web socket connection
                 await client.StartAsync();
 
+                _nodeLogger.LogInformation($"Subscribed to {eventName}, contract address {contractAddress}");
                 // begin receiving subscription data
                 // data will be received on a background thread
                 await subscription.SubscribeAsync(filterTransfers);
@@ -111,21 +115,26 @@ namespace GoldPriceOracle.Infrastructure.Background
         private async Task HandleStartNewEraEvent(StartNewEraEventDTO startNewEraEventDTO)
         {
             var request = new StarNewEraEventRequest(startNewEraEventDTO.UtcTimeStamp_.ToString(), startNewEraEventDTO.NewEraId_.ToHex());
+            _nodeLogger.LogInformation("New Era Election Event", request);
             await SendInternalHttpPostRequestAsync(request, "new-era-election");
         }
 
         private async Task HandleStartNewPriceRoundEvent(StarNewPriceRoundEventDTO starNewPriceRoundEventDTO)
-            => await SendInternalHttpPostRequestAsync(new StartNewPriceRoundRequest(starNewPriceRoundEventDTO.UtcTimeStamp.ToString()), "start-new-price-round");
+        {
+            _nodeLogger.LogInformation("New price round proposal event", starNewPriceRoundEventDTO);
+            await SendInternalHttpPostRequestAsync(new StartNewPriceRoundRequest(starNewPriceRoundEventDTO.UtcTimeStamp.ToString()), "start-new-price-round");
+        }
 
         private async Task HandleNewEraElecationProposalEvent(NewEraElecationProposalEventDTO newEraElecationProposalEventDTO)
         {
-            var NewEraProposalEventRequest = new NewEraProposalEventRequest(newEraElecationProposalEventDTO.EraId.ToHex(),
+            var newEraProposalEventRequest = new NewEraProposalEventRequest(newEraElecationProposalEventDTO.EraId.ToHex(),
                 newEraElecationProposalEventDTO.Chairman,
                 newEraElecationProposalEventDTO.Council,
                 newEraElecationProposalEventDTO.ValidatorsCount.ToString(),
                 newEraElecationProposalEventDTO.CalculatedSeed.ToString());
 
-            await SendInternalHttpPostRequestAsync(NewEraProposalEventRequest, "era-proposal-vote");
+            _nodeLogger.LogInformation("New era election proposal event", newEraProposalEventRequest);
+            await SendInternalHttpPostRequestAsync(newEraProposalEventRequest, "era-proposal-vote");
         }
 
         private async Task HandleEndEraByNewElectedChairmanEvent(EndEraByNewElectedChairmanEventDTO endEraByNewElectedChairmanEventDTO)
@@ -134,6 +143,7 @@ namespace GoldPriceOracle.Infrastructure.Background
                 endEraByNewElectedChairmanEventDTO.Chairman,
                 endEraByNewElectedChairmanEventDTO.Timestap.ToString());
 
+            _nodeLogger.LogInformation("End era event", endEraByNewElectedChairmanRequest);
             await SendInternalHttpPostRequestAsync(endEraByNewElectedChairmanRequest, "end-era");
         }
 
@@ -153,6 +163,8 @@ namespace GoldPriceOracle.Infrastructure.Background
                 era.Ended);
 
             var newEraCompliteEventRequest = new NewEraElectionComplitedEventRequest(newEra);
+
+            _nodeLogger.LogInformation("Era complete event", newEraCompliteEventRequest);
             await SendInternalHttpPostRequestAsync(newEraCompliteEventRequest, "new-era-election-complited");
             return;
         }
