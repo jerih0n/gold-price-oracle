@@ -51,5 +51,10 @@ namespace GoldPriceOracle.Infrastructure.Utils
 
             return result;
         }
+
+        public static BigInteger ToBigInteger(this int @iteger)
+        {
+            return new BigInteger(@iteger);
+        }
     }
 }

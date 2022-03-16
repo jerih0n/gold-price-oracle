@@ -49,14 +49,13 @@ namespace GoldPriceOracle.Node.Controllers
 
         [HttpPost("new-era-election-complited")]
         public async Task<IActionResult> NewEraElectionComplitedNotificationAsync([FromBody] NewEraElectionComplitedContract newEraElectionComplitedContract)
-        {
-            return Ok();
-        }
+            => HandleResponse(await _proofOfStakeService.TryEndCurrentEraAsync(newEraElectionComplitedContract.Era.Id,
+                newEraElectionComplitedContract.Era.Chairman));
 
         [HttpPost("end-era")]
         public async Task<IActionResult> EndEraByNewElectedChairmanContractAsync([FromBody] EndEraByNewElectedChairmanContract endEraByNewElectedChairmanContract)
-            => HandleResponse(await _proofOfStakeService.TryEndCurrentEraAsync(endEraByNewElectedChairmanContract.EraId,
-                endEraByNewElectedChairmanContract.Chairman,
-                endEraByNewElectedChairmanContract.Timestap));
+        {
+            return Ok(); // todo!
+        }
     }
 }

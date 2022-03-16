@@ -2,11 +2,6 @@
 {
     public class NewEraElectionComplitedContract
     {
-        public NewEraElectionComplitedContract(EraContract eraRequest)
-        {
-            Era = eraRequest;
-        }
-
-        public EraContract Era { get; }
+        public EraContract Era { get; set; }
     }
 }

@@ -333,12 +333,13 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0x712Afd91cb5d4205d245d69DB1bB8d2530532F2E",
-      "transactionHash": "0xebeb3478f88026a7d9a35c5464fbec704f182d4c7958bc21096f273288e91fa2"
+      "address": "0xC55619F05bf2fD4Ecc0Aa589bD3D1112B8889344",
+      "transactionHash": "0xa2bf78ac7b95a4c4b8075d843290ef5a3a829e96bfc293a5e28ed665289b25a1"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-16T10:10:24.128Z",
+  "updatedAt": "2022-03-16T22:01:09.353Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

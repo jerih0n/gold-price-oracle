@@ -645,12 +645,13 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0x35bC8f43D06E38b593FfCb402c95EC6999d9De89",
-      "transactionHash": "0x1ed1f9fca5b28328ef95078d00910cfb2cb7988053f326a762d3c2a862e7aa8b"
+      "address": "0x403101F527BDcb2FBC1F4C6c18f103dBB07caA0A",
+      "transactionHash": "0xeeff2023765e30d0d3c1ac83e71b5d404fa645cdbb42e6c409eb10e9b324eb45"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-16T10:10:24.127Z",
+  "updatedAt": "2022-03-16T22:01:09.352Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

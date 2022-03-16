@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoldPriceOracle.Node.Controllers
 {
-    [Route("blockchain-information")]
+    [Route("api/blockchain-information")]
     public class BlockchainInformationController : BaseController
     {
         private readonly IBlockchainMonitorService _blockchainMonitorService;

@@ -125,7 +125,7 @@ namespace GoldPriceOracle.Services.Services
             }
         }
 
-        public async Task<TryResult<bool>> TryEndCurrentEraAsync(string eraId, string chairman, string timestamp)
+        public async Task<TryResult<bool>> TryEndCurrentEraAsync(string eraId, string chairman)
         {
             var nodeData = _nodeDataDataAccessService.GetNodeData();
             if (nodeData == null)
@@ -142,7 +142,8 @@ namespace GoldPriceOracle.Services.Services
             }
             try
             {
-                await _proofOfStakeTokenService.EndCurrentEraAsync(timestamp.ToBitInteger());
+                var timeStamp = TimeStampHelper.GetCurrentUtcTimestamp();
+                await _proofOfStakeTokenService.EndCurrentEraAsync(timeStamp.ToBigInteger());
                 //record in the database
 
                 return TryResult<bool>.Success(true);
@@ -300,13 +301,13 @@ namespace GoldPriceOracle.Services.Services
         {
             return new EraInformation(era.Id.ToHex(),
                     era.ColectedFeesAmount.NormalizeToDefaultDecimal().ToString(),
-                    era.StartDate.NormalizeToIntWithDefaultDecimals().ToString(),
-                    era.EndDate.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.StartDate.ToString(),
+                    era.EndDate.ToString(),
                     era.Chairman,
-                    era.RequiredQuorum.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.RequiredQuorum.ToString(),
                     era.IsQuorumReached,
-                    era.PossitiveVotes.NormalizeToIntWithDefaultDecimals().ToString(),
-                    era.NegativeVotes.NormalizeToIntWithDefaultDecimals().ToString(),
+                    era.PossitiveVotes.ToString(),
+                    era.NegativeVotes.ToString(),
                     era.Accepted,
                     era.Ended);
         }
