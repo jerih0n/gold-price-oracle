@@ -177,17 +177,17 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         });
 
         //check required quorum is reached
-        if (approves) {
-            era.possitiveVotes++;
-            if (era.possitiveVotes >= era.requiredQuorum) {
+        if (approves == true) {
+            era.possitiveVotes += 1;
+            if (era.possitiveVotes == era.requiredQuorum) {
                 //era election is approved!
                 era.isQuorumReached = true;
                 era.accepted = true;
                 _lastApprovedEra = eraId;
             }
         } else {
-            era.negativeVotes++;
-            if (era.negativeVotes >= era.requiredQuorum) {
+            era.negativeVotes += 1;
+            if (era.negativeVotes == era.requiredQuorum) {
                 //era election is denied!
                 era.isQuorumReached = true;
                 era.accepted = false;
@@ -196,7 +196,7 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             }
         }
 
-        if (era.isQuorumReached) {
+        if (era.isQuorumReached == true) {
             emit NewEraElectionComplited(era);
         }
     }

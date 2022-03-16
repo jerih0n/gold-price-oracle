@@ -6273,12 +6273,12 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0x92A2ABC04d4028e4DF4Bd8e53573BE03A17608b2",
-      "transactionHash": "0x2097d304bdb974d259f5c6430b5fd2c70ed2b7876cc09e1826ff884383873312"
+      "address": "0xcC44579750096Ed0Ac7Ac3C756fC04b6E6aA6578",
+      "transactionHash": "0x28da9918393a3c9bc0461b143eb644fe8e82689375fe5e783392cdf8ad86980a"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-11T08:48:18.857Z",
+  "updatedAt": "2022-03-15T20:34:44.465Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
