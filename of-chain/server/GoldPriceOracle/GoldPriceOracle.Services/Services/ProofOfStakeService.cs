@@ -199,6 +199,12 @@ namespace GoldPriceOracle.Services.Services
             }
         }
 
+        public async Task<TryResult<bool>> RecordEndedEraAsync(string eraId, string chairman, string timeStamp)
+        {
+            //TODO record in the database
+            return TryResult<bool>.Success(true);
+        }
+
         private async Task<ImmutableList<EraElectableMember>> GetValidators()
         {
             //this node is previous chairman and needs to start new election

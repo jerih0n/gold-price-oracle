@@ -12,5 +12,7 @@ namespace GoldPriceOracle.Services.Interfaces
         Task<TryResult<VotingResult>> TryVoteForNewEraElectionAsync(NewEraProposal newEraProposal);
 
         Task<TryResult<bool>> TryEndCurrentEraAsync(string eraId, string chairman);
+
+        Task<TryResult<bool>> RecordEndedEraAsync(string eraId, string chairman, string timeStamp);
     }
 }
