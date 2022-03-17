@@ -72,11 +72,11 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
 
     function endEra(uint256 timestamp) external override {
         address caller = msg.sender;
-        Eras.Era memory futureEra = _eras[_lastApprovedEra];
+        Eras.Era memory ereToEnd = _eras[_activeEraId];
 
         //TODO: validation for time elapsed
         require(
-            caller == futureEra.chairman,
+            caller == ereToEnd.chairman,
             "Only chairman can end current era"
         );
         if (_previousEraId == 0 && _activeEraId == 0) {
@@ -84,10 +84,10 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             //is on the very firs era
             //no fees for distribution
             //and auto set previous era as current era
-            _previousEraId = _lastApprovedEra;
+            _previousEraId = _activeEraId;
         } else {
             _payReward(
-                futureEra.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
+                ereToEnd.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
                 caller
             );
             _previousEraId = _activeEraId;
@@ -126,6 +126,7 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         //TODO: after testing new proposed era should come with one possitive vote
         _eras[eraId_] = Eras.Era({
             id: eraId_,
+            previousEraId: _previousEraId,
             colectedFeesAmount: 0,
             startDate: utcTimeStamp_,
             endDate: 0,
@@ -208,6 +209,42 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         returns (Eras.Era memory era)
     {
         return _eras[eraId_];
+    }
+
+    function getValidatorsCoundForActiveEra()
+        external
+        view
+        override
+        returns (uint256)
+    {
+        Eras.Era memory era = _getCurrentEraInternal();
+        if (era.chairman != address(0)) {
+            // in this case we don't have active era:
+            //return validators cound
+            return _validatorsCount;
+        }
+        address[] storage coucil = _erasCouncil[era.id];
+        return coucil.length + 1; // coucil count + 1 which is the chairman
+    }
+
+    function isAddressElectedForValidation(address address_)
+        external
+        view
+        override
+        returns (bool)
+    {
+        Eras.Era memory era = _getCurrentEraInternal();
+        if (era.chairman != address(0)) {
+            return true;
+        }
+        address[] storage coucil = _erasCouncil[era.id];
+
+        for (uint256 i = 0; i < coucil.length; i++) {
+            if (address_ == coucil[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function _getCurrentEraInternal()

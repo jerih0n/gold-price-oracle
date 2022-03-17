@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 import "../../utils/Rounds.sol";
 import "../../utils/Votes.sol";
 import "../interfaces/IBaseResolver.sol";
+import "../../../token/Interfaces/IErasMonitor.sol";
+import "../../../token/utils/Eras.sol";
 
 abstract contract BasePriceResolver is IBaseResolver {
     uint256
@@ -11,29 +13,29 @@ abstract contract BasePriceResolver is IBaseResolver {
     uint256 private immutable _maxPriceDerivationInPercents;
     string private _assetCode;
     string private _currencyCode;
-
     Rounds.Round[] private _rounds;
     mapping(bytes32 => uint256) private _roundIndexs;
-    mapping(bytes32 => Votes.Vote) _votes;
+    mapping(bytes32 => Votes.Vote) internal _votes;
+    IErasMonitor internal _erasMonitor;
 
     constructor(
         string memory assetCode_,
         string memory currencyCode_,
-        uint256 maxPriceDeviationInPercents_
+        uint256 maxPriceDeviationInPercents_,
+        address erasMonitorAddress_
     ) {
         _maxPriceDerivationInPercents = maxPriceDeviationInPercents_;
         _assetCode = assetCode_;
         _currencyCode = currencyCode_;
-
+        _erasMonitor = IErasMonitor(erasMonitorAddress_);
         //iniatial round to take 0 index;
         _initEmptyRound();
     }
 
-    //TODO: this all will come form PoS. For now they are hardcoded
-    uint256 validatorNodesCount = 4;
-    address electedNodeAddress =
-        address(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4); //TODO: this will come as a result of PoS. Hardcoded for now
-
+    modifier NotNullAddress() {
+        require(msg.sender != address(0), "Null address is not valid");
+        _;
+    }
     event NewPriceVote(
         string assetSymbol,
         string currencySymbol,
@@ -51,6 +53,7 @@ abstract contract BasePriceResolver is IBaseResolver {
         external
         view
         override
+        NotNullAddress
         returns (Rounds.Round memory round)
     {
         uint256 roundsLenght = _rounds.length;
@@ -69,21 +72,27 @@ abstract contract BasePriceResolver is IBaseResolver {
         }
     }
 
-    function startNewPriceRound(address nodeAddress_, uint256 price_)
+    function startNewPriceRound(uint256 price_)
         external
         override
+        NotNullAddress
     {
         //call from elected node. If not revert.
         //Only elected node should be able to start new round of price change
         //after the price is set need to be validated - at least 51% of active nodes must approve the value
         //after the quorum is reached the value is finaly set and become valid price
         //only valid (validated) prices should be return to aggregator
-        require(nodeAddress_ != address(0), "Null address is invalid");
-        //if check and then slash - we can perform a penalty for trying to update without permission;
-        //for now it will be required check
+        address nodeAddress = msg.sender;
+
+        Eras.Era memory currentEra = _erasMonitor.getCurrentEra();
+
         require(
-            nodeAddress_ == electedNodeAddress,
-            "Given address not elected for validation"
+            currentEra.chairman != address(0),
+            "Cannot start price round without era election"
+        );
+        require(
+            currentEra.chairman == nodeAddress,
+            "Only elected chairman can start new price round"
         );
 
         //default nonce is 0;
@@ -103,9 +112,9 @@ abstract contract BasePriceResolver is IBaseResolver {
         uint256 requiredMinimumQuorum = _calculateMinimumNodesCountForReachingQuorum();
 
         Rounds.Round memory round = Rounds.Round({
-            roundId: keccak256(abi.encodePacked(nodeAddress_, nonce, price_)),
+            roundId: keccak256(abi.encodePacked(nodeAddress, nonce, price_)),
             nonce: nonce,
-            node: nodeAddress_,
+            node: nodeAddress,
             price: price_,
             assetCode: _assetCode,
             currencyCode: _currencyCode,
@@ -129,10 +138,10 @@ abstract contract BasePriceResolver is IBaseResolver {
             round.price
         );
 
-        bytes32 voterIdentity = _createVoterId(round.roundId, nodeAddress_);
+        bytes32 voterIdentity = _createVoterId(round.roundId, nodeAddress);
 
         _votes[voterIdentity] = Votes.Vote({
-            voter: nodeAddress_,
+            voter: nodeAddress,
             price: price_,
             approves: true,
             percentageDiff: 0
@@ -144,10 +153,13 @@ abstract contract BasePriceResolver is IBaseResolver {
         override
     {
         address callerAddress = msg.sender;
-        //check if caller is an elected member for current era
-        //TODO:
-        //required check
         //find correct round record by roundId
+        bool isElectedMemberOfCurrentEra = _erasMonitor
+            .isAddressElectedForValidation(callerAddress);
+        require(
+            isElectedMemberOfCurrentEra,
+            "Access Denied. You are not part of the coucil of the current era"
+        );
         uint256 validRoundIndex = _tryGetValidRoundIndexByRequestedRoundId(
             roundId_
         );
@@ -205,6 +217,8 @@ abstract contract BasePriceResolver is IBaseResolver {
         view
         returns (uint256)
     {
+        uint256 validatorNodesCount = _erasMonitor
+            .getValidatorsCoundForActiveEra();
         //TODO get from PoSS
         if (validatorNodesCount == 1) {
             return 1;

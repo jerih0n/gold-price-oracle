@@ -11,4 +11,11 @@ interface IErasMonitor {
         external
         view
         returns (Eras.Era memory era);
+
+    function getValidatorsCoundForActiveEra() external view returns (uint256);
+
+    function isAddressElectedForValidation(address address_)
+        external
+        view
+        returns (bool);
 }

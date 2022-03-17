@@ -10,11 +10,12 @@ contract GoldPriceResolver is BasePriceResolver {
     string constant GOLD_SYMBOL = "XUA"; //TODO; move to separate contract when refactor
     string constant USDT_SYMBOL = "USDT";
 
-    constructor()
+    constructor(address erasMonitorAddress_)
         BasePriceResolver(
             GOLD_SYMBOL,
             USDT_SYMBOL,
-            MAXIMUM_ALLOWED_PRICE_DEVIATION_IN_PERCENTS
+            MAXIMUM_ALLOWED_PRICE_DEVIATION_IN_PERCENTS,
+            erasMonitorAddress_
         )
     {}
 }
