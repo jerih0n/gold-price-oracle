@@ -24,7 +24,7 @@ module.exports = async function (deployer) {
         await deployer.link(Rounds, GoldPriceResolver);
         await deployer.link(Voters, GoldPriceResolver);
 
-        await deployer.deploy(GoldPriceResolver);
+        await deployer.deploy(GoldPriceResolver, GoldOracleToken.address);
 
         await deployer.deploy(GoldPriceAggregator, GoldPriceResolver.address);
         //do not depoloy for now
