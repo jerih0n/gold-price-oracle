@@ -1,28 +1,28 @@
 {
   "contractName": "Eras",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/utils/Eras.sol\":\"Eras\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0x7bc2d69ebe93e972aca1cc4b55265230953ce12b9d598ba2375f152c83635184\",\"urls\":[\"bzz-raw://4e06f321f70f96f0dd920489f851ed32e9ebac219806150d84673540fb9c2ab3\",\"dweb:/ipfs/QmQynTSZfpape9BHRxBHz7gNMAbXf9eSxYPA6EkBBzrjK3\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220fa6ec51f06a544210ed6ec17820152cc7a352b8233ad93b0bca829e99b8fd75a64736f6c63430008000033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220fa6ec51f06a544210ed6ec17820152cc7a352b8233ad93b0bca829e99b8fd75a64736f6c63430008000033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/utils/Eras.sol\":\"Eras\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0xf1b4bf9199cd92417c63696fbb65a85c1ebe92234c84b384e015f0a359f63d80\",\"urls\":[\"bzz-raw://decc443432b62729156c5f438b76b419a7b71b918017cc42dbe5d1ebb992886b\",\"dweb:/ipfs/QmRqcWDYMCB1wp2NELbuvx4YU54szTonvtdvP2DuQZCno4\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212203278f6109cf0ed0ebdbb68b875758bc908360dac5bed0a45d0dcee45b3a94eed64736f6c63430008000033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212203278f6109cf0ed0ebdbb68b875758bc908360dac5bed0a45d0dcee45b3a94eed64736f6c63430008000033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "27:355:19:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "27:355:19:-:0;;;;;;;;",
-  "source": "pragma solidity ^0.8.0;\r\n\r\nlibrary Eras {\r\n    struct Era {\r\n        bytes32 id;\r\n        uint256 colectedFeesAmount;\r\n        uint256 startDate;\r\n        uint256 endDate;\r\n        address chairman;\r\n        uint256 requiredQuorum;\r\n        bool isQuorumReached;\r\n        uint256 possitiveVotes;\r\n        uint256 negativeVotes;\r\n        bool accepted;\r\n        bool ended;\r\n    }\r\n}\r\n",
+  "sourceMap": "27:387:19:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:387:19:-:0;;;;;;;;",
+  "source": "pragma solidity ^0.8.0;\r\n\r\nlibrary Eras {\r\n    struct Era {\r\n        bytes32 id;\r\n        bytes32 previousEraId;\r\n        uint256 colectedFeesAmount;\r\n        uint256 startDate;\r\n        uint256 endDate;\r\n        address chairman;\r\n        uint256 requiredQuorum;\r\n        bool isQuorumReached;\r\n        uint256 possitiveVotes;\r\n        uint256 negativeVotes;\r\n        bool accepted;\r\n        bool ended;\r\n    }\r\n}\r\n",
   "sourcePath": "D:\\Documents\\Dev\\Repositories\\gold-price-oracle\\gold-price-oracle\\on-chain\\contracts\\token\\utils\\Eras.sol",
   "ast": {
     "absolutePath": "project:/contracts/token/utils/Eras.sol",
     "exportedSymbols": {
       "Eras": [
-        2960
+        3134
       ]
     },
-    "id": 2961,
+    "id": 3135,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2936,
+        "id": 3108,
         "literals": [
           "solidity",
           "^",
@@ -38,24 +38,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2960,
+        "id": 3134,
         "linearizedBaseContracts": [
-          2960
+          3134
         ],
         "name": "Eras",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Eras.Era",
-            "id": 2959,
+            "id": 3133,
             "members": [
               {
                 "constant": false,
-                "id": 2938,
+                "id": 3110,
                 "mutability": "mutable",
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
+                "scope": 3133,
                 "src": "69:10:19",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -64,7 +64,7 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 2937,
+                  "id": 3109,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
                   "src": "69:7:19",
@@ -77,24 +77,50 @@
               },
               {
                 "constant": false,
-                "id": 2940,
+                "id": 3112,
                 "mutability": "mutable",
-                "name": "colectedFeesAmount",
+                "name": "previousEraId",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "90:26:19",
+                "scope": 3133,
+                "src": "90:21:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 2939,
-                  "name": "uint256",
+                  "id": 3111,
+                  "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
                   "src": "90:7:19",
                   "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3114,
+                "mutability": "mutable",
+                "name": "colectedFeesAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 3133,
+                "src": "122:26:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3113,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "122:7:19",
+                  "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
                   }
@@ -103,12 +129,12 @@
               },
               {
                 "constant": false,
-                "id": 2942,
+                "id": 3116,
                 "mutability": "mutable",
                 "name": "startDate",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "127:17:19",
+                "scope": 3133,
+                "src": "159:17:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -116,10 +142,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2941,
+                  "id": 3115,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "127:7:19",
+                  "src": "159:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -129,12 +155,12 @@
               },
               {
                 "constant": false,
-                "id": 2944,
+                "id": 3118,
                 "mutability": "mutable",
                 "name": "endDate",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "155:15:19",
+                "scope": 3133,
+                "src": "187:15:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -142,10 +168,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2943,
+                  "id": 3117,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "155:7:19",
+                  "src": "187:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -155,12 +181,12 @@
               },
               {
                 "constant": false,
-                "id": 2946,
+                "id": 3120,
                 "mutability": "mutable",
                 "name": "chairman",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "181:16:19",
+                "scope": 3133,
+                "src": "213:16:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -168,10 +194,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2945,
+                  "id": 3119,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "181:7:19",
+                  "src": "213:7:19",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -182,12 +208,12 @@
               },
               {
                 "constant": false,
-                "id": 2948,
+                "id": 3122,
                 "mutability": "mutable",
                 "name": "requiredQuorum",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "208:22:19",
+                "scope": 3133,
+                "src": "240:22:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -195,10 +221,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2947,
+                  "id": 3121,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "208:7:19",
+                  "src": "240:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -208,12 +234,12 @@
               },
               {
                 "constant": false,
-                "id": 2950,
+                "id": 3124,
                 "mutability": "mutable",
                 "name": "isQuorumReached",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "241:20:19",
+                "scope": 3133,
+                "src": "273:20:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -221,10 +247,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2949,
+                  "id": 3123,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "241:4:19",
+                  "src": "273:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -234,12 +260,12 @@
               },
               {
                 "constant": false,
-                "id": 2952,
+                "id": 3126,
                 "mutability": "mutable",
                 "name": "possitiveVotes",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "272:22:19",
+                "scope": 3133,
+                "src": "304:22:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -247,10 +273,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2951,
+                  "id": 3125,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "272:7:19",
+                  "src": "304:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -260,12 +286,12 @@
               },
               {
                 "constant": false,
-                "id": 2954,
+                "id": 3128,
                 "mutability": "mutable",
                 "name": "negativeVotes",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "305:21:19",
+                "scope": 3133,
+                "src": "337:21:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -273,10 +299,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2953,
+                  "id": 3127,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "305:7:19",
+                  "src": "337:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -286,12 +312,12 @@
               },
               {
                 "constant": false,
-                "id": 2956,
+                "id": 3130,
                 "mutability": "mutable",
                 "name": "accepted",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "337:13:19",
+                "scope": 3133,
+                "src": "369:13:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -299,10 +325,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2955,
+                  "id": 3129,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "337:4:19",
+                  "src": "369:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -312,12 +338,12 @@
               },
               {
                 "constant": false,
-                "id": 2958,
+                "id": 3132,
                 "mutability": "mutable",
                 "name": "ended",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "361:10:19",
+                "scope": 3133,
+                "src": "393:10:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -325,10 +351,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2957,
+                  "id": 3131,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "361:4:19",
+                  "src": "393:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -339,29 +365,29 @@
             ],
             "name": "Era",
             "nodeType": "StructDefinition",
-            "scope": 2960,
-            "src": "47:332:19",
+            "scope": 3134,
+            "src": "47:364:19",
             "visibility": "public"
           }
         ],
-        "scope": 2961,
-        "src": "27:355:19"
+        "scope": 3135,
+        "src": "27:387:19"
       }
     ],
-    "src": "0:384:19"
+    "src": "0:416:19"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/token/utils/Eras.sol",
     "exportedSymbols": {
       "Eras": [
-        2960
+        3134
       ]
     },
-    "id": 2961,
+    "id": 3135,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2936,
+        "id": 3108,
         "literals": [
           "solidity",
           "^",
@@ -377,24 +403,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2960,
+        "id": 3134,
         "linearizedBaseContracts": [
-          2960
+          3134
         ],
         "name": "Eras",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Eras.Era",
-            "id": 2959,
+            "id": 3133,
             "members": [
               {
                 "constant": false,
-                "id": 2938,
+                "id": 3110,
                 "mutability": "mutable",
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
+                "scope": 3133,
                 "src": "69:10:19",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -403,7 +429,7 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 2937,
+                  "id": 3109,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
                   "src": "69:7:19",
@@ -416,24 +442,50 @@
               },
               {
                 "constant": false,
-                "id": 2940,
+                "id": 3112,
                 "mutability": "mutable",
-                "name": "colectedFeesAmount",
+                "name": "previousEraId",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "90:26:19",
+                "scope": 3133,
+                "src": "90:21:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 2939,
-                  "name": "uint256",
+                  "id": 3111,
+                  "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
                   "src": "90:7:19",
                   "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3114,
+                "mutability": "mutable",
+                "name": "colectedFeesAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 3133,
+                "src": "122:26:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3113,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "122:7:19",
+                  "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
                   }
@@ -442,12 +494,12 @@
               },
               {
                 "constant": false,
-                "id": 2942,
+                "id": 3116,
                 "mutability": "mutable",
                 "name": "startDate",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "127:17:19",
+                "scope": 3133,
+                "src": "159:17:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -455,10 +507,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2941,
+                  "id": 3115,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "127:7:19",
+                  "src": "159:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -468,12 +520,12 @@
               },
               {
                 "constant": false,
-                "id": 2944,
+                "id": 3118,
                 "mutability": "mutable",
                 "name": "endDate",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "155:15:19",
+                "scope": 3133,
+                "src": "187:15:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -481,10 +533,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2943,
+                  "id": 3117,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "155:7:19",
+                  "src": "187:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -494,12 +546,12 @@
               },
               {
                 "constant": false,
-                "id": 2946,
+                "id": 3120,
                 "mutability": "mutable",
                 "name": "chairman",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "181:16:19",
+                "scope": 3133,
+                "src": "213:16:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -507,10 +559,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2945,
+                  "id": 3119,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "181:7:19",
+                  "src": "213:7:19",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -521,12 +573,12 @@
               },
               {
                 "constant": false,
-                "id": 2948,
+                "id": 3122,
                 "mutability": "mutable",
                 "name": "requiredQuorum",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "208:22:19",
+                "scope": 3133,
+                "src": "240:22:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -534,10 +586,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2947,
+                  "id": 3121,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "208:7:19",
+                  "src": "240:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -547,12 +599,12 @@
               },
               {
                 "constant": false,
-                "id": 2950,
+                "id": 3124,
                 "mutability": "mutable",
                 "name": "isQuorumReached",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "241:20:19",
+                "scope": 3133,
+                "src": "273:20:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -560,10 +612,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2949,
+                  "id": 3123,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "241:4:19",
+                  "src": "273:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -573,12 +625,12 @@
               },
               {
                 "constant": false,
-                "id": 2952,
+                "id": 3126,
                 "mutability": "mutable",
                 "name": "possitiveVotes",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "272:22:19",
+                "scope": 3133,
+                "src": "304:22:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -586,10 +638,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2951,
+                  "id": 3125,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "272:7:19",
+                  "src": "304:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -599,12 +651,12 @@
               },
               {
                 "constant": false,
-                "id": 2954,
+                "id": 3128,
                 "mutability": "mutable",
                 "name": "negativeVotes",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "305:21:19",
+                "scope": 3133,
+                "src": "337:21:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -612,10 +664,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2953,
+                  "id": 3127,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "305:7:19",
+                  "src": "337:7:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -625,12 +677,12 @@
               },
               {
                 "constant": false,
-                "id": 2956,
+                "id": 3130,
                 "mutability": "mutable",
                 "name": "accepted",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "337:13:19",
+                "scope": 3133,
+                "src": "369:13:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -638,10 +690,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2955,
+                  "id": 3129,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "337:4:19",
+                  "src": "369:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -651,12 +703,12 @@
               },
               {
                 "constant": false,
-                "id": 2958,
+                "id": 3132,
                 "mutability": "mutable",
                 "name": "ended",
                 "nodeType": "VariableDeclaration",
-                "scope": 2959,
-                "src": "361:10:19",
+                "scope": 3133,
+                "src": "393:10:19",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -664,10 +716,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2957,
+                  "id": 3131,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "361:4:19",
+                  "src": "393:4:19",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -678,16 +730,16 @@
             ],
             "name": "Era",
             "nodeType": "StructDefinition",
-            "scope": 2960,
-            "src": "47:332:19",
+            "scope": 3134,
+            "src": "47:364:19",
             "visibility": "public"
           }
         ],
-        "scope": 2961,
-        "src": "27:355:19"
+        "scope": 3135,
+        "src": "27:387:19"
       }
     ],
-    "src": "0:384:19"
+    "src": "0:416:19"
   },
   "compiler": {
     "name": "solc",
@@ -702,8 +754,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-16T22:01:09.386Z",
-  "networkType": "ethereum",
+  "updatedAt": "2022-03-17T11:47:38.273Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

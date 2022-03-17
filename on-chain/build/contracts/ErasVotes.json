@@ -15,14 +15,14 @@
     "absolutePath": "project:/contracts/token/utils/ErasVotes.sol",
     "exportedSymbols": {
       "ErasVotes": [
-        2968
+        3142
       ]
     },
-    "id": 2969,
+    "id": 3143,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2962,
+        "id": 3136,
         "literals": [
           "solidity",
           "^",
@@ -38,24 +38,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2968,
+        "id": 3142,
         "linearizedBaseContracts": [
-          2968
+          3142
         ],
         "name": "ErasVotes",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ErasVotes.ErasVote",
-            "id": 2967,
+            "id": 3141,
             "members": [
               {
                 "constant": false,
-                "id": 2964,
+                "id": 3138,
                 "mutability": "mutable",
                 "name": "voter",
                 "nodeType": "VariableDeclaration",
-                "scope": 2967,
+                "scope": 3141,
                 "src": "79:13:20",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -64,7 +64,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2963,
+                  "id": 3137,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "79:7:20",
@@ -78,11 +78,11 @@
               },
               {
                 "constant": false,
-                "id": 2966,
+                "id": 3140,
                 "mutability": "mutable",
                 "name": "approve",
                 "nodeType": "VariableDeclaration",
-                "scope": 2967,
+                "scope": 3141,
                 "src": "103:12:20",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -91,7 +91,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2965,
+                  "id": 3139,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "103:4:20",
@@ -105,12 +105,12 @@
             ],
             "name": "ErasVote",
             "nodeType": "StructDefinition",
-            "scope": 2968,
+            "scope": 3142,
             "src": "52:71:20",
             "visibility": "public"
           }
         ],
-        "scope": 2969,
+        "scope": 3143,
         "src": "27:99:20"
       }
     ],
@@ -120,14 +120,14 @@
     "absolutePath": "project:/contracts/token/utils/ErasVotes.sol",
     "exportedSymbols": {
       "ErasVotes": [
-        2968
+        3142
       ]
     },
-    "id": 2969,
+    "id": 3143,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2962,
+        "id": 3136,
         "literals": [
           "solidity",
           "^",
@@ -143,24 +143,24 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 2968,
+        "id": 3142,
         "linearizedBaseContracts": [
-          2968
+          3142
         ],
         "name": "ErasVotes",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ErasVotes.ErasVote",
-            "id": 2967,
+            "id": 3141,
             "members": [
               {
                 "constant": false,
-                "id": 2964,
+                "id": 3138,
                 "mutability": "mutable",
                 "name": "voter",
                 "nodeType": "VariableDeclaration",
-                "scope": 2967,
+                "scope": 3141,
                 "src": "79:13:20",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -169,7 +169,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2963,
+                  "id": 3137,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "79:7:20",
@@ -183,11 +183,11 @@
               },
               {
                 "constant": false,
-                "id": 2966,
+                "id": 3140,
                 "mutability": "mutable",
                 "name": "approve",
                 "nodeType": "VariableDeclaration",
-                "scope": 2967,
+                "scope": 3141,
                 "src": "103:12:20",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -196,7 +196,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2965,
+                  "id": 3139,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "103:4:20",
@@ -210,12 +210,12 @@
             ],
             "name": "ErasVote",
             "nodeType": "StructDefinition",
-            "scope": 2968,
+            "scope": 3142,
             "src": "52:71:20",
             "visibility": "public"
           }
         ],
-        "scope": 2969,
+        "scope": 3143,
         "src": "27:99:20"
       }
     ],
@@ -234,8 +234,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-16T22:01:09.385Z",
-  "networkType": "ethereum",
+  "updatedAt": "2022-03-17T11:47:38.274Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

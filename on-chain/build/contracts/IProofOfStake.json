@@ -79,7 +79,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"endEra\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getValidatorsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eraId_\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"chairman_\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"coucil_\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"utcTimeStamp_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"calculatedSeed_\",\"type\":\"uint256\"}],\"name\":\"proposeNewEra\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eraId\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"approves\",\"type\":\"bool\"}],\"name\":\"voteForProposedEra\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":\"IProofOfStake\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":{\"keccak256\":\"0xdeb76a5341337ce8fb4c4d5592d04ad03260552b753c87e5b46cde3d00fb5f0d\",\"urls\":[\"bzz-raw://000637ad4fef99d3de0c9cfda4d4d3417260a2b9cd238c47aee183664cb742cf\",\"dweb:/ipfs/QmcraWcxQZVecpq7mQHEnw3Yu1imMzo3JXFmb7JMKr1Uc2\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0x7bc2d69ebe93e972aca1cc4b55265230953ce12b9d598ba2375f152c83635184\",\"urls\":[\"bzz-raw://4e06f321f70f96f0dd920489f851ed32e9ebac219806150d84673540fb9c2ab3\",\"dweb:/ipfs/QmQynTSZfpape9BHRxBHz7gNMAbXf9eSxYPA6EkBBzrjK3\"]},\"project:/contracts/token/utils/NominatingStakeholders.sol\":{\"keccak256\":\"0x51d99ed8e690cba64ba3b2e24b2756af37cfe49f6e7c43f7e55b5d0c0566dd1b\",\"urls\":[\"bzz-raw://f468645fdeac18566a1303269481f7abc00ffd056b6b2f210bc90850cc318320\",\"dweb:/ipfs/QmPzRL7hgXouTeLXvh5b363zxnoGMpyeZq4zc3SnE4gYxo\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"endEra\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getValidatorsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eraId_\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"chairman_\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"coucil_\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"utcTimeStamp_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"calculatedSeed_\",\"type\":\"uint256\"}],\"name\":\"proposeNewEra\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eraId\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"approves\",\"type\":\"bool\"}],\"name\":\"voteForProposedEra\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":\"IProofOfStake\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IProofOfStake.sol\":{\"keccak256\":\"0xdeb76a5341337ce8fb4c4d5592d04ad03260552b753c87e5b46cde3d00fb5f0d\",\"urls\":[\"bzz-raw://000637ad4fef99d3de0c9cfda4d4d3417260a2b9cd238c47aee183664cb742cf\",\"dweb:/ipfs/QmcraWcxQZVecpq7mQHEnw3Yu1imMzo3JXFmb7JMKr1Uc2\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0xf1b4bf9199cd92417c63696fbb65a85c1ebe92234c84b384e015f0a359f63d80\",\"urls\":[\"bzz-raw://decc443432b62729156c5f438b76b419a7b71b918017cc42dbe5d1ebb992886b\",\"dweb:/ipfs/QmRqcWDYMCB1wp2NELbuvx4YU54szTonvtdvP2DuQZCno4\"]},\"project:/contracts/token/utils/NominatingStakeholders.sol\":{\"keccak256\":\"0x51d99ed8e690cba64ba3b2e24b2756af37cfe49f6e7c43f7e55b5d0c0566dd1b\",\"urls\":[\"bzz-raw://f468645fdeac18566a1303269481f7abc00ffd056b6b2f210bc90850cc318320\",\"dweb:/ipfs/QmPzRL7hgXouTeLXvh5b363zxnoGMpyeZq4zc3SnE4gYxo\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -93,20 +93,20 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2960
+        3134
       ],
       "IProofOfStake": [
-        1827
+        1895
       ],
       "Stakeholders": [
-        2986
+        3160
       ]
     },
-    "id": 1828,
+    "id": 1896,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1793,
+        "id": 1861,
         "literals": [
           "solidity",
           "^",
@@ -119,10 +119,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/Eras.sol",
         "file": "../utils/Eras.sol",
-        "id": 1794,
+        "id": 1862,
         "nodeType": "ImportDirective",
-        "scope": 1828,
-        "sourceUnit": 2961,
+        "scope": 1896,
+        "sourceUnit": 3135,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -130,10 +130,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
         "file": "../utils/NominatingStakeholders.sol",
-        "id": 1795,
+        "id": 1863,
         "nodeType": "ImportDirective",
-        "scope": 1828,
-        "sourceUnit": 2987,
+        "scope": 1896,
+        "sourceUnit": 3161,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -144,38 +144,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1827,
+        "id": 1895,
         "linearizedBaseContracts": [
-          1827
+          1895
         ],
         "name": "IProofOfStake",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "27498240",
-            "id": 1800,
+            "id": 1868,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getValidatorsCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1796,
+              "id": 1864,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "163:2:15"
             },
             "returnParameters": {
-              "id": 1799,
+              "id": 1867,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1798,
+                  "id": 1866,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1800,
+                  "scope": 1868,
                   "src": "189:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -184,7 +184,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1797,
+                    "id": 1865,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:15",
@@ -198,7 +198,7 @@
               ],
               "src": "188:9:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "136:62:15",
             "stateMutability": "view",
             "virtual": false,
@@ -206,23 +206,23 @@
           },
           {
             "functionSelector": "40c86f1a",
-            "id": 1807,
+            "id": 1875,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "voteForProposedEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1805,
+              "id": 1873,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1802,
+                  "id": 1870,
                   "mutability": "mutable",
                   "name": "eraId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1807,
+                  "scope": 1875,
                   "src": "234:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -231,7 +231,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1801,
+                    "id": 1869,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:15",
@@ -244,11 +244,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1804,
+                  "id": 1872,
                   "mutability": "mutable",
                   "name": "approves",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1807,
+                  "scope": 1875,
                   "src": "249:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -257,7 +257,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1803,
+                    "id": 1871,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "249:4:15",
@@ -272,12 +272,12 @@
               "src": "233:30:15"
             },
             "returnParameters": {
-              "id": 1806,
+              "id": 1874,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "272:0:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "206:67:15",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -285,23 +285,23 @@
           },
           {
             "functionSelector": "e4ae026f",
-            "id": 1812,
+            "id": 1880,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "endEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1810,
+              "id": 1878,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1809,
+                  "id": 1877,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
+                  "scope": 1880,
                   "src": "297:17:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -310,7 +310,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1808,
+                    "id": 1876,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "297:7:15",
@@ -325,12 +325,12 @@
               "src": "296:19:15"
             },
             "returnParameters": {
-              "id": 1811,
+              "id": 1879,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "324:0:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "281:44:15",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -338,23 +338,23 @@
           },
           {
             "functionSelector": "4c5962cc",
-            "id": 1826,
+            "id": 1894,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "proposeNewEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1824,
+              "id": 1892,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1814,
+                  "id": 1882,
                   "mutability": "mutable",
                   "name": "eraId_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "366:14:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -363,7 +363,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1813,
+                    "id": 1881,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "366:7:15",
@@ -376,11 +376,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1816,
+                  "id": 1884,
                   "mutability": "mutable",
                   "name": "chairman_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "391:17:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -389,7 +389,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1815,
+                    "id": 1883,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "391:7:15",
@@ -403,11 +403,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1819,
+                  "id": 1887,
                   "mutability": "mutable",
                   "name": "coucil_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "419:24:15",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -417,7 +417,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1817,
+                      "id": 1885,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "419:7:15",
@@ -427,7 +427,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1818,
+                    "id": 1886,
                     "nodeType": "ArrayTypeName",
                     "src": "419:9:15",
                     "typeDescriptions": {
@@ -439,11 +439,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1821,
+                  "id": 1889,
                   "mutability": "mutable",
                   "name": "utcTimeStamp_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "454:21:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -452,7 +452,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1820,
+                    "id": 1888,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "454:7:15",
@@ -465,11 +465,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1823,
+                  "id": 1891,
                   "mutability": "mutable",
                   "name": "calculatedSeed_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "486:23:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -478,7 +478,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1822,
+                    "id": 1890,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "486:7:15",
@@ -493,19 +493,19 @@
               "src": "355:161:15"
             },
             "returnParameters": {
-              "id": 1825,
+              "id": 1893,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "525:0:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "333:193:15",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1828,
+        "scope": 1896,
         "src": "105:424:15"
       }
     ],
@@ -515,20 +515,20 @@
     "absolutePath": "project:/contracts/token/Interfaces/IProofOfStake.sol",
     "exportedSymbols": {
       "Eras": [
-        2960
+        3134
       ],
       "IProofOfStake": [
-        1827
+        1895
       ],
       "Stakeholders": [
-        2986
+        3160
       ]
     },
-    "id": 1828,
+    "id": 1896,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1793,
+        "id": 1861,
         "literals": [
           "solidity",
           "^",
@@ -541,10 +541,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/Eras.sol",
         "file": "../utils/Eras.sol",
-        "id": 1794,
+        "id": 1862,
         "nodeType": "ImportDirective",
-        "scope": 1828,
-        "sourceUnit": 2961,
+        "scope": 1896,
+        "sourceUnit": 3135,
         "src": "27:27:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -552,10 +552,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/NominatingStakeholders.sol",
         "file": "../utils/NominatingStakeholders.sol",
-        "id": 1795,
+        "id": 1863,
         "nodeType": "ImportDirective",
-        "scope": 1828,
-        "sourceUnit": 2987,
+        "scope": 1896,
+        "sourceUnit": 3161,
         "src": "56:45:15",
         "symbolAliases": [],
         "unitAlias": ""
@@ -566,38 +566,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1827,
+        "id": 1895,
         "linearizedBaseContracts": [
-          1827
+          1895
         ],
         "name": "IProofOfStake",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "27498240",
-            "id": 1800,
+            "id": 1868,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getValidatorsCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1796,
+              "id": 1864,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "163:2:15"
             },
             "returnParameters": {
-              "id": 1799,
+              "id": 1867,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1798,
+                  "id": 1866,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1800,
+                  "scope": 1868,
                   "src": "189:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -606,7 +606,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1797,
+                    "id": 1865,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "189:7:15",
@@ -620,7 +620,7 @@
               ],
               "src": "188:9:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "136:62:15",
             "stateMutability": "view",
             "virtual": false,
@@ -628,23 +628,23 @@
           },
           {
             "functionSelector": "40c86f1a",
-            "id": 1807,
+            "id": 1875,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "voteForProposedEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1805,
+              "id": 1873,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1802,
+                  "id": 1870,
                   "mutability": "mutable",
                   "name": "eraId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1807,
+                  "scope": 1875,
                   "src": "234:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -653,7 +653,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1801,
+                    "id": 1869,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:15",
@@ -666,11 +666,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1804,
+                  "id": 1872,
                   "mutability": "mutable",
                   "name": "approves",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1807,
+                  "scope": 1875,
                   "src": "249:13:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -679,7 +679,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1803,
+                    "id": 1871,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "249:4:15",
@@ -694,12 +694,12 @@
               "src": "233:30:15"
             },
             "returnParameters": {
-              "id": 1806,
+              "id": 1874,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "272:0:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "206:67:15",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -707,23 +707,23 @@
           },
           {
             "functionSelector": "e4ae026f",
-            "id": 1812,
+            "id": 1880,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "endEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1810,
+              "id": 1878,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1809,
+                  "id": 1877,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1812,
+                  "scope": 1880,
                   "src": "297:17:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -732,7 +732,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1808,
+                    "id": 1876,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "297:7:15",
@@ -747,12 +747,12 @@
               "src": "296:19:15"
             },
             "returnParameters": {
-              "id": 1811,
+              "id": 1879,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "324:0:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "281:44:15",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -760,23 +760,23 @@
           },
           {
             "functionSelector": "4c5962cc",
-            "id": 1826,
+            "id": 1894,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "proposeNewEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1824,
+              "id": 1892,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1814,
+                  "id": 1882,
                   "mutability": "mutable",
                   "name": "eraId_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "366:14:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -785,7 +785,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1813,
+                    "id": 1881,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "366:7:15",
@@ -798,11 +798,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1816,
+                  "id": 1884,
                   "mutability": "mutable",
                   "name": "chairman_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "391:17:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -811,7 +811,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1815,
+                    "id": 1883,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "391:7:15",
@@ -825,11 +825,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1819,
+                  "id": 1887,
                   "mutability": "mutable",
                   "name": "coucil_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "419:24:15",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -839,7 +839,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1817,
+                      "id": 1885,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "419:7:15",
@@ -849,7 +849,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 1818,
+                    "id": 1886,
                     "nodeType": "ArrayTypeName",
                     "src": "419:9:15",
                     "typeDescriptions": {
@@ -861,11 +861,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1821,
+                  "id": 1889,
                   "mutability": "mutable",
                   "name": "utcTimeStamp_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "454:21:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -874,7 +874,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1820,
+                    "id": 1888,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "454:7:15",
@@ -887,11 +887,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1823,
+                  "id": 1891,
                   "mutability": "mutable",
                   "name": "calculatedSeed_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1826,
+                  "scope": 1894,
                   "src": "486:23:15",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -900,7 +900,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1822,
+                    "id": 1890,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "486:7:15",
@@ -915,19 +915,19 @@
               "src": "355:161:15"
             },
             "returnParameters": {
-              "id": 1825,
+              "id": 1893,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "525:0:15"
             },
-            "scope": 1827,
+            "scope": 1895,
             "src": "333:193:15",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1828,
+        "scope": 1896,
         "src": "105:424:15"
       }
     ],
@@ -939,7 +939,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-16T22:00:54.368Z",
+  "updatedAt": "2022-03-17T11:47:38.230Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
