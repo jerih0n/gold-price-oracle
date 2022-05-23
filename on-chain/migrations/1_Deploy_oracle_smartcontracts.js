@@ -28,6 +28,11 @@ module.exports = async function (deployer) {
 
         await deployer.deploy(GoldPriceAggregator, GoldPriceResolver.address);
         //do not depoloy for now
-        //await deployer.deploy(TimerContract, GoldPriceResolver.address, GoldOracleToken.address, 213123123);
+        await deployer.deploy(TimerContract, GoldPriceResolver.address, GoldOracleToken.address, 213123123);
+
+        console.log('GoldPriceToken ' + GoldOracleToken.address);
+        console.log('GoldPriceResolver ' + GoldPriceResolver.address);
+        console.log('GoldPriceAggregator ' + GoldPriceAggregator.address);
+        console.log('TimerContract ' + TimerContract.address);
     });
 };
