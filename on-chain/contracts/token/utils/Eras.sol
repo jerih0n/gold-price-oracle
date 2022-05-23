@@ -14,5 +14,6 @@ library Eras {
         uint256 negativeVotes;
         bool accepted;
         bool ended;
+        uint256 totalWeightOfVotingCoucil;
     }
 }

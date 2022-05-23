@@ -17,7 +17,8 @@ interface IStakable {
             uint256,
             uint256,
             uint256,
-            bool
+            bool,
+            uint256
         );
 
     function getStakeholders()

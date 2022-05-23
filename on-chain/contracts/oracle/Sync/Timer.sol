@@ -78,4 +78,19 @@ contract Timer {
             lastEraCount++;
         }
     }
+
+    function testStartNewEra() public onlyOwner {
+        uint256 erasCount = _erasMonitor.getErasCount();
+        if (erasCount == 0) {
+            bytes32 initialEraId = keccak256(
+                abi.encodePacked(msg.sender, "3123123123", msg.sender)
+            );
+            emit StartNewEra(3123123123, initialEraId);
+            return;
+        }
+    }
+
+    function testStartNewPriceRound() public onlyOwner {
+        emit StarNewPriceRound(123213123);
+    }
 }

@@ -72,11 +72,11 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
 
     function endEra(uint256 timestamp) external override {
         address caller = msg.sender;
-        Eras.Era memory ereToEnd = _eras[_activeEraId];
+        Eras.Era memory eraToEnd = _eras[_activeEraId];
 
         //TODO: validation for time elapsed
         require(
-            caller == ereToEnd.chairman,
+            caller == eraToEnd.chairman,
             "Only chairman can end current era"
         );
         if (_previousEraId == 0 && _activeEraId == 0) {
@@ -87,13 +87,14 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             _previousEraId = _activeEraId;
         } else {
             _payReward(
-                ereToEnd.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
-                caller
+                eraToEnd.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
+                caller,
+                _previousEraId
             );
             _previousEraId = _activeEraId;
         }
         _activeEraId = _lastApprovedEra;
-
+        eraToEnd.ended = true;
         emit EndEraByNewElectedChairman(_activeEraId, caller, timestamp);
         //more complex stuff - add validation for timestamp by nodes, with another vote and
         //if proposed timestamp is wrong, and consensus is reached - punish the node
@@ -124,6 +125,20 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             "Era with the same ID already proposed"
         );
         //TODO: after testing new proposed era should come with one possitive vote
+
+        uint256 totalWeightOfProposedConcil = 0;
+        for (uint256 i = 0; i < coucil_.length; i++) {
+            address coucilMemberAddress = coucil_[i];
+            uint256 coucilMememberIndex = _getStakeholderIndex(
+                coucilMemberAddress
+            );
+
+            Stakeholders.Stakeholder storage coucilMember = _stakeholders[
+                coucilMememberIndex
+            ];
+
+            totalWeightOfProposedConcil += coucilMember.totalAmount;
+        }
         _eras[eraId_] = Eras.Era({
             id: eraId_,
             previousEraId: _previousEraId,
@@ -136,7 +151,8 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
             possitiveVotes: 0,
             negativeVotes: 0,
             accepted: false,
-            ended: false
+            ended: false,
+            totalWeightOfVotingCoucil: totalWeightOfProposedConcil
         });
 
         emit NewEraElecationProposal(
@@ -255,15 +271,16 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         return _eras[_activeEraId];
     }
 
-    function _payReward(uint256 tokenAmountForDistribution_, address chainman_)
-        internal
-        virtual
-    {
+    function _payReward(
+        uint256 tokenAmountForDistribution_,
+        address chainman_,
+        bytes32 eraId_
+    ) internal virtual {
         //simple scheme withoud nominators
         //this reward scheme can be ovveriden for much complex one
         //for simple reward distribution
         //chainrman gets 50% of all fees
-        uint256 chairmainsReward = tokenAmountForDistribution_ / 2;
+        uint256 chairmanReward = tokenAmountForDistribution_ / 2;
         uint256 stakeholderIndex = _stakeholdersIndexes[chainman_];
         Stakeholders.Stakeholder storage chairman = _stakeholders[
             stakeholderIndex
@@ -271,12 +288,17 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
 
         require(chairman.user != address(0), "Chairman address does not exist");
 
-        chairman.notCollectedTokenRewards += chairmainsReward;
+        chairman.notCollectedTokenRewards += chairmanReward;
+        chairman.totalAmount += chairmanReward;
 
-        uint256 remainingAmountForDistribution = tokenAmountForDistribution_ -
-            chairmainsReward;
+        uint256 remainingRewardForDistribution = tokenAmountForDistribution_ -
+            chairmanReward;
 
-        //TODO: calculate remaining rewards for the rest of the voting council for this era
+        _calculateValidatorsPrice(
+            eraId_,
+            remainingRewardForDistribution,
+            chainman_
+        );
     }
 
     function _calculateMinimumNodesCountForReachingQuorum()
@@ -291,5 +313,89 @@ contract ERC20ProofOfStake is IErasMonitor, IProofOfStake, ERC20Stakable {
         return
             (_validatorsCount *
                 MINIMUM_QUORUM_REQUURED_FOR_VALIDATION_IN_PERCENTS) / 100;
+    }
+
+    function getLastApprovedEraId() public view returns (bytes32) {
+        return _lastApprovedEra;
+    }
+
+    function _calculateValidatorsPrice(
+        bytes32 eraId_,
+        uint256 remainingAmountForDistribution_,
+        address chairman_
+    ) internal {
+        address[] storage erasConcil = _erasCouncil[eraId_];
+
+        if (erasConcil.length == 0) {
+            uint256 chairmanIndex = _getStakeholderIndex(chairman_);
+
+            require(chairmanIndex != 0, "Invalid chariman address");
+
+            Stakeholders.Stakeholder storage chairman = _stakeholders[
+                chairmanIndex
+            ];
+
+            chairman.totalAmount += remainingAmountForDistribution_;
+            chairman
+                .notCollectedTokenRewards += remainingAmountForDistribution_;
+            return;
+        }
+
+        Eras.Era storage era = _eras[eraId_];
+
+        require(era.chairman != address(0), "Invalid Era Id");
+
+        for (uint256 i = 0; i < erasConcil.length; i++) {
+            uint256 stakeholderIndex = _getStakeholderIndex(erasConcil[i]);
+            require(stakeholderIndex != 0, "Invalid chairman address");
+
+            Stakeholders.Stakeholder storage coucilMember = _stakeholders[
+                stakeholderIndex
+            ];
+
+            if (coucilMember.user != address(0)) {
+                uint256 priceShareInPercents = (coucilMember.totalAmount *
+                    100) / era.totalWeightOfVotingCoucil;
+
+                uint256 praceTokenAmount = (remainingAmountForDistribution_ *
+                    priceShareInPercents) / 100;
+
+                remainingAmountForDistribution_ -= praceTokenAmount;
+                coucilMember.totalAmount += praceTokenAmount;
+                coucilMember.notCollectedTokenRewards += praceTokenAmount;
+            }
+        }
+    }
+
+    function endEraBackDoor(uint256 timestamp) public {
+        address caller = msg.sender;
+        Eras.Era memory ereToEnd = _eras[_activeEraId];
+
+        if (_previousEraId == 0 && _activeEraId == 0) {
+            //corner case . The only time when this will be executed
+            //is on the very firs era
+            //no fees for distribution
+            //and auto set previous era as current era
+            _previousEraId = _activeEraId;
+        } else {
+            _payReward(
+                ereToEnd.colectedFeesAmount + _rewardForValidatorsAfterEachEra,
+                caller,
+                _previousEraId
+            );
+            _previousEraId = _activeEraId;
+        }
+        _activeEraId = _lastApprovedEra;
+
+        emit EndEraByNewElectedChairman(_activeEraId, caller, timestamp);
+        //more complex stuff - add validation for timestamp by nodes, with another vote and
+        //if proposed timestamp is wrong, and consensus is reached - punish the node
+        //that execute this code. For now this will not be implemented
+    }
+
+    function callEndEraBackDoor() public {
+        Eras.Era memory era = _eras[_lastApprovedEra];
+
+        emit NewEraElectionComplited(era);
     }
 }

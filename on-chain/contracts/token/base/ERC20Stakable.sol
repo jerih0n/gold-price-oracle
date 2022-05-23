@@ -54,7 +54,8 @@ contract ERC20Stakable is IStakable, ERC20 {
             uint256,
             uint256,
             uint256,
-            bool
+            bool,
+            uint256
         )
     {
         uint256 stakeholderIndex = _getStakeholderIndex(address_);
@@ -70,7 +71,8 @@ contract ERC20Stakable is IStakable, ERC20 {
             stakeholder.ownedAmount,
             stakeholder.nominatedAmount,
             stakeholder.nominatorsCount,
-            stakeholder.canValidate
+            stakeholder.canValidate,
+            stakeholder.notCollectedTokenRewards
         );
     }
 
