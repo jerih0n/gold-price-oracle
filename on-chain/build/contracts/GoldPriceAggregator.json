@@ -2520,7 +2520,7 @@
                 }
               ]
             },
-            "name": "abi_decode_t_struct$_Round_$1758_memory_ptr_fromMemory",
+            "name": "abi_decode_t_struct$_Round_$1804_memory_ptr_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -2854,7 +2854,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "abi_decode_t_struct$_Round_$1758_memory_ptr_fromMemory",
+                          "name": "abi_decode_t_struct$_Round_$1804_memory_ptr_fromMemory",
                           "nodeType": "YulIdentifier",
                           "src": "3778:54:22"
                         },
@@ -2873,7 +2873,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_struct$_Round_$1758_memory_ptr_fromMemory",
+            "name": "abi_decode_tuple_t_struct$_Round_$1804_memory_ptr_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -5088,7 +5088,7 @@
           }
         ]
       },
-      "contents": "{\n\n    function abi_decode_available_length_t_string_memory_ptr_fromMemory(src, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_string_memory_ptr(length))\n        mstore(array, length)\n        let dst := add(array, 0x20)\n        if gt(add(src, length), end) { revert(0, 0) }\n        copy_memory_to_memory(src, dst, length)\n    }\n\n    function abi_decode_t_address_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_address(value)\n    }\n\n    function abi_decode_t_bool_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_bool(value)\n    }\n\n    function abi_decode_t_bytes32_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_bytes32(value)\n    }\n\n    // string\n    function abi_decode_t_string_memory_ptr_fromMemory(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := mload(offset)\n        array := abi_decode_available_length_t_string_memory_ptr_fromMemory(add(offset, 0x20), length, end)\n    }\n\n    // struct Rounds.Round\n    function abi_decode_t_struct$_Round_$1758_memory_ptr_fromMemory(headStart, end) -> value {\n        if slt(sub(end, headStart), 0x0140) { revert(0, 0) }\n        value := allocateMemory(0x0140)\n\n        {\n            // roundId\n\n            let offset := 0\n\n            mstore(add(value, 0x00), abi_decode_t_bytes32_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // nonce\n\n            let offset := 32\n\n            mstore(add(value, 0x20), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // node\n\n            let offset := 64\n\n            mstore(add(value, 0x40), abi_decode_t_address_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // price\n\n            let offset := 96\n\n            mstore(add(value, 0x60), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // assetCode\n\n            let offset := mload(add(headStart, 128))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            mstore(add(value, 0x80), abi_decode_t_string_memory_ptr_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // currencyCode\n\n            let offset := mload(add(headStart, 160))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            mstore(add(value, 0xa0), abi_decode_t_string_memory_ptr_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // requiredQuorum\n\n            let offset := 192\n\n            mstore(add(value, 0xc0), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // isQuorumReached\n\n            let offset := 224\n\n            mstore(add(value, 0xe0), abi_decode_t_bool_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // acceptVotes\n\n            let offset := 256\n\n            mstore(add(value, 0x0100), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // refuseVotes\n\n            let offset := 288\n\n            mstore(add(value, 0x0120), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n    }\n\n    function abi_decode_t_uint256_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_tuple_t_struct$_Round_$1758_memory_ptr_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := mload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value0 := abi_decode_t_struct$_Round_$1758_memory_ptr_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, round_up_to_mul_of_32(length))\n    }\n\n    function abi_encode_t_uint256_to_t_uint256_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint256(value))\n    }\n\n    function abi_encode_tuple_t_uint256_t_string_memory_ptr_t_string_memory_ptr__to_t_uint256_t_string_memory_ptr_t_string_memory_ptr__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))\n\n        mstore(add(headStart, 32), sub(tail, headStart))\n        tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value1,  tail)\n\n        mstore(add(headStart, 64), sub(tail, headStart))\n        tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value2,  tail)\n\n    }\n\n    function allocateMemory(size) -> memPtr {\n        memPtr := mload(64)\n        let newFreePtr := add(memPtr, size)\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function array_allocation_size_t_string_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        // round up\n        size := and(add(length, 0x1f), not(0x1f))\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function array_length_t_string_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_bool(value) -> cleaned {\n        cleaned := iszero(iszero(value))\n    }\n\n    function cleanup_t_bytes32(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function round_up_to_mul_of_32(value) -> result {\n        result := and(add(value, 31), not(31))\n    }\n\n    function validator_revert_t_address(value) {\n        if iszero(eq(value, cleanup_t_address(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bool(value) {\n        if iszero(eq(value, cleanup_t_bool(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bytes32(value) {\n        if iszero(eq(value, cleanup_t_bytes32(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n}\n",
+      "contents": "{\n\n    function abi_decode_available_length_t_string_memory_ptr_fromMemory(src, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_string_memory_ptr(length))\n        mstore(array, length)\n        let dst := add(array, 0x20)\n        if gt(add(src, length), end) { revert(0, 0) }\n        copy_memory_to_memory(src, dst, length)\n    }\n\n    function abi_decode_t_address_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_address(value)\n    }\n\n    function abi_decode_t_bool_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_bool(value)\n    }\n\n    function abi_decode_t_bytes32_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_bytes32(value)\n    }\n\n    // string\n    function abi_decode_t_string_memory_ptr_fromMemory(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := mload(offset)\n        array := abi_decode_available_length_t_string_memory_ptr_fromMemory(add(offset, 0x20), length, end)\n    }\n\n    // struct Rounds.Round\n    function abi_decode_t_struct$_Round_$1804_memory_ptr_fromMemory(headStart, end) -> value {\n        if slt(sub(end, headStart), 0x0140) { revert(0, 0) }\n        value := allocateMemory(0x0140)\n\n        {\n            // roundId\n\n            let offset := 0\n\n            mstore(add(value, 0x00), abi_decode_t_bytes32_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // nonce\n\n            let offset := 32\n\n            mstore(add(value, 0x20), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // node\n\n            let offset := 64\n\n            mstore(add(value, 0x40), abi_decode_t_address_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // price\n\n            let offset := 96\n\n            mstore(add(value, 0x60), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // assetCode\n\n            let offset := mload(add(headStart, 128))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            mstore(add(value, 0x80), abi_decode_t_string_memory_ptr_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // currencyCode\n\n            let offset := mload(add(headStart, 160))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            mstore(add(value, 0xa0), abi_decode_t_string_memory_ptr_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // requiredQuorum\n\n            let offset := 192\n\n            mstore(add(value, 0xc0), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // isQuorumReached\n\n            let offset := 224\n\n            mstore(add(value, 0xe0), abi_decode_t_bool_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // acceptVotes\n\n            let offset := 256\n\n            mstore(add(value, 0x0100), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n        {\n            // refuseVotes\n\n            let offset := 288\n\n            mstore(add(value, 0x0120), abi_decode_t_uint256_fromMemory(add(headStart, offset), end))\n\n        }\n\n    }\n\n    function abi_decode_t_uint256_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_tuple_t_struct$_Round_$1804_memory_ptr_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := mload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value0 := abi_decode_t_struct$_Round_$1804_memory_ptr_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, round_up_to_mul_of_32(length))\n    }\n\n    function abi_encode_t_uint256_to_t_uint256_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint256(value))\n    }\n\n    function abi_encode_tuple_t_uint256_t_string_memory_ptr_t_string_memory_ptr__to_t_uint256_t_string_memory_ptr_t_string_memory_ptr__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))\n\n        mstore(add(headStart, 32), sub(tail, headStart))\n        tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value1,  tail)\n\n        mstore(add(headStart, 64), sub(tail, headStart))\n        tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value2,  tail)\n\n    }\n\n    function allocateMemory(size) -> memPtr {\n        memPtr := mload(64)\n        let newFreePtr := add(memPtr, size)\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function array_allocation_size_t_string_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        // round up\n        size := and(add(length, 0x1f), not(0x1f))\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function array_length_t_string_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_bool(value) -> cleaned {\n        cleaned := iszero(iszero(value))\n    }\n\n    function cleanup_t_bytes32(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function round_up_to_mul_of_32(value) -> result {\n        result := and(add(value, 31), not(31))\n    }\n\n    function validator_revert_t_address(value) {\n        if iszero(eq(value, cleanup_t_address(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bool(value) {\n        if iszero(eq(value, cleanup_t_bool(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bytes32(value) {\n        if iszero(eq(value, cleanup_t_bytes32(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n}\n",
       "id": 22,
       "language": "Yul",
       "name": "#utility.yul"
@@ -5102,23 +5102,23 @@
     "absolutePath": "project:/contracts/oracle/aggregators/GoldPriceAggregator.sol",
     "exportedSymbols": {
       "GoldPriceAggregator": [
-        992
+        1038
       ],
       "IAggregator": [
         724
       ],
       "IBaseResolver": [
-        1735
+        1781
       ],
       "Rounds": [
-        1759
+        1805
       ]
     },
-    "id": 993,
+    "id": 1039,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 943,
+        "id": 989,
         "literals": [
           "solidity",
           "^",
@@ -5131,9 +5131,9 @@
       {
         "absolutePath": "project:/contracts/oracle/Interfaces/IAggregator.sol",
         "file": "../Interfaces/IAggregator.sol",
-        "id": 944,
+        "id": 990,
         "nodeType": "ImportDirective",
-        "scope": 993,
+        "scope": 1039,
         "sourceUnit": 725,
         "src": "27:39:6",
         "symbolAliases": [],
@@ -5142,10 +5142,10 @@
       {
         "absolutePath": "project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol",
         "file": "../resolvers/interfaces/IBaseResolver.sol",
-        "id": 945,
+        "id": 991,
         "nodeType": "ImportDirective",
-        "scope": 993,
-        "sourceUnit": 1736,
+        "scope": 1039,
+        "sourceUnit": 1782,
         "src": "68:51:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -5153,10 +5153,10 @@
       {
         "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
         "file": "../utils/Rounds.sol",
-        "id": 946,
+        "id": 992,
         "nodeType": "ImportDirective",
-        "scope": 993,
-        "sourceUnit": 1760,
+        "scope": 1039,
+        "sourceUnit": 1806,
         "src": "121:29:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -5166,13 +5166,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 947,
+              "id": 993,
               "name": "IAggregator",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 724,
               "src": "186:11:6"
             },
-            "id": 948,
+            "id": 994,
             "nodeType": "InheritanceSpecifier",
             "src": "186:11:6"
           }
@@ -5182,9 +5182,9 @@
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 992,
+        "id": 1038,
         "linearizedBaseContracts": [
-          992,
+          1038,
           724
         ],
         "name": "GoldPriceAggregator",
@@ -5192,32 +5192,32 @@
         "nodes": [
           {
             "constant": false,
-            "id": 951,
+            "id": 997,
             "mutability": "mutable",
             "name": "_baseResolver",
             "nodeType": "VariableDeclaration",
-            "scope": 992,
+            "scope": 1038,
             "src": "205:27:6",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+              "typeIdentifier": "t_contract$_IBaseResolver_$1781",
               "typeString": "contract IBaseResolver"
             },
             "typeName": {
-              "id": 950,
+              "id": 996,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 949,
+                "id": 995,
                 "name": "IBaseResolver",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 1735,
+                "referencedDeclaration": 1781,
                 "src": "205:13:6"
               },
-              "referencedDeclaration": 1735,
+              "referencedDeclaration": 1781,
               "src": "205:13:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                 "typeString": "contract IBaseResolver"
               }
             },
@@ -5225,26 +5225,26 @@
           },
           {
             "body": {
-              "id": 962,
+              "id": 1008,
               "nodeType": "Block",
               "src": "340:69:6",
               "statements": [
                 {
                   "expression": {
-                    "id": 960,
+                    "id": 1006,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 956,
+                      "id": 1002,
                       "name": "_baseResolver",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 951,
+                      "referencedDeclaration": 997,
                       "src": "351:13:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                        "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                         "typeString": "contract IBaseResolver"
                       }
                     },
@@ -5253,11 +5253,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 958,
+                          "id": 1004,
                           "name": "baseResolverAddress",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 953,
+                          "referencedDeclaration": 999,
                           "src": "381:19:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -5272,18 +5272,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 957,
+                        "id": 1003,
                         "name": "IBaseResolver",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1735,
+                        "referencedDeclaration": 1781,
                         "src": "367:13:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IBaseResolver_$1735_$",
+                          "typeIdentifier": "t_type$_t_contract$_IBaseResolver_$1781_$",
                           "typeString": "type(contract IBaseResolver)"
                         }
                       },
-                      "id": 959,
+                      "id": 1005,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -5294,39 +5294,39 @@
                       "src": "367:34:6",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                        "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                         "typeString": "contract IBaseResolver"
                       }
                     },
                     "src": "351:50:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                      "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                       "typeString": "contract IBaseResolver"
                     }
                   },
-                  "id": 961,
+                  "id": 1007,
                   "nodeType": "ExpressionStatement",
                   "src": "351:50:6"
                 }
               ]
             },
-            "id": 963,
+            "id": 1009,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 954,
+              "id": 1000,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 953,
+                  "id": 999,
                   "mutability": "mutable",
                   "name": "baseResolverAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 963,
+                  "scope": 1009,
                   "src": "311:27:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5335,7 +5335,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 952,
+                    "id": 998,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "311:7:6",
@@ -5351,12 +5351,12 @@
               "src": "310:29:6"
             },
             "returnParameters": {
-              "id": 955,
+              "id": 1001,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "340:0:6"
             },
-            "scope": 992,
+            "scope": 1038,
             "src": "299:110:6",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -5367,81 +5367,81 @@
               723
             ],
             "body": {
-              "id": 990,
+              "id": 1036,
               "nodeType": "Block",
               "src": "628:165:6",
               "statements": [
                 {
                   "assignments": [
-                    977
+                    1023
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 977,
+                      "id": 1023,
                       "mutability": "mutable",
                       "name": "lastRound",
                       "nodeType": "VariableDeclaration",
-                      "scope": 990,
+                      "scope": 1036,
                       "src": "639:29:6",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                        "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                         "typeString": "struct Rounds.Round"
                       },
                       "typeName": {
-                        "id": 976,
+                        "id": 1022,
                         "nodeType": "UserDefinedTypeName",
                         "pathNode": {
-                          "id": 975,
+                          "id": 1021,
                           "name": "Rounds.Round",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1758,
+                          "referencedDeclaration": 1804,
                           "src": "639:12:6"
                         },
-                        "referencedDeclaration": 1758,
+                        "referencedDeclaration": 1804,
                         "src": "639:12:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Round_$1758_storage_ptr",
+                          "typeIdentifier": "t_struct$_Round_$1804_storage_ptr",
                           "typeString": "struct Rounds.Round"
                         }
                       },
                       "visibility": "internal"
                     }
                   ],
-                  "id": 981,
+                  "id": 1027,
                   "initialValue": {
                     "arguments": [],
                     "expression": {
                       "argumentTypes": [],
                       "expression": {
-                        "id": 978,
+                        "id": 1024,
                         "name": "_baseResolver",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 951,
+                        "referencedDeclaration": 997,
                         "src": "671:13:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                          "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                           "typeString": "contract IBaseResolver"
                         }
                       },
-                      "id": 979,
+                      "id": 1025,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getLatestValidData",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1717,
+                      "referencedDeclaration": 1763,
                       "src": "671:32:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$__$returns$_t_struct$_Round_$1758_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_struct$_Round_$1804_memory_ptr_$",
                         "typeString": "function () view external returns (struct Rounds.Round memory)"
                       }
                     },
-                    "id": 980,
+                    "id": 1026,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -5452,7 +5452,7 @@
                     "src": "671:34:6",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                      "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                       "typeString": "struct Rounds.Round memory"
                     }
                   },
@@ -5464,25 +5464,25 @@
                     "components": [
                       {
                         "expression": {
-                          "id": 982,
+                          "id": 1028,
                           "name": "lastRound",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 977,
+                          "referencedDeclaration": 1023,
                           "src": "724:9:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                            "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                             "typeString": "struct Rounds.Round memory"
                           }
                         },
-                        "id": 983,
+                        "id": 1029,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "price",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1745,
+                        "referencedDeclaration": 1791,
                         "src": "724:15:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -5491,25 +5491,25 @@
                       },
                       {
                         "expression": {
-                          "id": 984,
+                          "id": 1030,
                           "name": "lastRound",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 977,
+                          "referencedDeclaration": 1023,
                           "src": "741:9:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                            "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                             "typeString": "struct Rounds.Round memory"
                           }
                         },
-                        "id": 985,
+                        "id": 1031,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "assetCode",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1747,
+                        "referencedDeclaration": 1793,
                         "src": "741:19:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -5518,25 +5518,25 @@
                       },
                       {
                         "expression": {
-                          "id": 986,
+                          "id": 1032,
                           "name": "lastRound",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 977,
+                          "referencedDeclaration": 1023,
                           "src": "762:9:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                            "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                             "typeString": "struct Rounds.Round memory"
                           }
                         },
-                        "id": 987,
+                        "id": 1033,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "currencyCode",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1749,
+                        "referencedDeclaration": 1795,
                         "src": "762:22:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -5544,7 +5544,7 @@
                         }
                       }
                     ],
-                    "id": 988,
+                    "id": 1034,
                     "isConstant": false,
                     "isInlineArray": false,
                     "isLValue": false,
@@ -5557,43 +5557,43 @@
                       "typeString": "tuple(uint256,string memory,string memory)"
                     }
                   },
-                  "functionReturnParameters": 972,
-                  "id": 989,
+                  "functionReturnParameters": 1018,
+                  "id": 1035,
                   "nodeType": "Return",
                   "src": "716:69:6"
                 }
               ]
             },
             "functionSelector": "98d5fdca",
-            "id": 991,
+            "id": 1037,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getPrice",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 965,
+              "id": 1011,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "478:8:6"
             },
             "parameters": {
-              "id": 964,
+              "id": 1010,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "434:2:6"
             },
             "returnParameters": {
-              "id": 972,
+              "id": 1018,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 967,
+                  "id": 1013,
                   "mutability": "mutable",
                   "name": "price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 991,
+                  "scope": 1037,
                   "src": "519:13:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5602,7 +5602,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 966,
+                    "id": 1012,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "519:7:6",
@@ -5615,11 +5615,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 969,
+                  "id": 1015,
                   "mutability": "mutable",
                   "name": "assetCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 991,
+                  "scope": 1037,
                   "src": "547:23:6",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -5628,7 +5628,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 968,
+                    "id": 1014,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "547:6:6",
@@ -5641,11 +5641,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 971,
+                  "id": 1017,
                   "mutability": "mutable",
                   "name": "currencyCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 991,
+                  "scope": 1037,
                   "src": "585:26:6",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -5654,7 +5654,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 970,
+                    "id": 1016,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "585:6:6",
@@ -5668,14 +5668,14 @@
               ],
               "src": "504:118:6"
             },
-            "scope": 992,
+            "scope": 1038,
             "src": "417:376:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 993,
+        "scope": 1039,
         "src": "154:642:6"
       }
     ],
@@ -5685,23 +5685,23 @@
     "absolutePath": "project:/contracts/oracle/aggregators/GoldPriceAggregator.sol",
     "exportedSymbols": {
       "GoldPriceAggregator": [
-        992
+        1038
       ],
       "IAggregator": [
         724
       ],
       "IBaseResolver": [
-        1735
+        1781
       ],
       "Rounds": [
-        1759
+        1805
       ]
     },
-    "id": 993,
+    "id": 1039,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 943,
+        "id": 989,
         "literals": [
           "solidity",
           "^",
@@ -5714,9 +5714,9 @@
       {
         "absolutePath": "project:/contracts/oracle/Interfaces/IAggregator.sol",
         "file": "../Interfaces/IAggregator.sol",
-        "id": 944,
+        "id": 990,
         "nodeType": "ImportDirective",
-        "scope": 993,
+        "scope": 1039,
         "sourceUnit": 725,
         "src": "27:39:6",
         "symbolAliases": [],
@@ -5725,10 +5725,10 @@
       {
         "absolutePath": "project:/contracts/oracle/resolvers/interfaces/IBaseResolver.sol",
         "file": "../resolvers/interfaces/IBaseResolver.sol",
-        "id": 945,
+        "id": 991,
         "nodeType": "ImportDirective",
-        "scope": 993,
-        "sourceUnit": 1736,
+        "scope": 1039,
+        "sourceUnit": 1782,
         "src": "68:51:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -5736,10 +5736,10 @@
       {
         "absolutePath": "project:/contracts/oracle/utils/Rounds.sol",
         "file": "../utils/Rounds.sol",
-        "id": 946,
+        "id": 992,
         "nodeType": "ImportDirective",
-        "scope": 993,
-        "sourceUnit": 1760,
+        "scope": 1039,
+        "sourceUnit": 1806,
         "src": "121:29:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -5749,13 +5749,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 947,
+              "id": 993,
               "name": "IAggregator",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 724,
               "src": "186:11:6"
             },
-            "id": 948,
+            "id": 994,
             "nodeType": "InheritanceSpecifier",
             "src": "186:11:6"
           }
@@ -5765,9 +5765,9 @@
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 992,
+        "id": 1038,
         "linearizedBaseContracts": [
-          992,
+          1038,
           724
         ],
         "name": "GoldPriceAggregator",
@@ -5775,32 +5775,32 @@
         "nodes": [
           {
             "constant": false,
-            "id": 951,
+            "id": 997,
             "mutability": "mutable",
             "name": "_baseResolver",
             "nodeType": "VariableDeclaration",
-            "scope": 992,
+            "scope": 1038,
             "src": "205:27:6",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+              "typeIdentifier": "t_contract$_IBaseResolver_$1781",
               "typeString": "contract IBaseResolver"
             },
             "typeName": {
-              "id": 950,
+              "id": 996,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 949,
+                "id": 995,
                 "name": "IBaseResolver",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 1735,
+                "referencedDeclaration": 1781,
                 "src": "205:13:6"
               },
-              "referencedDeclaration": 1735,
+              "referencedDeclaration": 1781,
               "src": "205:13:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                 "typeString": "contract IBaseResolver"
               }
             },
@@ -5808,26 +5808,26 @@
           },
           {
             "body": {
-              "id": 962,
+              "id": 1008,
               "nodeType": "Block",
               "src": "340:69:6",
               "statements": [
                 {
                   "expression": {
-                    "id": 960,
+                    "id": 1006,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 956,
+                      "id": 1002,
                       "name": "_baseResolver",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 951,
+                      "referencedDeclaration": 997,
                       "src": "351:13:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                        "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                         "typeString": "contract IBaseResolver"
                       }
                     },
@@ -5836,11 +5836,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 958,
+                          "id": 1004,
                           "name": "baseResolverAddress",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 953,
+                          "referencedDeclaration": 999,
                           "src": "381:19:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -5855,18 +5855,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 957,
+                        "id": 1003,
                         "name": "IBaseResolver",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1735,
+                        "referencedDeclaration": 1781,
                         "src": "367:13:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IBaseResolver_$1735_$",
+                          "typeIdentifier": "t_type$_t_contract$_IBaseResolver_$1781_$",
                           "typeString": "type(contract IBaseResolver)"
                         }
                       },
-                      "id": 959,
+                      "id": 1005,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -5877,39 +5877,39 @@
                       "src": "367:34:6",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                        "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                         "typeString": "contract IBaseResolver"
                       }
                     },
                     "src": "351:50:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                      "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                       "typeString": "contract IBaseResolver"
                     }
                   },
-                  "id": 961,
+                  "id": 1007,
                   "nodeType": "ExpressionStatement",
                   "src": "351:50:6"
                 }
               ]
             },
-            "id": 963,
+            "id": 1009,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 954,
+              "id": 1000,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 953,
+                  "id": 999,
                   "mutability": "mutable",
                   "name": "baseResolverAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 963,
+                  "scope": 1009,
                   "src": "311:27:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5918,7 +5918,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 952,
+                    "id": 998,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "311:7:6",
@@ -5934,12 +5934,12 @@
               "src": "310:29:6"
             },
             "returnParameters": {
-              "id": 955,
+              "id": 1001,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "340:0:6"
             },
-            "scope": 992,
+            "scope": 1038,
             "src": "299:110:6",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -5950,81 +5950,81 @@
               723
             ],
             "body": {
-              "id": 990,
+              "id": 1036,
               "nodeType": "Block",
               "src": "628:165:6",
               "statements": [
                 {
                   "assignments": [
-                    977
+                    1023
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 977,
+                      "id": 1023,
                       "mutability": "mutable",
                       "name": "lastRound",
                       "nodeType": "VariableDeclaration",
-                      "scope": 990,
+                      "scope": 1036,
                       "src": "639:29:6",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                        "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                         "typeString": "struct Rounds.Round"
                       },
                       "typeName": {
-                        "id": 976,
+                        "id": 1022,
                         "nodeType": "UserDefinedTypeName",
                         "pathNode": {
-                          "id": 975,
+                          "id": 1021,
                           "name": "Rounds.Round",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1758,
+                          "referencedDeclaration": 1804,
                           "src": "639:12:6"
                         },
-                        "referencedDeclaration": 1758,
+                        "referencedDeclaration": 1804,
                         "src": "639:12:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Round_$1758_storage_ptr",
+                          "typeIdentifier": "t_struct$_Round_$1804_storage_ptr",
                           "typeString": "struct Rounds.Round"
                         }
                       },
                       "visibility": "internal"
                     }
                   ],
-                  "id": 981,
+                  "id": 1027,
                   "initialValue": {
                     "arguments": [],
                     "expression": {
                       "argumentTypes": [],
                       "expression": {
-                        "id": 978,
+                        "id": 1024,
                         "name": "_baseResolver",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 951,
+                        "referencedDeclaration": 997,
                         "src": "671:13:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBaseResolver_$1735",
+                          "typeIdentifier": "t_contract$_IBaseResolver_$1781",
                           "typeString": "contract IBaseResolver"
                         }
                       },
-                      "id": 979,
+                      "id": 1025,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getLatestValidData",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1717,
+                      "referencedDeclaration": 1763,
                       "src": "671:32:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$__$returns$_t_struct$_Round_$1758_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_struct$_Round_$1804_memory_ptr_$",
                         "typeString": "function () view external returns (struct Rounds.Round memory)"
                       }
                     },
-                    "id": 980,
+                    "id": 1026,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6035,7 +6035,7 @@
                     "src": "671:34:6",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                      "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                       "typeString": "struct Rounds.Round memory"
                     }
                   },
@@ -6047,25 +6047,25 @@
                     "components": [
                       {
                         "expression": {
-                          "id": 982,
+                          "id": 1028,
                           "name": "lastRound",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 977,
+                          "referencedDeclaration": 1023,
                           "src": "724:9:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                            "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                             "typeString": "struct Rounds.Round memory"
                           }
                         },
-                        "id": 983,
+                        "id": 1029,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "price",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1745,
+                        "referencedDeclaration": 1791,
                         "src": "724:15:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -6074,25 +6074,25 @@
                       },
                       {
                         "expression": {
-                          "id": 984,
+                          "id": 1030,
                           "name": "lastRound",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 977,
+                          "referencedDeclaration": 1023,
                           "src": "741:9:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                            "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                             "typeString": "struct Rounds.Round memory"
                           }
                         },
-                        "id": 985,
+                        "id": 1031,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "assetCode",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1747,
+                        "referencedDeclaration": 1793,
                         "src": "741:19:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -6101,25 +6101,25 @@
                       },
                       {
                         "expression": {
-                          "id": 986,
+                          "id": 1032,
                           "name": "lastRound",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 977,
+                          "referencedDeclaration": 1023,
                           "src": "762:9:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Round_$1758_memory_ptr",
+                            "typeIdentifier": "t_struct$_Round_$1804_memory_ptr",
                             "typeString": "struct Rounds.Round memory"
                           }
                         },
-                        "id": 987,
+                        "id": 1033,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "currencyCode",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1749,
+                        "referencedDeclaration": 1795,
                         "src": "762:22:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -6127,7 +6127,7 @@
                         }
                       }
                     ],
-                    "id": 988,
+                    "id": 1034,
                     "isConstant": false,
                     "isInlineArray": false,
                     "isLValue": false,
@@ -6140,43 +6140,43 @@
                       "typeString": "tuple(uint256,string memory,string memory)"
                     }
                   },
-                  "functionReturnParameters": 972,
-                  "id": 989,
+                  "functionReturnParameters": 1018,
+                  "id": 1035,
                   "nodeType": "Return",
                   "src": "716:69:6"
                 }
               ]
             },
             "functionSelector": "98d5fdca",
-            "id": 991,
+            "id": 1037,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getPrice",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 965,
+              "id": 1011,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "478:8:6"
             },
             "parameters": {
-              "id": 964,
+              "id": 1010,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "434:2:6"
             },
             "returnParameters": {
-              "id": 972,
+              "id": 1018,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 967,
+                  "id": 1013,
                   "mutability": "mutable",
                   "name": "price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 991,
+                  "scope": 1037,
                   "src": "519:13:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6185,7 +6185,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 966,
+                    "id": 1012,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "519:7:6",
@@ -6198,11 +6198,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 969,
+                  "id": 1015,
                   "mutability": "mutable",
                   "name": "assetCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 991,
+                  "scope": 1037,
                   "src": "547:23:6",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -6211,7 +6211,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 968,
+                    "id": 1014,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "547:6:6",
@@ -6224,11 +6224,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 971,
+                  "id": 1017,
                   "mutability": "mutable",
                   "name": "currencyCode",
                   "nodeType": "VariableDeclaration",
-                  "scope": 991,
+                  "scope": 1037,
                   "src": "585:26:6",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -6237,7 +6237,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 970,
+                    "id": 1016,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "585:6:6",
@@ -6251,14 +6251,14 @@
               ],
               "src": "504:118:6"
             },
-            "scope": 992,
+            "scope": 1038,
             "src": "417:376:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 993,
+        "scope": 1039,
         "src": "154:642:6"
       }
     ],
@@ -6272,12 +6272,12 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0x874AC499d434129BeC940164788DB4FB40b5D517",
-      "transactionHash": "0x8e48e8ff83d25148c193f1a3e337e9fc834b4e81eb30daa83c5f63a6ebf59082"
+      "address": "0xAd82C0c1AA7dB76A963fb654d012c20055Baf4f7",
+      "transactionHash": "0x0d9ddcfac1330ee44c87762da97275647e2af007cd6b0c180bd341a5016fb823"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-17T11:47:38.123Z",
+  "updatedAt": "2022-05-23T23:43:41.182Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

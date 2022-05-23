@@ -79,6 +79,11 @@
               "internalType": "bool",
               "name": "ended",
               "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalWeightOfVotingCoucil",
+              "type": "uint256"
             }
           ],
           "internalType": "struct Eras.Era",
@@ -160,6 +165,11 @@
               "internalType": "bool",
               "name": "ended",
               "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalWeightOfVotingCoucil",
+              "type": "uint256"
             }
           ],
           "internalType": "struct Eras.Era",
@@ -203,7 +213,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getCurrentEra\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"previousEraId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"colectedFeesAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"startDate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endDate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"chairman\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"requiredQuorum\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isQuorumReached\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"possitiveVotes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"negativeVotes\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"accepted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"ended\",\"type\":\"bool\"}],\"internalType\":\"struct Eras.Era\",\"name\":\"currentEra\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eraId_\",\"type\":\"bytes32\"}],\"name\":\"getEraById\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"previousEraId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"colectedFeesAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"startDate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endDate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"chairman\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"requiredQuorum\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isQuorumReached\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"possitiveVotes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"negativeVotes\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"accepted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"ended\",\"type\":\"bool\"}],\"internalType\":\"struct Eras.Era\",\"name\":\"era\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getErasCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getValidatorsCoundForActiveEra\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"address_\",\"type\":\"address\"}],\"name\":\"isAddressElectedForValidation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":\"IErasMonitor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":{\"keccak256\":\"0xf3c77849736c05ec67172a85862f1a651485eee1c3d4bf70a648b0de1208479b\",\"urls\":[\"bzz-raw://5107f5707434a4deb21b4bd26bc479d7b0df51e0d2f0b14f35781fba7bf165dc\",\"dweb:/ipfs/QmZeB9QTPagnMdUK7bLCpNiLR4s3kEBKu7y5TNHxpdWsjk\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0xf1b4bf9199cd92417c63696fbb65a85c1ebe92234c84b384e015f0a359f63d80\",\"urls\":[\"bzz-raw://decc443432b62729156c5f438b76b419a7b71b918017cc42dbe5d1ebb992886b\",\"dweb:/ipfs/QmRqcWDYMCB1wp2NELbuvx4YU54szTonvtdvP2DuQZCno4\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getCurrentEra\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"previousEraId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"colectedFeesAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"startDate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endDate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"chairman\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"requiredQuorum\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isQuorumReached\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"possitiveVotes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"negativeVotes\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"accepted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"ended\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"totalWeightOfVotingCoucil\",\"type\":\"uint256\"}],\"internalType\":\"struct Eras.Era\",\"name\":\"currentEra\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"eraId_\",\"type\":\"bytes32\"}],\"name\":\"getEraById\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"previousEraId\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"colectedFeesAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"startDate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"endDate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"chairman\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"requiredQuorum\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isQuorumReached\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"possitiveVotes\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"negativeVotes\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"accepted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"ended\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"totalWeightOfVotingCoucil\",\"type\":\"uint256\"}],\"internalType\":\"struct Eras.Era\",\"name\":\"era\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getErasCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getValidatorsCoundForActiveEra\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"address_\",\"type\":\"address\"}],\"name\":\"isAddressElectedForValidation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":\"IErasMonitor\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/token/Interfaces/IErasMonitor.sol\":{\"keccak256\":\"0xf3c77849736c05ec67172a85862f1a651485eee1c3d4bf70a648b0de1208479b\",\"urls\":[\"bzz-raw://5107f5707434a4deb21b4bd26bc479d7b0df51e0d2f0b14f35781fba7bf165dc\",\"dweb:/ipfs/QmZeB9QTPagnMdUK7bLCpNiLR4s3kEBKu7y5TNHxpdWsjk\"]},\"project:/contracts/token/utils/Eras.sol\":{\"keccak256\":\"0x541c719f44e0d7b929a4146aba9dc41972062e65719dc095658be6a186b410e1\",\"urls\":[\"bzz-raw://381a92a9ccc2d76562df448233690da954aef49f1266ed91d6b963740c6a88cd\",\"dweb:/ipfs/QmRWAc1oiaSCcDSFysSNmAYS7kqfCcj4ecE3Vf1Ltw7jMF\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -217,17 +227,17 @@
     "absolutePath": "project:/contracts/token/Interfaces/IErasMonitor.sol",
     "exportedSymbols": {
       "Eras": [
-        3134
+        3497
       ],
       "IErasMonitor": [
-        1859
+        1905
       ]
     },
-    "id": 1860,
+    "id": 1906,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1826,
+        "id": 1872,
         "literals": [
           "solidity",
           "^",
@@ -240,10 +250,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/Eras.sol",
         "file": "../utils/Eras.sol",
-        "id": 1827,
+        "id": 1873,
         "nodeType": "ImportDirective",
-        "scope": 1860,
-        "sourceUnit": 3135,
+        "scope": 1906,
+        "sourceUnit": 3498,
         "src": "27:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -254,38 +264,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1859,
+        "id": 1905,
         "linearizedBaseContracts": [
-          1859
+          1905
         ],
         "name": "IErasMonitor",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "533aa7b8",
-            "id": 1832,
+            "id": 1878,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getErasCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1828,
+              "id": 1874,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "109:2:14"
             },
             "returnParameters": {
-              "id": 1831,
+              "id": 1877,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1830,
+                  "id": 1876,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1832,
+                  "scope": 1878,
                   "src": "135:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -294,7 +304,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1829,
+                    "id": 1875,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "135:7:14",
@@ -308,7 +318,7 @@
               ],
               "src": "134:9:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "88:56:14",
             "stateMutability": "view",
             "virtual": false,
@@ -316,50 +326,50 @@
           },
           {
             "functionSelector": "d250b6cb",
-            "id": 1838,
+            "id": 1884,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getCurrentEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1833,
+              "id": 1879,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "174:2:14"
             },
             "returnParameters": {
-              "id": 1837,
+              "id": 1883,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1836,
+                  "id": 1882,
                   "mutability": "mutable",
                   "name": "currentEra",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1838,
+                  "scope": 1884,
                   "src": "200:26:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$3133_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$3496_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
-                    "id": 1835,
+                    "id": 1881,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1834,
+                      "id": 1880,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 3133,
+                      "referencedDeclaration": 3496,
                       "src": "200:8:14"
                     },
-                    "referencedDeclaration": 3133,
+                    "referencedDeclaration": 3496,
                     "src": "200:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$3133_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$3496_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -368,7 +378,7 @@
               ],
               "src": "199:28:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "152:76:14",
             "stateMutability": "view",
             "virtual": false,
@@ -376,23 +386,23 @@
           },
           {
             "functionSelector": "e6037852",
-            "id": 1846,
+            "id": 1892,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getEraById",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1841,
+              "id": 1887,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1840,
+                  "id": 1886,
                   "mutability": "mutable",
                   "name": "eraId_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1846,
+                  "scope": 1892,
                   "src": "256:14:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -401,7 +411,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1839,
+                    "id": 1885,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "256:7:14",
@@ -416,37 +426,37 @@
               "src": "255:16:14"
             },
             "returnParameters": {
-              "id": 1845,
+              "id": 1891,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1844,
+                  "id": 1890,
                   "mutability": "mutable",
                   "name": "era",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1846,
+                  "scope": 1892,
                   "src": "322:19:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$3133_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$3496_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
-                    "id": 1843,
+                    "id": 1889,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1842,
+                      "id": 1888,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 3133,
+                      "referencedDeclaration": 3496,
                       "src": "322:8:14"
                     },
-                    "referencedDeclaration": 3133,
+                    "referencedDeclaration": 3496,
                     "src": "322:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$3133_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$3496_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -455,7 +465,7 @@
               ],
               "src": "321:21:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "236:107:14",
             "stateMutability": "view",
             "virtual": false,
@@ -463,29 +473,29 @@
           },
           {
             "functionSelector": "6c3811ae",
-            "id": 1851,
+            "id": 1897,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getValidatorsCoundForActiveEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1847,
+              "id": 1893,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "390:2:14"
             },
             "returnParameters": {
-              "id": 1850,
+              "id": 1896,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1849,
+                  "id": 1895,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1851,
+                  "scope": 1897,
                   "src": "416:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -494,7 +504,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1848,
+                    "id": 1894,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "416:7:14",
@@ -508,7 +518,7 @@
               ],
               "src": "415:9:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "351:74:14",
             "stateMutability": "view",
             "virtual": false,
@@ -516,23 +526,23 @@
           },
           {
             "functionSelector": "d100896d",
-            "id": 1858,
+            "id": 1904,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isAddressElectedForValidation",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1854,
+              "id": 1900,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1853,
+                  "id": 1899,
                   "mutability": "mutable",
                   "name": "address_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1858,
+                  "scope": 1904,
                   "src": "472:16:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -541,7 +551,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1852,
+                    "id": 1898,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "472:7:14",
@@ -557,16 +567,16 @@
               "src": "471:18:14"
             },
             "returnParameters": {
-              "id": 1857,
+              "id": 1903,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1856,
+                  "id": 1902,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1858,
+                  "scope": 1904,
                   "src": "540:4:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -575,7 +585,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1855,
+                    "id": 1901,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "540:4:14",
@@ -589,14 +599,14 @@
               ],
               "src": "539:6:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "433:113:14",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1860,
+        "scope": 1906,
         "src": "58:491:14"
       }
     ],
@@ -606,17 +616,17 @@
     "absolutePath": "project:/contracts/token/Interfaces/IErasMonitor.sol",
     "exportedSymbols": {
       "Eras": [
-        3134
+        3497
       ],
       "IErasMonitor": [
-        1859
+        1905
       ]
     },
-    "id": 1860,
+    "id": 1906,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1826,
+        "id": 1872,
         "literals": [
           "solidity",
           "^",
@@ -629,10 +639,10 @@
       {
         "absolutePath": "project:/contracts/token/utils/Eras.sol",
         "file": "../utils/Eras.sol",
-        "id": 1827,
+        "id": 1873,
         "nodeType": "ImportDirective",
-        "scope": 1860,
-        "sourceUnit": 3135,
+        "scope": 1906,
+        "sourceUnit": 3498,
         "src": "27:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -643,38 +653,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1859,
+        "id": 1905,
         "linearizedBaseContracts": [
-          1859
+          1905
         ],
         "name": "IErasMonitor",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "533aa7b8",
-            "id": 1832,
+            "id": 1878,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getErasCount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1828,
+              "id": 1874,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "109:2:14"
             },
             "returnParameters": {
-              "id": 1831,
+              "id": 1877,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1830,
+                  "id": 1876,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1832,
+                  "scope": 1878,
                   "src": "135:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -683,7 +693,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1829,
+                    "id": 1875,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "135:7:14",
@@ -697,7 +707,7 @@
               ],
               "src": "134:9:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "88:56:14",
             "stateMutability": "view",
             "virtual": false,
@@ -705,50 +715,50 @@
           },
           {
             "functionSelector": "d250b6cb",
-            "id": 1838,
+            "id": 1884,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getCurrentEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1833,
+              "id": 1879,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "174:2:14"
             },
             "returnParameters": {
-              "id": 1837,
+              "id": 1883,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1836,
+                  "id": 1882,
                   "mutability": "mutable",
                   "name": "currentEra",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1838,
+                  "scope": 1884,
                   "src": "200:26:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$3133_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$3496_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
-                    "id": 1835,
+                    "id": 1881,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1834,
+                      "id": 1880,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 3133,
+                      "referencedDeclaration": 3496,
                       "src": "200:8:14"
                     },
-                    "referencedDeclaration": 3133,
+                    "referencedDeclaration": 3496,
                     "src": "200:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$3133_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$3496_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -757,7 +767,7 @@
               ],
               "src": "199:28:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "152:76:14",
             "stateMutability": "view",
             "virtual": false,
@@ -765,23 +775,23 @@
           },
           {
             "functionSelector": "e6037852",
-            "id": 1846,
+            "id": 1892,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getEraById",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1841,
+              "id": 1887,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1840,
+                  "id": 1886,
                   "mutability": "mutable",
                   "name": "eraId_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1846,
+                  "scope": 1892,
                   "src": "256:14:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -790,7 +800,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 1839,
+                    "id": 1885,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "256:7:14",
@@ -805,37 +815,37 @@
               "src": "255:16:14"
             },
             "returnParameters": {
-              "id": 1845,
+              "id": 1891,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1844,
+                  "id": 1890,
                   "mutability": "mutable",
                   "name": "era",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1846,
+                  "scope": 1892,
                   "src": "322:19:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Era_$3133_memory_ptr",
+                    "typeIdentifier": "t_struct$_Era_$3496_memory_ptr",
                     "typeString": "struct Eras.Era"
                   },
                   "typeName": {
-                    "id": 1843,
+                    "id": 1889,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1842,
+                      "id": 1888,
                       "name": "Eras.Era",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 3133,
+                      "referencedDeclaration": 3496,
                       "src": "322:8:14"
                     },
-                    "referencedDeclaration": 3133,
+                    "referencedDeclaration": 3496,
                     "src": "322:8:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Era_$3133_storage_ptr",
+                      "typeIdentifier": "t_struct$_Era_$3496_storage_ptr",
                       "typeString": "struct Eras.Era"
                     }
                   },
@@ -844,7 +854,7 @@
               ],
               "src": "321:21:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "236:107:14",
             "stateMutability": "view",
             "virtual": false,
@@ -852,29 +862,29 @@
           },
           {
             "functionSelector": "6c3811ae",
-            "id": 1851,
+            "id": 1897,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getValidatorsCoundForActiveEra",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1847,
+              "id": 1893,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "390:2:14"
             },
             "returnParameters": {
-              "id": 1850,
+              "id": 1896,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1849,
+                  "id": 1895,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1851,
+                  "scope": 1897,
                   "src": "416:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -883,7 +893,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1848,
+                    "id": 1894,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "416:7:14",
@@ -897,7 +907,7 @@
               ],
               "src": "415:9:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "351:74:14",
             "stateMutability": "view",
             "virtual": false,
@@ -905,23 +915,23 @@
           },
           {
             "functionSelector": "d100896d",
-            "id": 1858,
+            "id": 1904,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isAddressElectedForValidation",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1854,
+              "id": 1900,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1853,
+                  "id": 1899,
                   "mutability": "mutable",
                   "name": "address_",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1858,
+                  "scope": 1904,
                   "src": "472:16:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -930,7 +940,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1852,
+                    "id": 1898,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "472:7:14",
@@ -946,16 +956,16 @@
               "src": "471:18:14"
             },
             "returnParameters": {
-              "id": 1857,
+              "id": 1903,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1856,
+                  "id": 1902,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1858,
+                  "scope": 1904,
                   "src": "540:4:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -964,7 +974,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1855,
+                    "id": 1901,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "540:4:14",
@@ -978,14 +988,14 @@
               ],
               "src": "539:6:14"
             },
-            "scope": 1859,
+            "scope": 1905,
             "src": "433:113:14",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1860,
+        "scope": 1906,
         "src": "58:491:14"
       }
     ],
@@ -997,7 +1007,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-03-17T11:47:38.229Z",
+  "updatedAt": "2022-05-23T23:43:41.265Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
