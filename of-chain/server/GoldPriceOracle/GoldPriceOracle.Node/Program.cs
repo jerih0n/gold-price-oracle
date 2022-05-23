@@ -27,32 +27,5 @@ namespace GoldPriceOracle.Node
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-
-        private static BlockchainNetworkOptions GetBlockchainNetworkOptions(IConfigurationRoot config)
-        {
-            var blockchainData = config.GetSection("Blockchain:BlockchainNetwork");
-
-            var blockchainNetworkOptions = new BlockchainNetworkOptions
-            {
-                NetworkId = blockchainData.GetValue<int>("NetworkId"),
-                Port = blockchainData.GetValue<int>("Port"),
-                RPCUrl = blockchainData.GetValue<string>("RPCUrl"),
-                WebsocketUrl = blockchainData.GetValue<string>("WebsocketUrl")
-            };
-
-            return blockchainNetworkOptions;
-        }
-
-        private static string GetGoldPriceResolverAddress(IConfigurationRoot config)
-             => config.GetSection("Blockchain:SmartContracts:GoldPriceResolver").GetValue<string>("Address");
-
-        private static string GetTimerAddress(IConfigurationRoot config)
-            => config.GetSection("Blockchain:SmartContracts:Timer").GetValue<string>("Address");
-
-        private static object GetApplicationUrl(IConfigurationRoot config)
-            => config.GetValue<string>("ApplicationUrl");
-
-        private static string GetGoldPriceOracleTokenAddress(IConfiguration config)
-            => config.GetSection("Blockchain:SmartContracts:GoldPriceOracleERC20Token").GetValue<string>("Address");
     }
 }

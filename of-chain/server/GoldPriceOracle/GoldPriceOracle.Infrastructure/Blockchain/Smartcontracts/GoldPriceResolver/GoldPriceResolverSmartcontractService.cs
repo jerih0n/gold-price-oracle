@@ -1,13 +1,7 @@
 ﻿using GoldPriceOracle.Configuration;
-using GoldPriceOracle.Connection.Blockchain.Contracts.GoldPriceResolver;
-using GoldPriceOracle.Connection.Blockchain.ContractsServices.ERC20Token;
 using GoldPriceOracle.Connection.Blockchain.ContractsServices.GoldPriceResolver;
 using GoldPriceOracle.Connection.Database;
 using Microsoft.Extensions.Options;
-using Nethereum.Contracts;
-using Nethereum.JsonRpc.WebSocketStreamingClient;
-using Nethereum.RPC.Reactive.Eth.Subscriptions;
-using System;
 using System.Numerics;
 using System.Threading.Tasks;
 
